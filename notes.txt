@@ -1,0 +1,20 @@
+
+
+TODO-NOW:
+- naštelovat doménu, včetně www.
+- https
+- 404
+- fb/... sdílení
+- fb stránka
+- twitter
+- odkazy nejsou moc viditelný (eg: 404)
+
+TODO-SOMETIME:
+- responsivita designu
+- cdn v česku, eg: cloudflare
+
+
+POZN:
+- fotka z planety je odsud: http://eol.jsc.nasa.gov/SearchPhotos/photo.pl?mission=ISS045&roll=E&frame=27869
+
+
