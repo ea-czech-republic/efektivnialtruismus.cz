@@ -1,11 +1,20 @@
 ---
 title: Jak pomoci
 layout: article
-permalink: /jak-pomoci
-<!--  image:
-   feature: wood-texture-1600x800.jpg -->
+permalink: /jak-pomoci/
 ---
 
-## AAA!!
+## Přispění givingwell organizacím
 
-asdf
+(+ zvířecí)
+
+## Přispění na přežití lidstva
+
+## Šíření myšlenky
+
+## Pomoc s webem/organizací
+
+## Přijití na EA meetup
+
+
+
