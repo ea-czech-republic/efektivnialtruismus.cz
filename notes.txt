@@ -8,6 +8,8 @@ TODO-NOW:
 - fb stránka
 - twitter
 - odkazy nejsou moc viditelný (eg: 404)
+- rss
+
 
 TODO-SOMETIME:
 - responsivita designu
