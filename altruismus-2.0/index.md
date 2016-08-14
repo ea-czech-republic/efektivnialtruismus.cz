@@ -10,22 +10,22 @@ share: false
 ads: false
 ---
 
-*Tento článek byl původně zveřejněn [na blogu Šimona Podhájského](original)
+*Tento článek byl původně zveřejněn [na blogu Šimona Podhájského][original]
 a je zde převzat se souhlasem spoluautorů.*
 
 <img src="/images/altruismus-2.0/playpump.jpg" width="500">
 
-Pumpy [Roundabout PlayPump](playpump) poskytují způsob, jak hravě dodat africkým vesnicím
+Pumpy [Roundabout PlayPump][playpump] poskytují způsob, jak hravě dodat africkým vesnicím
 vodu. Pestře barevné kolotoče lákají děti, které každým otočením vypumpují
 na povrch vodu pro svou vesnici. [Čistá voda je v rozvojovém světě
-vzácná](water-scarcity) a hraček také není dost; Roundabout PlayPump řeší oba
+vzácná][water-scarcity] a hraček také není dost; Roundabout PlayPump řeší oba
 problémy jedním vynálezem. Nezní to skvěle? Přispějte ještě dnes!
 
 Tento program má jeden drobný háček: pumpy jsou pro praktické účely naprosto
 nefunkční. Při návratu do “obdarovaných" vesnic nalezli výzkumníci místo
 skotačících dětí vyčerpané trosky, které za svou robotu často braly peníze
-nebo ji rovnou přenechaly dospělým. Není divu: [revize odhalila](unicef-report), že aby pumpy
-vyprodukovaly dost vody pro celou vesnici, musely by si děti "[hrát](playpump-play)" 27 hodin
+nebo ji rovnou přenechaly dospělým. Není divu: [revize odhalila][unicef-report], že aby pumpy
+vyprodukovaly dost vody pro celou vesnici, musely by si děti "[hrát][playpump-play]" 27 hodin
 denně. Manipulace s novými hračkami byla však natolik náročná, že nešla vydržet
 déle než několik minut. Není proto divu, že většina vesnic pumpy přestala
 používat a celý projekt byl - o 200 milionů Kč později - ukončen.
@@ -53,16 +53,16 @@ neuškodí<a href="#neuskodi">*</a>, nýbrž kde pomůže co možná nejvíce.
 
 <a name="neuskodi">
 (\* [Překonat toto kritérium není tak jednoduché, jak by se mohlo
-zdát.](interventions-gone-wrong))
+zdát.][interventions-gone-wrong])
 </a>
 
 Co to znamená v praxi? Altruista, který se snaží o co největší dopad, se snaží
 provést důkladnou rešerši charit či aktivit, které zvažuje. Jde především
-o hodnocení specifického dopadu, např. dle [doporučení GiveWell](givewell-recs). (GiveWell
+o hodnocení specifického dopadu, např. dle [doporučení GiveWell][givewell-recs]. (GiveWell
 nepřijímá automaticky tvrzení charit o dopadu; vyžaduje [vědecky spolehlivé
-studie](trials), které umožňují určit, zda je za pozorovaná zlepšení opravdu zodpovědný
+studie][trials], které umožňují určit, zda je za pozorovaná zlepšení opravdu zodpovědný
 daný charitativní program.) Hodnocení toho, jaké procento peněz jde na programy
-a jaké na režii/fundraising (např. [CharityNavigator](charity-navigator)), nestačí: pokud charita
+a jaké na režii/fundraising (např. [CharityNavigator][charity-navigator]), nestačí: pokud charita
 utrácí 90% na reklamu a platí svému šéfovi milion ročně, ale zároveň zachraňuje
 více životů než všechny ostatní charity dohromady, pořád stojí investice do ní
 za to.
@@ -70,10 +70,10 @@ za to.
 
 Řekněme tedy, že máte 1 500 Kč a chcete s nimi pomoci dětem v rozvojovém světě.
 Můžete za ně pořídit půl procenta jedné hrací pumpy - nebo můžete spolehlivě
-pomoci nákupem [10 antimalarijních sítěk](amf) či [odčervením 150 dětí](dtw). Obě metody mají
+pomoci nákupem [10 antimalarijních sítěk][amf] či [odčervením 150 dětí][dtw]. Obě metody mají
 prokázaný dopad na zdravý růst a zvýšení školní docházky. Alternativou, kterou
 v tuto chvíli doporučuje GiveWell, [je poslat peníze přímo pomocí
-GiveDirectly](givedirectly):
+GiveDirectly][givedirectly]:
 studie ukazují, že přímé poskytnutí peněz je jednou z nejefektivnějších forem
 rozvojové pomoci.
 
@@ -91,7 +91,7 @@ práci osobně je důležité, ale není to jediný způsob, jak činit dobro. A
 začnou MSF mít problémy nacházet lékaře, efektivní altruista se možná rozhodne
 jinak.
 
-Podrobněji se efektivními kariérami zabývá organizace [80.000 Hours](80k).
+Podrobněji se efektivními kariérami zabývá organizace [80.000 Hours][80k].
 
 Závěr
 ==
@@ -106,14 +106,14 @@ cisternu.
 Kam dál?
 ==
 
-* [Čtyři charity, které s vaším darem mohou mít největší dopad](givewell-top) (doporučení GiveWell.org pro rok 2015)
-* [Jak zvolit kariéru s co největším dopadem](80k) (80.000 Hours)
-* [Future of Humanity Institute na University of Oxford](fhi) (existenční rizika atd.)
+* [Čtyři charity, které s vaším darem mohou mít největší dopad][givewell-top] (doporučení GiveWell.org pro rok 2015)
+* [Jak zvolit kariéru s co největším dopadem][80k] (80.000 Hours)
+* [Future of Humanity Institute na University of Oxford][fhi] (existenční rizika atd.)
 * [Dobře organizovaný seznam odkazů o všem, co efektivní altruismus
-  zahrnuje](ea-reading)
+  zahrnuje][ea-reading]
 
-[Aleš Flídr](ales) je prezidentem [Harvard College Effective Altruism](harvard-ea).
-Šimon Podhajský je spoluzakladatelem [Yale Effective Altruism](yale-ea).
+[Aleš Flídr][ales] je prezidentem [Harvard College Effective Altruism][harvard-ea].
+Šimon Podhajský je spoluzakladatelem [Yale Effective Altruism][yale-ea].
 <!--
 Pokud chcete pomoc se zakládáním efektivně altruistického spolku na vaší škole nebo ve vaší komunitě,
 [neváhejte nás kontaktovat](mailto:flidr+ea@college.harvard.edu).
