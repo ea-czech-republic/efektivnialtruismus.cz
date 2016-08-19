@@ -10,7 +10,11 @@ share: false
 ads: false
 ---
 
-Pokud máte nějaké dotazy. Neváhejte se zeptat na nadvornik.jiri@gmail.com. <!-- prozatimní adresa -->
+Web [efektivni-altruismus.cz](http://www.efektivni-altruismus.cz) spravuje
+Spolek pro efektivní altruismus. Vaše dotazy nebo nápady uvítáme na adrese
+[efektivnialtruismus@gmail.com](mailto:efektivnialtruismus@gmail.com).
+Můžete se také připojit do [facebookové skupiny českých efektivních
+altruistů](https://www.facebook.com/groups/efektivnialtruismuscz).
 
-Skupina příznivců EA se pravidelně schází na <a href="http://lesswrong.cz/">lesswrong meetupech</a>. Jste zváni.
-
+Skupina příznivců EA se pravidelně schází na srazech [pražské LessWrong
+komunity](http://lesswrong.cz/). Jste zváni.
