@@ -3,24 +3,24 @@
 - title: Co je EA
   url: /o-ea/
   excerpt: "Krátký úvod do hlavních myšlenek efektivního altruismu."
-  image: 400x250.gif
+  image: icons/qmark.jpg
 
 - title: Zdroje
   url: /zdroje/
   excerpt: "Seznam článků s dalšími informacemi."
-  image: 400x250.gif
+  image: icons/point_circle.jpg
 
 - title: EA Prague 2016
   url: /eaprague/
   excerpt: "První česká konference o EA"
-  image: 400x250.gif
+  image: icons/people.jpg
 
 - title: Jak pomoci
   url: /jak-pomoci/
   excerpt: "Pár způsobů jak můžete účině pomoci."
-  image: 400x250.gif
+  image: icons/aidkit.jpg
 
 - title: Kontakt
   url: /kontakt/
   excerpt: "Nebojte se nás zeptat na cokoli."
-  image: 400x250.gif
+  image: icons/dart.jpg
