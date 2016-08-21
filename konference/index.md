@@ -4,6 +4,7 @@ layout: article
 permalink: /eaprague/
 ---
 **Kdy**: 19.-20. listopadu 2016
+
 **Kde**: [Paralelní polis](https://www.paralelnipolis.cz/)
 
 Víte, že právě teď se můžete zkusit poprat s těmi největšími problémy našeho světa? S jednoduchou strategií a dobrým úsudkem můžete pomoci milionům jiných a zároveň si u toho užívat života. 
