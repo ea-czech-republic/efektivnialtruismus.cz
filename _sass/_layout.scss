@@ -23,8 +23,8 @@
 	@include media($large) {
 		@include span-columns(4);
 	}
-	padding: (.25 * $masthead-height) 0; // fourth the height to center vertically
-	height: $masthead-height;
+	/*padding: (.25 * $masthead-height) 0;*/ // fourth the height to center vertically
+	height: $masthead-height; 
 	text-decoration: none;
 	color: $black;
 	font-family: $alt-font;
@@ -32,7 +32,20 @@
 	@include font-size(20,no);
 	line-height: .5 * $masthead-height; // half the height to center vertically
 	text-transform: uppercase;
+	padding-top: 0px;
+	background-image: url("../images/logo-header.png");
+	background-repeat: no-repeat;
+	background-size: 53px 53px;
+	padding-left: 75px;
+	padding-top: 15px;
 }
+
+@media (min-width: 300px) and (max-width: 360px) {
+  .site-title {
+    padding-top: 0px;
+  }
+}
+
 
 
 /*
