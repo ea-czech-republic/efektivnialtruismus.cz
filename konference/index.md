@@ -11,7 +11,7 @@ Víte, že právě teď se můžete zkusit poprat s těmi největšími problém
 
 **Přijďte zjistit jak na první oficiální konferenci o Efektivním altruismu v ČR do Prahy 10.-11. prosince 2016!** 
 
-[Registrace zde (počet míst je omezen)](https://www.picatic.com/eaprague)
+Registrace bude otevřena již brzy. Momentálně pracujeme na komunikaci s centrálou EAGx, abychom vám mohli nabídnout co nejzajímavější program! 
 
 # Program
 
