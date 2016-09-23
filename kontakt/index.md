@@ -16,5 +16,8 @@ Spolek pro efektivní altruismus. Vaše dotazy nebo nápady uvítáme na adrese
 Můžete se také připojit do [facebookové skupiny českých efektivních
 altruistů](https://www.facebook.com/groups/efektivnialtruismuscz).
 
+Spolek pro efektivní altruismus (IČ 05418704) je zapsaný pod spisovou značkou
+L 10166 vedenou u Krajského soudu v Ústí nad Labem.
+
 Skupina příznivců EA se pravidelně schází na srazech [pražské LessWrong
 komunity](http://lesswrong.cz/). Jste zváni.
