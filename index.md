@@ -24,7 +24,9 @@ image:
 
 <div class="tile">
   <h2 class="post-title">Pomozte</h2>
-  <p class="post-excerpt">Podívejte se na <a href="/jak-pomoci">seznam</a> způsobů jak můžete pomoci.</p>
+  <p class="post-excerpt">
+  Podívejte se na <a href="/jak-pomoci">seznam</a> způsobů jak můžete pomoci.
+  </p>
 </div><!-- /.tile -->
 
 </div><!-- /.tiles -->

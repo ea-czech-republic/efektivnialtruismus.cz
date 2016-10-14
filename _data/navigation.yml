@@ -20,6 +20,12 @@
   excerpt: "Pár způsobů jak můžete účině pomoci."
   image: icons/aidkit.jpg
 
+# TODO
+# - title: Přihláška
+#   url: /prihlaska/
+#   excerpt: "Chcete nám pomoci? Přihlašte se do Spolku pro efektivní altruismus!"
+#   image: icons/point-circle.jpg
+
 - title: Kontakt
   url: /kontakt/
   excerpt: "Nebojte se nás zeptat na cokoli."
