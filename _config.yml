@@ -5,8 +5,11 @@ description: "Skupina pro podporu efektivního altruismu v ČR"
 logo: ea-120.png
 teaser: 400x250.gif
 locale: cs_CZ
+
+# Commented so that URLs are created relative.
 # url: http://efektivni-altruismus.cz
-url: //efektivni-altruismus.cz
+# url: //efektivni-altruismus.cz
+
 # Jekyll configuration
 
 sass:
