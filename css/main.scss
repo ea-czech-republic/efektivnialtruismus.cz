@@ -29,13 +29,14 @@ my customization
  *
 */
 
-@import "variables";
-
 /* FONT PATH
  * -------------------------- */
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 $roboto-slab: 'Roboto Slab', serif;
+
+@import "variables";
+
 
 /*
    Vendor

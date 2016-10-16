@@ -27,9 +27,9 @@
 	height: $masthead-height; 
 	text-decoration: none;
 	color: $black;
-	font-family: $alt-font;
-	font-weight: 700;
-	@include font-size(20,no);
+	font-family: $heading-font;
+	/*font-weight: 700;*/
+	@include font-size(18,no);
 	line-height: .5 * $masthead-height; // half the height to center vertically
 	text-transform: uppercase;
 	padding-top: 0px;
