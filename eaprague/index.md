@@ -2,5 +2,7 @@
 layout: article
 title: "EAGxPrague"
 excerpt: "Konference"
-redirect_to: http://www.eagxprague.org
 ---
+<meta http-equiv="refresh" content="0; url=http://www.eagxprague.org" />
+
+Přesměrovávám na <a href="http://www.eagxprague.org">stránku konference</a>...
