@@ -5,16 +5,18 @@ permalink: /jak-pomoci/
 ---
 Zajímá vás, co právě vy můžete udělat?
 
-## Pomoc Spolku pro efektivní altruismus
+## Zapojte se do naší organizace!
 Spolek pro efektivní altruismus pomáhá pomocí šíření myšlenky EA v České
 republice, organizováním české komunity a naši členové také společně hledají
 další způsoby, jak co nejvíce pomoci světu.
 
-Jestli se chcete na naší činnosti přímo podílet, ať už hodně nebo málo,
-rádi Vás uvítáme mezi námi -- stačí [vyplnit přihlášku](/prihlaska)!
+V první řadě je možné se <a href='https://effectivealtruismhub.us10.list-manage.com/subscribe?u=6674b2f70fed64e610d630527&id=bf5e6c96f3'>přihlásit do našeho mail listu</a> nebo na náš<a href='https://www.facebook.com/efektivnialtruismus/'>Facebook</a> my se už postaráme o to, abyste vždy věděli o našich aktivitách a setkání.
+
+Pokud se chcete na naší činnosti přímo podílet, ať už hodně nebo málo,
+rádi Vás uvítáme mezi námi - stačí [vyplnit přihlášku](/prihlaska)!
 
 Chcete-li nám raději přispět penězi než svým časem, [ozvěte se nám](/kontakt)
-a rádi přijmeme Váš dar.
+a my rádi vyřešíme všechny náležitosti spojené s Vaším darem (jako je darovací smlouva atp.).
 
 ## Přispění GiveWell organizacím
 Organizace [GiveWell](http://www.givewell.org/) se zabývá hodnocením organizací v EA stylu a výběru těch nejlepších. Co to znamená? Průzkum založený na důkladně prověřených důkazech (o metodice více [zde](http://www.givewell.org/international)). Seznam aktuálně nejlepších 4 charitativních organizací naleznete [zde](http://www.givewell.org/charities/top-charities).
