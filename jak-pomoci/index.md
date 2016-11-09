@@ -10,7 +10,7 @@ Spolek pro efektivní altruismus pomáhá pomocí šíření myšlenky EA v Čes
 republice, organizováním české komunity a naši členové také společně hledají
 další způsoby, jak co nejvíce pomoci světu.
 
-V první řadě je možné se <a href='https://effectivealtruismhub.us10.list-manage.com/subscribe?u=6674b2f70fed64e610d630527&id=bf5e6c96f3'>přihlásit do našeho mail listu</a> nebo na náš<a href='https://www.facebook.com/efektivnialtruismus/'>Facebook</a> my se už postaráme o to, abyste vždy věděli o našich aktivitách a setkání.
+V první řadě je možné se <a href='https://effectivealtruismhub.us10.list-manage.com/subscribe?u=6674b2f70fed64e610d630527&id=bf5e6c96f3'>přihlásit do našeho mail listu</a> nebo na náš <a href='https://www.facebook.com/efektivnialtruismus/'>Facebook</a> a my se už postaráme o to, abyste vždy věděli o našich aktivitách a setkání.
 
 Pokud se chcete na naší činnosti přímo podílet, ať už hodně nebo málo,
 rádi Vás uvítáme mezi námi - stačí [vyplnit přihlášku](/prihlaska)!
