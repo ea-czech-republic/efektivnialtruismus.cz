@@ -67,7 +67,7 @@ globálním změnám.
 
 Za těmito úspěchy stojí [mnoho skupin efektivních
 altruistů](http://effectivealtruismhub.com/) po celém světě. Komunita
-efektivních altruistů zahrnuje zakladatale PayPalu a Skype, přes 20 firem a
+efektivních altruistů zahrnuje zakladatele PayPalu a Skype, přes 20 firem a
 neziskových organizací a globální síť studentů a profesorů na prvotřídních
 univerzitách jako Harvard, Cambridge, Oxford, Yale a Stanford.
 
