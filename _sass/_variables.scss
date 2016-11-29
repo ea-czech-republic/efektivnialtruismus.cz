@@ -6,8 +6,8 @@
    Typography variables
    ========================================================================== */
 
-$base-font                   	: Georgia,Times,"Times New Roman",serif;
-$heading-font                	: $roboto-slab; // "Helvetica Neue","Segoe UI",Arial,sans-serif;
+$base-font                   	: 'Open Sans', 'Arial', sans-serif;
+$heading-font                	: 'Roboto Slab', serif;
 $caption-font                	: $base-font;
 $code-font                   	: monospace;
 $alt-font                    	: $heading-font;
