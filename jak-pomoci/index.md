@@ -52,7 +52,7 @@ postaráme o to, abyste vždy věděli o našich aktivitách a setkání.
 <!--End mc_embed_signup-->
 
 Pokud se chcete na naší činnosti přímo podílet, ať už hodně nebo málo,
-rádi Vás uvítáme mezi námi - stačí [vyplnit přihlášku](/prihlaska)!
+rádi Vás uvítáme mezi námi – stačí [vyplnit přihlášku](/prihlaska)!
 
 Chcete-li nám raději přispět penězi než svým časem, [ozvěte se nám](/kontakt)
 a my rádi vyřešíme všechny náležitosti spojené s Vaším darem (jako je darovací smlouva atp.).
@@ -64,15 +64,14 @@ Organizace [GiveWell](http://www.givewell.org/) se zabývá hodnocením organiza
 <!-- TODO: animal charity, atd. -->
 
 ## Přispění na přežití lidstva
-[Future of Life institute](http://futureoflife.org/background/existential-risk/) zkoumá globální existenční rizika. Aktuálně extrémně rychlý technologický vývoj skrývá potenciální nebezpečí, právě která se snaží FLI prozkoumat. Přispět je možné [zde](http://futureoflife.org/get-involved/).
+[Future of Life Institute](http://futureoflife.org/background/existential-risk/) zkoumá globální existenční rizika. Aktuálně extrémně rychlý technologický vývoj skrývá potenciální nebezpečí, právě která se snaží FLI prozkoumat. Přispět je možné [zde](http://futureoflife.org/get-involved/).
 
 ## Vzdělávání a rozvoj myšlenky EA
 Přesvědčíte-li jednoho svého známého o efektivním altruismu, můžete tím zdvojnásobit svůj pozitivní vliv na svět.
-I přes rozmach (poměrně mladých) myšlenek Efektivního Altruismu se bohužel stále netěší takové popularitě, jakou by si zasloužil. I vytváření podvědomí a vhodných podmínek pro rozvoj myšlenky EA je důležité.
+I přes rozmach (poměrně mladých) myšlenek Efektivního Altruismu se bohužel stále netěší takové popularitě, jakou by si zasloužil. I vytváření povědomí a vhodných podmínek pro rozvoj myšlenky EA je důležité.
 
 ## Pomoc s webem a organizací
-Aktivit spojených s EA se asi těžko vyčerpají - i vaše pomoc našemu týmu může pomoci. Neváhejte nás kontaktovat na [efektivnialtruismus@gmail.com](mailto:efektivnialtruismus@gmail.com)
- máte-li zájem přiložit ruku k dílu.
+Aktivity spojených s EA se asi těžko vyčerpají - i vaše pomoc našemu týmu může pomoci. Neváhejte nás kontaktovat na [efektivnialtruismus@gmail.com](mailto:efektivnialtruismus@gmail.com), máte-li zájem přiložit ruku k dílu.
 
 ## Aktivita v komunitě
 EA by nevzniklo, pokud by kolem něj neexistovala vynikající komunita spolupracujících lidí. Přijďte na naši konferenci nebo náš meetup!

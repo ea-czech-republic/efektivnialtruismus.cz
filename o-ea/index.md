@@ -19,7 +19,7 @@ máme bezprecedentní příležitost zachránit životy a předejít zbytečném
 
 **Efektivní altruismus** je rostoucí sociální hnutí, které kombinuje srdce a
 hlavu: pomáháme vedeni daty a zdravým rozumem. Je o věnování významné části
-vlastního života a času k cíli zlepšování světa. Důsledně a upřímně se ptáme:
+vlastního života a času s cílem zlepšování světa. Důsledně a upřímně se ptáme:
 "Jaký ze všech způsobů, jakými můžu zlepšit svět, jej zlepší nejvíce?"
 
 Hodnoty efektivních altruistů
@@ -45,7 +45,7 @@ Jak efektivní altruisté vybírají problémy k řešení
 ==
 
 **Dobro na globálním měřítku.** Přestože hnutí efektivního altruismu vzniklo
-před několika krátkými lety, iniciativy našich členů již vedly k pozitivním
+před několika lety, iniciativy našich členů již vedly k pozitivním
 globálním změnám.
 
 * **$350,000,000** (více než **8.6 miliard Kč**): Dary slíbené na vědecky podložené
