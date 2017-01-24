@@ -9,12 +9,12 @@ image:
 
 <div class="tile">
   <h2 class="post-title">Naše mise</h2>
-  <p class="post-excerpt">Najít projekty, které využívají pečlivou <em>analýzu</em>em> k tomu, aby pomohly ostatním <em>co nejvíce</em>em></p>
+  <p class="post-excerpt">Najít projekty, které využívají pečlivou <em>analýzu</em> k tomu, aby pomohly ostatním <em>co nejvíce</em>em></p>
 </div><!-- /.tile -->
 
 <div class="tile">
   <h2 class="post-title">Nejen srdce, ale i rozum</h2>
-  <p class="post-excerpt">Dáváme velmi silný důraz na to, najít jen nejlepší z nejlepších způsobů pomoci. Vše podloženo tvrdými daty.</p>
+  <p class="post-excerpt">Dáváme velmi silný důraz na nalezení jen nejlepších z nejlepších způsobů pomoci. Vše podloženo tvrdými daty.</p>
 </div><!-- /.tile -->
 
 <div class="tile">
