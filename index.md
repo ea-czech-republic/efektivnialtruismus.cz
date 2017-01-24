@@ -9,7 +9,7 @@ image:
 
 <div class="tile">
   <h2 class="post-title">Naše mise</h2>
-  <p class="post-excerpt">Najít projekty, které využívají pečlivou <em>analýzu</em> k tomu, aby pomohly ostatním <em>co nejvíce</em>em></p>
+  <p class="post-excerpt">Najít projekty, které využívají pečlivou <em>analýzu</em> k tomu, aby pomohly ostatním <em>co nejvíce</em></p>
 </div><!-- /.tile -->
 
 <div class="tile">
