@@ -21,6 +21,6 @@ image:
 
 ## Anglicky
 * [Úvodní anglické stránky](http://www.effectivealtruism.org/)
-* [Effective altruism reading material for busy people.](http://www.benkuhn.net/ea-reading) Seznam článků pro lidi co nemají moc volného času.
-* <a href="http://careyryan.com/files/EA_Handbook.pdf">Effective Altruism Handbook</a>. Krátká příručka s základním přehledem všeho důležitého.
+* [Effective altruism reading material for busy people.](http://www.benkuhn.net/ea-reading) Seznam článků pro lidi, kteří nemají moc volného času.
+* <a href="http://careyryan.com/files/EA_Handbook.pdf">Effective Altruism Handbook</a>. Krátká příručka se základním přehledem všeho důležitého.
 * <a href="http://www.amazon.com/Doing-Good-Better-Effective-Difference/dp/1592409105/">Doing Good Better</a> od Williama MacAskilla - kniha s úvodem do problematiky.

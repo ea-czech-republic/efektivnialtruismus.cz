@@ -41,7 +41,6 @@ titlecase: false
 # Site owner
 owner:
   name: Jiří Nádvorník
-  web: http://nadvornik.org
   email: nadvornik.jiri@gmail.com
 #  twitter: mmistakes
   bio: "Pokus."
