@@ -71,7 +71,9 @@ Přesvědčíte-li jednoho svého známého o efektivním altruismu, můžete t�
 I přes rozmach (poměrně mladých) myšlenek Efektivního Altruismu se bohužel stále netěší takové popularitě, jakou by si zasloužil. I vytváření povědomí a vhodných podmínek pro rozvoj myšlenky EA je důležité.
 
 ## Pomoc s webem a organizací
-Aktivity spojených s EA se asi těžko vyčerpají - i vaše pomoc našemu týmu může pomoci. Neváhejte nás kontaktovat na [efektivnialtruismus@gmail.com](mailto:efektivnialtruismus@gmail.com), máte-li zájem přiložit ruku k dílu.
+Aktivit spojených s EA se asi těžko vyčerpají - i vaše pomoc našemu týmu může
+pomoci. Neváhejte nás kontaktovat na <info@efektivni-altruismus.cz>
+máte-li zájem přiložit ruku k dílu.
 
 ## Aktivita v komunitě
 EA by nevzniklo, pokud by kolem něj neexistovala vynikající komunita spolupracujících lidí. Přijďte na naši konferenci nebo náš meetup!
