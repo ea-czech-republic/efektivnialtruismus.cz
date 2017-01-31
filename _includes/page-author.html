@@ -3,7 +3,14 @@
 {% endif %}
 
 <div class="author-image">
-	<img src="{{ site.url }}/images/{{ author.avatar }}" alt="{{ author.name }}">
+	{% if author.avatar %}
+		<img src="{{ site.url }}/images/{{ author.avatar }}" alt="{{ author.name }}">
+	{% endif %}
+
+	{% if author.gravatar %}
+		<img src="https://www.gravatar.com/avatar/{{ author.gravatar }}" alt="{{ author.name }}">
+	{% endif %}
+
 </div><!-- ./author-image -->
 <div class="author-content">
 	<h3 class="author-name" >{{ site.data.messages.locales[site.locale].written_by }} {% if author.web %}<a href="{{ author.web }}" itemprop="author">{{ author.name }}</a>{% else %}<span itemprop="author">{{ author.name }}</span>{% endif %}</h3>

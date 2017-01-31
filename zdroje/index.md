@@ -13,6 +13,8 @@ image:
 <!-- seznam vybrán bez rozmyšlení - editujte s odvahou -->
 
 ## Česky
+* [Strategie Spolku pro efektivní altruismus na rok 2017](/strategie-na-2017):
+  Čeho chceme dlouhodobě dosáhnout? Co pro to budeme dělat příští rok?
 * [Altruismus 2.0](/altruismus-2.0): úvod do efektivního altruismu od
   Šimona Podhájského a Aleše Flídra, spoluzakladatelů místních EA organizací
   na Harvardově univerzitě a Yale.
