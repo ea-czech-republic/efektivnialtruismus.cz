@@ -31,7 +31,9 @@ export SECRET_KEY="xxx"
 export EMAIL_BACKEND="sgbackend.SendGridBackend"
 ```
 
-then `source bin/production-env.sh` and run server (probably using something like gunicorn+nginx).
+then `source bin/production-env.sh` and run server (probably using something like `gunicorn+nginx`).
+
+You also need to run `python manage.py collectstatic` to collect static files for `nginx`.
 
 
 # The choice
