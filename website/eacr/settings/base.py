@@ -117,7 +117,7 @@ LANGUAGES = (
     ('cs', 'Czech'),
 )
 
-TIME_ZONE = 'DST'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

@@ -1,1 +1,2 @@
-DEBUG=True
+#!/usr/bin/env bash
+export DEBUG=True
