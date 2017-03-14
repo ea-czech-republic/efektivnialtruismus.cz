@@ -1,0 +1,12 @@
+{% load menu_tags i18n %}
+{% load static %}
+
+<nav class="navbar navbar-toggleable-md navbar-left">
+    <ul class="navbar-nav col-md-12  main-menu">
+        {% for item in menu_items %}
+            <li class="nav-item {{ item.active_class }}">
+                <a class="nav-link" style="color: grey;" href="{{ item.href }}">{{ item.text }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

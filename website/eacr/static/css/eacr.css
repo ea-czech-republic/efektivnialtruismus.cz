@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+body {
+    padding-top: 1rem;
+    font-family: 'Roboto Slab', serif;
+}
+
+/* navbar */
+
+.navbar-brand {
+    line-height: 60px;
+    text-transform: uppercase;
+}
+
+.main-menu > li > a {
+    font-size: 1em;
+    margin-left: 0.2em;
+    color: black;
+    font-weight: bold;
+    position: relative;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.main-menu > li > a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.main-menu > li > a:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
+/* main page */
+
+.page-content a {
+    border-bottom: 1px dotted #a2a2a2;
+    text-decoration: none;
+    color: #222222;
+}
+
+.page-content a:hover {
+    border-bottom-style: solid;
+}
+
+.template-homepage .card {
+    border: none;
+}
+
+.template-homepage h5 {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.template-homepage .card-text {
+    font-size: 0.9em;
+}
+
+/* TOP PAGE IMG */
+
+#page-lead {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    display: block;
+}
+
+#page-lead a {
+    border-radius: 25px;
+    background-color: whitesmoke;
+    border-bottom: 1px dotted #a2a2a2;
+    text-decoration: none;
+    color: #222222;
+}
+
+#page-lead a:hover {
+    background-color: #313130;
+    color: #FFFFFF;
+}
+
+/* FOOTER */
+
+footer p {
+    color: grey;
+    font-size: small;
+    margin-left: 32px;
+}
+
+footer a {
+    color: darkgray;
+}
+
+/* CONTENT */
+
+.home-content p {
+    font-family: 'Open Sans';
+}
+
+.home-content
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.template-blogindexpage .indexed-post {
+    border: 1px solid #ccc!important;
+    border-radius: 16px!important;
+}
