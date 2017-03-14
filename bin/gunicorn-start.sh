@@ -3,7 +3,7 @@
 
 NAME="efektivni-altruismus.cz"
 DJANGODIR=website
-SOCKFILE=run/gunicorn.sock
+SOCKFILE=../run/gunicorn.sock  # one level upper...
 USER=$USER
 GROUP=$GROUP
 NUM_WORKERS=3
