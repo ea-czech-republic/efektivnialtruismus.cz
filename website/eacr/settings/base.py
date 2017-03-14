@@ -102,7 +102,7 @@ WSGI_APPLICATION = 'eacr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db-eacr.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, os.environ['DB_NAME']),
     }
 }
 

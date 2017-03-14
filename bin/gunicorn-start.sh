@@ -3,17 +3,17 @@
 
 NAME="efektivni-altruismus.cz"
 DJANGODIR=website
-SOCKFILE=run/gunicorn.sock
+SOCKFILE=../run/gunicorn.sock  # one level upper...
 USER=$USER
 GROUP=$GROUP
 NUM_WORKERS=3
 DJANGO_WSGI_MODULE=eacr.wsgi
 
-echo "Starting $NAME as $USER:$GROUP"
+echo "Starting $NAME as $EA_USER:$EA_GROUP"
 
 # Activate the virtual environment
-cd $DJANGODIR
 source .venv/bin/activate
+cd $DJANGODIR
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 
 # Create the run directory if it doesn't exist
@@ -21,10 +21,10 @@ RUNDIR=$(dirname $SOCKFILE)
 test -d $RUNDIR || mkdir -p $RUNDIR
 
 # Start your Django Unicorn
-exec /var/www/eacr-wagtail/.venv/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
+exec gunicorn ${DJANGO_WSGI_MODULE}:application \
   --name $NAME \
   --workers $NUM_WORKERS \
-  --user=$USER --group=$GROUP \
+  --user=$EA_USER --group=$EA_GROUP \
   --bind=unix:$SOCKFILE \
   --log-level=debug \
   --log-file=-
