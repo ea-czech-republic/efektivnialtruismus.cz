@@ -46,3 +46,33 @@ have strong community and documentation.
  also unmaintanable from the longer perspective
 2. No roles management (e.g. moderators/editors)
 
+# Tips
+
+## Sourcing all vars from the file
+
+`export $(cut -d= -f1 bin/beta-env.sh)`
+
+## example systemd unit to run gunicorn
+```
+[Unit]
+ConditionFileNotEmpty=/var/www/efektivnialtruismus.cz/bin/%i-env.sh
+Description=Gunicorn daemon for efektivni-altruismus.cz on wagtail (django) with settings %I
+
+[Service]
+Type=simple
+User=webdata
+Group=webdata
+WorkingDirectory=/var/www/efektivnialtruismus.cz
+EnvironmentFile=/var/www/efektivnialtruismus.cz/bin/%i-env.sh
+ExecStart=/usr/bin/bash bin/gunicorn-start.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+save it as `/etc/systemd/system/ea-cz-gunicorn@.service` and then run it by
+
+```
+systemctl start ea-cz-gunicorn@<ENVIRONMENT-FILE-IN-BIN>.service
+```
