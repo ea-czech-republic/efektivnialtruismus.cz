@@ -7,7 +7,7 @@
 
 {% block content %}
     <div class="col-lg-10">
-    {% for post in page.get_children %}
+    {% for post in blogpages %}
             <div class="row m-4 indexed-post">
                 <div class="col-md-3">
                     {% image post.specific.feed_image fill-200x200 class="p-3" %}
