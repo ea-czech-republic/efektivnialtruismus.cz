@@ -5,3 +5,6 @@ website/static
 website/media
 bin/production-env.sh
 .venv
+run
+bin/beta-env.sh
+bin/change_perms.sh

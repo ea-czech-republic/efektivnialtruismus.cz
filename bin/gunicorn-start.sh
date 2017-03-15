@@ -7,7 +7,6 @@ SOCKFILE=../run/gunicorn.sock  # one level upper...
 NUM_WORKERS=3
 DJANGO_WSGI_MODULE=eacr.wsgi
 
-
 [[ -z $EA_USER ]] && echo "You must pass EA_USER var" && exit 1
 [[ -z $EA_GROUP ]] && echo "You must pass EA_GROUP var" && exit 1
 
