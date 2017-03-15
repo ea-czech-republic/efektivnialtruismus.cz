@@ -13,7 +13,7 @@ I assume you have a modern Python installed. This is tested on
 version 3.6, but anything 3.2+ _should_ work, 
 although not tested at all. 
 
-## How to set up the dev enviornment
+## How to set up the dev environment
 
 Run `bash bin/init-run.sh` from the root dir of this repo.
 
@@ -37,7 +37,7 @@ You also need to run `python manage.py collectstatic` to collect static files fo
 
 
 # The choice
-The choice of the frameworks `boostrap` and `wagtail` is based on ease of use,
+The choice of the frameworks `bootstrap` and `wagtail` is based on ease of use,
 since there will be probably often a change in who manage the site. Both
 have strong community and documentation. 
 
