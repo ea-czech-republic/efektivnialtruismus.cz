@@ -1,6 +1,6 @@
 .idea
 **/__pycache__/
-website/db-eacr.sqlite3
+website/*.sqlite3
 website/static
 website/media
 bin/production-env.sh
