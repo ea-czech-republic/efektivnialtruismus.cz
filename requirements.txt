@@ -14,3 +14,4 @@ Unidecode==0.4.20
 wagtail==1.9
 wagtailmenus==2.2.0
 sendgrid-django==4.0.4
+gunicorn==19.7.0

@@ -76,3 +76,65 @@ save it as `/etc/systemd/system/ea-cz-gunicorn@.service` and then run it by
 ```
 systemctl start ea-cz-gunicorn@<ENVIRONMENT-FILE-IN-BIN>.service
 ```
+
+## Changing static files
+All static files are in `website/eacr/static`. They are served by `manage.py runserver`,
+but not so by `gunicorn`. `nginx` is used instead and it expects it in `website/static`.
+
+To collect all static files for `nginx`, use `python manage.py collectstatic`.
+
+## Nginx config file for gunicorn and django/wagtail
+```
+upstream upstream_server {
+  server unix:/var/www/efektivnialtruismus.cz/run/gunicorn.sock fail_timeout=10s;
+}
+ 
+server {
+ 
+    listen   80;
+    server_name beta-ea.danielhnyk.cz; #server_name 127.0.0.1;
+ 
+    client_max_body_size 4G;
+ 
+    access_log off;
+    error_log /var/www/efektivnialtruismus.cz/run/nginx-error.log;
+ 
+    location /static {
+        autoindex on;
+        alias   /var/www/efektivnialtruismus.cz/website/static;
+    }
+    
+    location /media {
+        autoindex on;
+        alias   /var/www/efektivnialtruismus.cz/website/media;
+    }
+ 
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+ 
+        proxy_set_header Host $http_host;
+ 
+        proxy_redirect off;
+ 
+        if (!-f $request_filename) {
+            proxy_pass http://upstream_server;
+            break;
+        }
+    }
+
+    #For favicon
+    location  /favicon.ico {
+        alias /var/www/efektivnialtruismus.cz/website/static/imgs/favicon.ico;
+    }    
+    #For robots.txt
+    location  /robots.txt {
+        alias /var/www/efektivnialtruismus.cz/website/static/robots.txt ;
+    }    
+    # Error pages
+    error_page 500 502 503 504 /500.html;
+    location = /500.html {
+        root /var/www/efektivnialtruismus.cz/website/static/;
+    }
+}
+```
+
