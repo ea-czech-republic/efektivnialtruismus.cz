@@ -37,7 +37,9 @@ class BlogPage(Page):
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
-        ('embed', EmbedBlock())
+        ('embed', EmbedBlock()),
+        ('rawHtml', blocks.RawHTMLBlock()),
+
     ])
 
     feed_image = models.ForeignKey(
