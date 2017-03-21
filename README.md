@@ -52,6 +52,9 @@ have strong community and documentation.
 
 `export $(cut -d= -f1 bin/beta-env.sh)`
 
+running it together:
+`export $(cut -d= -f1 bin/beta-env.sh) && source .venv/bin/activate && sudo -E -u webdata bash bin/gunicorn-start.sh beta`
+
 ## example systemd unit to run gunicorn
 ```
 [Unit]
