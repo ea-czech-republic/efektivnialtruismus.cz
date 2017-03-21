@@ -1,3 +1,2 @@
-#!/usr/bin/env bash
-export DEBUG=True
-export DB_NAME=dev-eacr.sqlite3
+DEBUG=True
+DB_NAME=dev-eacr.sqlite3

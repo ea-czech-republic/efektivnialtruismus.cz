@@ -160,7 +160,7 @@ WAGTAIL_SITE_NAME = "efektivni-altruismus.cz"
 BASE_URL = 'http://efektivni-altruismus.cz'
 
 ### THIS IS THE DEV/PROD part
-DEBUG = bool(os.environ.get('DEBUG', False))
+DEBUG = os.environ.get('DEBUG') == 'True'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', "").split()
 SECRET_KEY = os.environ.get('SECRET_KEY', 'c56q&sgquclsvweoixk^yof7o0f=$ebv7%jlqt_uupm_6pkr2@')
 
