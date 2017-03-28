@@ -2,7 +2,7 @@
 
 This is a repository for page of efektivni-altruismus.cz
 
-# Adding content and organization
+# Adding content and structure of a website
 [See Editors part of wiki](https://github.com/ea-czech-republic/efektivnialtruismus.cz/wiki/Editors-(Blog))
 
 # Development
