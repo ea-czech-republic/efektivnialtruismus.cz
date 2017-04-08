@@ -7,6 +7,10 @@ body {
 
 /* navbar */
 
+.template-summerai {
+    padding-top: 83px;
+}
+
 .navbar-brand {
     line-height: 60px;
     text-transform: uppercase;

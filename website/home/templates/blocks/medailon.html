@@ -1,0 +1,21 @@
+{% load wagtailimages_tags %}
+
+<div class="row">
+    <div class="col-md-12 bg-faded rounded pb-3 mb-2 ml-3" style="border:1px solid lightgrey;">
+        <div class="row">
+            <div class="col-md-6 mt-0">
+                <h3>{{ value.title }}</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                {% image value.pic width-400 as photo %}
+                <img src="{{ photo.url }}" style="width:100%"/>
+            </div>
+            <div class="col-md-8">
+                {{ value.description }}
+            </div>
+        </div>
+    </div>
+</div>
