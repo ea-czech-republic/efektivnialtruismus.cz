@@ -29,6 +29,10 @@ class BlogIndexPage(Page):
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in BlogIndexPage._meta.fields]
 
+    def cur_site_id(self):
+        return "{}".format(self.get_url_parts()[0])
+
+
 
 class BlogPage(Page):
     date = models.DateField("Post date")
@@ -68,3 +72,6 @@ class BlogPage(Page):
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in BlogPage._meta.fields]
+
+    def cur_site_id(self):
+        return "{}".format(self.get_url_parts()[0])
