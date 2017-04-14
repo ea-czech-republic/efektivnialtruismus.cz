@@ -153,3 +153,8 @@ h5 {
 body.template-blogpage section.block-paragraph p {
     text-align: justify;
 }
+
+body.template-blogpage section.block-image img.blog-image {
+    text-align: center;
+    max-width: 100%;
+}
