@@ -2,6 +2,7 @@
 
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load disqus_tags %}
 
 {% block body_class %}template-blogpage{% endblock %}
 
@@ -34,4 +35,11 @@
             {% endfor %}
         </div>
     </div>
+    
+    <div class="row">
+        <div class="col-md-10">
+            {% disqus_show_comments %}
+        </div>
+    </div>
+
 {% endblock %}

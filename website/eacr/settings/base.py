@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'disqus',
 
     'wagtailmenus',
     'blog',
@@ -166,3 +169,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'c56q&sgquclsvweoixk^yof7o0f=$ebv7%jlq
 
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY', None)
 EMAIL_BACKEND=os.environ.get("EMAIL_BACKEND", 'django.core.mail.backends.console.EmailBackend')
+
+DISQUS_WEBSITE_SHORTNAME = "efektivni-altruismus"
+DISQUS_API_KEY = os.environ["DISQUS_API_KEY"]
+
+
