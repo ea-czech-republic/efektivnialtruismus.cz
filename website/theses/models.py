@@ -28,24 +28,14 @@ class ThesisIndexPage(Page):
     ])
 
     content_panels = Page.content_panels + [
-        # FieldPanel('intro', classname="full")
         StreamFieldPanel('intro'),
 
     ]
 
     def get_context(self, request):
         context = super(ThesisIndexPage, self).get_context(request)
-
         context['theses'] = ThesisPage.objects.child_of(self).live().order_by('-first_published_at')
-
-        # thesis_content_type = ContentType.objects.get_for_model(ThesisPage)
-        # context['tags'] = Tag.objects.filter(
-        #     taggit_taggeditem_items__content_type=thesis_content_type
-        # )
-        # context["tags"] = Tag.objects.all().distinct('taggit_taggeditem_items__tag')
         context["tags"] = ThesisPage.tags.all()
-        # print(thesis_content_type)
-        print(context["tags"])
         return context
 
 
@@ -59,24 +49,18 @@ class ThesisIndexPage(Page):
 
 
 class ThesisPage(Page):
-    # date = models.DateField("Post date")
-    # header = models.CharField(max_length=250)
     description = RichTextField()
     why_important = RichTextField()
     sources = RichTextField()
     tags = ClusterTaggableManager(through=ThesisPageTag, blank=True)
 
     search_fields = Page.search_fields + [
-        # index.SearchField('header'),
         index.SearchField('description'),
         index.SearchField('why_important'),
         index.SearchField('sources'),
-        # index.FilterField('date'),
     ]
 
     content_panels = Page.content_panels + [
-        # FieldPanel('header'),
-        # FieldPanel('date'),
         FieldPanel('description'),
         FieldPanel('why_important'),
         FieldPanel('tags'),
