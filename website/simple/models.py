@@ -18,7 +18,7 @@ class MedailonBlock(blocks.StructBlock):
         template = 'myapp/blocks/event.html'
 
 
-class CfarPage(Page):
+class SimplePage(Page):
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
