@@ -10,14 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-from __future__ import absolute_import, unicode_literals
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(PROJECT_DIR)
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -82,7 +77,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(PROJECT_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -100,7 +95,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'eacr.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -110,7 +104,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, os.environ['DB_NAME']),
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -134,8 +127,6 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
@@ -144,17 +135,15 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
 
 # Wagtail settings
 
@@ -170,9 +159,7 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', "").split()
 SECRET_KEY = os.environ.get('SECRET_KEY', 'c56q&sgquclsvweoixk^yof7o0f=$ebv7%jlqt_uupm_6pkr2@')
 
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY', None)
-EMAIL_BACKEND=os.environ.get("EMAIL_BACKEND", 'django.core.mail.backends.console.EmailBackend')
+EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", 'django.core.mail.backends.console.EmailBackend')
 
 DISQUS_WEBSITE_SHORTNAME = "efektivni-altruismus"
 DISQUS_API_KEY = os.environ["DISQUS_API_KEY"]
-
-
