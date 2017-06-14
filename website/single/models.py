@@ -16,7 +16,7 @@ class MedailonBlock(blocks.StructBlock):
         return context
 
 
-class SinglePage(Page):
+class CfarPage(Page):
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
@@ -39,9 +39,24 @@ class SinglePage(Page):
     ]
 
 
-class CfarPage(SinglePage):
-    pass
+class PomahejPage(Page):
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('embed', EmbedBlock()),
+        ('rawHtml', blocks.RawHTMLBlock()),
+        ('medailon', blocks.StructBlock(
+            [
+                ('title', blocks.CharBlock(required=True)),
+                ('pic', ImageChooserBlock(required=True)),
+                ('description', blocks.RichTextBlock(required=True)),
+            ],
+            template='blocks/medailon.html',
+            icon='user'
+        ))
+    ])
 
-
-class PomahejPage(SinglePage):
-    pass
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+    ]

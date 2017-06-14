@@ -1,4 +1,5 @@
 {% extends "simple/simple_base.html" %}
+{% load wagtailcore_tags %}
 
 {% block content %}
     {% if page.body %}
@@ -11,6 +12,4 @@
     {% else %}
         Page {{ page.title }} on {{ page.url_path }} is empty!
     {% endif %}
-{% endblock %}
-
 {% endblock %}
