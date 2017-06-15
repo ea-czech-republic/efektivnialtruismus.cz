@@ -4,6 +4,8 @@ from wagtail.wagtailcore import blocks
 from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock
+import datetime
+
 
 class MedailonBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=True)
@@ -13,8 +15,6 @@ class MedailonBlock(blocks.StructBlock):
         context['is_happening_today'] = (value['date'] == datetime.date.today())
         return context
 
-    class Meta:
-        template = 'myapp/blocks/event.html'
 
 class HomePage(Page):
     body = StreamField([
@@ -37,9 +37,3 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
     ]
-
-    def get_fields(self):
-        return [(field.name, field.value_to_string(self)) for field in HomePage._meta.fields]
-
-    def cur_site_id(self):
-        return "{}".format(self.get_url_parts()[0])
