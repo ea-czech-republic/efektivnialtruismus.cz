@@ -20,16 +20,7 @@
         </div>
 
         {% block content %}
-            {% if page.body %}
-                <div class="row home-content">
-                    <div class="col-lg-10">
-                        <h1>{{ page.title }}</h1>
-                        {% include_block page.body %}
-                    </div>
-                </div>
-            {% else %}
-                Page {{ page.title }} on {{ page.url_path }} is empty!
-            {% endif %}
+            Page is empty. This template shouldn't be used directly
         {% endblock %}
 
 
