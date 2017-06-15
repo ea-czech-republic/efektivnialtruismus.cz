@@ -30,5 +30,5 @@ exec gunicorn ${DJANGO_WSGI_MODULE}:application \
   --workers $NUM_WORKERS \
   --user=$EA_USER --group=$EA_GROUP \
   --bind=unix:$SOCKFILE \
-  --log-level=info \
+  --log-level=warning \
   --log-file=-
