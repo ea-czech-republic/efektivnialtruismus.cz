@@ -8,3 +8,4 @@ bin/production-env.sh
 run
 bin/beta-env.sh
 bin/change_perms.sh
+venv
