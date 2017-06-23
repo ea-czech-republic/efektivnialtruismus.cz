@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'blog',
     'simple',
     'single'
+    'theses',
 ]
 
 MIDDLEWARE_CLASSES = [
