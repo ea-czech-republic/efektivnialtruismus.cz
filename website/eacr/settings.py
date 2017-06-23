@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'wagtailmenus',
     'blog',
     'simple',
-    'single'
+    'single',
     'theses',
 ]
 

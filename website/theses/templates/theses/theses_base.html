@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load i18n %}
+{% load menu_tags %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/theses.css' %}">
+{% endblock %}
+
+{% block base_content %}
+    {% block content %}{% endblock %}
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static "js/theses.js" %}"></script>
+{% endblock %}
