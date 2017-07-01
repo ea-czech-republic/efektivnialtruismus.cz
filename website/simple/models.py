@@ -16,7 +16,7 @@ class MedailonBlock(blocks.StructBlock):
         return context
 
 
-class HomePage(Page):
+class SimplePage(Page):
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),

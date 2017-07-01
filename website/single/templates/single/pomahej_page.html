@@ -22,7 +22,8 @@
             {% for block in page.body %}
                 <div class="col-md-12">
                     {% if block.block_type == 'heading' %}
-                        <h1 id="{{ block.value|cut:" "  }}" style="padding-top: 85px; margin-top: -85px;">{{ block.value }}</h1>
+                        <h1 id="{{ block.value|cut:" " }}"
+                            style="padding-top: 85px; margin-top: -85px;">{{ block.value }}</h1>
                     {% else %}
                         <section class="block-{{ block.block_type }}">
                             {% include_block block %}

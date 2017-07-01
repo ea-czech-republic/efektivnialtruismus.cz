@@ -3,8 +3,8 @@ set -e
 # run this from the git repo root dir
 
 NAME="efektivni-altruismus.cz"
-DJANGODIR=website
-SOCKFILE=../run/$1-gunicorn.sock  # one level upper...
+DJANGODIR=files/website
+SOCKFILE=../../run/$1-gunicorn.sock  # one level upper...
 NUM_WORKERS=3
 DJANGO_WSGI_MODULE=eacr.wsgi
 
@@ -16,7 +16,7 @@ DJANGO_WSGI_MODULE=eacr.wsgi
 echo "Starting $NAME as $EA_USER:$EA_GROUP in $1 environment and database $DB_NAME"
 
 # Activate the virtual environment
-source .venv/bin/activate
+source venv/bin/activate
 cd $DJANGODIR
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 

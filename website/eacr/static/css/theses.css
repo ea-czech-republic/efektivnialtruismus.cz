@@ -1,0 +1,12 @@
+.tag {
+    background-color: rgb(249, 229, 209);
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+}
+
+.tags-label {
+    font-size: 12px;
+}
+

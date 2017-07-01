@@ -1,0 +1,22 @@
+{% load menu_tags i18n %}
+{% load static %}
+
+<nav class="navbar navbar-toggleable-md navbar-light sticked-top">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+        <h1>{{ page.title }}  |  </h1>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarContent">
+        <ul id="links-list" class="navbar-nav navbar-left main-menu">
+            {% for item in menu_items %}
+                <li class="nav-item {{ item.active_class }}">
+                    <a class="nav-link" href="{{ item.href }}">{{ item.text }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</nav>
