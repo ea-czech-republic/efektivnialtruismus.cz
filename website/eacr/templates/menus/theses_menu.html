@@ -1,7 +1,7 @@
 {% load menu_tags i18n %}
 {% load static %}
 
-<nav class="navbar fixed-top bg-inverse navbar-inverse navbar-toggleable-md navbar-light">
+<nav class="navbar navbar-toggleable-md navbar-light">
     <button class="navbar-toggler navbar-toggler-left navbar-light" type="button" data-toggle="collapse"
             data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -16,7 +16,7 @@
         <ul class="navbar-nav ml-auto main-menu">
             {% for item in menu_items %}
                 <li class="nav-item {{ item.active_class }}">
-                    <a class="nav-link" style="font-weight: bold" href="{{ item.href }}">{{ item.text }}</a>
+                    <a class="nav-link" style="font-weight: bold; color: black" href="{{ item.href }}">{{ item.text }}</a>
                 </li>
             {% endfor %}
         </ul>
