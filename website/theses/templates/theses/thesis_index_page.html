@@ -7,6 +7,7 @@
 
     {{ page.intro | safe }}
 
+    Pick areas you are interested in:
     <form>
         {% for tag in tags %}
             <label class="tags-label">
@@ -18,21 +19,20 @@
 
 
     <div class="theses">
-
         {% for thesis in theses %}
-
             <div class="thesis" data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
                 <h2><a href="{% pageurl thesis %}">{{ thesis.title }}</a></h2>
-                {% for tag in thesis.tags.all %}<span class="tag">{{ tag }}</span>
-                    , {% endfor %}
+                {% for tag in thesis.tags.all %} <span class="tag">{{ tag }}</span> {% endfor %}
 
-                <p>{{ thesis.description | safe }}
-                <h4>Proč si myslíme že je důležité</h4>
-                <p>{{ thesis.why_important | safe }}
-                <h4>Další zdroje</h4>
+                <p>{{ thesis.description | safe | truncatewords_html:50 }}
+                <h4>Why we think it's important</h4>
+                {{ thesis.why_important | safe | truncatewords_html:50 }}<a href="{% pageurl thesis %}">More information...</a>
+
+                {% comment %}
+                <h4>Resources</h4>
                 <p>{{ thesis.sources | safe }}
+                {% endcomment %}
             </div>
-
         {% endfor %}
     </div>
 
