@@ -5,12 +5,6 @@ body {
     font-family: 'Roboto Slab', serif;
 }
 
-/* navbar */
-
-.template-summerai {
-    padding-top: 83px;
-}
-
 .navbar-brand {
     line-height: 60px;
     text-transform: uppercase;
@@ -22,7 +16,6 @@ body {
     color: black;
     font-weight: bold;
     position: relative;
-    color: #000;
     text-decoration: none;
     text-transform: uppercase;
 }
@@ -46,6 +39,14 @@ body {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
+}
+
+.display-3 {
+    font-weight: bold;
+}
+
+#page-lead {
+    background-image: url("../imgs/background.jpg" );
 }
 
 /* main page */

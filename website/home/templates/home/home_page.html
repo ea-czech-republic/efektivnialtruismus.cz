@@ -2,22 +2,21 @@
 {% load static wagtailuserbar %}
 
 {% block content %}
-    <div class="col-lg-12" id="page-lead" style="background-image: url({% static "imgs/background.jpg" %});">
-        <div class="row mt-5">
+    <div class="col-lg-12" id="page-lead">
+        <div class="row">
             <div class="mx-auto">
-                <h3 class="display-3" style="font-weight: bold;">Efektivní Altruismus</h3>
+                <h3 class="display-3">Efektivní Altruismus</h3>
             </div>
         </div>
 
         <div class="row mt-4">
             <div class="mx-auto">
-                <h3 class="display-5" style="font-weight: bold;">Nejúčinnější z nejúčinnějších způsobů
-                    pomoci.</h3>
+                <h3 class="display-5">Nejúčinnější z nejúčinnějších způsobů pomoci.</h3>
             </div>
         </div>
 
-        <div class="row mt-5 mb-5">
-            <div class="mx-auto">
+        <div class="row mt-4">
+            <div class="mx-auto mb-4">
                 <a href="/co-je-ea" class="btn btn-secondary">Více informací</a>
                 <span class="ml-2"></span>
                 <a href="/blog" class="btn btn-secondary">Seznam článků</a>
@@ -26,7 +25,7 @@
 
     </div>
 
-    <div class="row mt-5 mb-5">
+    <div class="row mb-3">
         {% for block in page.body %}
             {{ block }}
         {% endfor %}
