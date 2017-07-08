@@ -19,7 +19,7 @@
                     {% for tag in tags %}
                         <input type="checkbox" class="badgebox" name="fl-colour" value="{{ tag | slugify }}"
                                id="{{ tag | slugify }}"/>
-                        <label class="btn btn-success tag-select" for="{{ tag | slugify }}">
+                        <label class="btn btn-info tag-select" for="{{ tag | slugify }}">
                             {{ tag }}
                         </label>
                     {% endfor %}
@@ -30,14 +30,14 @@
                 <div class="theses col-md-12">
                     <h3>Available theses</h3>
                     {% for thesis in theses %}
-                        <div class="card thesis card-outline-success mt-2"
+                        <div class="card thesis card-outline-info mt-2"
                              data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
                             <div class="card-header">
                                 <h5 class="card-title m-0"><a href="{% pageurl thesis %}">{{ thesis.title }}</a></h5>
                             </div>
                             <div class="card-header card-subheader pt-1 pb-1">
                                 {% for tag in thesis.tags.all %}
-                                    <label class="btn btn-success tag-select">{{ tag }}</label>
+                                    <label class="btn btn-info tag-select">{{ tag }}</label>
                                 {% endfor %}
 
                             </div>
