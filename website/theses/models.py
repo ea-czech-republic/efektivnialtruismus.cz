@@ -60,3 +60,19 @@ class ThesisPage(Page):
     ]
 
     parent_page_types = ['theses.ThesisIndexPage']
+
+
+class ThesisSimple(Page):
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('embed', EmbedBlock()),
+        ('rawHtml', blocks.RawHTMLBlock())
+    ])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+    ]
+
+    parent_page_types = ['theses.ThesisIndexPage']
