@@ -1,3 +1,7 @@
+body {
+    text-align: justify;
+}
+
 .tag {
     background-color: rgb(249, 229, 209);
     padding-top: 0.2em;
@@ -36,4 +40,12 @@ h1 h2 {
     font-size: 12px;
     padding: 1px 1px 2px 2px;
     margin: 1px 1px 1px 1px;
+}
+
+.thesis p {
+    margin-bottom: 5px;
+}
+
+.card-subheader {
+    color: #f7f7f9;
 }
