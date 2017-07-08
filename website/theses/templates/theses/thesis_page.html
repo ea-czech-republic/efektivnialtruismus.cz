@@ -2,29 +2,42 @@
 
 {% load wagtailcore_tags %}
 {% load disqus_tags %}
+{% load wagtailuserbar %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-10">
-            <h2>{{ page.title }}</h2>
+            <div class="row">
+                <h2>{{ page.title }}</h2>
+            </div>
 
-            {% for tag in page.tags.all %}
-                <label class="btn btn-success tag-select">
-                    {{ tag }}
-                </label>
-            {% endfor %}
 
-            {{ page.description|safe }}
+            <div class="row mb-2" id="tags">
+                {% for tag in page.tags.all %}
+                    <label class="btn btn-success tag-select">
+                        {{ tag }}
+                    </label>
+                {% endfor %}
+            </div>
 
-            <h3>Why we think it is important?</h3>
-            {{ page.why_important|safe }}
+            <div class="row">
+                {{ page.description|safe }}
+            </div>
 
-            <h3>Next resources</h3>
-            {{ page.sources|safe }}
+            <div class="row">
+                <h3>Why we think it is important?</h3>
+                {{ page.why_important|safe }}
+            </div>
 
-            <h5>
+            <div class="row">
+                <h3>Next resources</h3>
+                {{ page.sources|safe }}
+            </div>
+
+            <div class="row"><h5>
                 <a href="{% slugurl 'contact' %}">Are you interested in this topic? Contact us!</a>
             </h5>
+            </div>
 
             <hr class="mt-3 mb-5">
             {% disqus_show_comments %}

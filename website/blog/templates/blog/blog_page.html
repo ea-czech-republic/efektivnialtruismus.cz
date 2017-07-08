@@ -3,6 +3,7 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 {% load disqus_tags %}
+{% load wagtailuserbar %}
 
 {% block body_class %}template-blogpage{% endblock %}
 
@@ -23,10 +24,10 @@
             <hr>
             {% for block in page.body %}
                 {% if block.block_type == 'image' %}
-                <section class="block-image">
-                    {% image block.value original as my_image %}
-                    <a href="{{ my_image.url }}" target="_blank"><img class="blog-image" src="{{ my_image.url }}" /></a>
-                </section>
+                    <section class="block-image">
+                        {% image block.value original as my_image %}
+                        <a href="{{ my_image.url }}" target="_blank"><img class="blog-image" src="{{ my_image.url }}"/></a>
+                    </section>
                 {% else %}
                     <section class="block-{{ block.block_type }}">
                         {% include_block block %}
@@ -35,7 +36,7 @@
             {% endfor %}
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-md-8">
             {% disqus_show_comments %}
