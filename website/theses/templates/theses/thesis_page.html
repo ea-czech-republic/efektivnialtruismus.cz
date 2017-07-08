@@ -14,16 +14,18 @@
     {% endfor %}
 
     {{ page.description|safe }}
+
     <h3>Proč si myslíme že je důležité</h3>
     {{ page.why_important|safe }}
+
     <h3>Další zdroje</h3>
     {{ page.sources|safe }}
 
-
-    <h3><a href="{%slugurl 'contact'%}">Are you interested this topic?</a></h3>
+    <h3>
+        <a href="{% slugurl 'contact' %}">Are you interested this topic?</a>
+    </h3>
 
     <hr>
-
     {% disqus_show_comments %}
-
 {% endblock %}
+

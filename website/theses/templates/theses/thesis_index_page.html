@@ -3,37 +3,54 @@
 {% load wagtailcore_tags %}
 {% load menu_tags %}
 
+{% block body_class %}template-thesisindexpage{% endblock %}
+
 {% block content %}
+    <div class="row">
+        <div class="col-md-10">
 
-    {{ page.intro | safe }}
-
-    Pick areas you are interested in:
-    <form>
-        {% for tag in tags %}
-            <label class="tags-label">
-                <input type="checkbox" name="fl-colour" value="{{ tag | slugify }}" id="{{ tag | slugify }}"/>
-                <span class="tag">{{ tag }}</span>
-            </label>
-        {% endfor %}
-    </form>
-
-
-    <div class="theses">
-        {% for thesis in theses %}
-            <div class="thesis" data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
-                <h2><a href="{% pageurl thesis %}">{{ thesis.title }}</a></h2>
-                {% for tag in thesis.tags.all %} <span class="tag">{{ tag }}</span> {% endfor %}
-
-                <p>{{ thesis.description | safe | truncatewords_html:50 }}
-                <h4>Why we think it's important</h4>
-                {{ thesis.why_important | safe | truncatewords_html:50 }}<a href="{% pageurl thesis %}">More information...</a>
-
-                {% comment %}
-                <h4>Resources</h4>
-                <p>{{ thesis.sources | safe }}
-                {% endcomment %}
+            <div class="row">
+                {{ page.intro | safe }}
             </div>
-        {% endfor %}
+
+            <div class="row">
+                <h4>Pick areas you are interested in:</h4>
+                <div id="col-md-7 all-tags">
+                    {% for tag in tags %}
+                        <input type="checkbox" class="badgebox" name="fl-colour" value="{{ tag | slugify }}"
+                               id="{{ tag | slugify }}"/>
+                        <label class="btn btn-success tag-select" for="{{ tag | slugify }}">
+                            {{ tag }}
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="theses row">
+                {% for thesis in theses %}
+                    <div class="thesis"
+                         data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
+                        <h2>
+                            <a href="{% pageurl thesis %}">{{ thesis.title }}</a>
+                        </h2>
+
+                        {% for tag in thesis.tags.all %}
+                            <label class="btn btn-success tag-select">{{ tag }}</label>
+                        {% endfor %}
+
+                        <p>{{ thesis.description | safe | truncatewords_html:50 }}
+
+                        <h4>Why we think it's important</h4>
+                        <p>
+                            {{ thesis.why_important | safe | truncatewords_html:50 }}
+                        </p>
+
+                        <a href="{% pageurl thesis %}">More information...</a>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
     </div>
 
 {% endblock %}
