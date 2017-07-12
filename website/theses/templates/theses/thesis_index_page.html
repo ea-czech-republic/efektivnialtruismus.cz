@@ -28,11 +28,11 @@
 
             <div class="row">
                 <div class="theses col-md-12">
-                    <h3>Available theses</h3>
+                    <h3 id="AvailableTheses">Available theses</h3>
                     {% for thesis in theses %}
                         <div class="card thesis card-outline-info mt-2"
                              data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
-                            <div class="card-header">
+                            <div class="card-header pt-1 pb-1">
                                 <h5 class="card-title m-0"><a href="{% pageurl thesis %}">{{ thesis.title }}</a></h5>
                             </div>
                             <div class="card-header card-subheader pt-1 pb-1">
@@ -41,14 +41,14 @@
                                 {% endfor %}
 
                             </div>
-                            <div class="card-block">
+                            <div class="card-block pt-0 pb-0">
 
                                 <p class="card-text">
                                     {{ thesis.description | safe | truncatewords_html:50 }}
                                 </p>
 
                             </div>
-                            <div class="card-footer text-muted">
+                            <div class="card-footer text-muted pt-0 pb-0">
                                 <b>Why it's important? </b>{{ thesis.why_important | safe | truncatewords_html:50 }}
                             </div>
 
