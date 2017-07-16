@@ -7,15 +7,26 @@
 {% block content %}
     <div class="row">
         <div class="col-md-9">
-
             <div class="row">
-                {{ page.intro | safe }}
+                <div class="col-md-12" style="text-align: center">
+                    <h2>
+                        Contribute with your thesis. Make use of your work and effort.
+                        Help to change the world (to a better place)!
+                    </h2>
+                    <a href="#AvailableTheses">
+                        <h2>Choose a topic</h2>
+                    </a>
+                </div>
+                <div class="col-md-12 mt-3">
+                    {{ page.intro | safe }}
+                </div>
+
             </div>
 
             <hr>
             <div class="row mt-3">
                 <div class="col-md-12 all-tags">
-                    <h3>Pick areas you are interested in</h3>
+                    <h3  id="AvailableTheses">Pick areas you are interested in</h3>
                     {% for tag in tags %}
                         <input type="checkbox" class="badgebox" name="fl-colour" value="{{ tag | slugify }}"
                                id="{{ tag | slugify }}"/>
@@ -28,7 +39,7 @@
 
             <div class="row">
                 <div class="theses col-md-12">
-                    <h3 id="AvailableTheses">Available theses</h3>
+                    <h3>Available theses</h3>
                     {% for thesis in theses %}
                         <div class="card thesis card-outline-info mt-2"
                              data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
