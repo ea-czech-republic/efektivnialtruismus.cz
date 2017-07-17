@@ -2,6 +2,7 @@
 
 {% load wagtailcore_tags %}
 {% load wagtailuserbar %}
+{% load wagtailimages_tags %}
 {% load menu_tags %}
 
 {% block content %}
@@ -26,7 +27,7 @@
             <hr>
             <div class="row mt-3">
                 <div class="col-md-12 all-tags">
-                    <h3  id="AvailableTheses">Pick your study discipline</h3>
+                    <h3 id="AvailableTheses">Pick your study discipline</h3>
                     {% for tag in tags %}
                         <input type="checkbox" class="badgebox" name="fl-colour" value="{{ tag | slugify }}"
                                id="{{ tag | slugify }}"/>
@@ -44,7 +45,14 @@
                         <div class="card thesis card-outline-info mt-2"
                              data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
                             <div class="card-header pt-1 pb-1">
-                                <h5 class="card-title m-0"><a href="{% pageurl thesis %}">{{ thesis.title }}</a></h5>
+                                <h5 class="card-title m-0">
+                                    <a href="{% pageurl thesis %}">
+                                        {{ thesis.title }}
+                                    </a>
+                                    {% with thesis.provider.name as provider_name %}
+                                        | {% image thesis.provider.provider_image fill-20x20 title=provider_name %}
+                                    {% endwith %}
+                                </h5>
                             </div>
                             <div class="card-header card-subheader pt-1 pb-1">
                                 {% for tag in thesis.tags.all %}

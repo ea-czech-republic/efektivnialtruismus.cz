@@ -3,15 +3,21 @@
 {% load wagtailcore_tags %}
 {% load disqus_tags %}
 {% load wagtailuserbar %}
+{% load wagtailimages_tags %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-10">
-        <div class="row">
-            <a href="/#AvailableTheses" role="button">&laquo; Go back</a>
-        </div>
             <div class="row">
-                <h2>{{ page.title }}</h2>
+                <a href="/#AvailableTheses" role="button">&laquo; Go back</a>
+            </div>
+            <div class="row">
+                <h2>
+                    {{ page.title }}
+                    {% with page.provider.name as provider_name %}
+                        | {% image page.provider.provider_image fill-35x35 title=provider_name %}
+                    {% endwith %}
+                </h2>
             </div>
 
 
@@ -39,16 +45,18 @@
 
             <div class="row">
                 <h3>Topic requirements</h3>
-                <p>To have an impact with your thesis, all theses must be written in english and be in a quality to get published. Certain requirements may come from the organization who created the topic and who will consult your thesis with you.</p>
+                <p>To have an impact with your thesis, all theses must be written in english and be in a quality to get
+                    published. Certain requirements may come from the organization who created the topic and who will
+                    consult your thesis with you.</p>
                 <p>Do you have any comment, question or suggestion? Please use the discussion thread below!</p>
             </div>
 
 
-
             <div class="row justify-content-md-center">
-            <h2>
-                <a href="mailto:david.janku@efektivni-altruismus.cz" class="btn btn-info" role="button">Contact us to get more information</a>
-            </h2>
+                <h2>
+                    <a href="mailto:david.janku@efektivni-altruismus.cz" class="btn btn-info" role="button">Contact us
+                        to get more information</a>
+                </h2>
             </div>
 
             <hr class="mt-3 mb-5">
