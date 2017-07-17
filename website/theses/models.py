@@ -1,11 +1,15 @@
+from django.db import models
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailsearch import index
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailcore.fields import RichTextField, StreamField
 from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock
 from modelcluster.fields import ParentalKey
+from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
@@ -36,11 +40,34 @@ class ThesisIndexPage(Page):
         return context
 
 
+@register_snippet
+class ThesisProvider(models.Model):
+    provider_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
+    name = models.CharField(max_length=30, blank=False)
+    description = RichTextField(blank=True)
+
+    panels = [
+        ImageChooserPanel('provider_image'),
+        FieldPanel('name'),
+        FieldPanel('description')
+    ]
+
+    def __str__(self):
+        return self.name
+
+
 class ThesisPage(Page):
     description = RichTextField()
     why_important = RichTextField()
     sources = RichTextField()
     tags = ClusterTaggableManager(through=ThesisPageTag, blank=True)
+    provider = models.ForeignKey(ThesisProvider, default=1, on_delete=models.SET_NULL, null=True)
 
     search_fields = Page.search_fields + [
         index.SearchField('description'),
@@ -53,6 +80,7 @@ class ThesisPage(Page):
         FieldPanel('why_important'),
         FieldPanel('tags'),
         FieldPanel('sources'),
+        SnippetChooserPanel('provider'),
     ]
 
     promote_panels = [
