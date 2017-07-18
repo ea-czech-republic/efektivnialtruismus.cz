@@ -93,7 +93,6 @@ class ThesisPage(Page):
 
     def serve(self, request):
         if request.method == 'POST':
-            print('asdasd', request.get_full_path())
             from theses.forms import ContactForm
             form = ContactForm(request.POST)
             if form.is_valid():
@@ -105,7 +104,8 @@ class ThesisPage(Page):
                           ['kotrfa@gmail.com'],  # recipient email
                           data['contact_email']
                           )
-                return JsonResponse({'contentMessage': 'sent major!'})
+
+                return JsonResponse({'message': 'Thank you for the submission!'})
         else:
             return super(ThesisPage, self).serve(request)
 

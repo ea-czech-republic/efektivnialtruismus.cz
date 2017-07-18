@@ -82,7 +82,6 @@
     <script type="text/javascript">
         $('#contact-form').submit(function (e) {
             e.preventDefault();
-            console.log($(this).serialize());
             $.ajax({
                 type: 'POST',
                 url: '{{ request.build_absolute_uri }}',
@@ -91,11 +90,11 @@
                     'X-CSRFToken': $("[name=csrfmiddlewaretoken]").val()
                 },
                 success: function (response) {
-                    // $('#form-container').html(response);
-                    console.log('nopel');
+                    console.log(response);
+                    $('#form-container').html(response['message']);
                 },
                 error: function (e, x, r) { // on error..
-                    $('#form-container').html('some stupid error :-( ');
+                    $('#form-container').html('Och! We got an error!');
                 }
             })
         });
