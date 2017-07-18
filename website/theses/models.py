@@ -1,4 +1,5 @@
 from django.db import models
+from django.http import HttpResponse, JsonResponse
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailsearch import index
 from wagtail.wagtailcore.models import Page
@@ -12,6 +13,7 @@ from modelcluster.fields import ParentalKey
 from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
+from wagtail.wagtailadmin.utils import send_mail
 
 
 class ThesisPageTag(TaggedItemBase):
@@ -88,6 +90,30 @@ class ThesisPage(Page):
     ]
 
     parent_page_types = ['theses.ThesisIndexPage']
+
+    def serve(self, request):
+        if request.method == 'POST':
+            print('asdasd', request.get_full_path())
+            from theses.forms import ContactForm
+            form = ContactForm(request.POST)
+            if form.is_valid():
+                form.clean()
+                data = form.cleaned_data
+                print(data['content'])
+                send_mail('Thesis proposal',
+                          data['content'],
+                          ['kotrfa@gmail.com'],  # recipient email
+                          data['contact_email']
+                          )
+                return JsonResponse({'contentMessage': 'sent major!'})
+        else:
+            return super(ThesisPage, self).serve(request)
+
+    def get_context(self, request):
+        from theses.forms import ContactForm
+        context = super(ThesisPage, self).get_context(request)
+        context["contactForm"] = ContactForm
+        return context
 
 
 class ThesisSimple(Page):

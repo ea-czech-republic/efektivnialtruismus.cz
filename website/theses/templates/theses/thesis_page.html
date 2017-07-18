@@ -4,6 +4,7 @@
 {% load disqus_tags %}
 {% load wagtailuserbar %}
 {% load wagtailimages_tags %}
+{% load static %}
 
 {% block content %}
     <div class="row">
@@ -51,17 +52,52 @@
                 <p>Do you have any comment, question or suggestion? Please use the discussion thread below!</p>
             </div>
 
-
-            <div class="row justify-content-md-center">
+            <div class="row">
                 <h2>
-                    <a href="mailto:david.janku@efektivni-altruismus.cz" class="btn btn-info" role="button">Contact us
-                        to get more information</a>
+                    Contact us
                 </h2>
+            </div>
+            <div class="row" id="form-container">
+                <form id="contact-form" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ contactForm.as_p }}
+                    </div>
+
+                    <p><input type="submit" value="Send info"></p>
+                </form>
             </div>
 
             <hr class="mt-3 mb-5">
-            {% disqus_show_comments %}
+            {#            {% disqus_show_comments %}#}
         </div>
     </div>
+
 {% endblock %}
 
+
+{% block extra_js %}
+    <script src="{% static "js/theses.js" %}"></script>
+
+    <script type="text/javascript">
+        $('#contact-form').submit(function (e) {
+            e.preventDefault();
+            console.log($(this).serialize());
+            $.ajax({
+                type: 'POST',
+                url: '{{ request.build_absolute_uri }}',
+                data: $(this).serialize(),
+                headers: {
+                    'X-CSRFToken': $("[name=csrfmiddlewaretoken]").val()
+                },
+                success: function (response) {
+                    // $('#form-container').html(response);
+                    console.log('nopel');
+                },
+                error: function (e, x, r) { // on error..
+                    $('#form-container').html('some stupid error :-( ');
+                }
+            })
+        });
+    </script>
+{% endblock %}
