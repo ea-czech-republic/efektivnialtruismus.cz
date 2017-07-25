@@ -61,10 +61,21 @@
                 <form id="contact-form" action="" method="POST">
                     {% csrf_token %}
                     <div class="form-group">
-                        {{ contactForm.as_p }}
+                        {{ contactForm.contact_name.errors }}
+                        {{ contactForm.contact_name }}
                     </div>
 
-                    <p><input type="submit" value="Send info"></p>
+                    <div class="form-group">
+                        {{ contactForm.contact_email.errors }}
+                        {{ contactForm.contact_email }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ contactForm.content.errors }}
+                        {{ contactForm.content }}
+                    </div>
+
+                    <input type="submit" value="Send!" class="btn btn-primary">
                 </form>
             </div>
 

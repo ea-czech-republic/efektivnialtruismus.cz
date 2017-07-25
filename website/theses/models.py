@@ -105,7 +105,8 @@ class ThesisPage(Page):
                           data['contact_email']
                           )
 
-                return JsonResponse({'message': 'Thank you for the submission!'})
+                return JsonResponse({'message': 'Thank you for your interest! '
+                                                'We will let get back to you soon!'})
         else:
             return super(ThesisPage, self).serve(request)
 
