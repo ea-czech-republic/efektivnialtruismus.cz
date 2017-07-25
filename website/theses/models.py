@@ -97,12 +97,11 @@ class ThesisPage(Page):
             form = ContactForm(request.POST)
             if form.is_valid():
                 form.clean()
-                data = form.cleaned_data
-                print(data['content'])
-                send_mail('Thesis proposal',
-                          data['content'],
+                send_mail('Thesis interest: {}'.format(request.POST['thesis_title']),
+                          '̈́Thesis: {}\n\n{}'.format(request.build_absolute_uri(),
+                                                     form.cleaned_data['content']),
                           ['kotrfa@gmail.com'],  # recipient email
-                          data['contact_email']
+                          form.cleaned_data['contact_email']
                           )
 
                 return JsonResponse({'message': 'Thank you for your interest! '

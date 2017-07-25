@@ -93,10 +93,14 @@
     <script type="text/javascript">
         $('#contact-form').submit(function (e) {
             e.preventDefault();
+
+            var _data = $(this).serializeArray();
+            _data.push({name: 'thesis_title', value: '{{ page.title }}'});
+
             $.ajax({
                 type: 'POST',
                 url: '{{ request.build_absolute_uri }}',
-                data: $(this).serialize(),
+                data: _data,
                 headers: {
                     'X-CSRFToken': $("[name=csrfmiddlewaretoken]").val()
                 },
