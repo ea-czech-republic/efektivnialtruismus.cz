@@ -130,3 +130,27 @@ class ThesisSimple(Page):
     ]
 
     parent_page_types = ['theses.ThesisIndexPage']
+
+    def serve(self, request):
+        if request.method == 'POST':
+            from theses.forms import ContactForm
+            form = ContactForm(request.POST)
+            if form.is_valid():
+                form.clean()
+                send_mail('Contacting using Contact Form',
+                          'URL: {}\n\n{}'.format(request.build_absolute_uri(),
+                                                 form.cleaned_data['content']),
+                          ['kotrfa@gmail.com'],  # recipient email
+                          form.cleaned_data['contact_email']
+                          )
+
+                return JsonResponse({'message': 'Thank you for your interest! '
+                                                'We will let get back to you soon!'})
+        else:
+            return super(ThesisSimple, self).serve(request)
+
+    def get_context(self, request):
+        from theses.forms import ContactForm
+        context = super(ThesisSimple, self).get_context(request)
+        context["contactForm"] = ContactForm
+        return context
