@@ -1,0 +1,51 @@
+body {
+    text-align: justify;
+}
+
+.tag {
+    background-color: rgb(249, 229, 209);
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+}
+
+.tags-label {
+    font-size: 9px;
+}
+
+h1 h2 {
+    color: #014c8c;
+}
+
+/* Hiding the checkbox, but allowing it to be focused */
+.badgebox {
+    opacity: 0;
+    width: 0px;
+}
+
+.badgebox + .badge {
+    width: 27px;
+}
+
+.badgebox:focus + .badge {
+    box-shadow: inset 0px 0px 5px;
+}
+
+.badgebox:checked + label {
+    background-color: #449d44;
+}
+
+.tag-select {
+    font-size: 12px;
+    padding: 1px 1px 2px 2px;
+    margin: 1px 1px 1px 1px;
+}
+
+.thesis p {
+    margin-bottom: 5px;
+}
+
+.card-subheader {
+    color: #f7f7f9;
+}

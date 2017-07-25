@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'wagtailmenus',
     'blog',
     'simple',
-    'single'
+    'single',
+    'theses',
 ]
 
 MIDDLEWARE_CLASSES = [

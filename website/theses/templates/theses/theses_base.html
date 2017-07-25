@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% load i18n %}
+{% load menu_tags %}
+{% load static %}
+{% load wagtailuserbar %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/eacr.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/theses.css' %}">
+{% endblock %}
+
+{% block body_class %}template-thesisbase{% endblock %}
+
+{% block base_content %}
+
+    <div class="container">
+        <div class="row" id="menu_bar">
+            <div class="col-md-9 mb-3 pl-0">
+                {% flat_menu handle="theses_menu" template="menus/theses_menu.html" %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <hr class="mt-5"/>
+        <div class="row">
+            <div class="col-md-9">
+                <footer role="contentinfo">
+                    {% flat_menu "footer_menu" template="menus/footer_menu.html" %}
+                    <p class="copyright">
+                        © 2017 <a href="">Efektivní Altruismus</a>.
+                        <a href="http://github.com/ea-czech-republic/efektivnialtruismus.cz">Github EA ČR</a>
+                        -
+                        patches welcome.
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static "js/theses.js" %}"></script>
+{% endblock %}
