@@ -33,10 +33,37 @@ class ThesisIndexPage(Page):
         ('embed', EmbedBlock()),
 
     ])
+    our_topics = StreamField([
+        ('rawHtml', blocks.RawHTMLBlock()),
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('embed', EmbedBlock()),
+
+    ])
+    process = StreamField([
+        ('rawHtml', blocks.RawHTMLBlock()),
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('embed', EmbedBlock()),
+
+    ])
+
+    propose = StreamField([
+        ('rawHtml', blocks.RawHTMLBlock()),
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('embed', EmbedBlock()),
+
+    ])
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('intro'),
-
+        StreamFieldPanel('our_topics'),
+        StreamFieldPanel('process'),
+        StreamFieldPanel('propose'),
     ]
 
     def get_context(self, request):
