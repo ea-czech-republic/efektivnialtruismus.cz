@@ -1,4 +1,5 @@
 from django import forms
+import datetime
 
 
 class ContactForm(forms.Form):
@@ -11,3 +12,12 @@ class ContactForm(forms.Form):
         widget=forms.Textarea(attrs={'class': 'form-control',
                                      'placeholder': 'Content'})
     )
+
+    course_and_university = forms.CharField(
+        widget=forms.Textarea(attrs={'class': 'form-control',
+                                     'placeholder': 'Content'})
+    )
+
+    deadline = forms.DateField(initial=datetime.date.today,
+                               widget=forms.widgets.DateInput(
+                                   attrs={'type': 'date', 'id': 'deadline-picker'}))
