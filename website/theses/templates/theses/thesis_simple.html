@@ -31,6 +31,72 @@
                 </form>
             </div>
         </div>
+    {% elif page.title == "Propose" %}
+        <div class="col-md-10">
+            <div class="row" id="form-container">
+                <form id="proposal-form" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ proposalForm.contact_name.errors }}
+                        {{ proposalForm.contact_name }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ proposalForm.contact_email.errors }}
+                        {{ proposalForm.contact_email }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ proposalForm.organisation.errors }}
+                        {{ proposalForm.organisation }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ proposalForm.title.errors }}
+                        {{ proposalForm.title }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ proposalForm.description.errors }}
+                        {{ proposalForm.description }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ proposalForm.why_important.errors }}
+                        {{ proposalForm.why_important }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ proposalForm.sources.errors }}
+                        {{ proposalForm.sources }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ proposalForm.description.errors }}
+                        {{ proposalForm.description }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deadline">Thesis deadline:</label>
+                        <div class='input-group date'>
+                            {{ proposalForm.deadline.errors }}
+                            {{ proposalForm.deadline }}
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ proposalForm.message.errors }}
+                        {{ proposalForm.message }}
+                    </div>
+
+
+                    <input type="submit" value="Send" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
     {% endif %}
 {% endblock %}
 
@@ -41,10 +107,13 @@
         $('#contact-form').submit(function (e) {
             e.preventDefault();
 
+            var _data = $(this).serializeArray();
+            _data.push({name: 'formSlug', value: 'simpleContactForm'});
+
             $.ajax({
                 type: 'POST',
                 url: '{{ request.build_absolute_uri }}',
-                data: $(this).serialize(),
+                data: _data,
                 headers: {
                     'X-CSRFToken': $("[name=csrfmiddlewaretoken]").val()
                 },
@@ -58,4 +127,30 @@
             })
         });
     </script>
+
+    <script type="text/javascript">
+        $('#proposal-form').submit(function (e) {
+            e.preventDefault();
+
+            var _data = $(this).serializeArray();
+            _data.push({name: 'formSlug', value: 'proposalForm'});
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ request.build_absolute_uri }}',
+                data: _data,
+                headers: {
+                    'X-CSRFToken': $("[name=csrfmiddlewaretoken]").val()
+                },
+                success: function (response) {
+                    console.log(response);
+                    $('#form-container').html(response['message']);
+                },
+                error: function (e, x, r) { // on error..
+                    $('#form-container').html('Och! We got an error!');
+                }
+            })
+        });
+    </script>
+
 {% endblock %}
