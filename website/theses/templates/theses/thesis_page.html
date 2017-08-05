@@ -7,6 +7,7 @@
 {% load static %}
 
 {% block content %}
+
     <div class="row">
         <div class="col-md-10">
             <div class="row">
@@ -75,7 +76,23 @@
                         {{ contactForm.content }}
                     </div>
 
-                    <input type="submit" value="Send!" class="btn btn-primary">
+                    <div class="form-group">
+                        {{ contactForm.course_and_university.errors }}
+                        {{ contactForm.course_and_university }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deadline">Thesis deadline:</label>
+                        <div class='input-group date'>
+                            {{ contactForm.deadline.errors }}
+                            {{ contactForm.deadline }}
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="I want to work on this topic" class="btn btn-primary">
                 </form>
             </div>
 
@@ -88,7 +105,7 @@
 
 
 {% block extra_js %}
-    <script src="{% static "js/theses.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/theses.js" %}"></script>
 
     <script type="text/javascript">
         $('#contact-form').submit(function (e) {
