@@ -21,7 +21,7 @@ class InterestsForm(forms.Form):
     content = forms.CharField(
         required=True,
         widget=forms.Textarea(attrs={'class': 'form-control',
-                                     'placeholder': 'Content'})
+                                     'placeholder': 'Do you have anything else you would like to tell us?'})
     )
 
     course_and_university = forms.CharField(
@@ -59,8 +59,6 @@ class ProposalForm(forms.Form):
         widget=forms.Textarea(attrs={'class': 'form-control',
                                      'placeholder': 'Sources'})
     )
-
-    deadline = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
 
     message = forms.CharField(
         widget=forms.Textarea(attrs={'class': 'form-control',

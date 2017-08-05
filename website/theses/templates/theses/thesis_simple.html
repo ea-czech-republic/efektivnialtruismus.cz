@@ -72,26 +72,9 @@
                     </div>
 
                     <div class="form-group">
-                        {{ proposalForm.description.errors }}
-                        {{ proposalForm.description }}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="deadline">Thesis deadline:</label>
-                        <div class='input-group date'>
-                            {{ proposalForm.deadline.errors }}
-                            {{ proposalForm.deadline }}
-                            <span class="input-group-addon">
-                                <span class="fa fa-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         {{ proposalForm.message.errors }}
                         {{ proposalForm.message }}
                     </div>
-
 
                     <input type="submit" value="Send" class="btn btn-primary">
                 </form>

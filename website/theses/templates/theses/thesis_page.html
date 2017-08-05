@@ -72,17 +72,12 @@
                     </div>
 
                     <div class="form-group">
-                        {{ contactForm.content.errors }}
-                        {{ contactForm.content }}
-                    </div>
-
-                    <div class="form-group">
                         {{ contactForm.course_and_university.errors }}
                         {{ contactForm.course_and_university }}
                     </div>
 
                     <div class="form-group">
-                        <label for="deadline">Thesis deadline:</label>
+                        <label for="deadline">Your thesis deadline:</label>
                         <div class='input-group date'>
                             {{ contactForm.deadline.errors }}
                             {{ contactForm.deadline }}
@@ -90,6 +85,11 @@
                                 <span class="fa fa-calendar"></span>
                             </span>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ contactForm.content.errors }}
+                        {{ contactForm.content }}
                     </div>
 
                     <input type="submit" value="I want to work on this topic" class="btn btn-primary">

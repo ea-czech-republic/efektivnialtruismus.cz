@@ -196,7 +196,6 @@ class ThesisSimple(Page):
         Description: {description},
         Why is it important: {why_important},
         Sources: {sources},
-        Deadline: {deadline},
         --------Message--------
         {message}
         """.format(**data))
