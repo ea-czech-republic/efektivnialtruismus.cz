@@ -6,11 +6,6 @@
 {% load wagtailimages_tags %}
 {% load static %}
 
-{% block subpage_css %}
-    <link href="{% static "css/bootstrap-datetimepicker-standalone.css" %}" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-{% endblock %}
-
 {% block content %}
 
     <div class="row">
@@ -87,6 +82,7 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="deadline">Thesis deadline:</label>
                         <div class='input-group date'>
                             {{ contactForm.deadline.errors }}
                             {{ contactForm.deadline }}
@@ -109,9 +105,6 @@
 
 
 {% block extra_js %}
-    <script type="text/javascript" src="{% static "js/moment.js" %}"></script>
-    <script type="text/javascript" src="{% static "js/bootstrap-datetimepicker.min.js" %}"></script>
-
     <script type="text/javascript" src="{% static "js/theses.js" %}"></script>
 
     <script type="text/javascript">
@@ -138,12 +131,4 @@
             })
         });
     </script>
-
-    <script type="text/javascript">
-    $(function () {
-        $('#deadline-picker').datetimepicker({
-            format: 'YYYY-MM-DD' /*remove this line if you want to use time as well */
-        });
-    });
-</script>
 {% endblock %}

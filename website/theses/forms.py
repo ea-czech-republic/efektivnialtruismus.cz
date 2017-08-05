@@ -14,10 +14,8 @@ class ContactForm(forms.Form):
     )
 
     course_and_university = forms.CharField(
-        widget=forms.Textarea(attrs={'class': 'form-control',
-                                     'placeholder': 'Content'})
+        widget=forms.TextInput(attrs={'class': 'form-control',
+                                      'placeholder': 'Course and University'})
     )
 
-    deadline = forms.DateField(initial=datetime.date.today,
-                               widget=forms.widgets.DateInput(
-                                   attrs={'type': 'date', 'id': 'deadline-picker'}))
+    deadline = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))

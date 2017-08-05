@@ -1,5 +1,6 @@
 from django.db import models
 from django.http import HttpResponse, JsonResponse
+from textwrap import dedent
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailsearch import index
 from wagtail.wagtailcore.models import Page
@@ -97,9 +98,9 @@ class ThesisPage(Page):
             form = ContactForm(request.POST)
             if form.is_valid():
                 form.clean()
+                mail_content = self.build_mail_content(request.build_absolute_uri(), form.cleaned_data)
                 send_mail('Thesis interest: {}'.format(request.POST['thesis_title']),
-                          '̈́Thesis: {}\n\n{}'.format(request.build_absolute_uri(),
-                                                     form.cleaned_data['content']),
+                          mail_content,
                           ['kotrfa@gmail.com'],  # recipient email
                           form.cleaned_data['contact_email']
                           )
@@ -114,6 +115,19 @@ class ThesisPage(Page):
         context = super(ThesisPage, self).get_context(request)
         context["contactForm"] = ContactForm
         return context
+
+    @staticmethod
+    def build_mail_content(uri, data):
+        return dedent("""
+        Thesis: {thesis_uri}
+        Name: {contact_name},
+        Contact email: {contact_email},
+        Course and University: {course_and_university},
+        Deadline: {deadline}
+        
+        --------Message--------
+        {content}
+        """.format(thesis_uri=uri, **data))
 
 
 class ThesisSimple(Page):
