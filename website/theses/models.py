@@ -58,8 +58,16 @@ class ThesisIndexPage(Page):
         ('embed', EmbedBlock()),
 
     ])
+    header = StreamField([
+        ('rawHtml', blocks.RawHTMLBlock()),
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('embed', EmbedBlock()),
+    ])
 
     content_panels = Page.content_panels + [
+        StreamFieldPanel('header'),
         StreamFieldPanel('intro'),
         StreamFieldPanel('our_topics'),
         StreamFieldPanel('process'),
@@ -232,6 +240,6 @@ class ThesisSimple(Page):
 
     def get_context(self, request):
         context = super(ThesisSimple, self).get_context(request)
-        context["contactForm"] = InterestsForm
+        context["contactForm"] = SimpleContactForm
         context["proposalForm"] = ProposalForm
         return context

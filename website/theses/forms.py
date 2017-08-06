@@ -9,7 +9,7 @@ class SimpleContactForm(forms.Form):
     content = forms.CharField(
         required=True,
         widget=forms.Textarea(attrs={'class': 'form-control',
-                                     'placeholder': 'Content'})
+                                     'placeholder': 'What would you like to tell us?'})
     )
 
 
