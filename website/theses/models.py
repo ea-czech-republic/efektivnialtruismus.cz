@@ -90,7 +90,7 @@ class ThesisProvider(models.Model):
         on_delete=models.SET_NULL,
         related_name='+',
     )
-    name = models.CharField(max_length=30, blank=False)
+    name = models.CharField(max_length=100, blank=False)
     description = RichTextField(blank=True)
 
     panels = [
