@@ -91,11 +91,13 @@ class ThesisProvider(models.Model):
         related_name='+',
     )
     name = models.CharField(max_length=100, blank=False)
+    link = models.URLField(blank=False)
     description = RichTextField(blank=True)
 
     panels = [
         ImageChooserPanel('provider_image'),
         FieldPanel('name'),
+        FieldPanel('link'),
         FieldPanel('description')
     ]
 
