@@ -103,7 +103,7 @@
                                     <a href="{% pageurl thesis %}">
                                         {{ thesis.title }}
                                     </a>
-                                    <a href="{% thesis.provider.link %}">
+                                    <a href="{{ thesis.provider.link }}">
                                         {% with thesis.provider.name as provider_name %}
                                             | {% image thesis.provider.provider_image fill-20x20 title=provider_name %}
                                         {% endwith %}

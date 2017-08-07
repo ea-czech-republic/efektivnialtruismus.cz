@@ -16,7 +16,7 @@
             <div class="row">
                 <h2>
                     {{ page.title }}
-                    <a href="{% thesis.provider.link %}">
+                    <a href="{{ thesis.provider.link }}">
                         {% with page.provider.name as provider_name %}
                             | {% image page.provider.provider_image fill-35x35 title=provider_name %}
                         {% endwith %}
