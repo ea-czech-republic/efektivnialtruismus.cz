@@ -102,12 +102,12 @@
                                 <h5 class="card-title m-0">
                                     <a href="{% pageurl thesis %}">
                                         {{ thesis.title }}
-                                    </a>
-                                    <a href="{{ thesis.provider.link }}">
+                                    </a> | 
                                         {% with thesis.provider.name as provider_name %}
-                                            | {% image thesis.provider.provider_image fill-20x20 title=provider_name %}
-                                        {% endwith %}
+                                    <a href="{{ thesis.provider.link }}">
+                                         {% image thesis.provider.provider_image fill-20x20 title=provider_name %}
                                     </a>
+                                        {% endwith %}
                                 </h5>
                             </div>
                             <div class="card-header card-subheader pt-1 pb-1">

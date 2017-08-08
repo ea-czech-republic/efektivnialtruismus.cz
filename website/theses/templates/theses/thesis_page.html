@@ -15,12 +15,12 @@
             </div>
             <div class="row">
                 <h2>
-                    {{ page.title }}
-                    <a href="{{ thesis.provider.link }}">
+                    {{ page.title }} | 
                         {% with page.provider.name as provider_name %}
-                            | {% image page.provider.provider_image fill-35x35 title=provider_name %}
-                        {% endwith %}
+                    <a href="{{ page.provider.link }}">
+                            {% image page.provider.provider_image fill-35x35 title=provider_name %}
                     </a>
+                        {% endwith %}
                 </h2>
             </div>
 
