@@ -17,7 +17,7 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 from wagtail.wagtailadmin.utils import send_mail
 
-THESES_MAILS = ['kotrfa@gmail.com']
+THESES_MAILS = ['theses@efektivni-altruismus.cz']
 
 
 class ThesisPageTag(TaggedItemBase):
