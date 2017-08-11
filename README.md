@@ -10,3 +10,6 @@ This is a repository for page of efektivni-altruismus.cz
 
 # Production and deploy
 [See production and deploy part of wiki](https://github.com/ea-czech-republic/efektivnialtruismus.cz/wiki/Deployment-and-production)
+
+# Editing theses
+[See theses admin part of wiki](https://github.com/ea-czech-republic/efektivnialtruismus.cz/wiki/Theses-admin)
