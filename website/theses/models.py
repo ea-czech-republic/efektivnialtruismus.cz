@@ -178,7 +178,16 @@ class ThesisSimple(Page):
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
         ('embed', EmbedBlock()),
-        ('rawHtml', blocks.RawHTMLBlock())
+        ('rawHtml', blocks.RawHTMLBlock()),
+        ('medailon', blocks.StructBlock(
+            [
+                ('title', blocks.CharBlock(required=True)),
+                ('pic', ImageChooserBlock(required=True)),
+                ('description', blocks.RichTextBlock(required=True)),
+            ],
+            template='blocks/medailon.html',
+            icon='user'
+        ))
     ])
 
     content_panels = Page.content_panels + [
