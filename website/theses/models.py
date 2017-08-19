@@ -76,8 +76,10 @@ class ThesisIndexPage(Page):
 
     def get_context(self, request):
         context = super(ThesisIndexPage, self).get_context(request)
-        context['theses'] = ThesisPage.objects.child_of(self).live().order_by('-first_published_at')
-        context["tags"] = ThesisPage.tags.all()
+        # this randomization is costly - we may recompute order as we wish
+        # when adding a new thesis and then just using that order precomputed
+        context['theses'] = ThesisPage.objects.child_of(self).live().order_by('?')
+        context["tags"] = ThesisPage.tags.order_by('name')
         return context
 
 
