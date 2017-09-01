@@ -24,6 +24,25 @@ class ThesisPageTag(TaggedItemBase):
     content_object = ParentalKey('theses.ThesisPage', related_name='tagged_items')
 
 
+class ThesisSearch(Page):
+    body = StreamField([
+        ('rawHtml', blocks.RawHTMLBlock()),
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('embed', EmbedBlock()),
+
+    ])
+
+    def get_context(self, request):
+        context = super(ThesisSearch, self).get_context(request)
+        # this randomization is costly - we may recompute order as we wish
+        # when adding a new thesis and then just using that order precomputed
+        context['theses'] = ThesisPage.objects.child_of(ThesisIndexPage.objects.first()).live().order_by('?')
+        context["tags"] = ThesisPage.tags.order_by('name')
+        return context
+
+
 class ThesisIndexPage(Page):
     intro = StreamField([
         ('rawHtml', blocks.RawHTMLBlock()),
@@ -73,14 +92,6 @@ class ThesisIndexPage(Page):
         StreamFieldPanel('process'),
         StreamFieldPanel('propose'),
     ]
-
-    def get_context(self, request):
-        context = super(ThesisIndexPage, self).get_context(request)
-        # this randomization is costly - we may recompute order as we wish
-        # when adding a new thesis and then just using that order precomputed
-        context['theses'] = ThesisPage.objects.child_of(self).live().order_by('?')
-        context["tags"] = ThesisPage.tags.order_by('name')
-        return context
 
 
 @register_snippet
