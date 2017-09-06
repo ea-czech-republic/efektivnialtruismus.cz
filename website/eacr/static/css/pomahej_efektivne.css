@@ -4,7 +4,6 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     color: rgba(0, 0, 0, 0.55);
-    font-size: 21px;
     text-align: justify;
 }
 
@@ -23,8 +22,7 @@ h1 {
 
 h3 {
     font-weight: 700;
-    margin-top: 20px;
-    margin-left: 10px;
+    margin-top: 5px;
 }
 
 p {

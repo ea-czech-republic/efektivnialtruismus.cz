@@ -42,8 +42,10 @@ class ThesisSearch(Page):
         context["tags"] = ThesisPage.tags.order_by('name')
         return context
 
+    parent_page_types = ['theses.ThesisIndexPage']
 
-class ThesisIndexPage(Page):
+
+class ThesisProjectPage(Page):
     intro = StreamField([
         ('rawHtml', blocks.RawHTMLBlock()),
         ('heading', blocks.CharBlock(classname="full title")),
@@ -91,6 +93,32 @@ class ThesisIndexPage(Page):
         StreamFieldPanel('our_topics'),
         StreamFieldPanel('process'),
         StreamFieldPanel('propose'),
+    ]
+
+    parent_page_types = ['theses.ThesisIndexPage']
+
+
+class ThesisIndexPage(Page):
+    header = StreamField([
+        ('rawHtml', blocks.RawHTMLBlock()),
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('embed', EmbedBlock()),
+
+    ])
+
+    background_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('header'),
+        ImageChooserPanel('background_image'),
     ]
 
 
