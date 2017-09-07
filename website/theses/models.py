@@ -45,59 +45,6 @@ class ThesisSearch(Page):
     parent_page_types = ['theses.ThesisIndexPage']
 
 
-class ThesisProjectPage(Page):
-    intro = StreamField([
-        ('rawHtml', blocks.RawHTMLBlock()),
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('embed', EmbedBlock()),
-
-    ])
-    our_topics = StreamField([
-        ('rawHtml', blocks.RawHTMLBlock()),
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('embed', EmbedBlock()),
-
-    ])
-    process = StreamField([
-        ('rawHtml', blocks.RawHTMLBlock()),
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('embed', EmbedBlock()),
-
-    ])
-
-    propose = StreamField([
-        ('rawHtml', blocks.RawHTMLBlock()),
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('embed', EmbedBlock()),
-
-    ])
-    header = StreamField([
-        ('rawHtml', blocks.RawHTMLBlock()),
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('embed', EmbedBlock()),
-    ])
-
-    content_panels = Page.content_panels + [
-        StreamFieldPanel('header'),
-        StreamFieldPanel('intro'),
-        StreamFieldPanel('our_topics'),
-        StreamFieldPanel('process'),
-        StreamFieldPanel('propose'),
-    ]
-
-    parent_page_types = ['theses.ThesisIndexPage']
-
-
 class ThesisIndexPage(Page):
     header = StreamField([
         ('rawHtml', blocks.RawHTMLBlock()),

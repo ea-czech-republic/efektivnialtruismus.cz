@@ -5,9 +5,9 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-1"></div>
         <div class="col">
             {% if page.title == 'Contact' %}
+                <div class="col-md-1"></div>
                 <div id="form-container">
                     <h1>{{ page.title }}</h1>
 
@@ -34,7 +34,9 @@
                 <div>
                     {% include_block page.body %}
                 </div>
+                <div class="col-md-3"></div>
             {% elif page.title == "Propose" %}
+                <div class="col-md-1"></div>
                 <div id="form-container">
                     <h1>{{ page.title }}</h1>
                     {% include_block page.body %}
@@ -84,12 +86,14 @@
                         <input type="submit" value="Send" class="btn btn-primary">
                     </form>
                 </div>
+                <div class="col-md-3"></div>
             {% else %}
-                <h1>{{ page.title }}</h1>
-                {% include_block page.body %}
+                <div class="col-md-9">
+                    {% include_block page.body %}
+                </div>
+
             {% endif %}
         </div>
-        <div class="col-md-3"></div>
     </div>
 {% endblock %}
 
