@@ -15,15 +15,18 @@
             </div>
             <div class="row">
                 <h2>
-                    {{ page.title }} |
-                    {% with page.provider.name as provider_name %}
-                        <a href="{{ page.provider.link }}">
-                            {% image page.provider.provider_image fill-35x35 title=provider_name %}
-                        </a>
-                    {% endwith %}
+                    {{ page.title }}
                 </h2>
             </div>
 
+            <div class="row">
+                <p>This topic is provided by
+                    <a class="card-link" href="{{ page.provider.link }}">
+                        {{ page.provider.name }}
+                        {% image page.provider.provider_image fill-20x20 %}
+                    </a>
+                </p>
+            </div>
 
             <div class="row mb-2" id="tags">
                 {% for tag in page.tags.all %}

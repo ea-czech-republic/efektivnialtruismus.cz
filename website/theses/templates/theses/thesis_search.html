@@ -38,14 +38,6 @@
                             </a>
                         </h5>
                     </div>
-                    <div class="card-header card-subheader pt-0 pb-0">
-                        <p style="color: black;">This topic is provided by
-                            <a class="card-link" href="{{ thesis.provider.link }}">
-                                {{ thesis.provider.name }}
-                                {% image thesis.provider.provider_image fill-20x20 title=provider_name %}
-                            </a>
-                        </p>
-                    </div>
                     <div class="card-header card-subheader pt-1 pb-1">
                         {% for tag in thesis.tags.all %}
                             <label class="btn btn-info tag-select">{{ tag }}</label>
