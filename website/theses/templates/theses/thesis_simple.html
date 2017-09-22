@@ -4,99 +4,84 @@
 {% load static %}
 
 {% block content %}
-    <div class="row">
-        {% if page.title == 'Contact' %}
-            <div class="col-md-1"></div>
-            <div class="col">
-                <div id="form-container">
-                    <h1>{{ page.title }}</h1>
-
-                    <form id="contact-form" action="" method="POST">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            {{ contactForm.contact_name.errors }}
-                            {{ contactForm.contact_name }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ contactForm.contact_email.errors }}
-                            {{ contactForm.contact_email }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ contactForm.content.errors }}
-                            {{ contactForm.content }}
-                        </div>
-                        <input type="submit" value="Send" class="btn btn-primary">
-                    </form>
+    {% if page.title == 'Contact' %}
+        <div id="form-container">
+            <form id="contact-form" action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ contactForm.contact_name.errors }}
+                    {{ contactForm.contact_name }}
                 </div>
-                <hr>
-                <div>
-                    {% include_block page.body %}
+
+                <div class="form-group">
+                    {{ contactForm.contact_email.errors }}
+                    {{ contactForm.contact_email }}
                 </div>
-            </div>
-            <div class="col-md-3"></div>
-        {% elif page.title == "Propose" %}
-            <div class="col-md-1"></div>
-            <div class="col">
-                <div id="form-container">
-                    <h1>{{ page.title }}</h1>
-                    {% include_block page.body %}
 
-                    <form id="proposal-form" action="" method="POST">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            {{ proposalForm.contact_name.errors }}
-                            {{ proposalForm.contact_name }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ proposalForm.contact_email.errors }}
-                            {{ proposalForm.contact_email }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ proposalForm.organisation.errors }}
-                            {{ proposalForm.organisation }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ proposalForm.title.errors }}
-                            {{ proposalForm.title }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ proposalForm.description.errors }}
-                            {{ proposalForm.description }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ proposalForm.why_important.errors }}
-                            {{ proposalForm.why_important }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ proposalForm.sources.errors }}
-                            {{ proposalForm.sources }}
-                        </div>
-
-                        <div class="form-group">
-                            {{ proposalForm.message.errors }}
-                            {{ proposalForm.message }}
-                        </div>
-
-                        <input type="submit" value="Send" class="btn btn-primary">
-                    </form>
+                <div class="form-group">
+                    {{ contactForm.content.errors }}
+                    {{ contactForm.content }}
                 </div>
-            </div>
-            <div class="col-md-3"></div>
-        {% else %}
-            <div class="col-md-9">
-                {% include_block page.body %}
-            </div>
+                <input type="submit" value="Send" class="btn btn-primary">
+            </form>
+        </div>
+        <hr>
+        <div>
+            {% include_block page.body %}
+        </div>
+    {% elif page.title == "Propose" %}
+        <div id="form-container">
+            <h1>{{ page.title }}</h1>
+            {% include_block page.body %}
 
-        {% endif %}
-    </div>
+            <form id="proposal-form" action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ proposalForm.contact_name.errors }}
+                    {{ proposalForm.contact_name }}
+                </div>
+
+                <div class="form-group">
+                    {{ proposalForm.contact_email.errors }}
+                    {{ proposalForm.contact_email }}
+                </div>
+
+                <div class="form-group">
+                    {{ proposalForm.organisation.errors }}
+                    {{ proposalForm.organisation }}
+                </div>
+
+                <div class="form-group">
+                    {{ proposalForm.title.errors }}
+                    {{ proposalForm.title }}
+                </div>
+
+                <div class="form-group">
+                    {{ proposalForm.description.errors }}
+                    {{ proposalForm.description }}
+                </div>
+
+                <div class="form-group">
+                    {{ proposalForm.why_important.errors }}
+                    {{ proposalForm.why_important }}
+                </div>
+
+                <div class="form-group">
+                    {{ proposalForm.sources.errors }}
+                    {{ proposalForm.sources }}
+                </div>
+
+                <div class="form-group">
+                    {{ proposalForm.message.errors }}
+                    {{ proposalForm.message }}
+                </div>
+
+                <input type="submit" value="Send" class="btn btn-primary">
+            </form>
+        </div>
+    {% else %}
+        {% include_block page.body %}
+    {% endif %}
 {% endblock %}
 
 {% block extra_js %}

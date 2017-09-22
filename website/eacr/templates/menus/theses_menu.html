@@ -1,14 +1,16 @@
 {% load menu_tags i18n %}
 {% load static %}
 
-<nav class="navbar navbar-toggleable-md navbar-light">
+
+<nav class="navbar navbar-toggleable-md navbar-light menu_bar pb-5">
     <button class="navbar-toggler navbar-toggler-left navbar-light" type="button" data-toggle="collapse"
             data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand d-flex mx-auto" href="/">
-        <img src="{% static "imgs/logo-eacr-120.png" %}" width="60" height="60" class="d-inline-block align-top"
+        <img src="{% static "imgs/logo-eacr-120.png" %}" width="60" height="60"
+             class="d-inline-block align-top"
              alt="Logo EA CR">
         Effective Thesis
     </a>
@@ -16,7 +18,8 @@
         <ul class="navbar-nav ml-auto main-menu">
             {% for item in menu_items %}
                 <li class="nav-item {{ item.active_class }}">
-                    <a class="nav-link" style="font-weight: bold; color: black" href="{{ item.href }}">{{ item.text }}</a>
+                    <a class="nav-link" style="font-weight: bold; color: black"
+                       href="{{ item.href }}">{{ item.text }}</a>
                 </li>
             {% endfor %}
         </ul>
