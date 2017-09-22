@@ -4,6 +4,9 @@
 {% load wagtailuserbar %}
 {% load wagtailimages_tags %}
 
+
+{% block body_class %}template-thesisindex{% endblock %}
+
 {% block content %}
     {{ page.header | safe }}
 {% endblock %}
