@@ -50,7 +50,7 @@ h1 h2 {
     color: #f7f7f9;
 }
 
-@media (max-width: 580px) {
+@media (max-width: 900px) {
     body.template-thesisindex h3.display-3 {
         font-size: 5vw;
     }
@@ -58,12 +58,6 @@ h1 h2 {
 
 @media (max-width: 580px) {
     body.template-thesisindex p {
-        font-size: 4vw;
-    }
-}
-
-@media (max-width: 580px) {
-    body.template-thesisindex a.btn {
         font-size: 4vw;
     }
 }
