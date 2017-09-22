@@ -29,7 +29,8 @@ class InterestsForm(forms.Form):
                                       'placeholder': 'Course and University'})
     )
 
-    deadline = forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
+    deadline = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
+                                      'placeholder': 'DD-MM-YYYY'}))
 
 
 class ProposalForm(forms.Form):

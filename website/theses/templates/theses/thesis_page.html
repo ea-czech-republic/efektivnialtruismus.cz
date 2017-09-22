@@ -15,12 +15,12 @@
             </div>
             <div class="row">
                 <h2>
-                    {{ page.title }} | 
-                        {% with page.provider.name as provider_name %}
-                    <a href="{{ page.provider.link }}">
+                    {{ page.title }} |
+                    {% with page.provider.name as provider_name %}
+                        <a href="{{ page.provider.link }}">
                             {% image page.provider.provider_image fill-35x35 title=provider_name %}
-                    </a>
-                        {% endwith %}
+                        </a>
+                    {% endwith %}
                 </h2>
             </div>
 
@@ -49,7 +49,9 @@
 
             <div class="row">
                 <h3>Topic requirements</h3>
-                <p>To have an impact with your thesis, all theses must be written in English and be in a very high quality. Certain requirements may come from the organization who created the topic and who will consult your thesis with you.</p>
+                <p>To have an impact with your thesis, all theses must be written in English and be in a very high
+                    quality. Certain requirements may come from the organization who created the topic and who will
+                    consult your thesis with you.</p>
                 <p><b>Do you have any comment, question or suggestion? Please use the discussion thread below!</b></p>
             </div>
 
@@ -132,7 +134,7 @@
                     $('#form-container').html(response['message']);
                 },
                 error: function (e, x, r) { // on error..
-                    $('#form-container').html('Och! We got an error!');
+                    $('#form-container').html('Och! Something went wrong, sorry. Please use our contact page instead');
                 }
             })
         });

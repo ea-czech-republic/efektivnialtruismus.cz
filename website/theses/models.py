@@ -16,6 +16,9 @@ from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 from wagtail.wagtailadmin.utils import send_mail
+import logging
+
+logger = logging.getLogger(__name__)
 
 THESES_MAILS = ['theses@efektivni-altruismus.cz']
 
@@ -135,6 +138,10 @@ class ThesisPage(Page):
 
                 return JsonResponse({'message': 'Thank you for your interest! '
                                                 'We will let get back to you soon!'})
+            else:
+                logger.error('The submitted form was invalid.')
+                return JsonResponse({'message': 'Sorry, submitting your form was not '
+                                                'successful. Please use our contact page.'})
         else:
             return super(ThesisPage, self).serve(request)
 
