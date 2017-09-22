@@ -6,62 +6,65 @@
 {% load menu_tags %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-8">
-        {{ page.body | safe }}
+    <div class="row">
+        <div class="col-md-8">
+            {{ page.body | safe }}
+        </div>
     </div>
-</div>
 
-<div class="row mt-3">
-    <div class="col-md-8 all-tags">
-        <h3 id="AvailableTheses">Pick your study discipline</h3>
-        {% for tag in tags %}
-            <input type="checkbox" class="badgebox" name="fl-colour" value="{{ tag | slugify }}"
-                   id="{{ tag | slugify }}"/>
-            <label class="btn btn-info tag-select" for="{{ tag | slugify }}">
-                {{ tag }}
-            </label>
-        {% endfor %}
+    <div class="row mt-3">
+        <div class="col-md-8 all-tags">
+            <h3 id="AvailableTheses">Pick your study discipline</h3>
+            {% for tag in tags %}
+                <input type="checkbox" class="badgebox" name="fl-colour" value="{{ tag | slugify }}"
+                       id="{{ tag | slugify }}"/>
+                <label class="btn btn-info tag-select" for="{{ tag | slugify }}">
+                    {{ tag }}
+                </label>
+            {% endfor %}
+        </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="theses col-md-8">
-        <h3>Available theses</h3>
-        {% for thesis in theses %}
-            <div class="card thesis card-outline-info mt-2"
-                 data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
-                <div class="card-header pt-1 pb-1">
-                    <h5 class="card-title m-0">
-                        <a href="{% pageurl thesis %}">
-                            {{ thesis.title }}
-                        </a> |
-                        {% with thesis.provider.name as provider_name %}
-                            <a href="{{ thesis.provider.link }}">
+    <div class="row">
+        <div class="theses col-md-8">
+            <h3>Available theses</h3>
+            {% for thesis in theses %}
+                <div class="card thesis card-outline-info mt-2"
+                     data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
+                    <div class="card-header pt-1 pb-1">
+                        <h5 class="card-title m-0">
+                            <a href="{% pageurl thesis %}">
+                                {{ thesis.title }}
+                            </a>
+                        </h5>
+                    </div>
+                    <div class="card-header card-subheader pt-0 pb-0">
+                        <p style="color: black;">This topic is provided by
+                            <a class="card-link" href="{{ thesis.provider.link }}">
+                                {{ thesis.provider.name }}
                                 {% image thesis.provider.provider_image fill-20x20 title=provider_name %}
                             </a>
-                        {% endwith %}
-                    </h5>
-                </div>
-                <div class="card-header card-subheader pt-1 pb-1">
-                    {% for tag in thesis.tags.all %}
-                        <label class="btn btn-info tag-select">{{ tag }}</label>
-                    {% endfor %}
+                        </p>
+                    </div>
+                    <div class="card-header card-subheader pt-1 pb-1">
+                        {% for tag in thesis.tags.all %}
+                            <label class="btn btn-info tag-select">{{ tag }}</label>
+                        {% endfor %}
+
+                    </div>
+                    <div class="card-block pt-0 pb-0">
+
+                        <p class="card-text">
+                            {{ thesis.description | safe | truncatewords_html:50 }}
+                        </p>
+
+                    </div>
+                    <div class="card-footer text-muted pt-0 pb-0">
+                        <b>Why it's important? </b>{{ thesis.why_important | safe | truncatewords_html:50 }}
+                    </div>
 
                 </div>
-                <div class="card-block pt-0 pb-0">
-
-                    <p class="card-text">
-                        {{ thesis.description | safe | truncatewords_html:50 }}
-                    </p>
-
-                </div>
-                <div class="card-footer text-muted pt-0 pb-0">
-                    <b>Why it's important? </b>{{ thesis.why_important | safe | truncatewords_html:50 }}
-                </div>
-
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
 {% endblock %}
