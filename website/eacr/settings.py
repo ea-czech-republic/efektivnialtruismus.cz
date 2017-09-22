@@ -103,7 +103,7 @@ WSGI_APPLICATION = 'eacr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, os.environ['DB_NAME']),
+        'NAME': os.path.join(BASE_DIR, os.environ.get('DB_NAME', 'dev-eacr.sqlite3')),
     }
 }
 
@@ -157,11 +157,11 @@ BASE_URL = 'http://efektivni-altruismus.cz'
 
 ### THIS IS THE DEV/PROD part
 DEBUG = os.environ.get('DEBUG') == 'True'
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', "").split()
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', "*").split()
 SECRET_KEY = os.environ.get('SECRET_KEY', 'c56q&sgquclsvweoixk^yof7o0f=$ebv7%jlqt_uupm_6pkr2@')
 
 SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY', None)
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", 'django.core.mail.backends.console.EmailBackend')
 
 DISQUS_WEBSITE_SHORTNAME = "efektivni-altruismus"
-DISQUS_API_KEY = os.environ["DISQUS_API_KEY"]
+DISQUS_API_KEY = os.environ.get("DISQUS_API_KEY", 'rubish')
