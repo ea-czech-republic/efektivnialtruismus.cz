@@ -47,6 +47,35 @@
         </div>
     </div>
 
+
+    <div id="feedback-main">
+        <div id="feedback-div">
+            <form action="/theses/feedback/" method="post" class="form" id="feedback-form1" name="form1"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="email">
+                    <input name="contact_email" type="email" class="feedback-input"
+                           id="feedback-email" placeholder="Email" required/>
+                </p>
+
+
+                <p class="text">
+                    <textarea name="content" type="content" class="feedback-input"
+                              id="feedback-comment" required
+                              placeholder="Your feedback"></textarea>
+                </p>
+
+                <div class="feedback-submit">
+                    <input type="submit" value="SEND" id="feedback-button-blue"/>
+                    <div class="feedback-ease"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <button id="popup" class="feedback-button" onclick="toggle_visibility()">Feedback</button>
+
+
 {% endblock %}
 
 {% block extra_js %}
@@ -69,5 +98,17 @@
 
         ga('create', 'UA-77119148-3', 'auto');
         ga('send', 'pageview');
+    </script>
+
+    <script>
+        function toggle_visibility() {
+            var e = document.getElementById('feedback-main');
+            if (e.style.display == 'block')
+                e.style.display = 'none';
+            else {
+                e.style.display = 'block';
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+        }
     </script>
 {% endblock %}
