@@ -1,5 +1,6 @@
 from .forms import FeedbackForm
 from django.http import JsonResponse
+from django.shortcuts import redirect
 from textwrap import dedent
 from wagtail.wagtailadmin.utils import send_mail
 
@@ -32,9 +33,9 @@ def feedback_form(request):
                       THESES_MAILS,
                       contact_email
                       )
-
-            return ({'message': 'Thank you for your interest! '
-                                'We will let get back to you soon!'})
+            #return JsonResponse({'message': 'Thank you for your interest! '
+            #                    'We will let get back to you soon!'})
+            return redirect(request.META['HTTP_REFERER'])
         else:
             return JsonResponse({'message': 'Sorry, submitting your form was not '
                                             'successful. Please use our contact page.'})

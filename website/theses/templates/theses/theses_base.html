@@ -110,5 +110,28 @@
                 window.scrollTo(0, document.body.scrollHeight);
             }
         }
+
+        $('feedback-main').submit(function (e) {
+            e.preventDefault();
+
+            var _data = $(this).serializeArray();
+
+            $.ajax({
+                type: 'POST',
+                url: '/theses/feedback/',
+                data: _data,
+                headers: {
+                    'X-CSRFToken': $("[name=csrfmiddlewaretoken]").val()
+                },
+                success: function (response) {
+                    console.log(response);
+                    $('feedback-main').html(response['message']);
+                },
+                error: function (e, x, r) { // on error..
+                    $('feedback-main').html('Och! Something went wrong, sorry. Please use our contact page instead');
+                }
+            })
+        });
+
     </script>
 {% endblock %}
