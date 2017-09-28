@@ -79,12 +79,6 @@ h1 h2 {
     }
 }
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
-
-html {
-    background: #2F3238;
-}
-
 .feedback-button {
     height: 40px;
     border: solid 3px #CCCCCC;
@@ -99,6 +93,7 @@ html {
     bottom: 0px;
     font-family: "Roboto", helvetica, arial, sans-serif;
     z-index: 999;
+    right: 0px;
 }
 
 #feedback-main {

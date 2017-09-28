@@ -50,12 +50,12 @@
 
     <div id="feedback-main">
         <div id="feedback-div">
-            <form action="/theses/feedback/" method="post" class="form" id="feedback-form1" name="form1"
+            <form action="" method="post" class="form" id="feedback-form1" name="form1"
                   enctype="multipart/form-data">
                 {% csrf_token %}
                 <p class="email">
                     <input name="contact_email" type="email" class="feedback-input"
-                           id="feedback-email" placeholder="Email" required/>
+                           id="feedback-email" placeholder="Your email (optional)"/>
                 </p>
 
 
@@ -111,11 +111,9 @@
             }
         }
 
-        $('feedback-main').submit(function (e) {
+        $('#feedback-form1').submit(function (e) {
             e.preventDefault();
-
             var _data = $(this).serializeArray();
-
             $.ajax({
                 type: 'POST',
                 url: '/theses/feedback/',
@@ -125,12 +123,13 @@
                 },
                 success: function (response) {
                     console.log(response);
-                    $('feedback-main').html(response['message']);
+                    $('#feedback-div').html(response['message']);
                 },
                 error: function (e, x, r) { // on error..
-                    $('feedback-main').html('Och! Something went wrong, sorry. Please use our contact page instead');
+                    $('#feedback-div').html('Och! Something went wrong, sorry. Please use our contact page instead');
                 }
-            })
+            });
+            $('#feedback-div').css('background-color', 'rgb(255, 255, 255)');
         });
 
     </script>
