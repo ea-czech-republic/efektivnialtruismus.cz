@@ -81,8 +81,9 @@ h1 h2 {
 
 .feedback-button {
     height: 40px;
-    border: solid 3px #CCCCCC;
-    background: #333;
+    border: 0px;
+    margin: 1px;
+    background: #5cb85c;
     width: 100px;
     line-height: 32px;
     font-weight: 600;
@@ -90,10 +91,16 @@ h1 h2 {
     text-align: center;
     font-size: 17px;
     position: fixed;
-    bottom: 0px;
-    font-family: "Roboto", helvetica, arial, sans-serif;
+    top: 0px;
     z-index: 999;
     right: 0px;
+}
+
+@media (max-width: 580px) {
+    .feedback-button {
+        bottom: 0px;
+        top: unset;
+    }
 }
 
 #feedback-main {
