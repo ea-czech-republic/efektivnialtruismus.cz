@@ -44,4 +44,36 @@
     {% block extra_js %}
         <script type="text/javascript" src="{% static 'js/eacr.js' %}"></script>
     {% endblock %}
+
+    {% block socials %}
+
+        <div id="share">
+
+            <!-- facebook -->
+            <a class="facebook" href="https://www.facebook.com/share.php?u={{ page.full_url }}&title={{ page.title }}"
+               target="blank"><i
+                    class="fa fa-facebook"></i></a>
+
+            <!-- twitter -->
+            <a class="twitter" href="https://twitter.com/intent/tweet?status={{ page.title }}+{{ page.full_url }}"
+               target="blank"><i
+                    class="fa fa-twitter"></i></a>
+            <!-- linkedin -->
+            <a class="linkedin"
+               href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.full_url }}&title={{ page.title }}&source={{ page.full_url }}"
+               target="blank"><i class="fa fa-linkedin"></i></a>
+
+            <!-- google plus -->
+            <a class="googleplus" href="https://plus.google.com/share?url={{ page.full_url }}" target="blank"><i
+                    class="fa fa-google-plus"></i></a>
+
+            <!-- pinterest -->
+            <a class="pinterest"
+               href="https://pinterest.com/pin/create/bookmarklet/?url={{ page.full_url }}&is_video=false&description={{ page.title }}"
+               target="blank"><i class="fa fa-pinterest-p"></i></a>
+
+
+        </div>
+
+    {% endblock %}
 {% endblock %}
