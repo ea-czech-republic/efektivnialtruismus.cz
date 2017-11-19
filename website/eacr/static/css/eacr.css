@@ -171,7 +171,8 @@ body.template-blogpage section.block-image img.blog-image {
 #share {
     margin: 100px auto;
     text-align: center;
-    top: 30%;
+    top: 20%;
+    right: 0px;
     height: 200px;
     width: 60px;
     position: fixed;
@@ -194,12 +195,12 @@ body.template-blogpage section.block-image img.blog-image {
 /* buttons */
 
 #share a {
-    width: 50px;
-    height: 50px;
+    width: 3vw;
+    height: 3vw;
     display: inline-block;
-    margin: 8px;
+    margin: 2px;
     border-radius: 50%;
-    font-size: 24px;
+    font-size: 1.6vw;
     color: #fff;
     opacity: 0.75;
     transition: opacity 0.15s linear;
