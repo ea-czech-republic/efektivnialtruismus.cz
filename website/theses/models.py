@@ -130,7 +130,6 @@ class ThesisPage(Page):
             form = InterestsForm(request.POST)
             if form.is_valid():
                 form.clean()
-
                 absolute_uri = request.build_absolute_uri()
                 mail_content = self.build_mail_content(absolute_uri, form.cleaned_data)
                 thesis_title = form.cleaned_data['thesis_title']
