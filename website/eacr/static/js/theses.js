@@ -9,8 +9,11 @@ $("input[name=fl-colour]").on("change", function () {
     else removeA(byProperty, "[data-category~='" + $(this).attr("value") + "']");
 });
 
-
 $("input").on("change", function () {
+
+    // show results on change
+    $('#thesis-search-result').show();
+
     var str = "Include items \n";
     var selector = '', cselector = '', nselector = '';
 
@@ -57,7 +60,6 @@ $("input").on("change", function () {
     }
 
     $("#result").html(str);
-
 });
 
 function removeA(arr) {
@@ -70,3 +72,8 @@ function removeA(arr) {
     }
     return arr;
 }
+
+// hide all topics on the beginning
+$(document).ready(function () {
+    $('#thesis-search-result').hide();
+});
