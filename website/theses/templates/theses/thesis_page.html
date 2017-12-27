@@ -54,7 +54,8 @@
                 <h3>Topic requirements</h3>
                 <p>To have an impact with your thesis, all theses must be written in English and be in a very high
                     quality. Certain requirements may come from the organization who created the topic and who will
-                    consult your thesis with you. Find out more about the process <a href="/project#process">here</a></p>
+                    consult your thesis with you. Find out more about the process <a href="/project#process">here</a>
+                </p>
                 <p><b>Do you want to work on this topic? Submit your interest! Do you have any comment, question or
                     suggestion? Please use the discussion thread below!</b></p>
             </div>
@@ -80,6 +81,11 @@
                     <div class="form-group">
                         {{ contactForm.course_and_university.errors }}
                         {{ contactForm.course_and_university }}
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" name="{{ contactForm.thesis_title.html_name }}" value="{{ thesis_title }}"
+                               class="form-control" id="{{ contactForm.thesis_title.id_for_label }}">
                     </div>
 
                     <div class="form-group">
@@ -113,34 +119,4 @@
         </div>
     </div>
 
-{% endblock %}
-
-
-{% block extra_js %}
-    <script type="text/javascript" src="{% static "js/theses.js" %}"></script>
-
-    <script type="text/javascript">
-        $('#contact-form').submit(function (e) {
-            e.preventDefault();
-
-            var _data = $(this).serializeArray();
-            _data.push({name: 'thesis_title', value: '{{ page.title }}'});
-
-            $.ajax({
-                type: 'POST',
-                url: '{{ request.build_absolute_uri }}',
-                data: _data,
-                headers: {
-                    'X-CSRFToken': $("[name=csrfmiddlewaretoken]").val()
-                },
-                success: function (response) {
-                    console.log(response);
-                    $('#form-container').html(response['message']);
-                },
-                error: function (e, x, r) { // on error..
-                    $('#form-container').html('Och! Something went wrong, sorry. Please use our contact page instead');
-                }
-            })
-        });
-    </script>
 {% endblock %}

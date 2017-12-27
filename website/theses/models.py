@@ -130,18 +130,21 @@ class ThesisPage(Page):
             form = InterestsForm(request.POST)
             if form.is_valid():
                 form.clean()
-                mail_content = self.build_mail_content(request.build_absolute_uri(), form.cleaned_data)
-                send_mail('Thesis interest: {}'.format(),
+
+                absolute_uri = request.build_absolute_uri()
+                mail_content = self.build_mail_content(absolute_uri, form.cleaned_data)
+                thesis_title = form.cleaned_data['thesis_title']
+
+                send_mail('Thesis interest: {}'.format(thesis_title),
                           mail_content,
                           THESES_MAILS,  # recipient email
                           form.cleaned_data['contact_email']
                           )
 
-                return conversion(request, request.build_absolute_uri(), request.POST['thesis_title'])
+                return conversion(request, absolute_uri, thesis_title)
             else:
                 logger.error('The submitted form was invalid.')
-                return JsonResponse({'message': 'Sorry, submitting your form was not '
-                                                'successful. Please use our contact page.'})
+                return super(ThesisPage, self).serve(request)
         else:
             return super(ThesisPage, self).serve(request)
 
@@ -149,6 +152,7 @@ class ThesisPage(Page):
         from theses.forms import InterestsForm
         context = super(ThesisPage, self).get_context(request)
         context["contactForm"] = InterestsForm
+        context['thesis_title'] = self.title
         return context
 
     @staticmethod

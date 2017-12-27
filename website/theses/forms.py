@@ -40,6 +40,8 @@ class InterestsForm(forms.Form):
     deadline = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
                                       'placeholder': 'DD-MM-YYYY'}))
 
+    thesis_title = forms.CharField(required=False)
+
 
 class ProposalForm(forms.Form):
     contact_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Your name',
