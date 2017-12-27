@@ -1,6 +1,6 @@
 from .forms import FeedbackForm
 from django.http import JsonResponse
-from django.shortcuts import redirect
+from django.shortcuts import render
 from textwrap import dedent
 from wagtail.wagtailadmin.utils import send_mail
 
@@ -40,4 +40,12 @@ def feedback_form(request):
             return JsonResponse({'message': 'Sorry, submitting your form was not '
                                             'successful. Please use our contact page.'})
     else:
-        return JsonResponse({'message': 'Different than POST message is not allowed'})
+        return JsonResponse({'message': 'Different than POST method is not allowed'})
+
+
+def conversion(request, origin_url, title):
+    context = {
+        'origin_url': origin_url,
+        'title': title,
+    }
+    return render(request, 'theses/conversion.html', context)
