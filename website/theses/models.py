@@ -16,6 +16,7 @@ from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 from wagtail.wagtailadmin.utils import send_mail
+from theses.views import conversion
 import logging
 
 logger = logging.getLogger(__name__)
@@ -28,6 +29,8 @@ class ThesisPageTag(TaggedItemBase):
 
 
 class ThesisSearch(Page):
+    parent_page_types = ['theses.ThesisIndexPage']
+
     body = StreamField([
         ('rawHtml', blocks.RawHTMLBlock()),
         ('heading', blocks.CharBlock(classname="full title")),
@@ -44,8 +47,6 @@ class ThesisSearch(Page):
         context['theses'] = ThesisPage.objects.child_of(ThesisIndexPage.objects.first()).live().order_by('?')
         context["tags"] = ThesisPage.tags.order_by('name')
         return context
-
-    parent_page_types = ['theses.ThesisIndexPage']
 
 
 class ThesisIndexPage(Page):
@@ -130,14 +131,13 @@ class ThesisPage(Page):
             if form.is_valid():
                 form.clean()
                 mail_content = self.build_mail_content(request.build_absolute_uri(), form.cleaned_data)
-                send_mail('Thesis interest: {}'.format(request.POST['thesis_title']),
+                send_mail('Thesis interest: {}'.format(),
                           mail_content,
                           THESES_MAILS,  # recipient email
                           form.cleaned_data['contact_email']
                           )
 
-                return JsonResponse({'message': 'Thank you for your interest! '
-                                                'We will let get back to you soon!'})
+                return conversion(request, request.build_absolute_uri(), request.POST['thesis_title'])
             else:
                 logger.error('The submitted form was invalid.')
                 return JsonResponse({'message': 'Sorry, submitting your form was not '
