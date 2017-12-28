@@ -82,10 +82,12 @@ class ProposalForm(forms.Form):
 def get_discipline_choices():
     from theses.models import ThesisDiscipline
     discs = ThesisDiscipline.objects.all()
-    return [(x.name, x.name) for x in discs]
+    return [(None, None)] + [(x.name, x.name) for x in discs]
 
 
 class DisciplineSelect(forms.Form):
     def __init__(self, *args, **kwargs):
         super(DisciplineSelect, self).__init__(*args, **kwargs)
         self.fields['filter_discipline'] = forms.ChoiceField(choices=get_discipline_choices())
+        self.fields['filter_discipline'].widget.attrs['onchange'] = 'this.form.submit()'
+        self.fields['filter_discipline'].widget.attrs['class'] = 'custom-select'

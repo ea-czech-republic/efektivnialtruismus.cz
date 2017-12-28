@@ -101,13 +101,15 @@ class ThesisSearch(Page):
             # filter only those from the list above
             tags_qs = theses.values('tags').distinct()
             tags = ThesisPage.tags.filter(pk__in=[x['tags'] for x in tags_qs])
+            discipline_form = DisciplineSelect({'filter_discipline': discipline_name})
         else:
             theses = None
             tags = None
+            discipline_form = DisciplineSelect
 
         context['theses'] = theses
         context['tags'] = tags
-        context['disciplineSelectForm'] = DisciplineSelect
+        context['disciplineSelectForm'] = discipline_form
 
         return context
 
