@@ -24,21 +24,26 @@ logger = logging.getLogger(__name__)
 THESES_MAILS = ['theses@efektivni-altruismus.cz']
 
 
-class ThesisPageTag(TaggedItemBase):
-    content_object = ParentalKey('theses.ThesisPage', related_name='tagged_items')
-
-
-class ThesisSearch(Page):
-    parent_page_types = ['theses.ThesisIndexPage']
-
-    body = StreamField([
+def get_standard_streamfield():
+    return StreamField([
         ('rawHtml', blocks.RawHTMLBlock()),
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
         ('embed', EmbedBlock()),
 
-    ])
+    ], null=True, blank=True)
+
+
+class ThesisPageTag(TaggedItemBase):
+    content_object = ParentalKey('theses.ThesisPage',
+                                 related_name='tagged_items')
+
+
+class ThesisSearch(Page):
+    parent_page_types = ['theses.ThesisIndexPage']
+
+    body = get_standard_streamfield()
 
     def get_context(self, request):
         context = super(ThesisSearch, self).get_context(request)
@@ -50,26 +55,16 @@ class ThesisSearch(Page):
 
 
 class ThesisIndexPage(Page):
-    header = StreamField([
-        ('rawHtml', blocks.RawHTMLBlock()),
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('embed', EmbedBlock()),
-
-    ])
-
-    background_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
+    column_1 = get_standard_streamfield()
+    column_2 = get_standard_streamfield()
+    column_3 = get_standard_streamfield()
+    body = get_standard_streamfield()
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('header'),
-        ImageChooserPanel('background_image'),
+        StreamFieldPanel('column_1'),
+        StreamFieldPanel('column_2'),
+        StreamFieldPanel('column_3'),
+        StreamFieldPanel('body'),
     ]
 
 
