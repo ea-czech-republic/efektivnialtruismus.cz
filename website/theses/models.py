@@ -50,7 +50,7 @@ class ThesisSearch(Page):
         # this randomization is costly - we may recompute order as we wish
         # when adding a new thesis and then just using that order precomputed
         context['theses'] = ThesisPage.objects.child_of(ThesisIndexPage.objects.first()).live().order_by('?')
-        context["tags"] = ThesisPage.tags.order_by('name')
+        context['tags'] = ThesisPage.tags.order_by('name')
         return context
 
 
@@ -66,6 +66,23 @@ class ThesisIndexPage(Page):
         StreamFieldPanel('column_3'),
         StreamFieldPanel('body'),
     ]
+
+class ThesisChooseHelpPage(Page):
+    parent_page_types = ['theses.ThesisIndexPage']
+
+    impact = get_standard_streamfield()
+    career = get_standard_streamfield()
+    research = get_standard_streamfield()
+
+    body = get_standard_streamfield()
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('impact'),
+        StreamFieldPanel('career'),
+        StreamFieldPanel('research'),
+        StreamFieldPanel('body'),
+    ]
+
 
 
 @register_snippet
