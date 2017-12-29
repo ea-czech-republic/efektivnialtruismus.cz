@@ -60,3 +60,26 @@ class PomahejPage(Page):
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
     ]
+
+
+class RetreatPage(Page):
+    body = StreamField([
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('embed', EmbedBlock()),
+        ('rawHtml', blocks.RawHTMLBlock()),
+        ('medailon', blocks.StructBlock(
+            [
+                ('title', blocks.CharBlock(required=True)),
+                ('pic', ImageChooserBlock(required=True)),
+                ('description', blocks.RichTextBlock(required=True)),
+            ],
+            template='blocks/medailon.html',
+            icon='user'
+        ))
+    ])
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+    ]
