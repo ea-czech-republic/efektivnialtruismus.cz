@@ -11,6 +11,27 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/eacr.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/theses.css' %}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<script type="text/javascript">
+		window.smartlook||(function(d) {
+		var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+		var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+		c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+		})(document);
+		smartlook('init', '947692deb59845cf0334e3ca2faa61b6bbe5a12e');
+	</script>
+
+	<!-- Hotjar Tracking Code for www.effectivethesis.com -->
+	<script>
+		(function(h,o,t,j,a,r){
+			h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+			h._hjSettings={hjid:739132,hjsv:6};
+			a=o.getElementsByTagName('head')[0];
+			r=o.createElement('script');r.async=1;
+			r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+			a.appendChild(r);
+		})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+	</script>
 {% endblock %}
 
 {% block body_class %}template-thesisbase{% endblock %}
@@ -111,6 +132,7 @@
 
 {% block extra_js %}
     <script src="{% static "js/theses.js" %}"></script>
+
 {% endblock %}
 
 {% block google_analytics %}
