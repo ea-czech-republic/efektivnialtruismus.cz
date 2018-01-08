@@ -3,3 +3,4 @@ wagtailmenus==2.5.2
 sendgrid-django==4.1.0
 gunicorn==19.7.1
 django-disqus==0.5
+django-extensions
