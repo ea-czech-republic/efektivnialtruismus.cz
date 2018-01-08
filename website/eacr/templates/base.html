@@ -29,6 +29,10 @@
     {% block extra_css %}
         {# Override this in templates to add extra css #}
     {% endblock %}
+
+    {% block extra_head %}
+        {# Add e.g. adwords global site tag #}
+    {% endblock %}
 </head>
 
 <body class="{% block body_class %}template-base{% endblock %}">

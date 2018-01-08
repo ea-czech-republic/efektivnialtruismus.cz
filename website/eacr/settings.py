@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'simple',
     'single',
     'theses',
+
+    'django_extensions'
 ]
 
 MIDDLEWARE_CLASSES = [
