@@ -54,6 +54,26 @@
     {% endblock %}
 {% endblock %}
 
+{% block extra_head %}
+    <!-- Global site tag (gtag.js) - Google AdWords: 866290173 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-866290173"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'AW-866290173');
+    </script>
+
+    {% block for_conversion_head %}
+        {# this is used in conversion.html #}
+    {% endblock %}
+{% endblock %}
+
 {% block body_class %}template-thesisbase{% endblock %}
 
 {% block base_content %}
