@@ -2,12 +2,13 @@ from django import forms
 
 class FeedbackForm(forms.Form):
     contact_email = forms.EmailField(required=False, widget=forms.EmailInput(attrs={'class': 'form-control',
-                                                                                   'placeholder': 'Your email'}))
+                                                                                    'placeholder': 'Your email'}))
     content = forms.CharField(
         required=True,
         widget=forms.Textarea(attrs={'class': 'form-control',
                                      'placeholder': 'What would you like to tell us?'})
     )
+
 
 class SimpleContactForm(forms.Form):
     contact_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Your name',
@@ -38,7 +39,7 @@ class InterestsForm(forms.Form):
     )
 
     deadline = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
-                                      'placeholder': 'DD-MM-YYYY'}))
+                                                             'placeholder': 'DD-MM-YYYY'}))
 
     thesis_title = forms.CharField(required=False)
 
@@ -76,3 +77,17 @@ class ProposalForm(forms.Form):
                                      'placeholder': 'Is there anything else you '
                                                     'would like to inform us about?'})
     )
+
+
+def get_discipline_choices():
+    from theses.models import ThesisDiscipline
+    discs = ThesisDiscipline.objects.all()
+    return [(None, None)] + [(x.name, x.name) for x in discs]
+
+
+class DisciplineSelect(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super(DisciplineSelect, self).__init__(*args, **kwargs)
+        self.fields['filter_discipline'] = forms.ChoiceField(choices=get_discipline_choices())
+        self.fields['filter_discipline'].widget.attrs['onchange'] = 'this.form.submit()'
+        self.fields['filter_discipline'].widget.attrs['class'] = 'custom-select'
