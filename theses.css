@@ -1,0 +1,306 @@
+/* added by david redmond */
+
+/*************************** Global styles ********************************/ 
+body {
+    text-align: justify;
+}
+
+.jumbotron {
+    max-width: 960px;
+    margin: auto;
+    background: #fff;
+}
+h1 h2 {
+    color: #014c8c;
+}
+
+.btn-responsive {
+    width: 215px;
+}
+
+.centered {
+    margin: auto;
+    text-align: center;
+}
+
+.justified {
+    margin: auto;
+    text-align: justify;
+}
+
+.index-columns {
+    padding: 70px 15px 20px 15px;
+}
+/*************************** Main Menu styles ********************************/ 
+.menu-text {
+    font-weight: bold; 
+    color: black; 
+}
+
+/*************************** Index page styles ********************************/ 
+#main-tagline {
+    text-align: center;
+}
+
+#index-text {
+    font-size: 1.5rem;
+    margin: 4.5rem 6rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+
+/*************************** UNknown styles ********************************/ 
+.tag {
+    background-color: rgb(249, 229, 209);
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+}
+
+.tags-label {
+    font-size: 9px;
+}
+
+
+/*************************** Search page styles ********************************/ 
+/* Hiding the checkbox, but allowing it to be focused */
+.badgebox {
+    opacity: 0;
+    width: 0px;
+}
+
+.badgebox + .badge {
+    width: 27px;
+}
+
+.badgebox:focus + .badge {
+    box-shadow: inset 0px 0px 5px;
+}
+
+.badgebox:checked + label {
+    background-color: #449d44;
+}
+
+.tag-select {
+    font-size: 12px;
+    padding: 1px 1px 2px 2px;
+    margin: 1px 1px 1px 1px;
+}
+
+.thesis p {
+    margin-bottom: 5px;
+}
+
+.card-subheader {
+    color: #f7f7f9;
+}
+
+/*************************** Responsive styles ********************************/     
+@media (max-width: 900px) {
+    body.template-thesisindex h3.display-3 {
+        font-size: 5vw;
+    }
+}
+
+@media (max-width: 580px) {
+    body.template-thesisindex p {
+        font-size: 4vw;
+    }
+}
+
+@media (max-width: 580px) {
+    .responsive-text {
+        font-size: 4vw;
+    }
+}
+
+@media (max-width: 580px) {
+    .btn-responsive {
+        width: 40vw;
+        padding: 3px;
+    }
+}
+@media (max-width: 580px) {
+    .feedback-button {
+        bottom: 0px;
+        top: unset;
+    }
+}
+@media only screen and (max-width: 580px) {
+    #feedback-div {
+        left: 3%;
+        margin-right: 3%;
+        width: 88%;
+        margin-left: 0;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+}
+
+
+/*************************** Feedback button/Div styles ********************************/ 
+.feedback-button {
+    height: 40px;
+    border: 0px;
+    margin: 5px;
+    background: #5cb85c;
+    line-height: 32px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    font-size: 17px;
+    position: fixed;
+    top: 0px;
+    z-index: 999;
+    right: 0px;
+}
+
+#feedback-main {
+    display: none;
+    float: left;
+    padding-top: 0px;
+}
+
+#feedback-div {
+    background-color: rgba(72, 72, 72, 0.4);
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 35px;
+    padding-bottom: 50px;
+    width: 450px;
+    float: left;
+    left: 50%;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: -260px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+
+}
+
+.feedback-input {
+    color: #3c3c3c;
+    font-family: "Roboto", helvetica, arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 0;
+    line-height: 22px;
+    background-color: #fbfbfb;
+    padding: 13px 13px 13px 54px;
+    margin-bottom: 10px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, 0);
+}
+
+.feedback-input:focus {
+    background: #fff;
+    box-shadow: 0;
+    border: 3px solid #3498db;
+    color: #3498db;
+    outline: none;
+    padding: 13px 13px 13px 54px;
+}
+
+/* Icons ---------------------------------- */
+#feedback-name {
+    background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+    background-size: 30px 30px;
+    background-position: 11px 8px;
+    background-repeat: no-repeat;
+}
+
+#feedback-name:focus {
+    background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+    background-size: 30px 30px;
+    background-position: 8px 5px;
+    background-position: 11px 8px;
+    background-repeat: no-repeat;
+}
+
+#feedback-email {
+    background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+    background-size: 30px 30px;
+    background-position: 11px 8px;
+    background-repeat: no-repeat;
+}
+
+#feedback-email:focus {
+    background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+    background-size: 30px 30px;
+    background-position: 11px 8px;
+    background-repeat: no-repeat;
+}
+
+#feedback-comment {
+    background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+    background-size: 30px 30px;
+    background-position: 11px 8px;
+    background-repeat: no-repeat;
+}
+
+#feedback-comment {
+    width: 100%;
+    height: 150px;
+    line-height: 150%;
+    resize: vertical;
+}
+
+input:hover, #feedback-comment:hover, input:focus, #feedback-comment:focus {
+    background-color: white;
+}
+
+#feedback-button-blue {
+    font-family: "Roboto", helvetica, arial, sans-serif;
+    float: left;
+    width: 100%;
+    border: #fbfbfb solid 4px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    font-size: 24px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin-top: -4px;
+    font-weight: 700;
+}
+
+#feedback-button-blue:hover {
+    background-color: rgba(0, 0, 0, 0);
+    color: #0493bd;
+}
+
+.feedback-button-blue:hover {
+    color: #3498db;
+}
+
+.feedback-ease {
+    width: 0px;
+    height: 74px;
+    background-color: #fbfbfb;
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    -o-transition: .3s ease;
+    -ms-transition: .3s ease;
+    transition: .3s ease;
+}
+
+.feedback-submit:hover .feedback-ease {
+    width: 100%;
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    #logo {
+        text-align: right;
+    }
