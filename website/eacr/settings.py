@@ -167,3 +167,5 @@ EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", 'django.core.mail.backends.conso
 
 DISQUS_WEBSITE_SHORTNAME = "efektivni-altruismus"
 DISQUS_API_KEY = os.environ.get("DISQUS_API_KEY", 'rubish')
+
+DEFAULT_FROM_EMAIL = 'no-reply@efektivni-altruismus.cz'
