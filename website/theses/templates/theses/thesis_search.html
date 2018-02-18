@@ -15,12 +15,14 @@
     <div class="row">
         <div class="col">
             <h3>Pick your study discipline</h3>
-            <form id="discipline-filter-form" action="" method="POST">
-                {% csrf_token %}
-                <div class="form-group">
-                    {{ disciplineSelectForm.filter_discipline.errors }}
-                    {{ disciplineSelectForm.filter_discipline }}
-                </div>
+            <form id="discipline-filter-form" action="" method="GET">
+                {% for discipline in disciplines %}
+                    <input type="checkbox" class="badgebox" name="discipline" value="{{ discipline | slugify }}"
+                           id="{{ discipline | slugify }}"/>
+                    <label class="btn btn-info tag-select" for="{{ discipline | slugify }}">
+                        {{ discipline }}
+                    </label>
+                {% endfor %}
             </form>
         </div>
     </div>
@@ -41,6 +43,7 @@
     </div>
 
     <div class="row">
+        {% if theses %}
         <div class="theses col-md-8" id="thesis-search-result">
             <h3>Available theses</h3>
             {% for thesis in theses %}
@@ -73,6 +76,17 @@
                 </div>
             {% endfor %}
         </div>
+        {% endif %}
     </div>
 {% endblock %}
 
+{% block extra_js_2 %}
+    <script>
+        var form = document.getElementById("discipline-filter-form");
+        document.getElementById("discipline-filter-form").addEventListener("click", function () {
+            form.submit();
+        });
+
+        $('label.btn[for="{{ selectedDiscipline }}"').css('background-color', '#449d44');
+    </script>
+{% endblock %}
