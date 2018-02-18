@@ -94,14 +94,14 @@ class ThesisSearch(Page):
 
     def get_context(self, request):
         context = super(ThesisSearch, self).get_context(request)
-        if request.method == 'POST':
-            discipline_name = request.POST['filter_discipline']
+        if 'discipline' in request.GET:
+            discipline_name = request.GET['discipline']
             discipline = ThesisDiscipline.objects.get(name=discipline_name)
             theses = ThesisPage.objects.filter(discipline=discipline).live().order_by('?')
             # filter only those from the list above
             tags_qs = theses.values('tags').distinct()
             tags = ThesisPage.tags.filter(pk__in=[x['tags'] for x in tags_qs])
-            discipline_form = DisciplineSelect({'filter_discipline': discipline_name})
+            discipline_form = DisciplineSelect({'discipline': discipline_name})
         else:
             theses = None
             tags = None

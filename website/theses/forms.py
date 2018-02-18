@@ -88,6 +88,6 @@ def get_discipline_choices():
 class DisciplineSelect(forms.Form):
     def __init__(self, *args, **kwargs):
         super(DisciplineSelect, self).__init__(*args, **kwargs)
-        self.fields['filter_discipline'] = forms.ChoiceField(choices=get_discipline_choices())
-        self.fields['filter_discipline'].widget.attrs['onchange'] = 'this.form.submit()'
-        self.fields['filter_discipline'].widget.attrs['class'] = 'custom-select'
+        self.fields['discipline'] = forms.ChoiceField(choices=get_discipline_choices())
+        self.fields['discipline'].widget.attrs['onchange'] = 'this.form.submit()'
+        self.fields['discipline'].widget.attrs['class'] = 'custom-select'
