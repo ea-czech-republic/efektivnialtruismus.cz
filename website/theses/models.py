@@ -19,7 +19,7 @@ from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from django import forms
 from wagtail.wagtailsnippets.models import register_snippet
 
-from theses.forms import ProposalForm, SimpleContactForm, DisciplineSelect
+from theses.forms import ProposalForm, SimpleContactForm
 from theses.views import conversion
 
 logger = logging.getLogger(__name__)
@@ -101,15 +101,16 @@ class ThesisSearch(Page):
             # filter only those from the list above
             tags_qs = theses.values('tags').distinct()
             tags = ThesisPage.tags.filter(pk__in=[x['tags'] for x in tags_qs])
-            discipline_form = DisciplineSelect({'discipline': discipline_name})
+            selected_discipline = discipline_name
         else:
             theses = None
             tags = None
-            discipline_form = DisciplineSelect
+            selected_discipline = None
 
         context['theses'] = theses
         context['tags'] = tags
-        context['disciplineSelectForm'] = discipline_form
+        context['selectedDiscipline'] = selected_discipline
+        context['disciplines'] = ThesisDiscipline.objects.all()
 
         return context
 
