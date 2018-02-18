@@ -253,3 +253,13 @@ input:hover, #feedback-comment:hover, input:focus, #feedback-comment:focus {
         padding-right: 3%;
     }
 }
+
+.choose-nav-links {
+    margin: .5em;
+}
+
+@media screen and (max-width: 768px) {
+    .custom-collapse .collapse {
+        display: block;
+    }
+}

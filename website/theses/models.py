@@ -118,12 +118,16 @@ class ThesisIndexPage(Page):
     column_1 = get_standard_streamfield()
     column_2 = get_standard_streamfield()
     column_3 = get_standard_streamfield()
+    references_1 = get_standard_streamfield()
+    references_2 = get_standard_streamfield()
     body = get_standard_streamfield()
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('column_1'),
         StreamFieldPanel('column_2'),
         StreamFieldPanel('column_3'),
+        StreamFieldPanel('references_1'),
+        StreamFieldPanel('references_2'),
         StreamFieldPanel('body'),
     ]
 
