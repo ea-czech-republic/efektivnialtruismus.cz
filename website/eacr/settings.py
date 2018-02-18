@@ -18,6 +18,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
+DEBUG = False if os.environ.get('DEBUG') == 'False' else True
+INTERNAL_IPS = ['127.0.0.1']
 
 # Application definition
 
@@ -57,7 +59,8 @@ INSTALLED_APPS = [
     'single',
     'theses',
 
-    'django_extensions'
+    'django_extensions',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -74,6 +77,9 @@ MIDDLEWARE_CLASSES = [
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 ]
+
+if DEBUG:
+    MIDDLEWARE_CLASSES = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE_CLASSES
 
 ROOT_URLCONF = 'eacr.urls'
 
@@ -158,7 +164,6 @@ WAGTAIL_SITE_NAME = "efektivni-altruismus.cz"
 BASE_URL = 'http://efektivni-altruismus.cz'
 
 ### THIS IS THE DEV/PROD part
-DEBUG = False if os.environ.get('DEBUG') == 'False' else True
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', "*").split()
 SECRET_KEY = os.environ.get('SECRET_KEY', 'c56q&sgquclsvweoixk^yof7o0f=$ebv7%jlqt_uupm_6pkr2@')
 
