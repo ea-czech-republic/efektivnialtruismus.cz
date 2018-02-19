@@ -9,8 +9,9 @@
 {% block content %}
 
     <div class="row">
+        <div class="col-md-1"></div>
         <div class="col-md-10">
-            <div class="row">
+            <div>
                 <a href="/theses" role="button">&laquo; Go back</a>
             </div>
             <div class="row">
@@ -106,16 +107,18 @@
                     <input type="submit" value="I want to work on this topic" class="btn btn-primary">
                 </form>
             </div>
-
+            <div class="col-md-1"></div>
             <hr class="mt-3 mb-5">
             {#            {% disqus_show_comments %}#}
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
             {% disqus_show_comments %}
         </div>
+        <div class="col-md-1"></div>
     </div>
 
 {% endblock %}

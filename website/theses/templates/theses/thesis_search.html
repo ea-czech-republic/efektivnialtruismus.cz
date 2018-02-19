@@ -6,14 +6,14 @@
 {% load menu_tags %}
 
 {% block content %}
-    <div class="row">
+    <div class="row"> <!-- is this div needed? -->
         <div class="col-md-8">
             {{ page.body | safe }}
         </div>
     </div>
 
     <div class="row">
-        <div class="col">
+        <div class="col-md-12">
             <h3>Pick your study discipline</h3>
             <form id="discipline-filter-form" action="" method="GET">
                 {% for discipline in disciplines %}
@@ -28,7 +28,7 @@
     </div>
 
     <div class="row mt-3">
-        <div class="col-md-8 all-tags">
+        <div class="col-md-12 all-tags">
             {% if tags %}
                 <h3 id="Interest">Pick area of interest</h3>
                 {% for tag in tags %}
@@ -44,7 +44,7 @@
 
     <div class="row">
         {% if theses %}
-        <div class="theses col-md-8" id="thesis-search-result">
+        <div class="theses col-md-12" id="thesis-search-result">
             <h3>Available theses</h3>
             {% for thesis in theses %}
                 <div class="card thesis card-outline-info mt-2"
