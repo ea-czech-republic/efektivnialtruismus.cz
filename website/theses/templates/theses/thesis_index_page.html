@@ -19,7 +19,8 @@
             <div class="mx-auto">
                 <div class="row">
                     <div class="col"></div>
-                    <div class="col-md-8"><p class="h4">Topics are proposed by socially beneficial organisations we can connect you with</p>
+                    <div class="col-md-8"><p class="h4">Topics are proposed by socially beneficial organisations we can
+                        connect you with</p>
                         <ul>
                             <li><p class="h4">so your work and effort will <em>be made use of</em></p></li>
                             <li><p class="h4">so you'll help to <em>make the world a better place</em></p></li>
@@ -33,17 +34,18 @@
 
         <div class="row mt-4">
             <div class="mx-auto mb-4">
-                <a href="/theses" class="btn btn-info btn-lg responsive-text btn-responsive">Choose your topic</a>
-                <span class="ml-4"></span>
-                <a href="/project" class="btn btn-info btn-lg btn-responsive responsive-text">About our project</a>
+                <a href="/how-choose-thesis" class="btn btn-info btn-lg responsive-text btn-responsive">How to choose</a>
             </div>
         </div>
         <br>
         <div class="row mt-4">
-            <div class="mx-auto mb-4">
-                <p class="h4">Our organisations are selected based on the principles of <a
-                        href="https://whatiseffectivealtruism.com/" class="text-info"> Effective Altruism<a/></p>
-            </div>
+            <div class="col">{{ page.column_1 | safe }}</div>
+            <div class="col">{{ page.column_2 | safe }}</div>
+            <div class="col">{{ page.column_3 | safe }}</div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col">{{ page.body | safe }}</div>
         </div>
 
     </div>

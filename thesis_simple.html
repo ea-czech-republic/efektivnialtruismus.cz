@@ -1,0 +1,166 @@
+{% extends "theses/theses_base.html" %}
+{% load wagtailuserbar %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+
+<!-- Contacts page layout - 2/8/2 -->
+
+
+        {% if page.title == 'Contact' %}
+            <div class="col-md-2"></div><!-- equal spacer on left -->
+
+            <div class="col-md-8">
+                <div id="form-container">
+                    <h1>{{ page.title }}</h1>
+
+                    <form id="contact-form" action="" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ contactForm.contact_name.errors }}
+                            {{ contactForm.contact_name }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ contactForm.contact_email.errors }}
+                            {{ contactForm.contact_email }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ contactForm.content.errors }}
+                            {{ contactForm.content }}
+                        </div>
+                        <input type="submit" value="Send" class="btn btn-primary">
+                    </form>
+                </div>
+    <div class="col-md-2"></div><!-- equal spacer on right -->
+                <hr>
+                <div>
+                    {% include_block page.body %}
+                </div>
+            </div>
+
+<!-- Propose page layout - 2/8/2 -->
+            
+        {% elif page.title == "Propose" %}
+            <div class="col-md-2"></div><!-- equal spacer on left -->
+            <div class="col-md-8">
+                <div id="form-container">
+                    <h1>{{ page.title }}</h1>
+                    {% include_block page.body %}
+
+                    <form id="proposal-form" action="" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ proposalForm.contact_name.errors }}
+                            {{ proposalForm.contact_name }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ proposalForm.contact_email.errors }}
+                            {{ proposalForm.contact_email }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ proposalForm.organisation.errors }}
+                            {{ proposalForm.organisation }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ proposalForm.title.errors }}
+                            {{ proposalForm.title }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ proposalForm.description.errors }}
+                            {{ proposalForm.description }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ proposalForm.why_important.errors }}
+                            {{ proposalForm.why_important }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ proposalForm.sources.errors }}
+                            {{ proposalForm.sources }}
+                        </div>
+
+                        <div class="form-group">
+                            {{ proposalForm.message.errors }}
+                            {{ proposalForm.message }}
+                        </div>
+
+                        <input type="submit" value="Send" class="btn btn-primary">
+                    </form>
+                </div>
+            </div><!-- end of col-md-10 -->
+            <div class="col-md-2"></div> <!-- equal spacer on right -->
+        {% else %}
+
+<!-- About page & Donate page layout - 2/8/2 -->
+        <div class="col-md-2"></div> <!-- equal spacer on left -->
+            <div class="col-md-8">
+                {% include_block page.body %}
+            </div>
+        <div class="col-md-2"></div> <!-- equal spacer on right -->
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static "js/theses.js" %}"></script>
+
+    <script type="text/javascript">
+        $('#contact-form').submit(function (e) {
+            e.preventDefault();
+
+            var _data = $(this).serializeArray();
+            _data.push({name: 'formSlug', value: 'simpleContactForm'});
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ request.build_absolute_uri }}',
+                data: _data,
+                headers: {
+                    'X-CSRFToken': $("[name=csrfmiddlewaretoken]").val()
+                },
+                success: function (response) {
+                    console.log(response);
+                    $('#form-container').html(response['message']);
+                },
+                error: function (e, x, r) { // on error..
+                    $('#form-container').html('Och! We got an error!');
+                }
+            })
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('#proposal-form').submit(function (e) {
+            e.preventDefault();
+
+            var _data = $(this).serializeArray();
+            _data.push({name: 'formSlug', value: 'proposalForm'});
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ request.build_absolute_uri }}',
+                data: _data,
+                headers: {
+                    'X-CSRFToken': $("[name=csrfmiddlewaretoken]").val()
+                },
+                success: function (response) {
+                    console.log(response);
+                    $('#form-container').html(response['message']);
+                },
+                error: function (e, x, r) { // on error..
+                    $('#form-container').html('Och! We got an error!');
+                }
+            })
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> f11e34adf5c7febe6ee43448bdaabaea225ef08a
+{% extends "theses/theses_base.html" %}
+
+{% load wagtailcore_tags %}
+{% load wagtailuserbar %}
+{% load wagtailimages_tags %}
+
+
+{% block body_class %}template-thesisindex{% endblock %}
+
+{% block content %}
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#impact" role="tab">Highest social impact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#career" role="tab">Improving career prospects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#research" role="tab">Research career in academia</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="impact" role="tabpanel">{{ page.impact | safe }}</div>
+                    <div class="tab-pane" id="career" role="tabpanel">{{ page.career | safe }}</div>
+                    <div class="tab-pane" id="research" role="tabpanel">{{ page.research | safe }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ page.body | safe }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
