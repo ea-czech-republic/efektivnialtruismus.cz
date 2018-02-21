@@ -7,13 +7,13 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             {{ page.body | safe }}
         </div>
     </div>
 
     <div class="row">
-        <div class="col">
+        <div class="col-md-12">
             <h3>Pick your study discipline</h3>
             <form id="discipline-filter-form" action="" method="GET">
                 {% for discipline in disciplines %}
@@ -28,7 +28,7 @@
     </div>
 
     <div class="row mt-3">
-        <div class="col-md-8 all-tags">
+        <div class="col-md-12 all-tags">
             {% if tags %}
                 <h3 id="Interest">Pick area of interest</h3>
                 {% for tag in tags %}
@@ -42,13 +42,17 @@
         </div>
     </div>
 
+<h3>Available theses</h3>
     <div class="row">
+
+        <div class="theses col-md-12" id="thesis-search-result">
+            
+        </div>
         {% if theses %}
-        <div class="theses col-md-8" id="thesis-search-result">
-            <h3>Available theses</h3>
             {% for thesis in theses %}
-                <div class="card thesis card-outline-info mt-2"
-                     data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
+            <div class="col-md-4">
+                <div class="text-left mx-auto card thesis card-outline-info my-2"
+                     data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}" style="min-height: 300px"><!--Inlinestyle to quick fix, to be replaced later - David R. -->
                     <div class="card-header pt-1 pb-1">
                         <h5 class="card-title m-0">
                             <a href="{% pageurl thesis %}">
@@ -56,26 +60,27 @@
                             </a>
                         </h5>
                     </div>
-                    <div class="card-header card-subheader pt-1 pb-1">
+        <!--        <div class="card-header card-subheader pt-1 pb-1">
                         {% for tag in thesis.tags.all %}
                             <label class="btn btn-info tag-select">{{ tag }}</label>
-                        {% endfor %}
-
+removed until approved          {% endfor %}
+    David R.
                     </div>
-                    <div class="card-block pt-0 pb-0">
+         -->        <div class="card-block pt-0 pb-0">
 
                         <p class="card-text">
                             {{ thesis.description | safe | truncatewords_html:50 }}
                         </p>
 
                     </div>
-                    <div class="card-footer text-muted pt-0 pb-0">
-                        <b>Why it's important? </b>{{ thesis.why_important | safe | truncatewords_html:50 }}
+        <!--        <div class="card-footer text-muted pt-0 pb-0">
+removed until approved  <b>Why it's important? </b>
+    David R.           {{ thesis.why_important | safe | truncatewords_html:50 }}
                     </div>
-
-                </div>
+        -->     </div>
+            </div>
+            
             {% endfor %}
-        </div>
         {% endif %}
     </div>
 {% endblock %}
