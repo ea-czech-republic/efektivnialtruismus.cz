@@ -263,3 +263,12 @@ input:hover, #feedback-comment:hover, input:focus, #feedback-comment:focus {
         display: block;
     }
 }
+
+@media (min-width:34em) {
+    .card-deck > .card {
+        width: 29%;
+        flex-wrap: wrap;
+        flex: initial; 
+    }
+}
+
