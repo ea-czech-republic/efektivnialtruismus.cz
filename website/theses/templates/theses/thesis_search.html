@@ -50,9 +50,9 @@
         </div>
         {% if theses %}
             {% for thesis in theses %}
-            <div class="col-md-4">
+            <div class="col-md-4 card-deck">
                 <div class="text-left mx-auto card thesis card-outline-info my-2"
-                     data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}" style="min-height: 300px"><!--Inlinestyle to quick fix, to be replaced later - David R. -->
+                     data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
                     <div class="card-header pt-1 pb-1">
                         <h5 class="card-title m-0">
                             <a href="{% pageurl thesis %}">
@@ -60,29 +60,16 @@
                             </a>
                         </h5>
                     </div>
-        <!--        <div class="card-header card-subheader pt-1 pb-1">
-                        {% for tag in thesis.tags.all %}
-                            <label class="btn btn-info tag-select">{{ tag }}</label>
-removed until approved          {% endfor %}
-    David R.
-                    </div>
-         -->        <div class="card-block pt-0 pb-0">
-
+                    <div class="card-block pt-0 pb-0">
                         <p class="card-text">
                             {{ thesis.description | safe | truncatewords_html:50 }}
                         </p>
-
                     </div>
-        <!--        <div class="card-footer text-muted pt-0 pb-0">
-removed until approved  <b>Why it's important? </b>
-    David R.           {{ thesis.why_important | safe | truncatewords_html:50 }}
-                    </div>
-        -->     </div>
+                </div>
             </div>
-            
             {% endfor %}
         {% endif %}
-    </div>
+        </div>
 {% endblock %}
 
 {% block extra_js_2 %}
