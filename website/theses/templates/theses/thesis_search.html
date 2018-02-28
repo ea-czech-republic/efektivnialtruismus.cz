@@ -7,7 +7,7 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             {{ page.body | safe }}
         </div>
     </div>
@@ -49,6 +49,8 @@
             
         </div>
         {% if theses %}
+        <div class="theses col-md-12" id="thesis-search-result">
+            <h3>Available theses</h3>
             {% for thesis in theses %}
             <div class="col-md-4 card-deck">
                 <div class="text-left mx-auto card thesis card-outline-info my-2"
