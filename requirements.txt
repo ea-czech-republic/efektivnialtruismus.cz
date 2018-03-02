@@ -1,5 +1,5 @@
-wagtail==1.13.1
-wagtailmenus==2.5.2
+wagtail==2.0rc1
+wagtailmenus==2.7
 sendgrid-django==4.1.0
 gunicorn==19.7.1
 django-disqus==0.5

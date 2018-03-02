@@ -2,20 +2,20 @@ from django.db import models
 from django.http import JsonResponse
 from theses.forms import ProposalForm, InterestsForm, SimpleContactForm
 from textwrap import dedent
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailsearch import index
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.core import blocks
+from wagtail.search import index
+from wagtail.core.models import Page
+from wagtail.snippets.models import register_snippet
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
 from modelcluster.fields import ParentalKey
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
-from wagtail.wagtailadmin.utils import send_mail
+from wagtail.admin.utils import send_mail
 from theses.views import conversion
 import logging
 
