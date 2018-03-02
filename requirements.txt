@@ -1,4 +1,4 @@
-wagtail==2.0rc1
+wagtail==2.0
 wagtailmenus==2.7
 sendgrid-django==4.1.0
 gunicorn==19.7.1
