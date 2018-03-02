@@ -6,8 +6,8 @@
 {% block content %}
     <div class="row">
         {% if page.title == 'Contact' %}
-            <div class="col-md-1"></div>
-            <div class="col">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 <div id="form-container">
                     <h1>{{ page.title }}</h1>
 
@@ -35,10 +35,10 @@
                     {% include_block page.body %}
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-2"></div>
         {% elif page.title == "Propose" %}
-            <div class="col-md-1"></div>
-            <div class="col">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 <div id="form-container">
                     <h1>{{ page.title }}</h1>
                     {% include_block page.body %}
@@ -89,12 +89,13 @@
                     </form>
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-2"></div>
         {% else %}
-            <div class="col-md-9">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
                 {% include_block page.body %}
             </div>
-
+            <div class="col-md-2"></div>
         {% endif %}
     </div>
 {% endblock %}
