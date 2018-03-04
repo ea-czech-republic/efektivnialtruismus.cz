@@ -42,17 +42,12 @@
         </div>
     </div>
 
-<h3>Available theses</h3>
     <div class="row">
-
-        <div class="theses col-md-12" id="thesis-search-result">
-            
-        </div>
         {% if theses %}
         <div class="theses col-md-12" id="thesis-search-result">
             <h3>Available theses</h3>
+            <div class="card-deck">
             {% for thesis in theses %}
-            <div class="col-md-4 card-deck">
                 <div class="text-left mx-auto card thesis card-outline-info my-2"
                      data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
                     <div class="card-header pt-1 pb-1">
@@ -68,10 +63,11 @@
                         </p>
                     </div>
                 </div>
-            </div>
             {% endfor %}
-        {% endif %}
+            </div>
         </div>
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block extra_js_2 %}
