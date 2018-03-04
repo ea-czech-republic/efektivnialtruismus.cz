@@ -77,3 +77,11 @@ function removeA(arr) {
 $(document).ready(function () {
     $('#thesis-search-result').hide();
 });
+
+$(".inner-tabs").click(function() {
+  var $this = $(this);
+  // activate nav-links at the top manually
+  $(".nav").find("[href='" + $this.attr('href') + "']").tab('show');
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+});
