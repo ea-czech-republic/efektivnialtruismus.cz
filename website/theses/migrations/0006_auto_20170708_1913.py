@@ -4,10 +4,10 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtailembeds.blocks
-import wagtail.wagtailimages.blocks
+import wagtail.core.blocks
+import wagtail.core.fields
+import wagtail.embeds.blocks
+import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             name='ThesisSimple',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.wagtailcore.fields.StreamField((('heading', wagtail.wagtailcore.blocks.CharBlock(classname='full title')), ('paragraph', wagtail.wagtailcore.blocks.RichTextBlock()), ('image', wagtail.wagtailimages.blocks.ImageChooserBlock()), ('embed', wagtail.wagtailembeds.blocks.EmbedBlock()), ('rawHtml', wagtail.wagtailcore.blocks.RawHTMLBlock())))),
+                ('body', wagtail.core.fields.StreamField((('heading', wagtail.core.blocks.CharBlock(classname='full title')), ('paragraph', wagtail.core.blocks.RichTextBlock()), ('image', wagtail.images.blocks.ImageChooserBlock()), ('embed', wagtail.embeds.blocks.EmbedBlock()), ('rawHtml', wagtail.core.blocks.RawHTMLBlock())))),
             ],
             options={
                 'abstract': False,
@@ -32,6 +32,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='thesisindexpage',
             name='intro',
-            field=wagtail.wagtailcore.fields.StreamField((('rawHtml', wagtail.wagtailcore.blocks.RawHTMLBlock()), ('heading', wagtail.wagtailcore.blocks.CharBlock(classname='full title')), ('paragraph', wagtail.wagtailcore.blocks.RichTextBlock()), ('image', wagtail.wagtailimages.blocks.ImageChooserBlock()), ('embed', wagtail.wagtailembeds.blocks.EmbedBlock()))),
+            field=wagtail.core.fields.StreamField((('rawHtml', wagtail.core.blocks.RawHTMLBlock()), ('heading', wagtail.core.blocks.CharBlock(classname='full title')), ('paragraph', wagtail.core.blocks.RichTextBlock()), ('image', wagtail.images.blocks.ImageChooserBlock()), ('embed', wagtail.embeds.blocks.EmbedBlock()))),
         ),
     ]

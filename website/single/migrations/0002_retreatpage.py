@@ -4,10 +4,10 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtailembeds.blocks
-import wagtail.wagtailimages.blocks
+import wagtail.core.blocks
+import wagtail.core.fields
+import wagtail.embeds.blocks
+import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             name='RetreatPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body', wagtail.wagtailcore.fields.StreamField((('heading', wagtail.wagtailcore.blocks.CharBlock(classname='full title')), ('paragraph', wagtail.wagtailcore.blocks.RichTextBlock()), ('image', wagtail.wagtailimages.blocks.ImageChooserBlock()), ('embed', wagtail.wagtailembeds.blocks.EmbedBlock()), ('rawHtml', wagtail.wagtailcore.blocks.RawHTMLBlock()), ('medailon', wagtail.wagtailcore.blocks.StructBlock((('title', wagtail.wagtailcore.blocks.CharBlock(required=True)), ('pic', wagtail.wagtailimages.blocks.ImageChooserBlock(required=True)), ('description', wagtail.wagtailcore.blocks.RichTextBlock(required=True))), icon='user', template='blocks/medailon.html'))))),
+                ('body', wagtail.core.fields.StreamField((('heading', wagtail.core.blocks.CharBlock(classname='full title')), ('paragraph', wagtail.core.blocks.RichTextBlock()), ('image', wagtail.images.blocks.ImageChooserBlock()), ('embed', wagtail.embeds.blocks.EmbedBlock()), ('rawHtml', wagtail.core.blocks.RawHTMLBlock()), ('medailon', wagtail.core.blocks.StructBlock((('title', wagtail.core.blocks.CharBlock(required=True)), ('pic', wagtail.images.blocks.ImageChooserBlock(required=True)), ('description', wagtail.core.blocks.RichTextBlock(required=True))), icon='user', template='blocks/medailon.html'))))),
             ],
             options={
                 'abstract': False,

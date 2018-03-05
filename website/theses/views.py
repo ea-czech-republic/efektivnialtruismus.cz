@@ -2,7 +2,7 @@ from .forms import FeedbackForm
 from django.http import JsonResponse
 from django.shortcuts import render
 from textwrap import dedent
-from wagtail.wagtailadmin.utils import send_mail
+from wagtail.admin.utils import send_mail
 
 THESES_MAILS = ['theses@efektivni-altruismus.cz']
 
