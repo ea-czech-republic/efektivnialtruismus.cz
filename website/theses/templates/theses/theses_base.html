@@ -11,7 +11,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/eacr.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/theses.css' %}">
-    
+
 
     <script type="text/javascript">
         window.smartlook || (function (d) {
@@ -99,37 +99,6 @@
         </div>
     </div>
 
-
-    <div id="feedback-main">
-        <div id="feedback-div">
-            <p>
-                This is a brand new project run by volunteers, any suggestion how to improve it is very welcome!
-            </p>
-            <form action="" method="post" class="form" id="feedback-form1" name="form1"
-                  enctype="multipart/form-data">
-                {% csrf_token %}
-                <p class="email">
-                    <input name="contact_email" type="email" class="feedback-input"
-                           id="feedback-email" placeholder="Your email (optional)"/>
-                </p>
-
-
-                <p class="text">
-                    <textarea name="content" type="content" class="feedback-input"
-                              id="feedback-comment" required
-                              placeholder="Your feedback"></textarea>
-                </p>
-
-                <div class="feedback-submit">
-                    <input type="submit" value="SEND" id="feedback-button-blue"/>
-                    <div class="feedback-ease"></div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!--<button id="popup" class="feedback-button" onclick="toggle_visibility()">Give us feedback!</button>
--->
     <div id="share">
 
         <!-- facebook -->
@@ -167,41 +136,6 @@
 
 {% block extra_js %}
     <script src="{% static "js/theses.js" %}"></script>
-
-    <script>
-        function toggle_visibility() {
-            var e = document.getElementById('feedback-main');
-            if (e.style.display == 'block')
-                e.style.display = 'none';
-            else {
-                e.style.display = 'block';
-                window.scrollTo(0, document.body.scrollHeight);
-            }
-        }
-
-        $('#feedback-form1').submit(function (e) {
-            e.preventDefault();
-            var _data = $(this).serializeArray();
-            $.ajax({
-                type: 'POST',
-                url: '/theses/feedback/',
-                data: _data,
-                headers: {
-                    'X-CSRFToken': $("[name=csrfmiddlewaretoken]").val()
-                },
-                success: function (response) {
-                    console.log(response);
-                    $('#feedback-div').html(response['message']);
-                },
-                error: function (e, x, r) { // on error..
-                    $('#feedback-div').html('Och! Something went wrong, sorry. Please use our contact page instead');
-                }
-            });
-            $('#feedback-div').css('background-color', 'rgb(255, 255, 255)');
-        });
-
-    </script>
-
     {% block extra_js_2 %}
 
     {% endblock %}

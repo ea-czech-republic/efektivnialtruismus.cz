@@ -1,16 +1,6 @@
 from django import forms
 
 
-class FeedbackForm(forms.Form):
-    contact_email = forms.EmailField(required=False, widget=forms.EmailInput(attrs={'class': 'form-control',
-                                                                                    'placeholder': 'Your email'}))
-    content = forms.CharField(
-        required=True,
-        widget=forms.Textarea(attrs={'class': 'form-control',
-                                     'placeholder': 'What would you like to tell us?'})
-    )
-
-
 class SimpleContactForm(forms.Form):
     contact_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Your name',
                                                                                 'class': 'form-control'}))
