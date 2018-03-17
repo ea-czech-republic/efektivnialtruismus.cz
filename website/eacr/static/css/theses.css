@@ -38,7 +38,7 @@ h1 h2 {
 }
 
 .tag-select {
-    font-size: 14px;
+    font-size: 15px;
     padding: 1px 1px 2px 2px;
     margin: 1px 1px 1px 1px;
 }
@@ -125,4 +125,8 @@ h1 h2 {
 
 .fixed-card-header-height {
     min-height: 3.5rem;
+}
+
+.thesis-these {
+    line-height: 2rem;
 }
