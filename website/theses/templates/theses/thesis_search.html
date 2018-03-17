@@ -48,9 +48,9 @@
             <h3>Available theses</h3>
             <div class="card-deck">
             {% for thesis in theses %}
-                <div class="text-left mx-auto card thesis card-outline-info my-2"
+                <div class="card thesis ml-0 card-outline-info my-2"
                      data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
-                    <div class="card-header pt-1 pb-1">
+                    <div class="card-header fixed-card-header-height pt-1 pb-1">
                         <h5 class="card-title m-0">
                             <a href="{% pageurl thesis %}">
                                 {{ thesis.title }}
@@ -59,7 +59,7 @@
                     </div>
                     <div class="card-block pt-0 pb-0">
                         <p class="card-text">
-                            {{ thesis.description | safe | truncatewords_html:50 }}
+                            {{ thesis.description | safe | truncatewords_html:30 }}
                         </p>
                     </div>
                 </div>
