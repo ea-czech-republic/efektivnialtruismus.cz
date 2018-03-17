@@ -45,6 +45,7 @@ h1 h2 {
 
 .thesis p {
     margin-right: 5px;
+    margin-left: 5px;
 }
 
 .card-subheader {
@@ -122,7 +123,6 @@ h1 h2 {
     height: 100%;
 }
 
-.fixed-card-header-height
-{
+.fixed-card-header-height {
     min-height: 3.5rem;
 }
