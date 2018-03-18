@@ -17,8 +17,8 @@
             <h3>Pick your study discipline</h3>
             <form id="discipline-filter-form" action="" method="GET">
                 {% for discipline in disciplines %}
-                    <input type="checkbox" class="badgebox" name="discipline" value="{{ discipline | slugify }}"
-                           id="{{ discipline | slugify }}"/>
+                    <input type="checkbox" class="badgebox" name="discipline" value="{{ discipline }}"
+                           id="{{ discipline | slugify}}"/>
                     <label class="btn btn-info tag-select" for="{{ discipline | slugify }}">
                         {{ discipline }}
                     </label>
