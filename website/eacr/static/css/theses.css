@@ -102,6 +102,8 @@ h1 h2 {
 .rich-text img {
     max-width: 100%;
     height: auto;
+    display: block;
+    margin: auto;
 }
 
 .block-image img {
