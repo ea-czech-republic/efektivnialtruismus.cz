@@ -1,76 +1,30 @@
+import logging
+from textwrap import dedent
+
 from django.db import models
 from django.http import JsonResponse
-from theses.forms import ProposalForm, InterestsForm, SimpleContactForm
-from textwrap import dedent
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailsearch import index
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from modelcluster.fields import ParentalKey
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from taggit.models import TaggedItemBase
+from taggit.models import TaggedItemBase, Tag as TaggitTag
+from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
 from wagtail.wagtailadmin.utils import send_mail
+from wagtail.wagtailcore import blocks
+from wagtail.wagtailcore.fields import RichTextField, StreamField
+from wagtail.wagtailcore.models import Page
+from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailsearch import index
+from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
+from modelcluster.fields import ParentalManyToManyField, ParentalKey
+from django import forms
+from wagtail.wagtailsnippets.models import register_snippet
+
+from theses.forms import ProposalForm, SimpleContactForm
 from theses.views import conversion
-import logging
 
 logger = logging.getLogger(__name__)
 
 THESES_MAILS = ['theses@efektivni-altruismus.cz']
-
-
-class ThesisPageTag(TaggedItemBase):
-    content_object = ParentalKey('theses.ThesisPage', related_name='tagged_items')
-
-
-class ThesisSearch(Page):
-    parent_page_types = ['theses.ThesisIndexPage']
-
-    body = StreamField([
-        ('rawHtml', blocks.RawHTMLBlock()),
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('embed', EmbedBlock()),
-
-    ])
-
-    def get_context(self, request):
-        context = super(ThesisSearch, self).get_context(request)
-        # this randomization is costly - we may recompute order as we wish
-        # when adding a new thesis and then just using that order precomputed
-        context['theses'] = ThesisPage.objects.child_of(ThesisIndexPage.objects.first()).live().order_by('?')
-        context["tags"] = ThesisPage.tags.order_by('name')
-        return context
-
-
-class ThesisIndexPage(Page):
-    header = StreamField([
-        ('rawHtml', blocks.RawHTMLBlock()),
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('embed', EmbedBlock()),
-
-    ])
-
-    background_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
-
-    content_panels = Page.content_panels + [
-        StreamFieldPanel('header'),
-        ImageChooserPanel('background_image'),
-    ]
 
 
 @register_snippet
@@ -82,7 +36,7 @@ class ThesisProvider(models.Model):
         on_delete=models.SET_NULL,
         related_name='+',
     )
-    name = models.CharField(max_length=100, blank=False)
+    name = models.CharField(max_length=100, blank=False, unique=True)
     link = models.URLField(blank=False)
     description = RichTextField(blank=True)
 
@@ -97,12 +51,112 @@ class ThesisProvider(models.Model):
         return self.name
 
 
+@register_snippet
+class ThesisDiscipline(models.Model):
+    name = models.CharField(max_length=100, blank=False, unique=True)
+    description = RichTextField(blank=True)
+
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('description')
+    ]
+
+    def __str__(self):
+        return self.name
+
+
+class ThesisPageTag(TaggedItemBase):
+    content_object = ParentalKey('theses.ThesisPage',
+                                 related_name='tagged_items')
+
+
+@register_snippet
+class Tag(TaggitTag):
+    class Meta:
+        proxy = True
+
+
+def get_standard_streamfield():
+    return StreamField([
+        ('rawHtml', blocks.RawHTMLBlock()),
+        ('heading', blocks.CharBlock(classname="full title")),
+        ('paragraph', blocks.RichTextBlock()),
+        ('image', ImageChooserBlock()),
+        ('embed', EmbedBlock()),
+
+    ], null=True, blank=True)
+
+
+class ThesisSearch(Page):
+    parent_page_types = ['theses.ThesisIndexPage']
+
+    body = get_standard_streamfield()
+
+    def get_context(self, request):
+        context = super(ThesisSearch, self).get_context(request)
+        if 'discipline' in request.GET:
+            discipline_name = request.GET['discipline']
+            discipline = ThesisDiscipline.objects.get(name=discipline_name)
+            theses = ThesisPage.objects.filter(discipline=discipline).live().order_by('?')
+            # filter only those from the list above
+            tags_qs = theses.values('tags').distinct()
+            tags = ThesisPage.tags.filter(pk__in=[x['tags'] for x in tags_qs])
+            selected_discipline = discipline_name
+        else:
+            theses = None
+            tags = None
+            selected_discipline = None
+
+        context['theses'] = theses
+        context['tags'] = tags
+        context['selectedDiscipline'] = selected_discipline
+        context['disciplines'] = ThesisDiscipline.objects.all()
+
+        return context
+
+
+class ThesisIndexPage(Page):
+    column_1 = get_standard_streamfield()
+    column_2 = get_standard_streamfield()
+    column_3 = get_standard_streamfield()
+    references_1 = get_standard_streamfield()
+    references_2 = get_standard_streamfield()
+    body = get_standard_streamfield()
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('column_1'),
+        StreamFieldPanel('column_2'),
+        StreamFieldPanel('column_3'),
+        StreamFieldPanel('references_1'),
+        StreamFieldPanel('references_2'),
+        StreamFieldPanel('body'),
+    ]
+
+
+class ThesisChooseHelpPage(Page):
+    parent_page_types = ['theses.ThesisIndexPage']
+
+    impact = get_standard_streamfield()
+    career = get_standard_streamfield()
+    research = get_standard_streamfield()
+
+    body = get_standard_streamfield()
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('impact'),
+        StreamFieldPanel('career'),
+        StreamFieldPanel('research'),
+        StreamFieldPanel('body'),
+    ]
+
+
 class ThesisPage(Page):
     description = RichTextField()
     why_important = RichTextField()
     sources = RichTextField()
     tags = ClusterTaggableManager(through=ThesisPageTag, blank=True)
-    provider = models.ForeignKey(ThesisProvider, default=1, on_delete=models.SET_NULL, null=True)
+    provider = models.ForeignKey('theses.ThesisProvider', default=1, on_delete=models.SET_NULL, null=True)
+    discipline = ParentalManyToManyField('theses.ThesisDiscipline', blank=False)
 
     search_fields = Page.search_fields + [
         index.SearchField('description'),
@@ -115,6 +169,7 @@ class ThesisPage(Page):
         FieldPanel('why_important'),
         FieldPanel('tags'),
         FieldPanel('sources'),
+        FieldPanel('discipline', widget=forms.CheckboxSelectMultiple),
         SnippetChooserPanel('provider'),
     ]
 
@@ -130,7 +185,6 @@ class ThesisPage(Page):
             form = InterestsForm(request.POST)
             if form.is_valid():
                 form.clean()
-
                 absolute_uri = request.build_absolute_uri()
                 mail_content = self.build_mail_content(absolute_uri, form.cleaned_data)
                 thesis_title = form.cleaned_data['thesis_title']

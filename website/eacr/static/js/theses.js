@@ -17,7 +17,7 @@ $("input").on("change", function () {
     var str = "Include items \n";
     var selector = '', cselector = '', nselector = '';
 
-    var $lis = $('.theses > div'),
+    var $lis = $('.thesis'),
         $checked = $('input:checked');
 
     if ($checked.length) {
@@ -46,13 +46,13 @@ $("input").on("change", function () {
         console.log(nselector);
 
         if (cselector === '' && nselector === '') {
-            $('.theses > div').filter(selector).show();
+            $('.thesis').filter(selector).show();
         } else if (cselector === '') {
-            $('.theses > div').filter(selector).filter(nselector).show();
+            $('.thesis').filter(selector).filter(nselector).show();
         } else if (nselector === '') {
-            $('.theses > div').filter(selector).filter(cselector).show();
+            $('.thesis').filter(selector).filter(cselector).show();
         } else {
-            $('.theses > div').filter(selector).filter(cselector).filter(nselector).show();
+            $('.thesis').filter(selector).filter(cselector).filter(nselector).show();
         }
 
     } else {
@@ -76,4 +76,12 @@ function removeA(arr) {
 // hide all topics on the beginning
 $(document).ready(function () {
     $('#thesis-search-result').hide();
+});
+
+$(".inner-tabs").click(function() {
+  var $this = $(this);
+  // activate nav-links at the top manually
+  $(".nav").find("[href='" + $this.attr('href') + "']").tab('show');
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
 });

@@ -8,43 +8,62 @@
 {% block body_class %}template-thesisindex{% endblock %}
 
 {% block content %}
-    <div class="col-md-10">
-        <div class="row">
-            <div class="mx-auto">
-                <h3 class="display-3">Find your thesis topic</h3>
-            </div>
+    <div class="row">
+        <div class="col mx-auto text-center">
+            <h3 class="display-4">Make your thesis meaningful</h3>
         </div>
-        <br><br>
-        <div class="row mt-4">
-            <div class="mx-auto">
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col-md-8"><p class="h4">Topics are proposed by socially beneficial organisations we can connect you with</p>
-                        <ul>
-                            <li><p class="h4">so your work and effort will <em>be made use of</em></p></li>
-                            <li><p class="h4">so you'll help to <em>make the world a better place</em></p></li>
-                        </ul>
-                    </div>
-                    <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row mt-2">
+        <div class="col mx-auto">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <p class="h4 thesis-these">
+                        You will likely invest hundreds of hours and huge effort in your final thesis.
+                        What about
+                        using this opportunity for something more than just “have it done”?
+                        We can help you have
+                        high social impact with your thesis, improve your career prospects or prepare for research
+                        career in academia.
+                    </p>
                 </div>
+                <div class="col-md-1"></div>
             </div>
         </div>
-        <br>
+    </div>
+    <br>
 
-        <div class="row mt-4">
-            <div class="mx-auto mb-4">
-                <a href="/theses" class="btn btn-info btn-lg responsive-text btn-responsive">Choose your topic</a>
-                <span class="ml-4"></span>
-                <a href="/project" class="btn btn-info btn-lg btn-responsive responsive-text">About our project</a>
+    <div class="row mt-4">
+        <div class="col mx-auto text-center">
+            <a href="/how-choose-thesis" class="btn btn-info btn-lg responsive-text btn-responsive">Start</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mx-auto mb-4 text-center">
+            <a href="/theses" class="btn btn-link btn-lg responsive-text btn-responsive">To the list of topics</a>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="row mt-4">
+                <div class="col-md-4 text-center">{{ page.column_1 | safe }}</div>
+                <div class="col-md-4 text-center">{{ page.column_2 | safe }}</div>
+                <div class="col-md-4 text-center">{{ page.column_3 | safe }}</div>
+            </div>
+            <div class="row mt-1">
+                <div class="col"><h4>What they say about us...</h4></div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">{{ page.references_1 | safe }}</div>
+                <div class="col-md-6">{{ page.references_2 | safe }}</div>
+            </div>
+            <div class="row mt-4">
+                <div>{{ page.body | safe }}</div>
             </div>
         </div>
-        <br>
-        <div class="row mt-4">
-            <div class="mx-auto mb-4">
-                <p class="h4">Our organisations are selected based on the principles of <a
-                        href="https://whatiseffectivealtruism.com/" class="text-info"> Effective Altruism<a/></p>
-            </div>
-        </div>
-
+        <div class="col-md-1"></div>
     </div>
 {% endblock %}

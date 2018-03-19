@@ -1,7 +1,6 @@
 from django.conf.urls import url
-from .views import feedback_form, conversion
+from .views import conversion
 
 theses_urls = [
-    url(r'^feedback/$', feedback_form, name='feedback'),
     url(r'^conversion/$', conversion, name='conversion'),
 ]

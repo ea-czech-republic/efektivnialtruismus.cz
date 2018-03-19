@@ -1,0 +1,73 @@
+{% extends "theses/theses_base.html" %}
+
+{% load wagtailcore_tags %}
+{% load wagtailuserbar %}
+{% load wagtailimages_tags %}
+
+
+{% block body_class %}template-thesisindex{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4">What do you want to focus on with your thesis?</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <ul class="nav nav-pills center-pills" role="tablist">
+                <li class="nav-item li-choose">
+                    <a onclick="appendIdToUrl(this);" id="impact"
+                       class="nav-link btn btn-info choose-nav-links"
+                       data-toggle="tab" href="#impact-tab"
+                       role="tab">Highest social
+                        impact</a>
+                </li>
+                <li class="nav-item li-choose">
+                    <a onclick="appendIdToUrl(this);" id="career" class="nav-link btn btn-info choose-nav-links"
+                       data-toggle="tab"
+                       href="#career-tab"
+                       role="tab">Improving career
+                        prospects</a>
+                </li>
+                <li class="nav-item li-choose">
+                    <a onclick="appendIdToUrl(this);" id="research" class="nav-link btn btn-info choose-nav-links"
+                       data-toggle="tab"
+                       href="#research-tab"
+                       role="tab">Research career
+                        in academia</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane" id="impact-tab" role="tabpanel">{{ page.impact | safe }}</div>
+                <div class="tab-pane" id="career-tab" role="tabpanel">{{ page.career | safe }}</div>
+                <div class="tab-pane" id="research-tab" role="tabpanel">{{ page.research | safe }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md">
+            {{ page.body | safe }}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block extra_js_2 %}
+    <script>
+        $(document).ready(function () {
+            $('#' + window.location.hash.substr(1)).click();
+        });
+
+        function appendIdToUrl(atag) {
+            window.location.hash = atag.id;
+        }
+
+    </script>
+{% endblock %}
