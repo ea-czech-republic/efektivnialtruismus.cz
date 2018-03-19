@@ -60,8 +60,10 @@ INSTALLED_APPS = [
     'theses',
 
     'django_extensions',
-    'debug_toolbar',
 ]
+if DEBUG:
+    INSTALLED_APPS += ['debug_toolbar']
+
 
 MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
