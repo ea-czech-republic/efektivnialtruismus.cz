@@ -18,8 +18,8 @@
             <form id="discipline-filter-form" action="" method="GET">
                 {% for discipline in disciplines %}
                     <input type="checkbox" class="badgebox" name="discipline" value="{{ discipline }}"
-                           id="{{ discipline | slugify}}"/>
-                    <label class="btn btn-info tag-select" for="{{ discipline | slugify }}">
+                           id="{{ discipline | slugify}}-discipline"/>
+                    <label class="btn btn-info tag-select" for="{{ discipline | slugify }}-discipline">
                         {{ discipline }}
                     </label>
                 {% endfor %}
