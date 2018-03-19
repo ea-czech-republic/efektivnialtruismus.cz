@@ -18,11 +18,13 @@
             <form id="discipline-filter-form" action="" method="GET">
                 {% for discipline in disciplines %}
                     <input type="checkbox" class="badgebox" name="discipline" value="{{ discipline }}"
-                           id="{{ discipline | slugify}}-discipline"/>
+                           id="{{ discipline | slugify }}-discipline"/>
                     <label class="btn btn-info tag-select" for="{{ discipline | slugify }}-discipline">
                         {{ discipline }}
                     </label>
                 {% endfor %}
+                <!-- Must be here because of stupid firefox which cannot submit forms wihtout a button -->
+                <input id="disc-submit-input" type="submit" value="submit" style="visibility:hidden;"/>
             </form>
         </div>
     </div>
@@ -44,36 +46,40 @@
 
     <div class="row">
         {% if theses %}
-        <div class="theses col-md-12" id="thesis-search-result">
-            <h3>Available theses</h3>
-            <div class="card-deck">
-            {% for thesis in theses %}
-                <div class="card thesis ml-0 card-outline-info my-2"
-                     data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
-                    <div class="card-header fixed-card-header-height pt-1 pb-1">
-                        <h5 class="card-title m-0">
-                            <a href="{% pageurl thesis %}">
-                                {{ thesis.title }}
-                            </a>
-                        </h5>
-                    </div>
-                    <div class="card-block pt-0 pb-0">
-                        <p class="card-text">
-                            {{ thesis.description | safe | truncatewords_html:30 }}
-                        </p>
-                    </div>
+            <div class="theses col-md-12" id="thesis-search-result">
+                <h3>Available theses</h3>
+                <div class="card-deck">
+                    {% for thesis in theses %}
+                        <div class="card thesis ml-0 card-outline-info my-2"
+                             data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
+                            <div class="card-header fixed-card-header-height pt-1 pb-1">
+                                <h5 class="card-title m-0">
+                                    <a href="{% pageurl thesis %}">
+                                        {{ thesis.title }}
+                                    </a>
+                                </h5>
+                            </div>
+                            <div class="card-block pt-0 pb-0">
+                                <p class="card-text">
+                                    {{ thesis.description | safe | truncatewords_html:30 }}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
             </div>
-        </div>
         {% endif %}
     </div>
 {% endblock %}
 
 {% block extra_js_2 %}
     <script>
-        var form = document.getElementById("discipline-filter-form");
+        /* Terrible hack - we need to append the form to the DOM and then send it... Mostly because firefox */
+        var _form = document.getElementById("discipline-filter-form");
         document.getElementById("discipline-filter-form").addEventListener("click", function () {
+            var form = $.clone(_form);
+            form.style.display = "none";
+            document.body.appendChild(form);
             form.submit();
         });
 

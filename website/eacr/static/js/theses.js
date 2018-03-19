@@ -18,7 +18,7 @@ $("input").on("change", function () {
     var selector = '', cselector = '', nselector = '';
 
     var $lis = $('.thesis'),
-        $checked = $('input:checked');
+        $checked = $('input:checked[name="fl-colour"]');
 
     if ($checked.length) {
 

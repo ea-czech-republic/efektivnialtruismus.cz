@@ -62,7 +62,8 @@ INSTALLED_APPS = [
     'django_extensions',
 ]
 if DEBUG:
-    INSTALLED_APPS += ['debug_toolbar']
+    #INSTALLED_APPS += ['debug_toolbar']
+    pass
 
 
 MIDDLEWARE_CLASSES = [
@@ -81,7 +82,8 @@ MIDDLEWARE_CLASSES = [
 ]
 
 if DEBUG:
-    MIDDLEWARE_CLASSES = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE_CLASSES
+    #MIDDLEWARE_CLASSES = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE_CLASSES
+    pass
 
 ROOT_URLCONF = 'eacr.urls'
 
