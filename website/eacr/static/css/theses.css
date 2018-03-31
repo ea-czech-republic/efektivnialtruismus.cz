@@ -44,8 +44,8 @@ h1 h2 {
 }
 
 .thesis p {
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .card-subheader {
@@ -131,4 +131,13 @@ h1 h2 {
 
 .thesis-these {
     line-height: 2rem;
+}
+
+.center-pills {
+    display: inline-flex;
+}
+
+.li-choose{
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
