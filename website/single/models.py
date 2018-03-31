@@ -1,9 +1,9 @@
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.core.models import Page
+from wagtail.core.fields import StreamField
+from wagtail.core import blocks
+from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
 from datetime import date
 
 

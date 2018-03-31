@@ -1,15 +1,15 @@
 from django.db import models
 
-from wagtail.wagtailsearch import index
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.search import index
+from wagtail.core.models import Page
+from wagtail.core.fields import RichTextField
+from wagtail.core.fields import StreamField
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.core import blocks
+from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 
 
 class BlogIndexPage(Page):

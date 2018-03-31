@@ -5,19 +5,19 @@ from django.db import models
 from django.http import JsonResponse
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase, Tag as TaggitTag
-from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
-from wagtail.wagtailadmin.utils import send_mail
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsearch import index
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
+from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
+from wagtail.admin.utils import send_mail
+from wagtail.core import blocks
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Page
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.search import index
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from django import forms
-from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.snippets.models import register_snippet
 
 from theses.forms import ProposalForm, SimpleContactForm
 from theses.views import conversion
