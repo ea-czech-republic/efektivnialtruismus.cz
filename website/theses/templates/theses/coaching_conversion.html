@@ -1,0 +1,31 @@
+{% extends "theses/theses_base.html" %}
+{% load static %}
+
+{% block for_conversion_head %}
+    <!-- Event snippet for I want topic conversion page -->
+    <script>
+        gtag('event', 'conversion', {'send_to': 'AW-866290173/z-wYCJiOwnUQ_ZOKnQM'});
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    <h1>Thank you for your interest!</h1>
+
+    <p>
+        Take me <a href="/">back</a>
+    </p>
+
+{% endblock %}
+
+
+{% block extra_js_2 %}
+    <!-- Script for Facebook Share Button -->
+    <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}

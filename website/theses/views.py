@@ -7,3 +7,6 @@ def conversion(request, origin_url, title):
         'title': title,
     }
     return render(request, 'theses/conversion.html', context)
+
+def coaching_conversion(request):
+    return render(request, 'theses/coaching_conversion.html')

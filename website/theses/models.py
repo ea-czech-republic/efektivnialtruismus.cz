@@ -20,12 +20,11 @@ from django import forms
 from wagtail.snippets.models import register_snippet
 
 from theses.forms import ProposalForm, SimpleContactForm
-from theses.views import conversion
+from theses.views import conversion, coaching_conversion
 
 logger = logging.getLogger(__name__)
 
 THESES_MAILS = ['theses@efektivni-altruismus.cz']
-
 
 @register_snippet
 class ThesisProvider(models.Model):
@@ -114,6 +113,53 @@ class ThesisSearch(Page):
 
         return context
 
+
+class ThesisCoachingIndexPage(Page):
+    body = get_standard_streamfield()
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+    ]
+
+    def serve(self, request):
+        if request.method == 'POST':
+            from theses.forms import CoachingForm
+            form = CoachingForm(request.POST)
+            if form.is_valid():
+                form.clean()
+                mail_content = self.build_mail_content(form.cleaned_data)
+                contact_name = form.cleaned_data['contact_name']
+
+                send_mail('Thesis coaching interest: {}'.format(contact_name),
+                          mail_content,
+                          THESES_MAILS,  # recipient email
+                          form.cleaned_data['contact_email']
+                          )
+
+                return coaching_conversion(request)
+            else:
+                logger.error('The submitted form was invalid.')
+                return super(ThesisCoachingIndexPage, self).serve(request)
+        else:
+            return super(ThesisCoachingIndexPage, self).serve(request)
+
+    def get_context(self, request):
+        from theses.forms import CoachingForm
+        context = super(ThesisCoachingIndexPage, self).get_context(request)
+        context["contactForm"] = CoachingForm
+        context['thesis_title'] = self.title
+        return context
+
+    @staticmethod
+    def build_mail_content(data):
+        return dedent("""
+        Name: {contact_name},
+        Contact email: {contact_email},
+        Course and University: {university},
+        Requirements: {requirements}
+        Preferences: {preferences}
+        Anything else: {anything_else}
+        """.format(**data))
 
 class ThesisIndexPage(Page):
     column_1 = get_standard_streamfield()
