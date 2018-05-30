@@ -104,7 +104,7 @@ class CoachingForm(forms.Form):
     read_above = forms.BooleanField(
         required=False,
         widget=forms.Textarea(attrs={'class': 'form-control',
-                                     'placeholder': 'Have you read the article above?',
+                                     'placeholder': 'What do you think about the article above?',
                                      'rows': 5})
     )
 
