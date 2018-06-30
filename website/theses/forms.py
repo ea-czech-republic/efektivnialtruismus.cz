@@ -86,7 +86,16 @@ class CoachingForm(forms.Form):
                                      'placeholder': 'Course requirements regarding final theses',
                                      'rows': 5})
     )
-    
+
+    career = forms.CharField(
+        required=False,
+        widget=forms.Textarea(attrs={'class': 'form-control',
+                                     'placeholder': 'Briefly describe your career plans (e.g. Do you '
+                                                    'want to become top reseacher? Do you know the sector '
+                                                    'or type of work that you would like to do after you graduate?)',
+                                     'rows': 5})
+    )
+
     preferences = forms.CharField(
         required=False,
         widget=forms.Textarea(attrs={'class': 'form-control',
