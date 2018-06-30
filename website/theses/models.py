@@ -156,6 +156,7 @@ class ThesisCoachingIndexPage(Page):
         Name: {contact_name},
         Contact email: {contact_email},
         Course and University: {university},
+        Career: {career},
         Requirements: {requirements}
         Preferences: {preferences}
         Anything else: {anything_else}
