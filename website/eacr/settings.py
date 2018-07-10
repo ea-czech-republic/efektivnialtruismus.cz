@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'simple',
     'single',
     'theses',
+    'theses.tblog',
 
     'django_extensions',
 ]
