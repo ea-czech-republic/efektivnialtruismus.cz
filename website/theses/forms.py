@@ -69,6 +69,7 @@ class ProposalForm(forms.Form):
                                                     'would like to inform us about?'})
     )
 
+
 class CoachingForm(forms.Form):
     contact_name = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Your name',
                                                                                 'class': 'form-control'}))
@@ -102,7 +103,7 @@ class CoachingForm(forms.Form):
                                      'placeholder': 'Do you have any strong interests and preferences regarding thesis topic?',
                                      'rows': 5})
     )
-    
+
     anything_else = forms.CharField(
         required=False,
         widget=forms.Textarea(attrs={'class': 'form-control',
@@ -113,7 +114,7 @@ class CoachingForm(forms.Form):
     read_above = forms.BooleanField(
         required=False,
         widget=forms.Textarea(attrs={'class': 'form-control',
-                                     'placeholder': 'What do you think about the article above?',
+                                     'placeholder': 'How knowledgeable are you about effective altruism on a scale 1-5 where 1 = never heard of it and 5 = have read most content on main blogs',
                                      'rows': 5})
     )
 

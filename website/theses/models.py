@@ -160,6 +160,7 @@ class ThesisCoachingIndexPage(Page):
         Requirements: {requirements}
         Preferences: {preferences}
         Anything else: {anything_else}
+        Knowledgeable: {read_above}
         """.format(**data))
 
 class ThesisIndexPage(Page):
