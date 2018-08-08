@@ -157,10 +157,10 @@ class ThesisCoachingIndexPage(Page):
         Contact email: {contact_email},
         Course and University: {university},
         Career: {career},
-        Requirements: {requirements}
-        Preferences: {preferences}
-        Anything else: {anything_else}
-        Knowledgeable: {read_above}
+        Requirements: {requirements},
+        Preferences: {preferences},
+        Anything else: {anything_else},
+        Knowledgeable: {read_above},
         """.format(**data))
 
 class ThesisIndexPage(Page):

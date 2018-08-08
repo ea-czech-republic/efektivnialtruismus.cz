@@ -111,7 +111,7 @@ class CoachingForm(forms.Form):
                                      'rows': 5})
     )
 
-    read_above = forms.BooleanField(
+    read_above = forms.CharField(
         required=False,
         widget=forms.Textarea(attrs={'class': 'form-control',
                                      'placeholder': 'How knowledgeable are you about effective altruism on a scale 1-5 where 1 = never heard of it and 5 = have read most content on main blogs',
