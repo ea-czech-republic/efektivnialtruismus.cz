@@ -18,8 +18,7 @@
                     <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
                     <p>{{ post.specific.intro }}</p>
                     <small class="text-muted">
-                        {{ post.specific.date }} |
-                        {{ post.specific.owner.first_name }} {{ post.specific.owner.last_name }}
+                        {{ post.specific.date }} | {{ post.specific.author }}
                     </small>
                 </div>
             </div>

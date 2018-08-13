@@ -37,6 +37,7 @@ class ThesesBlogIndexPage(Page):
 class ThesesArticlePage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
+    author = models.CharField(max_length=50, blank=False)
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
@@ -57,10 +58,12 @@ class ThesesArticlePage(Page):
     search_fields = Page.search_fields + [
         index.SearchField('intro'),
         index.SearchField('body'),
+        index.SearchField('author'),
     ]
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),
+        FieldPanel('author'),
         FieldPanel('intro'),
         StreamFieldPanel('body'),
     ]
