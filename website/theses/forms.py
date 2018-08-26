@@ -104,17 +104,20 @@ class CoachingForm(forms.Form):
                                      'rows': 5})
     )
 
-    anything_else = forms.CharField(
-        required=False,
-        widget=forms.Textarea(attrs={'class': 'form-control',
-                                     'placeholder': 'Anything else you would like to tell us?',
-                                     'rows': 5})
-    )
-
     read_above = forms.CharField(
         required=False,
         widget=forms.Textarea(attrs={'class': 'form-control',
                                      'placeholder': 'How knowledgeable are you about effective altruism on a scale 1-5 where 1 = never heard of it and 5 = have read most content on main blogs',
+                                     'rows': 5})
+    )
+
+    deadline = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
+                                                             'placeholder': 'When is your deadline for having a topic chosen?'}))
+
+    anything_else = forms.CharField(
+        required=False,
+        widget=forms.Textarea(attrs={'class': 'form-control',
+                                     'placeholder': 'Anything else you would like to tell us?',
                                      'rows': 5})
     )
 

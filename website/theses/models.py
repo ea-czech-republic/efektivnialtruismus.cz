@@ -159,8 +159,9 @@ class ThesisCoachingIndexPage(Page):
         Career: {career},
         Requirements: {requirements},
         Preferences: {preferences},
-        Anything else: {anything_else},
         Knowledgeable: {read_above},
+        Deadline: {deadline},
+        Anything else: {anything_else},
         """.format(**data))
 
 class ThesisIndexPage(Page):
