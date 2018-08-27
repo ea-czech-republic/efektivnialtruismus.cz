@@ -99,16 +99,20 @@
                         <input type="hidden" name="{{ contactForm.thesis_title.html_name }}" value="{{ thesis_title }}"
                                class="form-control" id="{{ contactForm.thesis_title.id_for_label }}">
                     </div>
-                    <div class="form-group">
-                        <label for="deadline">Your thesis deadline:</label>
-                        <div class='input-group date'>
-                            {{ contactForm.deadline.errors }}
-                            {{ contactForm.deadline }}
-                            <span class="input-group-addon">
-                     <span class="fa fa-calendar"></span>
-                     </span>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input"
+                                       data-target="#datetimepicker1"
+                                       id="id_deadline" name="deadline" placeholder="Your thesis deadline"/>
+                                <div class="input-group-append" data-target="#datetimepicker1"
+                                     data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <div class="form-group">
                         {{ contactForm.content.errors }}
                         {{ contactForm.content }}
@@ -157,4 +161,14 @@
     </div>
     <div class="col-md-1"></div>
 </div>
+{% endblock %}
+
+{% block extra_js_2 %}
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+
+
+</script>
 {% endblock %}

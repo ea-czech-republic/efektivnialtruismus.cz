@@ -48,15 +48,15 @@
                     {{ contactForm.read_above.errors }}
                     {{ contactForm.read_above }}
                 </div>
-
-                <div class="form-group">
-                    <label for="deadline">Your thesis deadline:</label>
-                    <div class='input-group date'>
-                        {{ contactForm.deadline.errors }}
-                        {{ contactForm.deadline }}
-                        <span class="input-group-addon">
-                     <span class="fa fa-calendar"></span>
-                     </span>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
+                                   id="id_deadline" name="deadline" placeholder="Your thesis deadline"/>
+                            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -74,33 +74,11 @@
 </div>
 {% endblock %}
 
-{% block extra_js %}
-<script src="{% static " js/theses.js" %}"></script>
+{% block extra_js_2 %}
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
 
-<!--    <script type="text/javascript">
-        $('#coaching-form').submit(function (e) {
-            e.preventDefault();
-
-            var _data = $(this).serializeArray();
-            // _data.push({name: 'formSlug', value: 'simpleContactForm'});
-
-            $.ajax({
-                type: 'POST',
-                url: '{{ request.build_absolute_uri }}',
-                data: _data,
-                headers: {
-                    'X-CSRFToken': $("[name=csrfmiddlewaretoken]").val()
-                },
-                success: function (response) {
-                    console.log(response);
-                    $('#form-container').html(response['message']);
-                },
-                error: function (e, x, r) { // on error..
-                    $('#form-container').html('Och! We got an error!');
-                }
-            })
-        });
-    </script>-->
-
-
+</script>
 {% endblock %}
