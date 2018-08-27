@@ -358,3 +358,27 @@ class ThesisSimple(Page):
         context["contactForm"] = SimpleContactForm
         context["proposalForm"] = ProposalForm
         return context
+
+
+class ThesisFinishedIndexPage(Page):
+    body = get_standard_streamfield()
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('body'),
+    ]
+
+    def get_context(self, request):
+        context = super(ThesisFinishedIndexPage, self).get_context(request)
+        context['theses'] = ThesisFinishedPage.objects.all()
+        return context
+
+class ThesisFinishedPage(Page):
+    intro = get_standard_streamfield()
+    body = get_standard_streamfield()
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('intro'),
+        StreamFieldPanel('body'),
+    ]
+
+    parent_page_types = ['theses.ThesisFinishedIndexPage']
