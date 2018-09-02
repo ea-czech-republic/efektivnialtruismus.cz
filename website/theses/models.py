@@ -11,6 +11,8 @@ from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.embeds.blocks import EmbedBlock
+from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
@@ -25,6 +27,7 @@ from theses.views import conversion, coaching_conversion
 logger = logging.getLogger(__name__)
 
 THESES_MAILS = ['theses@efektivni-altruismus.cz']
+
 
 @register_snippet
 class ThesisProvider(models.Model):
@@ -164,6 +167,7 @@ class ThesisCoachingIndexPage(Page):
         Anything else: {anything_else},
         How did you found about the website: {find_out_website},
         """.format(**data))
+
 
 class ThesisIndexPage(Page):
     column_1 = get_standard_streamfield()
@@ -372,12 +376,40 @@ class ThesisFinishedIndexPage(Page):
         context['theses'] = ThesisFinishedPage.objects.all()
         return context
 
+
 class ThesisFinishedPage(Page):
-    intro = get_standard_streamfield()
     body = get_standard_streamfield()
+    about_author = models.CharField(max_length=200, blank=False)
+
+    pdf_thesis = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=False,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    pdf_thumbnail = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=False,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    author_pic = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=False,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('intro'),
+        DocumentChooserPanel('pdf_thesis'),
+        ImageChooserPanel('pdf_thumbnail'),
+        ImageChooserPanel('author_pic'),
+        FieldPanel('about_author'),
         StreamFieldPanel('body'),
     ]
 

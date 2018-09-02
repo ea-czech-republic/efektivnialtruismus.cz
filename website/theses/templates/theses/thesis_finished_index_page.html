@@ -1,5 +1,6 @@
 {% extends "theses/theses_base.html" %}
 {% load wagtailuserbar %}
+{% load wagtailimages_tags %}
 {% load wagtailcore_tags %}
 {% load static %}
 
@@ -13,25 +14,32 @@
 <div class="row">
     <div class="theses col-md-12">
         {% if theses %}
-        <h3>Finished ones below!</h3>
-        <div class="card-deck">
-            {% for thesis in theses %}
-            <div class="card card-outline-info">
-                <div class="card-header fixed-card-header-height">
-                    <h5 class="card-title m-0">
-                        <a href="{% pageurl thesis %}">
-                            {{ thesis.title }}
-                        </a>
-                    </h5>
-                </div>
-                <div class="card-block">
-                    <p class="card-text">
-                        {{ thesis.intro | safe | truncatewords_html:60 }}
-                    </p>
-                </div>
+        {% for thesis in theses %}
+        <div class="card card-outline-info mt-2">
+            <div class="card-header fixed-card-header-height">
+                <h5 class="card-title m-0">
+                    <a href="{% pageurl thesis %}">
+                        {{ thesis.title }}
+                    </a>
+                </h5>
             </div>
-            {% endfor %}
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="{{ thesis.pdf_thesis.url }}" target="_blank">
+                            {% image thesis.specific.pdf_thumbnail fill-200x200 class="p-3" %}
+                        </a>
+                    </div>
+                    <div class="col mr-3">
+                        <p class="card-text">
+                            {{ thesis.body | safe | truncatewords_html:80 }}
+                        </p>
+                    </div>
+                </div>
+
+            </div>
         </div>
+        {% endfor %}
         {% else %}
         nope
         {% endif %}
