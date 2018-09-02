@@ -109,7 +109,7 @@ class ThesisSearch(Page):
         context['theses'] = theses
         context['tags'] = tags
         context['selectedDiscipline'] = selected_discipline
-        context['disciplines'] = ThesisDiscipline.objects.all()
+        context['disciplines'] = ThesisDiscipline.objects.all().order_by('name')
 
         return context
 
