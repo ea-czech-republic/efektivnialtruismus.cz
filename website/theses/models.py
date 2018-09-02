@@ -162,6 +162,7 @@ class ThesisCoachingIndexPage(Page):
         Knowledgeable: {read_above},
         Deadline: {deadline},
         Anything else: {anything_else},
+        How did you found about the website: {find_out_website},
         """.format(**data))
 
 class ThesisIndexPage(Page):
@@ -266,6 +267,7 @@ class ThesisPage(Page):
         Contact email: {contact_email},
         Course and University: {course_and_university},
         Deadline: {deadline}
+        How did you found about the website: {find_out_website},
         
         --------Message--------
         {content}

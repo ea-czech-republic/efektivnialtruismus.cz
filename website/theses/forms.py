@@ -32,6 +32,13 @@ class InterestsForm(forms.Form):
     deadline = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
                                                              'placeholder': 'DD-MM-YYYY'}))
 
+    find_out_website = forms.CharField(
+        required=False,
+        widget=forms.Textarea(attrs={'class': 'form-control',
+                                     'placeholder': 'How did you find out about this website?',
+                                     'rows': 5})
+    )
+
     thesis_title = forms.CharField(required=False)
 
 
@@ -113,6 +120,13 @@ class CoachingForm(forms.Form):
 
     deadline = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control',
                                                              'placeholder': 'When is your deadline for having a topic chosen?'}))
+
+    find_out_website = forms.CharField(
+        required=False,
+        widget=forms.Textarea(attrs={'class': 'form-control',
+                                     'placeholder': 'How did you find out about this website?',
+                                     'rows': 5})
+    )
 
     anything_else = forms.CharField(
         required=False,
