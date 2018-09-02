@@ -17,11 +17,11 @@
     <div class="col-md-3">
         <div class="row">
             <div class="col card mb-3 mx-auto">
-                <a href="{{ thesis.pdf_thesis.url }}" target="_blank">
+                <a href="{{ page.pdf_thesis.url }}" target="_blank">
                     {% image page.specific.pdf_thumbnail fill-200x300 class="p-3" %}
                 </a>
                 <p class="mx-auto">
-                    <a href="{{ thesis.pdf_thesis.url }}" target="_blank">
+                    <a href="{{ page.pdf_thesis.url }}" target="_blank">
                         PDF download
                     </a>
                 </p>
@@ -29,9 +29,7 @@
         </div>
         <div class="row">
             <div class="col card mb-3 mx-auto">
-                <a href="{{ thesis.pdf_thesis.url }}" target="_blank">
-                    {% image page.specific.author_pic fill-200x200 class="p-3" %}
-                </a>
+                {% image page.specific.author_pic fill-200x200 class="p-3" %}
                 <p>
                     {{ page.about_author }}
                 </p>
