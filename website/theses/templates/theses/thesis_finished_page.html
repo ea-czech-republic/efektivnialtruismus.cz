@@ -31,7 +31,7 @@
             <div class="col card mb-3">
                 {% image page.specific.author_pic fill-200x200 class="p-3 mx-auto" %}
                 <p>
-                    {{ page.about_author }}
+                    {{ page.about_author | richtext }} 
                 </p>
             </div>
         </div>
