@@ -379,7 +379,7 @@ class ThesisFinishedIndexPage(Page):
 
 class ThesisFinishedPage(Page):
     body = get_standard_streamfield()
-    about_author = models.CharField(max_length=200, blank=False)
+    about_author = RichTextField()
 
     pdf_thesis = models.ForeignKey(
         'wagtaildocs.Document',
