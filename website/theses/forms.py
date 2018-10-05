@@ -91,7 +91,7 @@ class CoachingForm(forms.Form):
     requirements = forms.CharField(
         required=False,
         widget=forms.Textarea(attrs={'class': 'form-control',
-                                     'placeholder': 'Course requirements regarding final theses',
+                                     'placeholder': 'Any requirements we should be aware of? Do you have to use particular methodology? Do you have some budget available? Does your supervisor have some requirements (if you already have a supervisor)?',
                                      'rows': 5})
     )
 
