@@ -366,9 +366,11 @@ class ThesisSimple(Page):
 
 class ThesisFinishedIndexPage(Page):
     body = get_standard_streamfield()
+    footer = get_standard_streamfield()
 
     content_panels = Page.content_panels + [
         StreamFieldPanel('body'),
+        StreamFieldPanel('footer'),
     ]
 
     def get_context(self, request):
