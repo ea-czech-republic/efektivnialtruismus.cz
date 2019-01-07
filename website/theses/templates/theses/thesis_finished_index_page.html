@@ -25,18 +25,12 @@
             </div>
             <div class="card-block">
                 <div class="row">
-                    <div class="col-md-3">
-                        <a href="{{ thesis.pdf_thesis.url }}" target="_blank">
-                            {% image thesis.specific.pdf_thumbnail fill-200x200 class="p-3" %}
-                        </a>
-                    </div>
-                    <div class="col mr-3">
+                    <div class="col ml-3 mr-3">
                         <p class="card-text">
-                            {{ thesis.body | safe | truncatewords_html:80 }}
+                            {{ thesis.body | safe | truncatewords_html:15 }}
                         </p>
                     </div>
                 </div>
-
             </div>
         </div>
         {% endfor %}

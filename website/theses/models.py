@@ -104,14 +104,17 @@ class ThesisSearch(Page):
             tags_qs = theses.values('tags').distinct()
             tags = ThesisPage.tags.filter(pk__in=[x['tags'] for x in tags_qs])
             selected_discipline = discipline_name
+            selected_discipline_description = discipline.description
         else:
             theses = None
             tags = None
             selected_discipline = None
+            selected_discipline_description = None
 
         context['theses'] = theses
         context['tags'] = tags
         context['selectedDiscipline'] = selected_discipline
+        context['selectedDisciplineDescription'] = selected_discipline_description
         context['disciplines'] = ThesisDiscipline.objects.all().order_by('name')
 
         return context
