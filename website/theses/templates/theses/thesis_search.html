@@ -35,8 +35,14 @@
         <h3 id="Interest">Pick area of interest</h3>
         <div class="card mb-3" style="border-color: #17a2b8;">
             <div class="card-body">
-                <p class="card-text">Why do we focus specifically on these areas? <a
-                        href="http://effectivethesis.com/how-choose-thesis/#impact">Learn more here</a></p>
+                <p class="card-text m-0">
+                    {% if selectedDisciplineDescription %}
+                    {{ selectedDisciplineDescription | safe }}
+                    {% else %}
+                    Why do we focus specifically on these areas?
+                    <a href="http://effectivethesis.com/how-choose-thesis/#impact">Learn more here</a>
+                    {% endif %}
+                </p>
             </div>
         </div>
         {% for tag in tags %}
@@ -90,6 +96,8 @@
         });
 
         $('label.btn[for="{{ selectedDiscipline }}"').css('background-color', '#449d44');
+
+
 
 
 
