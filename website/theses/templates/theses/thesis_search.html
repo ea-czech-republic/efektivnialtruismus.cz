@@ -47,43 +47,6 @@
                 </p>
             </div>
         </div>
-        {% for tag in tags %}
-        <input type="checkbox" class="badgebox" name="fl-colour" value="{{ tag | slugify }}"
-               id="{{ tag | slugify }}"/>
-        <label class="btn btn-info tag-select" for="{{ tag | slugify }}">
-            {{ tag }}
-        </label>
-        {% endfor %}
-        {% endif %}
-    </div>
-</div>
-
-<div class="row">
-    {% if theses %}
-    <div class="theses col-md-12" id="thesis-search-result">
-        <h3>Available theses</h3>
-        <div class="card-deck">
-            {% for thesis in theses %}
-            <div class="card thesis ml-0 card-outline-info my-2"
-                 data-category="{% for tag in thesis.tags.all %}{{ tag | slugify }} {% endfor %}">
-                <div class="card-header fixed-card-header-height pt-1 pb-1">
-                    <h5 class="card-title m-0">
-                        <a href="{% pageurl thesis %}">
-                            {{ thesis.title }}
-                        </a>
-                    </h5>
-                </div>
-                <div class="card-block pt-0 pb-0">
-                    <p class="card-text">
-                        {{ thesis.description | safe | truncatewords_html:30 }}
-                    </p>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
-</div>
 {% endblock %}
 
 {% block extra_js_2 %}
