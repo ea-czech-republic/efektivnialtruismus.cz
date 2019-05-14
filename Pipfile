@@ -5,6 +5,8 @@ verify_ssl = true
 
 [dev-packages]
 black = "==19.3b0"
+django-extensions = "*"
+django-debug-toolbar = "*"
 
 [packages]
 wagtail = "==2.0"
@@ -12,5 +14,3 @@ wagtailmenus = "==2.7"
 sendgrid-django = "==4.1.0"
 gunicorn = "==19.7.1"
 django-disqus = "==0.5"
-django-extensions = "*"
-django-debug-toolbar = "*"

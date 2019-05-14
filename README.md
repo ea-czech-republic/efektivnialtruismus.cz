@@ -1,15 +1,13 @@
-# efektivni-altruismus.cz
+# effectivethesis.com
 
-This is a repository for page of efektivni-altruismus.cz
-
-# Adding content and structure of a website
-[See Editors part of wiki](https://github.com/ea-czech-republic/efektivnialtruismus.cz/wiki/Editors-(Blog))
+This is a repository for page of effectivethesis.com
 
 # Development
-[See Development part of wiki](https://github.com/ea-czech-republic/efektivnialtruismus.cz/wiki/Development)
+Use `docker-compose`:
 
-# Production and deploy
-[See production and deploy part of wiki](https://github.com/ea-czech-republic/efektivnialtruismus.cz/wiki/Deployment-and-production)
+```
+docker-compose up
+```
 
-# Editing theses
-[See theses admin part of wiki](https://github.com/ea-czech-republic/efektivnialtruismus.cz/wiki/Theses-admin)
+a new user `admin` with password `pass` is created. Go to
+`localhost:8000/admin` to access the administration.

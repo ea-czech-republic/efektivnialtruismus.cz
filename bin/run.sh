@@ -1,20 +1,34 @@
-#!/user/bin/env sh
+#!/usr/bin/env sh
 set -e
 
 # Build the command line (note that sh shell does not have proper arrays)
-if [ "${APP_DEBUG_MODE}" = "True" ]; then
+if [ "${DEBUG}" = "True" ]; then
     RELOAD="--reload "
 else
     RELOAD=""
 fi
 
+python website/manage.py migrate
+
+cat <<EOF | python website/manage.py shell
+from django.contrib.auth import get_user_model
+
+User = get_user_model()  # get the currently active user model,
+
+print('\n\n')
+
+if User.objects.filter(username='admin').exists():
+    print('admin user exists, not creating...')
+else:
+    User.objects.create_superuser('admin', 'admin@example.com', 'pass')
+    print('Created admin user with password pass')
+
+print('\n\n')
+
+EOF
+
 exec gunicorn eacr.wsgi \
     --bind 0.0.0.0:8000 \
     --name eacr-app-server \
-    --workers "${GUNICORN_WORKER_COUNT}" \
-    --timeout "${GUNICORN_WORKER_TIMEOUT}" \
-    --max-requests "${GUNICORN_MAX_REQUESTS}" \
-    --chdir "$(pwd)"/squad \
-    --log-config "$(pwd)"/conf/gunicorn-logging.conf \
-    --access-logformat "{'method': '%(m)s', 'url': '%(U)s', 'status': '%(s)s', 'took': %(L)s, 'remote': '%(h)s', 'size': %(b)s}" \
+    --chdir "$(pwd)"/website \
     ${RELOAD}
