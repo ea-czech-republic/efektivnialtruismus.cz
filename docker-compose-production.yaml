@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  app:
+    image: eacr-app:1
+    env_file:
+      - bin/production.env
+    volumes:
+      - db-data:/usr/src/app/data/
+      - static-data:/usr/src/app/static/
+      - media-data:/usr/src/app/media/

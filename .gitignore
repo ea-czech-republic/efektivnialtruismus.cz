@@ -9,3 +9,5 @@ run
 bin/beta-env.sh
 bin/change_perms.sh
 venv
+bin/production.env
+bin/beta.env
