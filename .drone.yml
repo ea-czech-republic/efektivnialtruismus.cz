@@ -1,0 +1,9 @@
+pipeline:
+  build-dev:
+    image: docker
+    commands:
+      - docker build -t local/eacr:${DRONE_COMMIT_SHA:0:7}-dev .
+  linter:
+    image: python:alpine
+    commands:
+      - echo "hey"
