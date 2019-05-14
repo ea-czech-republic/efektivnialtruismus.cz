@@ -1,6 +1,6 @@
 pipeline:
   build-dev:
-    image: docker
+    image: plugins/docker
     commands:
       - docker build -t local/eacr:${DRONE_COMMIT_SHA:0:7}-dev .
   linter:
