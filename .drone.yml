@@ -1,6 +1,11 @@
 pipeline:
   build-dev:
     image: plugins/docker
+    repo: czea/effective-thesis
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
   linter:
     image: python:alpine
     commands:
