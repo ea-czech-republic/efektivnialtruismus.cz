@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   app:
-    image: eacr-app:1
+    image: index.docker.io/czea/effective-thesis:${TAG:?err}
     env_file:
       - bin/production.env
     volumes:

@@ -3,7 +3,7 @@ version: "3.4"
 services:
   app:
     build: .
-    image: eacr-app
+    image: index.docker.io/czea/effective-thesis
     environment:
       PYTHONDONTWRITEBYTECODE: "no-write"
       DEBUG: "True"
@@ -24,6 +24,7 @@ services:
     entrypoint: ["/usr/src/app/bin/run.sh"]
     expose:
       - "8000"
+    restart: unless-stopped
   nginx:
     image: nginx:alpine
     ports:
@@ -33,6 +34,7 @@ services:
       - static-data:/data/static/
     depends_on:
       - app
+    restart: unless-stopped
 volumes:
   db-data:
   static-data:
