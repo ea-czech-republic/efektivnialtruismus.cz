@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 COPY Pipfile Pipfile.lock ./
 
 RUN pip install --no-cache-dir --upgrade pip pipenv && \
-    pipenv install --system --deploy && \
+    pipenv install --system --deploy
 
 
 COPY website ./website
