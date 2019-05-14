@@ -25,7 +25,6 @@ INTERNAL_IPS = ['127.0.0.1']
 
 INSTALLED_APPS = [
     'home',
-    'search',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -54,9 +53,6 @@ INSTALLED_APPS = [
     'disqus',
 
     'wagtailmenus',
-    'blog',
-    'simple',
-    'single',
     'theses',
     'theses.tblog',
 
