@@ -3,7 +3,7 @@ version: "3.4"
 services:
   app:
     build: .
-    image: index.docker.io/czea/effective-thesis
+    image: gcr.io/efektivni-altruismus/effective-thesis
     environment:
       PYTHONDONTWRITEBYTECODE: "no-write"
       DEBUG: "True"

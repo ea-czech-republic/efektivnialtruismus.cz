@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   app:
-    image: index.docker.io/czea/effective-thesis:${TAG:?err}
+    image: gcr.io/efektivni-altruismus/effective-thesis:${IMAGE_TAG:?missingImageTag}
     env_file:
       - bin/production.env
     volumes:
