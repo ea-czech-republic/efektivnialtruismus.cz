@@ -1,14 +1,16 @@
 pipeline:
   build-dev:
-    image: plugins/docker
-    settings:
-      repo: czea/et
-      registry: index.docker.io
-      tags: latest
+    image: docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
+    commands:
+      - ls
+      - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin index.docker.io
   linter:
     image: python:alpine
     commands:
