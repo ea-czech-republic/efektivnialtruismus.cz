@@ -3,6 +3,7 @@ set -ex
 
 [[ -z $IMAGE_TAG ]] && echo "You must pass IMAGE_TAG var" && exit 1
 
+# this was done by git clone https://github.com/ea-czech-republic/efektivnialtruismus.cz.git
 cd /var/server/efektivnialtruismus.cz
 git pull
 
@@ -18,5 +19,6 @@ docker run --rm \
     -f docker-compose.yaml \
     -f dc-production.yaml \
     up \
+    -d \
     --force-recreate \
     app
