@@ -1,23 +1,14 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
+
+  - name: 'gcr.io/cloud-builders/gcloud'
     args:
-      - '-c'
-      - 'docker pull gcr.io/$PROJECT_ID/$_IMAGE_NAME:latest || exit 0'
-  - name: 'gcr.io/cloud-builders/docker'
-    args: [
-      'build',
-      '-t', 'gcr.io/$PROJECT_ID/$_IMAGE_NAME:latest',
-      '--cache-from', 'gcr.io/$PROJECT_ID/$_IMAGE_NAME:latest',
-      '.'
-    ]
-  - name: 'gcr.io/cloud-builders/docker'
-    args: [
-      'build',
-      '-t', 'gcr.io/$PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA',
-      '--cache-from', 'gcr.io/$PROJECT_ID/$_IMAGE_NAME:latest',
-      '.'
-    ]
+      - compute
+      - --project
+      - "efektivni-altruismus"
+      - ssh
+      - --zone
+      - "europe-west1-c"
+      - "eacr-main"
 images:
   - 'gcr.io/$PROJECT_ID/$_IMAGE_NAME:latest'
   - 'gcr.io/$PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA'
