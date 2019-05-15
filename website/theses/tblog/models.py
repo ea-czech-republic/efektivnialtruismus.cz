@@ -20,7 +20,7 @@ class ThesesBlogIndexPage(Page):
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super(ThesesBlogIndexPage, self).get_context(request)
-        blogpages = self.get_children().live().order_by("-blogpage__date")
+        blogpages = self.get_children().live().order_by("-thesesarticlepage__date")
         context["blogpages_"] = blogpages
         return context
 
