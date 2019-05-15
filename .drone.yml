@@ -2,7 +2,7 @@ pipeline:
   build-dev:
     image: plugins/docker
     settings:
-      repo: czea/effective-thesis
+      repo: czea/et
       registry: index.docker.io
       tags: latest
       username:
