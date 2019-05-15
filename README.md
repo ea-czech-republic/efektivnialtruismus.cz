@@ -28,6 +28,8 @@ gcloud compute \
     --command "env IMAGE_TAG=FILL_IN_HERE sh /var/server/efektivnialtruismus.cz/bin/deploy.sh"
 ```
 
+## Builds
+https://console.cloud.google.com/cloud-build/builds?project=efektivni-altruismus&authuser=2&supportedpurview=project
 
 # Migration
 To dump and upload the db:

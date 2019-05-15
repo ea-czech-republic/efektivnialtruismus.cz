@@ -8,7 +8,7 @@ black = "==19.3b0"
 
 [packages]
 wagtail = "==2.2"
-wagtailmenus = "==2.7"
+wagtailmenus = "*"
 sendgrid-django = "==4.1.0"
 gunicorn = "*"
 django-disqus = "==0.5"
