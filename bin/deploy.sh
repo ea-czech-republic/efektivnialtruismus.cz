@@ -5,6 +5,10 @@ set -ex
 
 cd /var/server/efektivnialtruismus.cz
 git pull
+
+# because docker-compose does not have credentials from host
+docker pull gcr.io/efektivni-altruismus/effective-thesis:${IMAGE_TAG}
+
 docker run --rm \
     -e IMAGE_TAG=$IMAGE_TAG \
     -v /var/run/docker.sock:/var/run/docker.sock \
@@ -12,7 +16,7 @@ docker run --rm \
     -w="$PWD" \
     docker/compose:1.24.0 \
     -f docker-compose.yaml \
-    -f docker-compose-production.yaml \
+    -f dc-production.yaml \
     up \
     --force-recreate \
     app

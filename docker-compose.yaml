@@ -2,22 +2,9 @@ version: "3.4"
 
 services:
   app:
-    build: .
-    image: gcr.io/efektivni-altruismus/effective-thesis
-    environment:
-      PYTHONDONTWRITEBYTECODE: "no-write"
-      DEBUG: "True"
-      ALLOWED_HOSTS: "localhost"
-      DB_NAME: "dev-eacr.sqlite3"
-      WAGTAIL_SITE_NAME: "localhost"
 
-      # Needed on production
-      # SENDGRID_API_KEY: ""
-      # SECRET_KEY: ""
-      # EMAIL_BACKEND: "sgbackend.SendGridBackend"
-      # DISQUS_API_KEY: ""
+    image: gcr.io/efektivni-altruismus/effective-thesis
     volumes:
-      - .:/usr/src/app
       - db-data:/usr/src/app/data/
       - static-data:/usr/src/app/static/
       - media-data:/usr/src/app/media/

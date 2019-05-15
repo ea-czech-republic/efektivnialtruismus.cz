@@ -1,0 +1,14 @@
+version: "3.4"
+
+services:
+  app:
+    build: .
+    image: gcr.io/efektivni-altruismus/effective-thesis
+    environment:
+      PYTHONDONTWRITEBYTECODE: "no-write"
+      DEBUG: "True"
+      ALLOWED_HOSTS: "localhost"
+      DB_NAME: "dev-eacr.sqlite3"
+      WAGTAIL_SITE_NAME: "localhost"
+    volumes:
+      - .:/usr/src/app
