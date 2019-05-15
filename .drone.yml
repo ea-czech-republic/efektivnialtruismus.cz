@@ -1,7 +1,7 @@
 pipeline:
   build-dev:
     image: plugins/docker
-    repo: czea/effective-thesis
+    repo: index.docker.io/czea/effective-thesis
     registry: index.docker.io
     username:
       from_secret: docker_username
