@@ -2,7 +2,6 @@ version: "3.4"
 
 services:
   app:
-
     image: gcr.io/efektivni-altruismus/effective-thesis
     volumes:
       - db-data:/usr/src/app/data/
@@ -12,6 +11,8 @@ services:
     expose:
       - "8000"
     restart: unless-stopped
+    depends_on:
+      - nginx
   nginx:
     image: nginx:alpine
     ports:
