@@ -4,6 +4,7 @@ pipeline:
     settings:
       repo: czea/effective-thesis
       registry: index.docker.io
+      tags: latest
       username:
         from_secret: docker_username
       password:
