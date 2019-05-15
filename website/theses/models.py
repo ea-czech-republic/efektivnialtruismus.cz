@@ -11,7 +11,6 @@ from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
 from wagtail.embeds.blocks import EmbedBlock
-from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -21,7 +20,7 @@ from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from django import forms
 from wagtail.snippets.models import register_snippet
 
-from theses.forms import ProposalForm, SimpleContactForm
+from theses.forms import SimpleContactForm
 from theses.views import conversion, coaching_conversion
 
 logger = logging.getLogger(__name__)
@@ -98,22 +97,12 @@ class ThesisSearch(Page):
         if "discipline" in request.GET:
             discipline_name = request.GET["discipline"]
             discipline = ThesisDiscipline.objects.get(name=discipline_name)
-            theses = (
-                ThesisPage.objects.filter(discipline=discipline).live().order_by("?")
-            )
-            # filter only those from the list above
-            tags_qs = theses.values("tags").distinct()
-            tags = ThesisPage.tags.filter(pk__in=[x["tags"] for x in tags_qs])
             selected_discipline = discipline_name
             selected_discipline_description = discipline.description
         else:
-            theses = None
-            tags = None
             selected_discipline = None
             selected_discipline_description = None
 
-        context["theses"] = theses
-        context["tags"] = tags
         context["selectedDiscipline"] = selected_discipline
         context["selectedDisciplineDescription"] = selected_discipline_description
         context["disciplines"] = ThesisDiscipline.objects.all().order_by("name")
@@ -335,25 +324,6 @@ class ThesisSimple(Page):
             )
         )
 
-    @staticmethod
-    def build_mail_content_propose(data):
-        return dedent(
-            """
-        Name: {contact_name},
-        Contact email: {contact_email},
-        Organisation: {organisation},
-        
-        Title: {title},
-        Description: {description},
-        Why is it important: {why_important},
-        Sources: {sources},
-        --------Message--------
-        {message}
-        """.format(
-                **data
-            )
-        )
-
     def serve(self, request):
         if request.method == "POST":
             form_slug = request.POST.get("formSlug")
@@ -371,24 +341,7 @@ class ThesisSimple(Page):
                     return JsonResponse(
                         {
                             "message": "Thank you for your interest! "
-                            "We will let get back to you soon!"
-                        }
-                    )
-            elif "proposalForm" == form_slug:
-                form = ProposalForm(request.POST)
-                if form.is_valid():
-                    form.clean()
-                    send_mail(
-                        "Contacting using Contact Form",
-                        self.build_mail_content_propose(form.cleaned_data),
-                        THESES_MAILS,  # recipient email
-                        form.cleaned_data["contact_email"],
-                    )
-
-                    return JsonResponse(
-                        {
-                            "message": "Thank you for the proposal! "
-                            "We will let get back to you soon!"
+                                       "We will let get back to you soon!"
                         }
                     )
         else:
@@ -397,7 +350,6 @@ class ThesisSimple(Page):
     def get_context(self, request):
         context = super(ThesisSimple, self).get_context(request)
         context["contactForm"] = SimpleContactForm
-        context["proposalForm"] = ProposalForm
         return context
 
 
