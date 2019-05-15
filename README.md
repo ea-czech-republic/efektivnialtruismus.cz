@@ -19,6 +19,9 @@ the container, same for the `db`.
 The deployment is mostly done in the `deploy.sh` script executed on
 the remote machine. Everything is deployed using `docker-compose`. 
 
+Fill in a correct IMAGE_TAG. That is a short hash of the commit (that's
+how images are tagged).
+
 ```
 gcloud compute \
     --project "efektivni-altruismus" \
@@ -29,7 +32,7 @@ gcloud compute \
 ```
 
 ## Builds
-https://console.cloud.google.com/cloud-build/builds?project=efektivni-altruismus&authuser=2&supportedpurview=project
+[Google Cloud Builds](https://console.cloud.google.com/cloud-build/builds?project=efektivni-altruismus&authuser=2&supportedpurview=project)
 
 # Migration
 To dump and upload the db:
