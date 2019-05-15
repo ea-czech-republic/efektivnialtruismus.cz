@@ -24,12 +24,6 @@ class ThesesBlogIndexPage(Page):
         context["blogpages"] = blogpages
         return context
 
-    def get_fields(self):
-        return [
-            (field.name, field.value_to_string(self))
-            for field in ThesesBlogIndexPage._meta.fields
-        ]
-
     def cur_site_id(self):
         return "{}".format(self.get_url_parts()[0])
 
@@ -73,12 +67,6 @@ class ThesesArticlePage(Page):
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel("feed_image"),
     ]
-
-    def get_fields(self):
-        return [
-            (field.name, field.value_to_string(self))
-            for field in ThesesArticlePage._meta.fields
-        ]
 
     def cur_site_id(self):
         return "{}".format(self.get_url_parts()[0])
