@@ -1,6 +1,6 @@
 pipeline:
   build-dev:
-    image: plugins/docker:alpine
+    image: docker:alpine
     secrets: [docker_username, docker_password]
     commands:
       - ls
