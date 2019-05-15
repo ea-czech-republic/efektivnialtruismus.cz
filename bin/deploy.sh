@@ -20,5 +20,4 @@ docker run --rm \
     -f dc-production.yaml \
     up \
     -d \
-    --force-recreate \
-    app
+    --force-recreate
