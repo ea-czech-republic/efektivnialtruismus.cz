@@ -2,8 +2,13 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
-      - auth
-      - list
+      - compute
+      - --project
+      - "efektivni-altruismus"
+      - ssh
+      - --zone
+      - "europe-west1-c"
+      - "eacr-main"
 images:
   - 'gcr.io/$PROJECT_ID/$_IMAGE_NAME:latest'
   - 'gcr.io/$PROJECT_ID/$_IMAGE_NAME:$SHORT_SHA'
