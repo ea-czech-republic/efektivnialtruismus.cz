@@ -1,12 +1,11 @@
 pipeline:
   build-dev:
-    image: plugins/docker
-    repo: index.docker.io/czea/effective-thesis
-    registry: index.docker.io
-    username:
-      from_secret: docker_username
-    password:
-      from_secret: docker_password
+    image: plugins/docker:alpine
+    secrets: [docker_username, docker_password]
+    commands:
+      - ls
+      - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin index.docker.io
+      - docker build .
   linter:
     image: python:alpine
     commands:
