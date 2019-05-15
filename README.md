@@ -43,5 +43,5 @@ Media:
 scp -r freevps:/home/comus/www/dan/efektivnialtruismus/deploy/production/files/website/media media-bckp
 gcloud compute --project "efektivni-altruismus" scp --zone "europe-west1-c" media-bckp eacr-main:~/media-bckp
 gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west1-c" "eacr-main" \
-    --command 'docker cp media-bckp efektivnialtruismuscz_app_1:"/usr/src/app/media"'
+    --command 'docker cp media-bckp/* efektivnialtruismuscz_app_1:"/usr/src/app/media"'
 ```
