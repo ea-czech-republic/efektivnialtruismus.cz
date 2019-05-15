@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "theses.tblog",
 ]
 if DEBUG:
-    INSTALLED_APPS += ['debug_toolbar', "django_extensions", ]
+    INSTALLED_APPS += ["debug_toolbar", "django_extensions"]
 
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ MIDDLEWARE = [
 ]
 
 if DEBUG:
-    MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE
+    MIDDLEWARE = ["debug_toolbar.middleware.DebugToolbarMiddleware"] + MIDDLEWARE
 
 ROOT_URLCONF = "eacr.urls"
 
@@ -85,8 +85,11 @@ WSGI_APPLICATION = "eacr.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(os.path.dirname(BASE_DIR), 'data',
-                             os.environ.get("DB_NAME", "dev-eacr.sqlite3")),
+        "NAME": os.path.join(
+            os.path.dirname(BASE_DIR),
+            "data",
+            os.environ.get("DB_NAME", "dev-eacr.sqlite3"),
+        ),
     }
 }
 

@@ -21,11 +21,8 @@ class ThesesBlogIndexPage(Page):
         # Update context to include only published posts, ordered by reverse-chron
         context = super(ThesesBlogIndexPage, self).get_context(request)
         blogpages = self.get_children().live().order_by("-blogpage__date")
-        context["blogpages"] = blogpages
+        context["blogpages_"] = blogpages
         return context
-
-    def cur_site_id(self):
-        return "{}".format(self.get_url_parts()[0])
 
 
 class ThesesArticlePage(Page):
@@ -67,6 +64,3 @@ class ThesesArticlePage(Page):
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
         ImageChooserPanel("feed_image"),
     ]
-
-    def cur_site_id(self):
-        return "{}".format(self.get_url_parts()[0])
