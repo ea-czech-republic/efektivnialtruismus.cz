@@ -27,3 +27,21 @@ gcloud compute \
     "eacr-main" \
     --command "env IMAGE_TAG=FILL_IN_HERE sh /var/server/efektivnialtruismus.cz/bin/deploy.sh"
 ```
+
+
+# Migration
+To dump and upload the db:
+```
+scp freevps:/home/comus/www/dan/efektivnialtruismus/deploy/production/files/website/production-eacr.sqlite3 .
+gcloud compute --project "efektivni-altruismus" scp --zone "europe-west1-c" production-eacr.sqlite3 eacr-main:~
+gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west1-c" "eacr-main" \
+    --command 'docker cp production-eacr.sqlite3 efektivnialtruismuscz_app_1:"/usr/src/app/data/beta-eacr.sqlite3"'
+```
+
+Media:
+```
+scp -r freevps:/home/comus/www/dan/efektivnialtruismus/deploy/production/files/website/media media-bckp
+gcloud compute --project "efektivni-altruismus" scp --zone "europe-west1-c" media-bckp eacr-main:~/media-bckp
+gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west1-c" "eacr-main" \
+    --command 'docker cp media-bckp efektivnialtruismuscz_app_1:"/usr/src/app/media"'
+```
