@@ -15,26 +15,9 @@ urlpatterns = [
     url(r"^admin/", include(wagtailadmin_urls)),
     url(r"^documents/", include(wagtaildocs_urls)),
     url(r"^theses/", include(theses_urls)),
-    # For anything not caught by a more specific rule above, hand over to
-    # Wagtail's page serving mechanism. This should be the last pattern in
-    # the list:
     url(r"", include(wagtail_urls)),
-    # Alternatively, if you want Wagtail pages to be served from a subpath
-    # of your site, rather than the site root:
-    #    url(r'^pages/', include(wagtail_urls)),
 ]
 
-# Still not working :-(
-# had to remove '' on the beginning and changing "search_views.search" from 'views.search...'
-# from django.conf.urls.i18n import i18n_patterns
-# urlpatterns += i18n_patterns(
-#     # These URLs will have /<language_code>/ appended to the beginning
-#
-#     url(r'^search/$', search_views.search, name='search'),
-#    # url(r'^documents/', include(wagtaildocs_urls)),
-#
-#     url(r'', include(wagtail_urls)),
-# )
 
 if settings.DEBUG:
     from django.conf.urls.static import static
