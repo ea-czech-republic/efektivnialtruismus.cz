@@ -23,25 +23,23 @@ Fill in a correct IMAGE_TAG. That is a short hash of the commit (that's
 how images are tagged).
 
 ```
-gcloud compute \
-    --project "efektivni-altruismus" \
-    ssh \ 
-    --zone "europe-west3-c" \
-    "eacr-main" \
-    --command "env IMAGE_TAG=FILL_IN_HERE sh /var/server/efektivnialtruismus.cz/bin/deploy.sh"
+gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west3-c" "eacr-main-2" \
+    --command "env IMAGE_TAG=FILL-IN-HERE sh /var/server/efektivnialtruismus.cz/bin/deploy.sh"
 ```
 
 ## Builds
 [Google Cloud Builds](https://console.cloud.google.com/cloud-build/builds?project=efektivni-altruismus&authuser=2&supportedpurview=project)
 
-# Migration
+# Migration from freevps
 To dump and upload the db:
 ```
 scp freevps:/home/comus/www/dan/efektivnialtruismus/deploy/production/files/website/production-eacr.sqlite3 .
 gcloud compute --project "efektivni-altruismus" scp --zone "europe-west3-c" production-eacr.sqlite3 eacr-main-2:~
 gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west3-c" "eacr-main-2" \
-    --command 'docker cp production-eacr.sqlite3 efektivnialtruismuscz_app_1:"/usr/src/app/data/beta-eacr.sqlite3"'
+    --command 'docker cp production-eacr.sqlite3 efektivnialtruismuscz_app_1:"/usr/src/app/data/production-et.sqlite3"'
 ```
+after a new fresh deploy, I have to retrigger `docker exec efektivnialtruismuscz_app_1 python website/manage.py migrate`
+because I copied the database *after* the migration command when the container starts.
 
 Media:
 ```
