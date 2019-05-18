@@ -6,7 +6,7 @@ This is a repository for page of effectivethesis.com
 Use `docker-compose`:
 
 ```
-docker-compose up
+docker-compose -f docker-compose.yaml -f dc-dev.yaml up
 ```
 
 a new user `admin` with password `pass` is created. Go to
