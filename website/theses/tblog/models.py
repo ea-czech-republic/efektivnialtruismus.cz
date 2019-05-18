@@ -15,66 +15,52 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 class ThesesBlogIndexPage(Page):
     intro = RichTextField(blank=True)
 
-    content_panels = Page.content_panels + [
-        FieldPanel('intro', classname="full")
-    ]
+    content_panels = Page.content_panels + [FieldPanel("intro", classname="full")]
 
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super(ThesesBlogIndexPage, self).get_context(request)
-        blogpages = self.get_children().live().order_by('-blogpage__date')
-        context['blogpages'] = blogpages
+        blogpages = self.get_children().live().order_by("-thesesarticlepage__date")
+        context["blogpages_"] = blogpages
         return context
-
-    def get_fields(self):
-        return [(field.name, field.value_to_string(self)) for field in ThesesBlogIndexPage._meta.fields]
-
-    def cur_site_id(self):
-        return "{}".format(self.get_url_parts()[0])
-
 
 
 class ThesesArticlePage(Page):
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     author = models.CharField(max_length=50, blank=False)
-    body = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
-        ('paragraph', blocks.RichTextBlock()),
-        ('image', ImageChooserBlock()),
-        ('embed', EmbedBlock()),
-        ('rawHtml', blocks.RawHTMLBlock()),
-
-    ])
+    body = StreamField(
+        [
+            ("heading", blocks.CharBlock(classname="full title")),
+            ("paragraph", blocks.RichTextBlock()),
+            ("image", ImageChooserBlock()),
+            ("embed", EmbedBlock()),
+            ("rawHtml", blocks.RawHTMLBlock()),
+        ]
+    )
 
     feed_image = models.ForeignKey(
-        'wagtailimages.Image',
+        "wagtailimages.Image",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
 
     search_fields = Page.search_fields + [
-        index.SearchField('intro'),
-        index.SearchField('body'),
-        index.SearchField('author'),
+        index.SearchField("intro"),
+        index.SearchField("body"),
+        index.SearchField("author"),
     ]
 
     content_panels = Page.content_panels + [
-        FieldPanel('date'),
-        FieldPanel('author'),
-        FieldPanel('intro'),
-        StreamFieldPanel('body'),
+        FieldPanel("date"),
+        FieldPanel("author"),
+        FieldPanel("intro"),
+        StreamFieldPanel("body"),
     ]
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('feed_image'),
+        ImageChooserPanel("feed_image"),
     ]
-
-    def get_fields(self):
-        return [(field.name, field.value_to_string(self)) for field in ThesesArticlePage._meta.fields]
-
-    def cur_site_id(self):
-        return "{}".format(self.get_url_parts()[0])
