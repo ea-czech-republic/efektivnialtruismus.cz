@@ -2,6 +2,7 @@
 set -ex
 
 [[ -z $IMAGE_TAG ]] && echo "You must pass IMAGE_TAG var" && exit 1
+[[ -z $ENVIRONMENT ]] && echo "You must pass ENVIRONMENT var" && exit 1
 
 # this was done by git clone https://github.com/ea-czech-republic/efektivnialtruismus.cz.git
 cd /var/server/efektivnialtruismus.cz
@@ -17,7 +18,7 @@ docker run --rm \
     -w="$PWD" \
     docker/compose:1.24.0 \
     -f docker-compose.yaml \
-    -f dc-production.yaml \
+    -f dc-$ENVIRONMENT.yaml \
     up \
     -d \
     --force-recreate

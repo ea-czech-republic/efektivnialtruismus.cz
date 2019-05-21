@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  app:
+    image: gcr.io/efektivni-altruismus/effective-thesis:${IMAGE_TAG:?missingImageTag}
+    env_file:
+      - bin/beta.env
+    volumes:
+      - db-data-beta:/usr/src/app/data/
+      - static-data-beta:/usr/src/app/static/
+      - media-data-beta:/usr/src/app/media/
