@@ -28,7 +28,7 @@ print('\n\n')
 EOF
 
 exec gunicorn eacr.wsgi \
-    --bind 0.0.0.0:8001 \
+    --bind 0.0.0.0:8000 \
     --name eacr-app-server \
     --chdir "$(pwd)"/website \
     ${RELOAD}

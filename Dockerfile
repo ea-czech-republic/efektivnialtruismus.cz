@@ -5,6 +5,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY Pipfile Pipfile.lock ./
 COPY bin/run.sh bin/run.sh
+COPY bin/run-beta.sh bin/run-beta.sh
 
 RUN pip install --no-cache-dir --upgrade pip pipenv && \
     pipenv install --system --deploy

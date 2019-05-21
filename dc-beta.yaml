@@ -3,9 +3,17 @@ version: "3.4"
 services:
   app-beta:
     image: gcr.io/efektivni-altruismus/effective-thesis:${IMAGE_TAG:?missingImageTag}
+    build: .
+    entrypoint: ["/usr/src/app/bin/run-beta.sh"]
+    expose:
+      - "8001"
     env_file:
       - bin/beta.env
     volumes:
       - db-data-beta:/usr/src/app/data/
       - static-data-beta:/usr/src/app/static/
       - media-data-beta:/usr/src/app/media/
+volumes:
+    db-data-beta:
+    static-data-beta:
+    media-data-beta:
