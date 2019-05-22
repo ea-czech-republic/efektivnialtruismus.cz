@@ -14,6 +14,7 @@ docker pull czea/effective-thesis:${IMAGE_TAG}
 
 docker run --rm \
     -e IMAGE_TAG=$IMAGE_TAG \
+    -e ENVIRONMENT=$ENVIRONMENT \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v "$PWD:$PWD" \
     -w="$PWD" \
