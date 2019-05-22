@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   app:
-    image: gcr.io/efektivni-altruismus/effective-thesis:${IMAGE_TAG:?missingImageTag}
+    image: czea/effective-thesis:${IMAGE_TAG:?missingImageTag}
     env_file:
       - bin/${ENVIRONMENT:?missingEnvironment}.env
     volumes:

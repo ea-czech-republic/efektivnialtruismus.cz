@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   app:
-    image: gcr.io/efektivni-altruismus/effective-thesis
+    image: czea/effective-thesi
     volumes:
       - db-data:/usr/src/app/data/
       - static-data:/usr/src/app/static/
