@@ -28,14 +28,14 @@ jobs:
           name: Deploy Over SSH
           command: |
             ssh -o "StrictHostKeyChecking=no" dan@35.207.130.87 "env ENVIRONMENT=beta IMAGE_TAG=$CIRCLE_SHA1 sh /var/server/efektivnialtruismus.cz/bin/deploy.sh"
-  deployme-production:
+  deployme-production-master:
     docker:
       - image: circleci/buildpack-deps:stretch
     steps:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh -o "StrictHostKeyChecking=no" dan@35.207.162.44 "env ENVIRONMENT=production IMAGE_TAG=$CIRCLE_SHA1 sh /var/server/efektivnialtruismus.cz/bin/deploy.sh"
+            ssh -o "StrictHostKeyChecking=no" dan@35.207.162.44 "env ENVIRONMENT=master IMAGE_TAG=$CIRCLE_SHA1 sh /var/server/efektivnialtruismus.cz/bin/deploy.sh"
 workflows:
   version: 2
   build-n-deploy:
@@ -47,7 +47,7 @@ workflows:
           filters:
             branches:
               only: beta
-      - deployme-production:
+      - deployme-production-master:
           requires:
             - build
           filters:
