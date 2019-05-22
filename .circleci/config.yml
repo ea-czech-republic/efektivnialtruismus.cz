@@ -27,3 +27,12 @@ jobs:
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
             docker push czea/effective-thesis:$CIRCLE_SHA1
             docker push $LATEST_IMAGE
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            echo $SSH_KEY_GCLOUD > private.key
+            ssh -i private.key dan@35.207.162.44 "ls"
