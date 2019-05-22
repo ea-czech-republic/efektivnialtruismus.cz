@@ -2,7 +2,6 @@ version: 2
 jobs:
   build:
     environment:
-      IMAGE_NAME: czea/effective-thesis:$CIRCLE_SHA1
       LATEST_IMAGE: czea/effective-thesis:latest
     docker:
       - image: circleci/buildpack-deps:stretch
@@ -14,10 +13,9 @@ jobs:
           command: |
             docker pull $LATEST_IMAGE || exit 0
             docker build -t $LATEST_IMAGE --cache-from $LATEST_IMAGE .
-            docker tag $LATEST_IMAGE $IMAGE_NAME
+            docker tag $LATEST_IMAGE czea/effective-thesis:$CIRCLE_SHA1
   publish:
     environment:
-      IMAGE_NAME: czea/effective-thesis:$CIRCLE_SHA1
       LATEST_IMAGE: czea/effective-thesis:latest
     docker:
       - image: circleci/buildpack-deps:stretch
@@ -27,5 +25,5 @@ jobs:
           name: Publish Docker Image to Docker Hub
           command: |
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker push $IMAGE_NAME
+            docker push czea/effective-thesis:$CIRCLE_SHA1
             docker push $LATEST_IMAGE
