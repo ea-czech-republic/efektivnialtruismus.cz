@@ -29,3 +29,4 @@ gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west3-c" "eac
 
 ## Builds
 https://circleci.com/gh/ea-czech-republic/efektivnialtruismus.cz
+
