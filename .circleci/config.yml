@@ -16,7 +16,7 @@ jobs:
             docker pull $LATEST_IMAGE || exit 0
             docker build -t $LATEST_IMAGE --cache-from $LATEST_IMAGE .
             docker tag $LATEST_IMAGE $IMAGE_NAME
-  publish-latest:
+  publish:
     environment:
       IMAGE_NAME: building-on-ci
     docker:
