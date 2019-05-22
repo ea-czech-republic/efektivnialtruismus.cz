@@ -2,7 +2,6 @@ version: 2
 jobs:
   build:
     environment:
-      _BASE_IMAGE: czea/effective-thesis
       IMAGE_NAME: czea/effective-thesis:$CIRCLE_SHA1
       LATEST_IMAGE: czea/effective-thesis:latest
     docker:
@@ -18,7 +17,8 @@ jobs:
             docker tag $LATEST_IMAGE $IMAGE_NAME
   publish:
     environment:
-      IMAGE_NAME: building-on-ci
+      IMAGE_NAME: czea/effective-thesis:$CIRCLE_SHA1
+      LATEST_IMAGE: czea/effective-thesis:latest
     docker:
       - image: circleci/buildpack-deps:stretch
     steps:
