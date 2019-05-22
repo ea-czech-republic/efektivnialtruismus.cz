@@ -24,4 +24,5 @@ jobs:
           name: Deploy Over SSH
           command: |
             echo $SSH_KEY_GCLOUD > private.key
+            chmod 500 private.key
             ssh -o "StrictHostKeyChecking=no" -i private.key dan@35.207.162.44 "ls"
