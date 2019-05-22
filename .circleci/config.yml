@@ -4,7 +4,7 @@ jobs:
     environment:
       _BASE_IMAGE: czea/effective-thesis
       IMAGE_NAME: czea/effective-thesis:$CIRCLE_SHA1
-      $LATEST_IMAGE: czea/effective-thesis:latest
+      LATEST_IMAGE: czea/effective-thesis:latest
     docker:
       - image: circleci/buildpack-deps:stretch
     steps:
