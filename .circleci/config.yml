@@ -24,3 +24,9 @@ jobs:
           name: Deploy Over SSH
           command: |
             ssh -o "StrictHostKeyChecking=no" dan@35.207.162.44 "ls"
+  deployme:
+    docker:
+      - image: circleci/buildpack-deps:stretch
+    steps:
+      - run:
+          ls
