@@ -10,7 +10,7 @@ docker-compose -f docker-compose.yaml -f dc-dev.yaml up
 ```
 
 a new user `admin` with password `pass` is created. Go to
-`localhost:8000/admin` to access the administration.
+`localhost/admin` to access the administration.
 
 # Deployment
 Through `docker-compose`. `static` and `media` files are inside 

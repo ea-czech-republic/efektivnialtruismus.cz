@@ -1,5 +1,6 @@
 {% extends "theses/theses_base.html" %}
 
+{% load static %}
 {% load wagtailcore_tags %}
 {% load wagtailuserbar %}
 {% load wagtailimages_tags %}
@@ -8,80 +9,19 @@
 {% block body_class %}template-thesisindex{% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col mx-auto text-center">
-            <h3 class="display-4">Make your thesis meaningful</h3>
-        </div>
-    </div>
-    <br><br>
-    <div class="row mt-2">
-        <div class="col mx-auto">
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <p class="h4 thesis-these">
-                        We will help you find a thesis topic with high potential to make the world a significantly
-                        better place.
-                    </p>
+    <main>
+        <div class="jumbotron hero-home" style="background-image: url({% static "img/hero-home.png" %});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-10 pl-0">
+                        <h1 class="font-weight-bold mb-4">Make your thesis meaningful</h1>
+                        <p>We will connect you with a coach who will help you find a thesis topic with high potential to significantly improve the world.</p>
+                    </div>
                 </div>
-                <div class="col-md-1"></div>
+                <div class="row">
+                    <a class="btn btn-primary ml-auto">How it works</a>
+                </div>
             </div>
         </div>
-    </div>
-    <br>
-
-    <div class="row mt-4">
-        <div class="col-12 text-center mb-3">
-            <h5>Try our Thesis Topic Coaching</h5>
-        </div>
-        <br>
-        <div class="col mx-auto text-center">
-            <a href="/thesis-coaching" class="btn btn-info btn-lg responsive-text btn-responsive">Learn more</a>
-        </div>
-    </div>
-
-    <div class="row mt-4">
-        <div class="col-12 text-center mb-3">
-            <h5>For inspiration, see a list of topics proposed by effective charities and enterprises!</h5>
-        </div>
-        <br>
-        <div class="col mx-auto text-center">
-            <a href="/theses" class="btn btn-info btn-lg responsive-text btn-responsive">Learn more</a>
-        </div>
-    </div>
-<!--
-    <br>
-    <div class="row">
-        <div class="col"></div>
-        <div class="col-10 text-justify">
-            You will likely invest hundreds of hours and huge effort in your final thesis. What about using
-            this opportunity for something more than just “have it done” and choose a topic that will, on the top of
-            gaining your diploma, help someone else? We have collected a list of topics from Effective charities and
-            enterprises which deal with some of the most pressing global issues. These organisations will provide you
-            with consultations to ensure highest possible quality and utility of your work.
-        </div>
-        <div class="col"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div class="row mt-4">
-                <div class="col-md-4 text-center">{{ page.column_1 | safe }}</div>
-                <div class="col-md-4 text-center">{{ page.column_2 | safe }}</div>
-                <div class="col-md-4 text-center">{{ page.column_3 | safe }}</div>
-            </div>
-            <div class="row mt-1">
-                <div class="col"><h4>What they say about us...</h4></div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-6">{{ page.references_1 | safe }}</div>
-                <div class="col-md-6">{{ page.references_2 | safe }}</div>
-            </div>
-            <div class="row mt-4">
-                <div>{{ page.body | safe }}</div>
-            </div>
-        </div>
-        <div class="col-md-1"></div>
-    </div>
--->
+    </main>
 {% endblock %}

@@ -15,8 +15,15 @@ body div.rich-text p {
     font-size: 9px;
 }
 
-h1 h2 {
-    color: #014c8c;
+.hero-home {
+    color: white;
+    padding-top: 10rem;
+    background: no-repeat center center fixed;
+}
+
+.hero-home p {
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
 }
 
 /* Hiding the checkbox, but allowing it to be focused */

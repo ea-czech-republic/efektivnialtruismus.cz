@@ -8,9 +8,10 @@
 {% load wagtailuserbar %}
 
 {% block extra_css %}
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:400,700&display=swap&subset=latin-ext" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/eacr.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/theses.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
 {% endblock %}
 
@@ -71,31 +72,21 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <div class="container">
-        <div class="row" id="menu_bar">
-            <div class="col-md-12 mb-3 pl-0">
-                {% flat_menu handle="theses_menu" template="menus/theses_menu.html" %}
-            </div>
-        </div>
+    {% flat_menu handle="theses_menu" template="menus/theses_menu.html" %}
 
-        <div class="row">
-            <div class="col-md-12">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
+    {% block content %}
+    {% endblock %}
 
-        <div class="row">
-            <div class="col-md-12">
-                <hr class="mt-5"/>
-                <footer role="contentinfo">
-                    {% flat_menu "theses_footer" template="menus/footer_menu.html" %}
-                    <p class="copyright">
-                        © 2018 <a href="https://efektivni-altruismus.cz/english/">Effective altruism CZ</a>.
-                        <a href="http://github.com/ea-czech-republic/efektivnialtruismus.cz">Github EA CZ</a>
-                    </p>
-                </footer>
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <hr class="mt-5"/>
+            <footer role="contentinfo">
+                {% flat_menu "theses_footer" template="menus/footer_menu.html" %}
+                <p class="copyright">
+                    © 2018 <a href="https://efektivni-altruismus.cz/english/">Effective altruism CZ</a>.
+                    <a href="http://github.com/ea-czech-republic/efektivnialtruismus.cz">Github EA CZ</a>
+                </p>
+            </footer>
         </div>
     </div>
 
@@ -108,6 +99,7 @@
 
 {% block extra_js %}
     <script src="{% static "js/theses.js" %}"></script>
+    {# TODO: Do we need a datepicker? #}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
