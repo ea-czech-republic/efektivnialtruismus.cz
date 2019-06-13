@@ -6,35 +6,56 @@
 
 {% block content %}
 <div class="row">
-    <div class="col">
-        <h1>{{ page.title }}</h1>
-    </div>
-</div>
-<div class="row">
-    <div class="col">
-        {{ page.body }}
-    </div>
     <div class="col-md-3">
-        <div class="row">
-            <div class="col card mb-3">
-                <a href="{{ page.pdf_thesis.url }}" target="_blank">
-                    {% image page.specific.pdf_thumbnail fill-200x300 class="p-3 mx-auto" %}
-                </a>
-                <p class="mx-auto">
-                    <a href="{{ page.pdf_thesis.url }}" target="_blank">
-                        PDF download
-                    </a>
-                </p>
-            </div>
-        </div>
         <div class="row">
             <div class="col card mb-3">
                 {% image page.specific.author_pic fill-200x200 class="p-3 mx-auto" %}
                 <p>
-                    {{ page.about_author | richtext }} 
+                    {{ page.about_author | richtext }}
                 </p>
             </div>
         </div>
     </div>
+    <div class="col">
+        <h1>{{ page.title }}</h1>
+        <p>
+            {{ page.body }}
+        </p>
+    </div>
 </div>
+<div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col">
+        <p><a class="btn btn-primary" href="{{ page.pdf_thesis.url }}" target="_blank">
+            PDF download
+        </a></p>
+        <p><a href="/theses">
+            See more other topics
+        </a></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <p>
+            TODO: hash tags here? Where do we get them? Could be just a streamfield or text field in the end.
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <p><a href="/finished">
+            Back to finished
+        </a></p>
+    </div>
+    <div class="col"></div>
+        <div class="col">
+        <p><a href="/finished">
+            TODO: next thesis - this is nice to have
+        </a></p>
+    </div>
+</div>
+
 {% endblock %}

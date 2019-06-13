@@ -5,43 +5,53 @@
 {% load static %}
 
 {% block content %}
-<div class="row">
-    <div class="col">
-        <h1>{{ page.title }}</h1>
-        {{ page.body }}
-    </div>
-</div>
-<div class="row">
-    <div class="theses col-md-12">
-        {% if theses %}
-        {% for thesis in theses %}
-        <div class="card card-outline-info mt-2">
-            <div class="card-header fixed-card-header-height">
-                <h5 class="card-title m-0">
-                    <a href="{% pageurl thesis %}">
-                        {{ thesis.title }}
-                    </a>
-                </h5>
-            </div>
-            <div class="card-block">
-                <div class="row">
-                    <div class="col ml-3 mr-3">
-                        <p class="card-text">
-                            {{ thesis.body | safe | truncatewords_html:15 }}
-                        </p>
+
+<div class="row" style="background-color:grey;">
+    <div class="col"></div>
+    <div class="col-10 mb-5">
+        <div class="row">
+            <div class="col text-center"><h1>We have finished these topics</h1></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card-deck">
+                    {% if theses %}
+                    {% for thesis in theses %}
+                    <div class="card">
+                        <div class="card-header">
+                            {{ thesis.title }}
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                {{ thesis.body | safe | truncatewords_html:15 }}
+                            </p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="{% pageurl thesis %}" class="btn btn-primary">READ MORE</a>
+                        </div>
                     </div>
+                    {% endfor %}
+                    {% else %}
+                    nope
+                    {% endif %}
                 </div>
             </div>
         </div>
-        {% endfor %}
-        {% else %}
-        nope
-        {% endif %}
     </div>
+    <div class="col"></div>
 </div>
+
+
 <div class="row">
     <div class="col">
-        <hr />
+        <h1>We are working on</h1>
+        {{ page.body }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <hr/>
         {{ page.footer }}
     </div>
 </div>
