@@ -91,9 +91,10 @@ class ThesisSearch(Page):
     parent_page_types = ["theses.ThesisIndexPage"]
 
     body = get_standard_streamfield()
+    content_panels = Page.content_panels + [StreamFieldPanel("body")]
 
     def get_context(self, request):
-        context = super(ThesisSearch, self).get_context(request)
+        context = super().get_context(request)
         if "discipline" in request.GET:
             discipline_name = request.GET["discipline"]
             discipline = ThesisDiscipline.objects.get(name=discipline_name)
@@ -107,13 +108,31 @@ class ThesisSearch(Page):
         context["selectedDisciplineDescription"] = selected_discipline_description
         context["disciplines"] = ThesisDiscipline.objects.all().order_by("name")
 
+        from theses.forms import CoachingForm
+        context["contactForm"] = CoachingForm
+
+        print(context["selectedDisciplineDescription"], context['selectedDiscipline'])
+
         return context
 
-
-class ThesisCoachingIndexPage(Page):
-    body = get_standard_streamfield()
-
-    content_panels = Page.content_panels + [StreamFieldPanel("body")]
+    @staticmethod
+    def build_mail_content(data):
+        return dedent(
+            """
+        Name: {contact_name},
+        Contact email: {contact_email},
+        Course and University: {university},
+        Career: {career},
+        Requirements: {requirements},
+        Preferences: {preferences},
+        Knowledgeable: {read_above},
+        Deadline: {deadline},
+        Anything else: {anything_else},
+        How did you found about the website: {find_out_website},
+        """.format(
+                **data
+            )
+        )
 
     def serve(self, request):
         if request.method == "POST":
@@ -135,36 +154,9 @@ class ThesisCoachingIndexPage(Page):
                 return coaching_conversion(request)
             else:
                 logger.error("The submitted form was invalid.")
-                return super(ThesisCoachingIndexPage, self).serve(request)
+                return super().serve(request)
         else:
-            return super(ThesisCoachingIndexPage, self).serve(request)
-
-    def get_context(self, request):
-        from theses.forms import CoachingForm
-
-        context = super(ThesisCoachingIndexPage, self).get_context(request)
-        context["contactForm"] = CoachingForm
-        context["thesis_title"] = self.title
-        return context
-
-    @staticmethod
-    def build_mail_content(data):
-        return dedent(
-            """
-        Name: {contact_name},
-        Contact email: {contact_email},
-        Course and University: {university},
-        Career: {career},
-        Requirements: {requirements},
-        Preferences: {preferences},
-        Knowledgeable: {read_above},
-        Deadline: {deadline},
-        Anything else: {anything_else},
-        How did you found about the website: {find_out_website},
-        """.format(
-                **data
-            )
-        )
+            return super().serve(request)
 
 
 class ThesisIndexPage(Page):

@@ -1,4 +1,5 @@
 {% extends "theses/theses_base.html" %}
+{% load static %}
 
 {% load wagtailcore_tags %}
 {% load wagtailuserbar %}
@@ -6,15 +7,176 @@
 {% load menu_tags %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-8">
-        {{ page.body | safe }}
+<div class="jumbotron hero-home" style="background-image: url({% static " img/hero-home.png" %});">
+<div class="container">
+    <div class="row">
+        <div class="col-10 pl-0">
+            <h1 class="font-weight-bold mb-4">Use your thesis to improve the world<br>Our coaching will help you</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 text-center">
+            <a class="btn btn-primary ml-auto">TODO: Here down arrow</a>
+        </div>
     </div>
 </div>
+</div>
+
 
 <div class="row">
-    <div class="col-md-12">
-        <h3>Pick your study discipline</h3>
+    <div class="col"></div>
+    <div class="col-10">
+        {{ page.body | safe }}
+    </div>
+    <div class="col"></div>
+</div>
+
+<div class="row" style="background-color:grey;">
+    <div class="col"></div>
+    <div class="col-10 mb-5">
+        <div class="row">
+            <div class="col text-center"><h1>How it works</h1></div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card-group">
+                    <div class="card">
+                        <div class="card-header">
+                            1 APPLY
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">After you apply for our coaching,
+                                we will review your application
+                                and potentially invite you for an
+                                online interview. We are looking
+                                for people ready to put extra
+                                effort into figuring out how they
+                                can contribute to improving the
+                                world and make their research
+                                exceptional. If you get accepted,
+                                we will find a coach who will be a
+                                good fit for you. The coach will
+                                help you to identify the most
+                                important problems and ways
+                                how to tackle them with your</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            2 CONNECT
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                We will not help you with thesis
+                                writing, but if you decide to
+                                choose a topic that coach
+                                suggested, we will try to connect
+                                you with external researchers or
+                                organisations working on the
+                                same problem. We will also give
+                                you access to our supportive
+                                community where you can ask for
+                                help and share your experience
+                                with other students driven by a
+                                goal of creating research with a
+                                high positive impact on the world.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            3 START
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                After you finish your thesis, we
+                                will support you in publishing it
+                                showing it out. This service is free
+                                - we only want to direct students
+                                to the most important problems
+                                and support research into these</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
+
+<div class="row mt-5">
+    <div class="col"></div>
+    <div class="col-10">
+        <form id="coaching-form" action="" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ contactForm.contact_name.errors }}
+                {{ contactForm.contact_name }}
+            </div>
+
+            <div class="form-group">
+                {{ contactForm.contact_email.errors }}
+                {{ contactForm.contact_email }}
+            </div>
+
+            <div class="form-group">
+                {{ contactForm.university.errors }}
+                {{ contactForm.university }}
+            </div>
+
+            <div class="form-group">
+                {{ contactForm.requirements.errors }}
+                {{ contactForm.requirements }}
+            </div>
+
+            <div class="form-group">
+                {{ contactForm.career.errors }}
+                {{ contactForm.career }}
+            </div>
+
+
+            <div class="form-group">
+                {{ contactForm.preferences.errors }}
+                {{ contactForm.preferences }}
+            </div>
+
+            <div class="form-group">
+                {{ contactForm.read_above.errors }}
+                {{ contactForm.read_above }}
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8">
+                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
+                               id="id_deadline" name="deadline"
+                               placeholder="Deadline for topic choice"/>
+                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ contactForm.find_out_website.errors }}
+                {{ contactForm.find_out_website }}
+            </div>
+
+            <div class="form-group">
+                {{ contactForm.anything_else.errors }}
+                {{ contactForm.anything_else }}
+            </div>
+
+
+            <input type="submit" value="Apply now" class="btn btn-primary">
+        </form>
+    </div>
+    <div class="col"></div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-10">
+        <h3>What fields do we do? Any! This is just an overview</h3>
         <form id="discipline-filter-form" action="" method="GET">
             {% for discipline in disciplines %}
             <input type="checkbox" class="badgebox" name="discipline" value="{{ discipline }}"
@@ -23,7 +185,7 @@
                 {{ discipline }}
             </label>
             {% endfor %}
-            <!-- Must be here because of stupid firefox which cannot submit forms wihtout a button -->
+            <!-- Must be here because of stupid firefox which cannot submit forms without a button -->
             <input id="disc-submit-input" type="submit" value="submit" style="visibility:hidden;"/>
         </form>
     </div>
@@ -40,26 +202,30 @@
                 </p>
             </div>
         </div>
-{% endif %}
-{% endblock %}
+        {% endif %}
+        {% endblock %}
 
-{% block extra_js_2 %}
-<script>
-        /* Terrible hack - we need to append the form to the DOM and then send it... Mostly because firefox */
-        var _form = document.getElementById("discipline-filter-form");
-        document.getElementById("discipline-filter-form").addEventListener("click", function () {
-            var form = $.clone(_form);
-            form.style.display = "none";
-            document.body.appendChild(form);
-            form.submit();
-        });
+        {% block extra_js_2 %}
+        <script>
+/* Terrible hack - we need to append the form to the DOM and then send it... Mostly because firefox */
+var _form = document.getElementById("discipline-filter-form");
+document.getElementById("discipline-filter-form").addEventListener("click", function () {
+    var form = $.clone(_form);
+    form.style.display = "none";
+    document.body.appendChild(form);
+    form.submit();
+});
 
-        $('label.btn[for="{{ selectedDiscipline }}"').css('background-color', '#449d44');
-
-
+$('label.btn[for="{{ selectedDiscipline }}"').css('background-color', '#449d44');
 
 
 
 
-</script>
-{% endblock %}
+
+
+
+
+
+
+        </script>
+        {% endblock %}
