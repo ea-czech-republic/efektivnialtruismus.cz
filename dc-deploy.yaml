@@ -9,3 +9,13 @@ services:
       - db-data:/usr/src/app/data/
       - static-data:/usr/src/app/static/
       - media-data:/usr/src/app/media/
+  nginx:
+    volumes:
+      - ./bin/nginx.conf:/etc/nginx/conf.d/default.conf
+      - static-data:/data/static/
+      - media-data:/data/media/
+volumes:
+  db-data:
+  static-data:
+  media-data:
+

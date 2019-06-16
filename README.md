@@ -37,6 +37,7 @@ gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west3-c" "eac
 
 ### Copy DB from production to Beta
 ```
+# eacr-main-2 is production, eacr-main-3 is beta
 gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west3-c" "eacr-main-2" \
     --command 'docker cp efektivnialtruismuscz_app_1:"/usr/src/app/data/production-et.sqlite3" /tmp/production-eacr.sqlite3'
 gcloud compute --project "efektivni-altruismus" scp --zone "europe-west3-c" "eacr-main-2:/tmp/production-eacr.sqlite3" "/tmp/production-eacr.sqlite3"
