@@ -77,18 +77,25 @@
     {% block content %}
     {% endblock %}
 
-    <div class="row">
-        <div class="col-md-12">
-            <hr class="mt-5"/>
-            <footer role="contentinfo">
-                {% flat_menu "theses_footer" template="menus/footer_menu.html" %}
-                <p class="copyright">
-                    © 2018 <a href="https://efektivni-altruismus.cz/english/">Effective altruism CZ</a>.
-                    <a href="http://github.com/ea-czech-republic/efektivnialtruismus.cz">Github EA CZ</a>
-                </p>
-            </footer>
+    <footer class="bg-primary py-5" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <h3>Footer</h3>
+                    {% flat_menu "theses_footer" template="menus/footer_menu.html" %}
+                    <p class="copyright">
+                        © 2018 <a href="https://efektivni-altruismus.cz/english/">Effective altruism CZ</a>.
+                        <a href="http://github.com/ea-czech-republic/efektivnialtruismus.cz">Github EA CZ</a>
+                    </p>
+                </div>
+                <div class="col-8">
+                    <h3>Stay in touch</h3>
+                    <p>Are you interested in this project but now it's not the
+                        right time for you to use it? Stay in touch and get our quarterly updates.</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </footer>
 
     <script type="text/javascript" id="cookieinfo"
             src="//cookieinfoscript.com/js/cookieinfo.min.js"
