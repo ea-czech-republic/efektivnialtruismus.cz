@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   app:
-    image: czea/effective-thesi
+    image: czea/effective-thesis
     entrypoint: ["/usr/src/app/bin/run.sh"]
     expose:
       - "8000"
