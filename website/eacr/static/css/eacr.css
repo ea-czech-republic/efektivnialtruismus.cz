@@ -28,7 +28,7 @@ body {
 .btn, .btn:hover, .btn:focus {
     text-transform: uppercase;
     font-weight: bold;
-    /*border-radius: unset;*/
+    border-radius: initial;
     border: none;
 }
 
@@ -44,6 +44,24 @@ body {
 .btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
     color: #070259;
     background-color: rgba(255, 255, 255, 0.8);
+}
+
+.text-primary {
+    color: #070259 !important;
+}
+
+.card {
+    border: none;
+    border-radius: initial;
+}
+
+.card-img-top {
+    border-radius: initial;
+}
+
+.card-header {
+    border: initial;
+    background-color: #E5E4E4;
 }
 
 .display-3 {
@@ -114,7 +132,6 @@ body {
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 10px;
-    margin-top: 20px;
 }
 
 .responsive-object {
