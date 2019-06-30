@@ -188,15 +188,16 @@
                 <form id="discipline-filter-form" action="#disciplines" method="GET">
                     {% for discipline in disciplines %}
                         <input id="{{ discipline | slugify }}-discipline"
-                               class="d-none badgebox"
+                               class="d-none"
                                type="checkbox"
                                name="discipline"
                                value="{{ discipline }}"
-                               {% if discipline.name == selectedDiscipline.name %}
+                               {% if discipline.name == selectedDiscipline %}
                                checked
                                {% endif %}
                         />
-                        <label class="btn btn-primary btn-sm" for="{{ discipline | slugify }}-discipline">
+                        <label class="btn btn-primary btn-sm{% if discipline.name == selectedDiscipline %} active{% endif %}"
+                               for="{{ discipline | slugify }}-discipline">
                             {{ discipline }}
                         </label>
                     {% endfor %}
@@ -229,7 +230,5 @@
             document.body.appendChild(form);
             form.submit();
         });
-
-        $('label.btn[for="{{ selectedDiscipline | slugify }}-discipline"').addClass('active')
     </script>
 {% endblock %}
