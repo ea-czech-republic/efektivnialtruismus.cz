@@ -187,14 +187,15 @@
 
                 <form id="discipline-filter-form" action="#disciplines" method="GET">
                     {% for discipline in disciplines %}
+{#                        TODO these shoud be radio buttons#}
                         <input id="{{ discipline | slugify }}-discipline"
                                class="d-none"
                                type="checkbox"
                                name="discipline"
                                value="{{ discipline }}"
-                               {% if discipline.name == selectedDiscipline %}
-                               checked
-                               {% endif %}
+{#                               {% if discipline.name == selectedDiscipline %}#}
+{#                               checked#}
+{#                               {% endif %}#}
                         />
                         <label class="btn btn-primary btn-sm{% if discipline.name == selectedDiscipline %} active{% endif %}"
                                for="{{ discipline | slugify }}-discipline">
