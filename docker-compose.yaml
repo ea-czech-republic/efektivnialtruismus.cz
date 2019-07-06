@@ -2,7 +2,7 @@ version: "3.4"
 
 services:
   app:
-    image: czea/effective-thesi
+    image: czea/effective-thesis
     volumes:
       - db-data:/usr/src/app/data/
       - static-data:/usr/src/app/static/
