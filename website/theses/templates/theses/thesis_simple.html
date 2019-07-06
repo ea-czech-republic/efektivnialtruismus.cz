@@ -12,5 +12,51 @@
         </div>
         <div class="col-md-2"></div>
     </div>
+    <div class="row mb-5">
+        <div class="col-10">
+            <h3>Ask as anything!</h3>
+            <div id="ask_as_anything">
+                <form id="ask_as_anything_form" action="/theses/ask_us_anything/" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="contact_name" placeholder="YOUR NAME + SURNAME"
+                               class="form-control"
+                               required="" id="id_contact_name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="contact_email" class="form-control" placeholder="EMAIL"
+                               required="" id="id_contact_email">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="content" class="form-control" required="" id="content"></textarea>
+                    </div>
+                    <div align="right">
+                        <input type="submit" value="Send" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block extra_js_2 %}
+<script>
+$("#ask_as_anything_form").submit(function(e) {
+
+    e.preventDefault();
+
+    var frm = $('#ask_as_anything_form');
+
+    $.ajax({
+        url: frm.attr('action'),
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(frm.serializeArray()),
+           success: function(data)
+           {
+               $("#ask_as_anything").html(data);
+           }
+     });
+});
+</script>
 {% endblock %}

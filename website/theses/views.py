@@ -54,12 +54,13 @@ def submit_to_newsletter(request):
 
 @csrf_exempt
 def ask_as_anything(request):
+    print(request.is_ajax())
     if request.is_ajax():
         if request.method == 'POST':
             form_data = dejsonize(request.body.decode())
             contact_name = form_data['contact_name']
             contact_email = form_data['contact_email']
-            text = form_data['contact_email']
+            text = form_data['content']
             send_mail(
                 "Contacting using Contact Form on About us",
                 build_mail_content_contact(contact_name, contact_email, text),
