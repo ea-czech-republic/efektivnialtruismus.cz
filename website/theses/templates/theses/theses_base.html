@@ -77,37 +77,41 @@
     {% block content %}
     {% endblock %}
 
-    <footer class="bg-primary text-white py-5" role="contentinfo">
+    <footer class="bg-primary text-white py-4" role="contentinfo">
         <div class="container">
             <div class="row">
-                <div class="col-2"></div>
-                <div class="col-2">
-                    <h3>Effective Thesis</h3>
-                    <p>Part of <a href="https://efektivni-altruismus.cz">efektivni-altruismus.cz</a></p>
-                </div>
-                <div class="col-6">
+                <div class="col-md-8 order-md-2 mb-3">
                     <h3>Stay in touch</h3>
                     <p>Are you interested in this project but now it's not the
                         right time for you to use it? Stay in touch and get our quarterly updates.
                     </p>
                     <div id="newsletter">
                         <form id="newsletter_form" action="/theses/newsletter/" method="POST">
-                            <div class="form-group">
-                                <input type="text" name="contact_name" placeholder="YOUR NAME + SURNAME"
-                                       class="form-control"
-                                       required="" id="id_contact_name">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="contact_email" class="form-control" placeholder="EMAIL"
-                                       required="" id="id_contact_email">
-                            </div>
-                            <div align="right">
-                                <input type="submit" value="Newsletter" class="btn btn-secondary">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="form-group">
+                                        <input type="text" name="contact_name" placeholder="YOUR NAME + SURNAME"
+                                               class="form-control"
+                                               required="" id="id_contact_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="contact_email" class="form-control" placeholder="EMAIL"
+                                               required="" id="id_contact_email">
+                                    </div>
+                                    <div class="float-right">
+                                        <input type="submit" value="Subscribe" class="btn btn-secondary">
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="col"></div>
+
+                <div class="col-md-4 order-md-1">
+                    <h3>Effective Thesis</h3>
+                    <p>Part of <a href="https://efektivni-altruismus.cz">efektivni-altruismus.cz</a></p>
+                </div>
+
             </div>
         </div>
     </footer>

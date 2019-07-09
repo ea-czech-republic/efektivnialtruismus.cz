@@ -4,24 +4,22 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
+<div class="container py-4">
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-8 offset-md-2">
             {% include_block page.body %}
         </div>
-        <div class="col-md-2"></div>
     </div>
 </div>
 {% endblock %}
 
 {% block extra_js_2 %}
 <script>
-$("#ask_as_anything_form").submit(function(e) {
+$("#ask_us_anything_form").submit(function(e) {
 
     e.preventDefault();
 
-    var frm = $('#ask_as_anything_form');
+    var frm = $('#ask_us_anything_form');
 
     $.ajax({
         url: frm.attr('action'),
@@ -30,7 +28,7 @@ $("#ask_as_anything_form").submit(function(e) {
         data: JSON.stringify(frm.serializeArray()),
            success: function(data)
            {
-               $("#ask_as_anything").html(data);
+               $("#ask_us_anything").html(data);
            }
      });
 });

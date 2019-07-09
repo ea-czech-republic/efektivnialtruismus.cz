@@ -2,10 +2,6 @@ body {
     font-family: 'Titillium Web', sans-serif;
 }
 
-.container {
-    max-width: 75%;
-}
-
 .navbar {
     text-transform: uppercase;
 }
@@ -62,6 +58,17 @@ body {
 .card-header {
     border: initial;
     background-color: #E5E4E4;
+}
+
+.card-header:first-child,
+.card-footer:last-child {
+    border-radius: initial;
+}
+
+.card-shadow {
+    -webkit-box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .display-3 {

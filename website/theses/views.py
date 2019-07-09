@@ -53,7 +53,7 @@ def submit_to_newsletter(request):
 
 
 @csrf_exempt
-def ask_as_anything(request):
+def ask_us_anything(request):
     print(request.is_ajax())
     if request.is_ajax():
         if request.method == 'POST':

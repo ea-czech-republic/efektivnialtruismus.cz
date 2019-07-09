@@ -8,10 +8,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="col mb-5">
-                <div class="row">
-                    <div class="col text-center mt-3">
-                        <h1>We have finished these topics</h1>
+            <div class="col">
+                <div class="row my-5">
+                    <div class="col text-center">
+                        <h1 class="h3 text-uppercase">We have finished these topics</h1>
                     </div>
                 </div>
 
@@ -20,17 +20,15 @@
                         <div class="card-deck">
                             {% if theses %}
                                 {% for thesis in theses %}
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h2>{{ thesis.title }}</h2>
+                                    <div class="card card-shadow card-finished">
+                                        <div class="card-body">
+                                            <h2 class="h3">{{ thesis.title }}</h2>
                                         </div>
-                                        <div>
-                                            <a href="{% pageurl thesis %}">
-                                                <div class="card-footer text-center btn btn-primary" style="width: 100%">
-                                                    <span>READ MORE</span>
-                                                </div>
-                                            </a>
-                                        </div>
+                                        <a href="{% pageurl thesis %}">
+                                            <div class="btn btn-primary btn-lg card-footer text-center w-100">
+                                                Read more
+                                            </div>
+                                        </a>
                                     </div>
                                 {% endfor %}
                             {% else %}
@@ -43,9 +41,9 @@
         </div>
 
 
-        <div class="row mt-2">
-            <div class="col">
-                <h1 class="text-center mb-2">We are working on</h1>
+        <div class="row">
+            <div class="col pb-3">
+                <h2 class="h3 text-center text-uppercase my-5">We are working on</h2>
                 {{ page.body }}
             </div>
         </div>

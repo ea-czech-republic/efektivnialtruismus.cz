@@ -13,14 +13,16 @@
         <div class="jumbotron">
             <div class="container">
                 <div class="row">
-                    <div class="col-10 pl-0">
+                    <div class="col-lg-8 mr-auto">
                         <h1 class="text-white mb-4">Make your thesis meaningful</h1>
                         <p>We will connect you with a coach who will help you find a thesis topic with high potential to
                             significantly improve the world.</p>
                     </div>
                 </div>
                 <div class="row">
-                    <a class="btn btn-lg btn-secondary ml-auto" href="/theses">How it works</a>
+                    <div class="col">
+                        <a class="btn btn-lg btn-secondary float-right" href="/theses">How it works</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,9 +42,9 @@
 
         <div class="card-deck">
             <div class="card">
-                <img src="{% static "img/biosecurity.jpg" %}" class="card-img-top" alt="Test tubes">
-                <div class="topic-areas-overlay card-img-overlay">
-                    <div class="text-center">
+                <div class="card-img-wrapper">
+                    <img src="{% static "img/biosecurity.jpg" %}" class="card-img-top" alt="Test tubes">
+                    <div class="topic-areas-overlay">
                         <h4 class="card-title text-white">Biosecurity</h4>
                     </div>
                 </div>
@@ -60,9 +62,9 @@
             </div>
 
             <div class="card">
-                <img src="{% static "img/china.jpg" %}" class="card-img-top" alt="China street">
-                <div class="topic-areas-overlay card-img-overlay">
-                    <div class="text-center">
+                <div class="card-img-wrapper">
+                    <img src="{% static "img/china.jpg" %}" class="card-img-top" alt="China street">
+                    <div class="topic-areas-overlay">
                         <h4 class="card-title text-white">Knowledge<br> of China</h4>
                     </div>
                 </div>
@@ -80,9 +82,9 @@
             </div>
 
             <div class="card">
-                <img src="{% static "img/priorities.jpg" %}" class="card-img-top" alt="Cluster of cells">
-                <div class="topic-areas-overlay card-img-overlay">
-                    <div class="text-center">
+                <div class="card-img-wrapper">
+                    <img src="{% static "img/priorities.jpg" %}" class="card-img-top" alt="Cluster of cells">
+                    <div class="topic-areas-overlay">
                         <h4 class="card-title text-white">Global priorities research</h4>
                     </div>
                 </div>
@@ -136,7 +138,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-5">
                 <div class="p-4">
                     <img class="img-fluid" src="{% static "img/peter-singer.jpg" %}">
                 </div>
@@ -152,11 +154,15 @@
                     Project is seeking to change that, and I
                     hope it will.
                 </p>
+                <p class="font-weight-bold">
+                    Peter Singer, Ira W. DeCamp Professor of
+                    Bioethics at Princeton University,
+                    Laureate Professor at the University of
+                    Melbourne <span class="font-weight-normal text-muted">(photo: Mal Vickers)</span>
+                </p>
             </div>
 
-            <div class="col-md-1"></div>
-
-            <div class="col-md-4">
+            <div class="col-lg-4 offset-lg-1 col-md-5 offset-md-1">
                 <div class="p-4">
                     <img class="img-fluid" src="{% static "img/max-daniel.jpg" %}">
                 </div>
@@ -171,28 +177,11 @@
                     research from the emerging field of global
                     priorities research.
                 </p>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <p class="font-weight-bold">
-                    Peter Singer, Ira W. DeCamp Professor of
-                    Bioethics at Princeton University,
-                    Laureate Professor at the University of
-                    Melbourne <span class="font-weight-normal text-muted">(photo: Mal Vickers)</span>
-                </p>
-            </div>
-
-            <div class="col-md-1"></div>
-
-            <div class="col-md-4">
                 <p class="font-weight-bold">
                     Max Daniel, Senior Research Scholar at
                     the Future of Humanity Institute at University of Oxford
                 </p>
             </div>
         </div>
-
     </div>
 {% endblock %}
