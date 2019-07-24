@@ -11,3 +11,6 @@ bin/change_perms.sh
 venv
 bin/production.env
 bin/beta.env
+dev-eacr.sqlite3
+media/
+static/

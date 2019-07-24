@@ -12,3 +12,9 @@ services:
       WAGTAIL_SITE_NAME: "localhost"
     volumes:
       - .:/usr/src/app
+      - ./static:/usr/src/app/static
+      - ./media:/data/media
+  nginx:
+    volumes:
+      - ./static:/data/static
+      - ./media:/data/media

@@ -18,7 +18,8 @@ to get it or copy it from the deployment (if you have access, most likely
 not) as is at the end of the README.
 
 When you get the copy of the DB, copy it to the root of this repo under
-`dev-eacr.sqlite3` name. It should be automatically picked up when using docker-compose.
+`dev-eacr.sqlite3` name. It should be automatically picked up 
+when using `docker-compose` now.
 
 # Deployment
 ## CI
