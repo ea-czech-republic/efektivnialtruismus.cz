@@ -12,6 +12,14 @@ docker-compose -f docker-compose.yaml -f dc-dev.yaml up
 a new user `admin` with password `pass` is created. Go to
 `localhost/admin` to access the administration.
 
+You will most likely want to have current DB to actually see
+something useful where content is fetched dynamically. Ask e.g. Daniel
+to get it or copy it from the deployment (if you have access, most likely 
+not) as is at the end of the README.
+
+When you get the copy of the DB, copy it to the root of this repo under
+`dev-eacr.sqlite3` name. It should be automatically picked up when using docker-compose.
+
 # Deployment
 ## CI
 There are builds by [CircleCI](https://circleci.com/gh/ea-czech-republic/efektivnialtruismus.cz) 
