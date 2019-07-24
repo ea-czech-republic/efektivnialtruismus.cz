@@ -13,4 +13,4 @@ bin/production.env
 bin/beta.env
 dev-eacr.sqlite3
 media/
-static/
+/static/
