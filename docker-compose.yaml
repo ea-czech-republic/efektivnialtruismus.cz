@@ -3,10 +3,6 @@ version: "3.4"
 services:
   app:
     image: czea/effective-thesis
-    volumes:
-      - db-data:/usr/src/app/data/
-      - static-data:/usr/src/app/static/
-      - media-data:/usr/src/app/media/
     entrypoint: ["/usr/src/app/bin/run.sh"]
     expose:
       - "8000"
@@ -17,12 +13,6 @@ services:
       - 80:80
     volumes:
       - ./bin/nginx.conf:/etc/nginx/conf.d/default.conf
-      - static-data:/data/static/
-      - media-data:/data/media/
     depends_on:
       - app
     restart: unless-stopped
-volumes:
-  db-data:
-  static-data:
-  media-data:
