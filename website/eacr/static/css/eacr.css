@@ -2,12 +2,7 @@ body {
     font-family: 'Titillium Web', sans-serif;
 }
 
-.container {
-    max-width: 75%;
-}
-
 .navbar {
-    background-color: #070259;
     text-transform: uppercase;
 }
 
@@ -26,8 +21,54 @@ body {
     z-index: 1020;
 }
 
-.btn {
-   text-transform: uppercase;
+.btn, .btn:hover, .btn:focus {
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: initial;
+    border: none;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:focus {
+    background-color: #070259;
+    border-color: #070259;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 .2rem rgba(7, 2, 89, .5);
+}
+
+.btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
+    color: #070259;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.text-primary {
+    color: #070259 !important;
+}
+
+.card {
+    border: none;
+    border-radius: initial;
+}
+
+.card-img-top {
+    border-radius: initial;
+}
+
+.card-header {
+    border: initial;
+    background-color: #E5E4E4;
+}
+
+.card-header:first-child,
+.card-footer:last-child {
+    border-radius: initial;
+}
+
+.card-shadow {
+    -webkit-box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .display-3 {
@@ -87,29 +128,7 @@ body {
     color: #FFFFFF;
 }
 
-/* FOOTER */
-
-footer p {
-    color: grey;
-    font-size: small;
-    margin-left: 32px;
-}
-
-footer a {
-    color: darkgray;
-}
-
 /* CONTENT */
-
-.home-content
-h1,
-h2,
-h3,
-h4,
-h5 {
-    font-weight: bold;
-    margin-top: 30px;
-}
 
 .template-blogindexpage .indexed-post {
     border: 1px solid #ccc !important;
@@ -120,7 +139,6 @@ h5 {
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 10px;
-    margin-top: 20px;
 }
 
 .responsive-object {

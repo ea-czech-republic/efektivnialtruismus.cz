@@ -77,18 +77,44 @@
     {% block content %}
     {% endblock %}
 
-    <div class="row">
-        <div class="col-md-12">
-            <hr class="mt-5"/>
-            <footer role="contentinfo">
-                {% flat_menu "theses_footer" template="menus/footer_menu.html" %}
-                <p class="copyright">
-                    © 2018 <a href="https://efektivni-altruismus.cz/english/">Effective altruism CZ</a>.
-                    <a href="http://github.com/ea-czech-republic/efektivnialtruismus.cz">Github EA CZ</a>
-                </p>
-            </footer>
+    <footer class="bg-primary text-white py-4" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 order-md-2 mb-3">
+                    <h3>Stay in touch</h3>
+                    <p>Are you interested in this project but now it's not the
+                        right time for you to use it? Stay in touch and get our quarterly updates.
+                    </p>
+                    <div id="newsletter">
+                        <form id="newsletter_form" action="/theses/newsletter/" method="POST">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="form-group">
+                                        <input type="text" name="contact_name" placeholder="YOUR NAME + SURNAME"
+                                               class="form-control"
+                                               required="" id="id_contact_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="contact_email" class="form-control" placeholder="EMAIL"
+                                               required="" id="id_contact_email">
+                                    </div>
+                                    <div class="float-right">
+                                        <input type="submit" value="Subscribe" class="btn btn-secondary">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-4 order-md-1">
+                    <h3>Effective Thesis</h3>
+                    <p>Part of <a href="https://efektivni-altruismus.cz">efektivni-altruismus.cz</a></p>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </footer>
 
     <script type="text/javascript" id="cookieinfo"
             src="//cookieinfoscript.com/js/cookieinfo.min.js"
@@ -103,6 +129,25 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
+    <script>
+    $("#newsletter_form").submit(function(e) {
+
+        e.preventDefault();
+
+        var frm = $('#newsletter_form');
+
+        $.ajax({
+            url: frm.attr('action'),
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(frm.serializeArray()),
+               success: function(data)
+               {
+                   $("#newsletter").html(data);
+               }
+         });
+    });
+    </script>
     {% block extra_js_2 %}
     {% endblock %}
 

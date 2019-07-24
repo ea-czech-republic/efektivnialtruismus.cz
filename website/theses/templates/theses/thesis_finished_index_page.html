@@ -6,53 +6,55 @@
 
 {% block content %}
 
-<div class="row" style="background-color:grey;">
-    <div class="col"></div>
-    <div class="col-10 mb-5">
-        <div class="row">
-            <div class="col text-center"><h1>We have finished these topics</h1></div>
-        </div>
+    <div class="container">
         <div class="row">
             <div class="col">
-                <div class="card-deck">
-                    {% if theses %}
-                    {% for thesis in theses %}
-                    <div class="card">
-                        <div class="card-header">
-                            {{ thesis.title }}
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                {{ thesis.body | safe | truncatewords_html:15 }}
-                            </p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="{% pageurl thesis %}" class="btn btn-primary">READ MORE</a>
+                <div class="row my-5">
+                    <div class="col text-center">
+                        <h1 class="h3 text-uppercase">We have finished these topics</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card-deck">
+                            {% if theses %}
+                                {% for thesis in theses %}
+                                    <div class="card card-shadow card-finished">
+                                        <div class="card-body">
+                                            <h2 class="h3">{{ thesis.title }}</h2>
+                                        </div>
+                                        <a href="{% pageurl thesis %}">
+                                            <div class="btn btn-primary btn-lg card-footer text-center w-100">
+                                                Read more
+                                            </div>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                nope
+                            {% endif %}
                         </div>
                     </div>
-                    {% endfor %}
-                    {% else %}
-                    nope
-                    {% endif %}
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col"></div>
-</div>
 
 
-<div class="row">
-    <div class="col">
-        <h1>We are working on</h1>
-        {{ page.body }}
-    </div>
-</div>
+        <div class="row">
+            <div class="col pb-3">
+                <h2 class="h3 text-center text-uppercase my-5">We are working on</h2>
+                {{ page.body }}
+            </div>
+        </div>
 
-<div class="row">
-    <div class="col">
-        <hr/>
-        {{ page.footer }}
+    {% if page.footer %}
+        <div class="row">
+            <div class="col">
+                <hr/>
+                {{ page.footer }}
+            </div>
+        </div>
+    {% endif %}
     </div>
-</div>
 {% endblock %}
