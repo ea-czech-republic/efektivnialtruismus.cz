@@ -6,56 +6,44 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-md-3">
-        <div class="row">
-            <div class="col card mb-3">
-                {% image page.specific.author_pic fill-200x200 class="p-3 mx-auto" %}
-                <p>
-                    {{ page.about_author | richtext }}
-                </p>
+    <div class="col-md-2"></div>
+    <div class="col">
+        <div class="row mt-5">
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col card mb-3">
+                        <div>
+                            {% image page.specific.author_pic width-400 class="p-3 mx-auto" style="width:100%; height:auto" height="null" %}
+                        </div>
+                        <div class="p-3">
+                                {{ page.about_author | richtext }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row mb-5">
+                    <div class="col">
+                        <h1>{{ page.title }}</h1>
+                        <p>
+                            {{ page.body }}
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-5">
+                        <div>
+                            <a class="btn btn-block btn-primary" href="{{ page.pdf_thesis.url }}" target="_blank">DOWNLOAD PDF</a>
+                        </div>
+                        <p>
+                            <a href="/theses"><h3>See more other topics</h3></a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col">
-        <h1>{{ page.title }}</h1>
-        <p>
-            {{ page.body }}
-        </p>
-    </div>
+    <div class="col-md-2"></div>
 </div>
-<div class="row">
-    <div class="col"></div>
-    <div class="col"></div>
-    <div class="col">
-        <p><a class="btn btn-primary" href="{{ page.pdf_thesis.url }}" target="_blank">
-            PDF download
-        </a></p>
-        <p><a href="/theses">
-            See more other topics
-        </a></p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col">
-        <p>
-            TODO: hash tags here? Where do we get them? Could be just a streamfield or text field in the end.
-        </p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col">
-        <p><a href="/finished">
-            Back to finished
-        </a></p>
-    </div>
-    <div class="col"></div>
-        <div class="col">
-        <p><a href="/finished">
-            TODO: next thesis - this is nice to have
-        </a></p>
-    </div>
-</div>
-
 {% endblock %}
