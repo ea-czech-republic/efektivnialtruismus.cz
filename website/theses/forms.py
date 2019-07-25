@@ -134,7 +134,7 @@ class CoachingForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Please describe how knowledgeable are you in Effective Altruism and place yourself on a scale 0-5",
+                "placeholder": "Please describe how knowledgeable are you in Effective Altruism.",
                 "rows": 5,
             }
         ),
@@ -145,6 +145,15 @@ class CoachingForm(forms.Form):
             attrs={
                 "class": "form-control",
                 "placeholder": "When is your deadline for having a topic chosen?",
+            }
+        )
+    )
+
+    deadline_submit = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "When is your deadline for submitting your thesis?",
             }
         )
     )
@@ -169,6 +178,10 @@ class CoachingForm(forms.Form):
                 "rows": 5,
             }
         ),
+    )
+    choices_seniority = ["Undergraduate", "Masters", "PhD", "post-PhD"]
+    seniority = forms.ChoiceField(
+        choices=zip(choices_seniority, choices_seniority),
     )
 
 

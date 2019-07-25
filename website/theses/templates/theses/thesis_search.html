@@ -157,17 +157,34 @@
                             <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
                                 <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
                                        id="id_deadline" name="deadline"
-                                       placeholder="Deadline for topic choice"/>
+                                       placeholder="When is your deadline for having a topic chosen?"/>
                                 <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"
+                                       id="id_deadline_submit" name="deadline_submit"
+                                       placeholder="When is your deadline for submitting your thesis?"/>
+                                <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         {{ contactForm.find_out_website.errors }}
                         {{ contactForm.find_out_website }}
+                    </div>
+
+                    <div class="form-group">
+                        <span>Which degree level do you seek help for?</span>
+                        {{ contactForm.seniority.errors }}
+                        {{ contactForm.seniority }}
                     </div>
 
                     <div class="form-group">
