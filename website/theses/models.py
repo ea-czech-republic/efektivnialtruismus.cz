@@ -126,7 +126,9 @@ class ThesisSearch(Page):
         Requirements: {requirements},
         Preferences: {preferences},
         Knowledgeable: {read_above},
-        Deadline: {deadline},
+        Deadline for selection: {deadline},
+        Deadline for submission: {deadline_submit},
+        Seniority: {seniority},
         Anything else: {anything_else},
         How did you found about the website: {find_out_website},
         """.format(
