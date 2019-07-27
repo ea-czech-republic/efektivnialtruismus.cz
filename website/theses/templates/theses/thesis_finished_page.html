@@ -5,45 +5,62 @@
 {% load static %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-2"></div>
-    <div class="col">
-        <div class="row mt-5">
+    <div class="container mt-5">
+        <div class="row">
             <div class="col-md-3">
                 <div class="row">
                     <div class="col card mb-3">
-                        <div>
-                            {% image page.specific.author_pic width-400 class="p-3 mx-auto" style="width:100%; height:auto" height="null" %}
-                        </div>
-                        <div class="p-3">
-                                {{ page.about_author | richtext }}
-                        </div>
+                        {% image page.specific.author_pic width-400 class="img-fluid mb-3" %}
+                        {{ page.about_author | richtext }}
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-md">
                 <div class="row mb-5">
                     <div class="col">
-                        <h1>{{ page.title }}</h1>
-                        <p>
-                            {{ page.body }}
-                        </p>
+                        <h3 class="text-uppercase">{{ page.title }}</h3>
+                        {{ page.body }}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col-5">
-                        <div>
-                            <a class="btn btn-block btn-primary" href="{{ page.pdf_thesis.url }}" target="_blank">DOWNLOAD PDF</a>
+
+                <div class="row align-items-center mb-3">
+                    <div class="col">
+                        <div class="float-right text-center">
+                            <a href="{{ page.pdf_thesis.url }}" class="btn btn-lg btn-primary" target="_blank">Download PDF</a>
+                            <a href="/theses" class="more-topics">See more topics</a>
                         </div>
-                        <p>
-                            <a href="/theses"><h3>See more other topics</h3></a>
-                        </p>
                     </div>
                 </div>
             </div>
         </div>
+
+        <nav class="thesis-nav row my-5">
+            <div class="col text-left">
+                {% if page.prev %}
+                    <a href="{{ page.prev.url }}"><< Previous finished thesis</a>
+                {% else %}
+                    <a href="{{ page.get_parent.url }}"><< Back to finished</a>
+                {% endif %}
+            </div>
+            <div class="col text-right">
+                {% if page.next %}
+                    <a href="{{ page.next.url }}">Next finished thesis >></a>
+                {% endif %}
+            </div>
+        </nav>
     </div>
-    <div class="col-md-2"></div>
-</div>
+
+    <div class="thesis-action">
+        <div class="container">
+            <div class="row align-items-center py-5">
+                <div class="col-md col-md-offset-auto text-center">
+                    <p class="thesis-action-text">Get a meaningful topic for your thesis</p>
+                </div>
+
+                <div class="col-md-4 text-center">
+                    <a href="/theses" class="btn btn-primary btn-lg">Connect here</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

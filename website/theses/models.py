@@ -398,4 +398,21 @@ class ThesisFinishedPage(Page):
         StreamFieldPanel("body"),
     ]
 
+
     parent_page_types = ["theses.ThesisFinishedIndexPage"]
+
+    def prev(self):
+        prev_sibling = self.get_prev_sibling()
+        if prev_sibling:
+            if prev_sibling.live:
+                return prev_sibling
+            else:
+                return prev_sibling.prev()
+
+    def next(self):
+        next_sibling = self.get_next_sibling()
+        if next_sibling:
+            if next_sibling.live:
+                return next_sibling
+            else:
+                return next_sibling.next()
