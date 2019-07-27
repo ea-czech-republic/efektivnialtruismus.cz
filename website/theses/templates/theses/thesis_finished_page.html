@@ -37,14 +37,14 @@
         <nav class="thesis-nav row my-5">
             <div class="col text-left">
                 {% if page.prev %}
-                    <a href="{{ page.prev.url }}"><< Previous finished thesis</a>
+                    <a href="{{ page.prev.url }}"><<&nbsp;Previous finished thesis</a>
                 {% else %}
-                    <a href="{{ page.get_parent.url }}"><< Back to finished</a>
+                    <a href="{{ page.get_parent.url }}"><<&nbsp;Back to finished</a>
                 {% endif %}
             </div>
             <div class="col text-right">
                 {% if page.next %}
-                    <a href="{{ page.next.url }}">Next finished thesis >></a>
+                    <a href="{{ page.next.url }}">Next finished thesis&nbsp;>></a>
                 {% endif %}
             </div>
         </nav>
