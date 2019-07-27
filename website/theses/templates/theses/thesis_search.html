@@ -133,6 +133,12 @@
                     </div>
 
                     <div class="form-group">
+                        <span>Which degree level do you seek help for?</span>
+                        {{ contactForm.seniority.errors }}
+                        {{ contactForm.seniority }}
+                    </div>
+
+                    <div class="form-group">
                         {{ contactForm.requirements.errors }}
                         {{ contactForm.requirements }}
                     </div>
@@ -176,15 +182,15 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        {{ contactForm.find_out_website.errors }}
-                        {{ contactForm.find_out_website }}
+                        {{ contactForm.cv_url.errors }}
+                        {{ contactForm.cv_url }}
                     </div>
 
                     <div class="form-group">
-                        <span>Which degree level do you seek help for?</span>
-                        {{ contactForm.seniority.errors }}
-                        {{ contactForm.seniority }}
+                        {{ contactForm.find_out_website.errors }}
+                        {{ contactForm.find_out_website }}
                     </div>
 
                     <div class="form-group">

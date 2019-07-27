@@ -94,6 +94,11 @@ class CoachingForm(forms.Form):
         ),
     )
 
+    choices_seniority = ["Undergraduate", "Masters", "PhD", "post-PhD"]
+    seniority = forms.ChoiceField(
+        choices=zip(choices_seniority, choices_seniority),
+    )
+
     requirements = forms.CharField(
         required=False,
         widget=forms.Textarea(
@@ -158,6 +163,16 @@ class CoachingForm(forms.Form):
         )
     )
 
+    cv_url = forms.URLField(
+        required=False,
+        widget=forms.URLInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Send us link to your CV or other summary of your (research) experience",
+            }
+        )
+    )
+
     find_out_website = forms.CharField(
         required=False,
         widget=forms.Textarea(
@@ -178,10 +193,6 @@ class CoachingForm(forms.Form):
                 "rows": 5,
             }
         ),
-    )
-    choices_seniority = ["Undergraduate", "Masters", "PhD", "post-PhD"]
-    seniority = forms.ChoiceField(
-        choices=zip(choices_seniority, choices_seniority),
     )
 
 
