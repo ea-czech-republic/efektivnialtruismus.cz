@@ -8,52 +8,76 @@
 {% block body_class %}template-thesisindex{% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col">
-            <h1 class="mb-4">What do you want to focus on with your thesis?</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <ul class="nav nav-pills center-pills" role="tablist">
-                <li class="nav-item li-choose">
-                    <a onclick="appendIdToUrl(this);" id="impact"
-                       class="nav-link btn btn-info choose-nav-links"
-                       data-toggle="tab" href="#impact-tab"
-                       role="tab">Highest social
-                        impact</a>
-                </li>
-                <li class="nav-item li-choose">
-                    <a onclick="appendIdToUrl(this);" id="career" class="nav-link btn btn-info choose-nav-links"
-                       data-toggle="tab"
-                       href="#career-tab"
-                       role="tab">Improving career
-                        prospects</a>
-                </li>
-                <li class="nav-item li-choose">
-                    <a onclick="appendIdToUrl(this);" id="research" class="nav-link btn btn-info choose-nav-links"
-                       data-toggle="tab"
-                       href="#research-tab"
-                       role="tab">Research career
-                        in academia</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md">
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane" id="impact-tab" role="tabpanel">{{ page.impact | safe }}</div>
-                <div class="tab-pane" id="career-tab" role="tabpanel">{{ page.career | safe }}</div>
-                <div class="tab-pane" id="research-tab" role="tabpanel">{{ page.research | safe }}</div>
+    <div class="container my-3">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="mb-4">What do you want to focus on with your thesis?</h1>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md">
-            {{ page.body | safe }}
+        <div class="row mb-4">
+            <div class="col-md-12 text-center">
+                <ul class="nav nav-pills center-pills" role="tablist">
+{#                    We are using both data-target and href attributes to#}
+{#                    allow linking to specific tab and at the same time#}
+{#                    prevent browser from subsequently scrolling to the tab,#}
+{#                    which would happen if we used only a combination of id#}
+{#                    and href.#}
+
+                    <li class="nav-item li-choose">
+                        <a onclick="setURLHash(this.href)"
+                           id="impact-page-tab"
+                           class="nav-link btn btn-primary choose-nav-links"
+                           data-toggle="tab"
+                           data-target="#impact-page"
+                           href="#impact"
+                           role="tab">
+                            Highest social impact
+                        </a>
+                    </li>
+
+                    <li class="nav-item li-choose">
+                        <a onclick="setURLHash(this.href)"
+                           id="career-page-tab"
+                           class="nav-link btn btn-primary choose-nav-links"
+                           data-toggle="tab"
+                           data-target="#career-page"
+                           href="#career"
+                           role="tab">
+                            Improving career prospects
+                        </a>
+                    </li>
+
+                    <li class="nav-item li-choose">
+                        <a onclick="setURLHash(this.href)"
+                           id="research-page-tab"
+                           class="nav-link btn btn-primary choose-nav-links"
+                           data-toggle="tab"
+                           data-target="#research-page"
+                           href="#research"
+                           role="tab">
+                            Research career in academia
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane" id="impact-page" role="tabpanel">{{ page.impact | safe }}</div>
+                    <div class="tab-pane" id="career-page" role="tabpanel">{{ page.career | safe }}</div>
+                    <div class="tab-pane" id="research-page" role="tabpanel">{{ page.research | safe }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md">
+                {{ page.body | safe }}
+            </div>
         </div>
     </div>
 {% endblock %}
@@ -62,12 +86,16 @@
 {% block extra_js_2 %}
     <script>
         $(document).ready(function () {
-            $('#' + window.location.hash.substr(1)).click();
+            $(location.hash + '-page-tab').tab('show');
         });
 
-        function appendIdToUrl(atag) {
-            window.location.hash = atag.id;
+        function setURLHash(hash) {
+            if(history.pushState) {
+                history.pushState(null, null, hash);
+            }
+            else {
+                location.hash = hash;
+            }
         }
-
     </script>
 {% endblock %}
