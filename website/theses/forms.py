@@ -128,7 +128,7 @@ class CoachingForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Do you have any strong interests and preferences regarding thesis topic?",
+                "placeholder": "Do you have any strong preferences regarding your thesis topic?",
                 "rows": 5,
             }
         ),
@@ -139,7 +139,7 @@ class CoachingForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Please describe how knowledgeable are you in Effective Altruism.",
+                "placeholder": "Please describe how knowledgeable you are about Effective Altruism",
                 "rows": 5,
             }
         ),
