@@ -1,5 +1,6 @@
 {% extends "theses/theses_base.html" %}
 
+{% load static %}
 {% load wagtailcore_tags %}
 {% load wagtailuserbar %}
 {% load wagtailimages_tags %}
@@ -8,80 +9,140 @@
 {% block body_class %}template-thesisindex{% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col mx-auto text-center">
-            <h3 class="display-4">Make your thesis meaningful</h3>
+    <main class="hero" style="background-image: url({% static "img/hero-home.jpg" %});">
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mr-auto">
+                        <h1 class="text-white mb-4">Make your thesis meaningful</h1>
+                        <p>We will connect you with a coach who will help you find a thesis topic with high potential to
+                            significantly improve the world.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a class="btn btn-lg btn-secondary float-right" href="/theses">How it works</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <br><br>
-    <div class="row mt-2">
-        <div class="col mx-auto">
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <p class="h4 thesis-these">
-                        We will help you find a thesis topic with high potential to make the world a significantly
-                        better place.
+    </main>
+
+    <div class="container">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8 text-center">
+                <h1 class="my-4">See the finished theses of students we advised and what our current students are working on</h1>
+                <p>
+                    <a class="btn btn-lg btn-primary" href="/finished" target="_blank">Finished</a>
+                </p>
+            </div>
+        </div>
+
+        <h3 class="mb-4">Example topic areas</h3>
+
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="{% static "img/biosecurity.jpg" %}" class="card-img-top" alt="Test tubes">
+                    <div class="topic-areas-overlay">
+                        <h4 class="card-title text-white">Biosecurity</h4>
+                    </div>
+                </div>
+                <div class="card-body">With a steep progress in our knowledge of synthetic biology and decreasing prices of technologies used to create pathogens, the risk and severity of pandemics from both natural and engineered pathogens will likely increase and cause millions or even billions of deaths.
                     </p>
                 </div>
-                <div class="col-md-1"></div>
             </div>
-        </div>
-    </div>
-    <br>
 
-    <div class="row mt-4">
-        <div class="col-12 text-center mb-3">
-            <h5>Try our Thesis Topic Coaching</h5>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="{% static "img/earth.jpg" %}" class="card-img-top" alt="China street">
+                    <div class="topic-areas-overlay">
+                        <h4 class="card-title text-white">Global Priorities Research</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        What are the most important problems we should focus on to improve the world the most? How should we
+                        allocate our resources to do the most good? More insight into these questions could largely
+                        influence what we will do and how successful we will be in improving the world.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="{% static "img/headbulb.jpg" %}" class="card-img-top" alt="Cluster of cells">
+                    <div class="topic-areas-overlay">
+                        <h4 class="card-title text-white">AI governance</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        Developments in artificial intelligence algorithms will likely have a large influence on many domains of our societies and lives. Research into how we should govern the creation and deployment of such developments will help us capture the benefits and mitigate the risks stemming from abrupt changes.
+                    </p>
+                </div>
+            </div>
         </div>
-        <br>
-        <div class="col mx-auto text-center">
-            <a href="/thesis-coaching" class="btn btn-info btn-lg responsive-text btn-responsive">Learn more</a>
+
+        <div class="row">
+            <div class="col text-center mt-5">
+                <a href="/theses#disciplines" class="btn btn-lg btn-primary">Explore more</a>
+            </div>
         </div>
     </div>
 
-    <div class="row mt-4">
-        <div class="col-12 text-center mb-3">
-            <h5>For inspiration, see a list of topics proposed by effective charities and enterprises!</h5>
-        </div>
-        <br>
-        <div class="col mx-auto text-center">
-            <a href="/theses" class="btn btn-info btn-lg responsive-text btn-responsive">Learn more</a>
+    <div class="bg-primary py-5 my-5">
+        <div class="container">
+            <div class="row text-center text-white">
+                <div class="col">
+                    <h1 class="display-3">12,000</h1>
+                    <h2 class="text-uppercase">Research hours</h2>
+                    <p>directed towards the most pressing global problems</p>
+                </div>
+                <div class="col">
+                    <h1 class="display-3">15</h1>
+                    <h2 class="text-uppercase">Countries all over the globe</h2>
+                    <p>from which students applied and benefited from our coaching</p>
+                </div>
+                <div class="col">
+                    <h1 class="display-3">40</h1>
+                    <h2 class="text-uppercase">Coaches</h2>
+                    <p>in our network help students from all backgrounds finding the right topic</p>
+                </div>
+            </div>
         </div>
     </div>
-<!--
-    <br>
-    <div class="row">
-        <div class="col"></div>
-        <div class="col-10 text-justify">
-            You will likely invest hundreds of hours and huge effort in your final thesis. What about using
-            this opportunity for something more than just “have it done” and choose a topic that will, on the top of
-            gaining your diploma, help someone else? We have collected a list of topics from Effective charities and
-            enterprises which deal with some of the most pressing global issues. These organisations will provide you
-            with consultations to ensure highest possible quality and utility of your work.
-        </div>
-        <div class="col"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div class="row mt-4">
-                <div class="col-md-4 text-center">{{ page.column_1 | safe }}</div>
-                <div class="col-md-4 text-center">{{ page.column_2 | safe }}</div>
-                <div class="col-md-4 text-center">{{ page.column_3 | safe }}</div>
-            </div>
-            <div class="row mt-1">
-                <div class="col"><h4>What they say about us...</h4></div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-6">{{ page.references_1 | safe }}</div>
-                <div class="col-md-6">{{ page.references_2 | safe }}</div>
-            </div>
-            <div class="row mt-4">
-                <div>{{ page.body | safe }}</div>
+
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="text-uppercase mb-5">What they say about us</h1>
             </div>
         </div>
-        <div class="col-md-1"></div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-5">
+                <div class="p-4">
+                    <img class="img-fluid" src="{% static "img/peter-singer.jpg" %}">
+                </div>
+                <p>
+                    Too many students write theses that
+                    achieve nothing other than meet the
+                    requirement for the degree they are
+                    seeking. When there are so many
+                    important questions, in a wide range of
+                    fields, that need to be answered, that's a
+                    terrible waste of time and intelligent,
+                    creative energy. The Effective Thesis
+                    Project is seeking to change that, and I
+                    hope it will.
+                </p>
+                <p class="font-weight-bold">
+                    Peter Singer, Ira W. DeCamp Professor of
+                    Bioethics at Princeton University,
+                    Laureate Professor at the University of
+                    Melbourne <span class="font-weight-normal text-muted">(photo: Mal Vickers)</span>
+                </p>
+            </div>
+        </div>
     </div>
--->
 {% endblock %}

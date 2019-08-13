@@ -9,6 +9,7 @@ else
 fi
 
 python website/manage.py migrate
+python website/manage.py collectstatic --noinput --clear
 
 cat <<EOF | python website/manage.py shell
 from django.contrib.auth import get_user_model

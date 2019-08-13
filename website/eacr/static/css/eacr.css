@@ -1,44 +1,78 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
-
 body {
-    padding-top: 1rem;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.navbar {
+    text-transform: uppercase;
+}
+
+.navbar a {
+    color: white;
 }
 
 .navbar-brand {
-    line-height: 60px;
-    text-transform: uppercase;
-}
-
-.main-menu > li > a {
-    font-size: 1em;
-    margin-left: 0.2em;
-    color: black;
     font-weight: bold;
-    position: relative;
-    text-decoration: none;
+}
+
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+.btn, .btn:hover, .btn:focus {
     text-transform: uppercase;
+    font-weight: bold;
+    border-radius: initial;
+    border: none;
 }
 
-.main-menu > li > a:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #000;
-    visibility: hidden;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
+.btn-primary, .btn-primary:hover, .btn-primary:focus {
+    background-color: #070259;
+    border-color: #070259;
 }
 
-.main-menu > li > a:hover:before {
-    visibility: visible;
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 .2rem rgba(7, 2, 89, .5);
+}
+
+.btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
+    color: #070259;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-pills .nav-link {
+    border-radius: initial;
+}
+
+.text-primary {
+    color: #070259 !important;
+}
+
+.card {
+    border: none;
+    border-radius: initial;
+}
+
+.card-img-top {
+    border-radius: initial;
+}
+
+.card-header {
+    border: initial;
+    background-color: #E5E4E4;
+}
+
+.card-header:first-child,
+.card-footer:last-child {
+    border-radius: initial;
+}
+
+.card-shadow {
+    -webkit-box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow:  0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .display-3 {
@@ -98,29 +132,7 @@ body {
     color: #FFFFFF;
 }
 
-/* FOOTER */
-
-footer p {
-    color: grey;
-    font-size: small;
-    margin-left: 32px;
-}
-
-footer a {
-    color: darkgray;
-}
-
 /* CONTENT */
-
-.home-content
-h1,
-h2,
-h3,
-h4,
-h5 {
-    font-weight: bold;
-    margin-top: 30px;
-}
 
 .template-blogindexpage .indexed-post {
     border: 1px solid #ccc !important;
@@ -131,7 +143,6 @@ h5 {
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 10px;
-    margin-top: 20px;
 }
 
 .responsive-object {

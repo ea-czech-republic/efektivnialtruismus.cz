@@ -1,24 +1,21 @@
 {% load menu_tags i18n %}
 {% load static %}
 
-<nav class="navbar navbar-expand-md navbar-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand d-flex mx-auto" href="/">
-        <img src="{% static "imgs/logo-eacr-theses.png" %}" width="60" height="60" class="d-inline-block align-top"
-             alt="Logo EA CR">
-        Effective Thesis
-    </a>
-    <div class="collapse navbar-collapse navbar-right" id="navbarContent">
-        <ul class="navbar-nav ml-auto main-menu">
-            {% for item in menu_items %}
-                <li class="nav-item {{ item.active_class }}">
-                    <a class="nav-link" style="font-weight: bold; color: black"
-                       href="{{ item.href }}">{{ item.text }}</a>
-                </li>
-            {% endfor %}
-        </ul>
+<nav class="navbar navbar-dark bg-inverse navbar-expand-md sticky-top bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="/">Effective Thesis</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar-right" id="navbarContent">
+            <ul class="navbar-nav ml-auto">
+                {% for item in menu_items %}
+                    <li class="nav-item {{ item.active_class }}">
+                        <a class="nav-link" href="{{ item.href }}">{{ item.text }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </nav>

@@ -1,6 +1,19 @@
-body div.rich-text p {
-    text-align: justify;
-    margin-bottom: 0.5em;
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5{
+    color: #070259;
+    font-weight: bold;
+}
+
+.bg-primary {
+    background-color: #070259 !important;
+}
+
+.bg-primary h1,
+.bg-primary h2,
+.bg-primary h3,
+.bg-primary h4,
+.bg-primary h5 {
+    color: white;
 }
 
 .tag {
@@ -15,32 +28,79 @@ body div.rich-text p {
     font-size: 9px;
 }
 
-h1 h2 {
-    color: #014c8c;
+.hero {
+    background: no-repeat center center;
+    background-size: cover;
+    text-shadow: 2px 1px 33px black;
 }
 
-/* Hiding the checkbox, but allowing it to be focused */
-.badgebox {
-    opacity: 0;
-    width: 0px;
+.hero .jumbotron {
+    color: white;
+    padding-top: 10rem;
+    background: unset;
+    border-radius: unset;
 }
 
-.badgebox + .badge {
-    width: 27px;
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
 }
 
-.badgebox:focus + .badge {
-    box-shadow: inset 0px 0px 5px;
+.hero-arrow {
+    margin: 7rem auto 0 auto;
 }
 
-.badgebox:checked + label {
-    background-color: #449d44;
+.card-finished .card-body {
+    background-color: #E5E4E4;
 }
 
-.tag-select {
-    font-size: 15px;
-    padding: 1px 1px 2px 2px;
-    margin: 1px 1px 1px 1px;
+.card-finished .card-footer {
+    background-color: #070259;
+}
+
+.card-img-wrapper {
+    position: relative;
+}
+
+.topic-areas-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.more-topics {
+    display: block;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: inherit;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.thesis-nav a {
+    color: #070259;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.thesis-action {
+    background-color: #f7f7f7;
+}
+
+.thesis-action-text {
+    color: #070259;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .thesis p {
@@ -88,14 +148,6 @@ h1 h2 {
 @media screen and (max-width: 768px) {
     .custom-collapse .collapse {
         display: block;
-    }
-}
-
-@media (min-width: 34em) {
-    .card-deck > .card {
-        width: 29%;
-        flex-wrap: wrap;
-        flex: initial;
     }
 }
 
@@ -149,10 +201,10 @@ h1 h2 {
 }
 
 .block-heading {
+    color: #070259;
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 10px;
-    margin-top: 20px;
 }
 
 .responsive-object {

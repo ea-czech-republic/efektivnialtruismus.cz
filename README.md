@@ -10,7 +10,16 @@ docker-compose -f docker-compose.yaml -f dc-dev.yaml up
 ```
 
 a new user `admin` with password `pass` is created. Go to
-`localhost:8000/admin` to access the administration.
+`localhost/admin` to access the administration.
+
+You will most likely want to have current DB to actually see
+something useful where content is fetched dynamically. Ask e.g. Daniel
+to get it or copy it from the deployment (if you have access, most likely 
+not) as is at the end of the README.
+
+When you get the copy of the DB, copy it to the root of this repo under
+`dev-eacr.sqlite3` name. It should be automatically picked up 
+when using `docker-compose` now.
 
 # Deployment
 ## CI
@@ -37,6 +46,7 @@ gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west3-c" "eac
 
 ### Copy DB from production to Beta
 ```
+# eacr-main-2 is production, eacr-main-3 is beta
 gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west3-c" "eacr-main-2" \
     --command 'docker cp efektivnialtruismuscz_app_1:"/usr/src/app/data/production-et.sqlite3" /tmp/production-eacr.sqlite3'
 gcloud compute --project "efektivni-altruismus" scp --zone "europe-west3-c" "eacr-main-2:/tmp/production-eacr.sqlite3" "/tmp/production-eacr.sqlite3"

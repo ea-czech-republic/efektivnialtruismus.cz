@@ -94,6 +94,11 @@ class CoachingForm(forms.Form):
         ),
     )
 
+    choices_seniority = ["Undergraduate", "Masters", "PhD", "post-PhD"]
+    seniority = forms.ChoiceField(
+        choices=zip(choices_seniority, choices_seniority),
+    )
+
     requirements = forms.CharField(
         required=False,
         widget=forms.Textarea(
@@ -123,7 +128,7 @@ class CoachingForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Do you have any strong interests and preferences regarding thesis topic?",
+                "placeholder": "Do you have any strong preferences regarding your thesis topic?",
                 "rows": 5,
             }
         ),
@@ -134,7 +139,7 @@ class CoachingForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Please describe how knowledgeable are you in Effective Altruism and place yourself on a scale 0-5",
+                "placeholder": "Please describe how knowledgeable you are about Effective Altruism",
                 "rows": 5,
             }
         ),
@@ -145,6 +150,25 @@ class CoachingForm(forms.Form):
             attrs={
                 "class": "form-control",
                 "placeholder": "When is your deadline for having a topic chosen?",
+            }
+        )
+    )
+
+    deadline_submit = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "When is your deadline for submitting your thesis?",
+            }
+        )
+    )
+
+    cv_url = forms.URLField(
+        required=False,
+        widget=forms.URLInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Send us link to your CV or other summary of your (research) experience",
             }
         )
     )
