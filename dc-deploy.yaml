@@ -10,10 +10,22 @@ services:
       - static-data:/usr/src/app/static/
       - media-data:/usr/src/app/media/
   nginx:
+    # Make sure that nginx reloads the newly obtained certificates.
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
       - ./bin/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
       - static-data:/data/static/
       - media-data:/data/media/
+  certbot:
+    image: certbot/certbot
+    # Check if certificate is up for renewal every 12 hours as recommended by
+    # Let’s Encrypt.
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
 volumes:
   db-data:
   static-data:
