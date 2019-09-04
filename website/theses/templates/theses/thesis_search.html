@@ -223,6 +223,15 @@
 
 {% block extra_js_2 %}
     <script>
+        $(document).ready(function () {
+            if (
+                window.location.search.includes("discipline")
+                && window.location.hash !== "disciplines"
+            ) {
+                window.location.hash = "disciplines";
+            }
+        });
+
         /* Terrible hack - we need to append the form to the DOM and then send it... Mostly because firefox */
         var _form = document.getElementById("discipline-filter-form");
         document.getElementById("discipline-filter-form").addEventListener("click", function () {
