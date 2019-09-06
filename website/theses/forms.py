@@ -43,7 +43,7 @@ class InterestsForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Do you have anything else you would like to tell us?",
+                "placeholder": "Which ideas/topics have you considered so far if any?",
             }
         ),
     )
@@ -99,17 +99,6 @@ class CoachingForm(forms.Form):
         choices=zip(choices_seniority, choices_seniority),
     )
 
-    requirements = forms.CharField(
-        required=False,
-        widget=forms.Textarea(
-            attrs={
-                "class": "form-control",
-                "placeholder": "Any requirements we should be aware of? Do you have to use particular methodology? Do you have some budget available? Does your supervisor have some requirements (if you already have a supervisor)?",
-                "rows": 5,
-            }
-        ),
-    )
-
     career = forms.CharField(
         required=False,
         widget=forms.Textarea(
@@ -161,6 +150,17 @@ class CoachingForm(forms.Form):
                 "placeholder": "When is your deadline for submitting your thesis?",
             }
         )
+    )
+
+    requirements = forms.CharField(
+        required=False,
+        widget=forms.Textarea(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Any requirements we should be aware of? Do you have to use particular methodology? Do you have some budget available? Does your supervisor have some requirements (if you already have a supervisor)?",
+                "rows": 5,
+            }
+        ),
     )
 
     cv_url = forms.URLField(
