@@ -4,187 +4,182 @@
 {% load wagtailuserbar %}
 {% load wagtailimages_tags %}
 {% load static %}
+
 {% block content %}
-<div class="row mt-5">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="row">
-                    <div class="col card mb-3">
-                        <h3>This topic is provided by</h3>
-                        <a class="card-link" href="{{ page.provider.link }}">
-                            {{ page.provider.name }}
-                            {% image page.provider.provider_image fill-20x20 %}
-                        </a>
-                    </div>
-                </div>
-                <!--<div class="row mb-2" id="tags">
-                    <div class="col">
-                        {% for tag in page.tags.all %}
-                        <label class="btn btn-primary tag-select">
-                            {{ tag }}
-                        </label>
-                        {% endfor %}
-                    </div>
-                </div>-->
-            </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <h2>
-                            {{ page.title }}
-                        </h2>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="row mt-5 justify-content-center">
+            <div class="col-lg-10">
+                <h2>
+                    {{ page.title }}
+                </h2>
 
-                <div class="row">
-                    <div class="col">
-                        {{ page.description|safe }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h3>Why do we think this is important?</h3>
-                        {{ page.why_important|safe }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h3>Where to look next</h3>
-                        {{ page.sources|safe }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h2>
-                            Register your interest
-                        </h2>
-                        <p>
-                            Do you want to get in touch with the organization which proposed this topic and consult your thesis
-                            with them? Fill in the form below!
-                        </p>
-                        <p>
+                <p>
+                    This topic is provided by
+                    <a class="card-link" href="{{ page.provider.link }}">
+                        {{ page.provider.name }}
+                        {% image page.provider.provider_image fill-20x20 %}
+                    </a>
+                </p>
 
-                            Not feeling like it but still want to work on this topic? Let us know by filling the form below and
-                            we might find some other way to support you!
-                        </p>
-                        <p>
-                            You may also consider: Is this topic a good fit for your longer term goals? <a
-                                href="http://effectivethesis.com/how-choose-thesis/">Check this advice</a>.
-                        </p>
-                        <p>
-                            Want to help with designing the topic to better fit your skills, supervisor availability, longer
-                            term career goals and other circumstances? <a href="http://effectivethesis.com/thesis-coaching/">Apply
-                            for a Thesis Topic Coaching</a>!
-                        </p>
+                {#                        <div class="row mb-2" id="tags">#}
+                {#                            <div class="col">#}
+                {#                                {% for tag in page.tags.all %}#}
+                {#                                    <label class="btn btn-primary tag-select">#}
+                {#                                        {{ tag }}#}
+                {#                                    </label>#}
+                {#                                {% endfor %}#}
+                {#                            </div>#}
+                {#                        </div>#}
+
+                {{ page.description|safe }}
+
+                <h3>Why do we think this is important?</h3>
+                {{ page.why_important|safe }}
+
+                <h3>Where to look next</h3>
+                {{ page.sources|safe }}
+
+                <h2>
+                    Register your interest
+                </h2>
+                <p>
+                    Do you want to get in touch with the organization
+                    which proposed this topic and consult your thesis
+                    with them? Fill in the form below!
+                </p>
+                <p>
+
+                    Not feeling like it but still want to work on this
+                    topic? Let us know by filling the form below and
+                    we might find some other way to support you!
+                </p>
+                <p>
+                    You may also consider: Is this topic a good fit for
+                    your longer term goals?
+                    <a href="http://effectivethesis.com/how-choose-thesis/">Check this advice</a>.
+                </p>
+                <p>
+                    Want to help with designing the topic to better fit
+                    your skills, supervisor availability, longer
+                    term career goals and other circumstances?
+                    <a href="http://effectivethesis.com/thesis-coaching/">Apply for a Thesis Topic Coaching</a>!
+                </p>
+
+                <form id="contact-form" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ contactForm.contact_name.errors }}
+                        {{ contactForm.contact_name }}
                     </div>
-                </div>
-                <div class="row" id="form-container">
-                    <div class="col">
-                        <form id="contact-form" action="" method="POST">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                {{ contactForm.contact_name.errors }}
-                                {{ contactForm.contact_name }}
-                            </div>
-                            <div class="form-group">
-                                {{ contactForm.contact_email.errors }}
-                                {{ contactForm.contact_email }}
-                            </div>
-                            <div class="form-group">
-                                {{ contactForm.course_and_university.errors }}
-                                {{ contactForm.course_and_university }}
-                            </div>
-                            <div class="form-group">
-                                <input type="hidden" name="{{ contactForm.thesis_title.html_name }}" value="{{ thesis_title }}"
-                                       class="form-control" id="{{ contactForm.thesis_title.id_for_label }}">
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-8">
-                                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input"
-                                               data-target="#datetimepicker1"
-                                               id="id_deadline" name="deadline"
-                                               placeholder="Deadline for topic choice"/>
-                                        <div class="input-group-append" data-target="#datetimepicker1"
-                                             data-toggle="datetimepicker">
-                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                        </div>
+                    <div class="form-group">
+                        {{ contactForm.contact_email.errors }}
+                        {{ contactForm.contact_email }}
+                    </div>
+                    <div class="form-group">
+                        {{ contactForm.course_and_university.errors }}
+                        {{ contactForm.course_and_university }}
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden"
+                               name="{{ contactForm.thesis_title.html_name }}"
+                               value="{{ thesis_title }}"
+                               class="form-control"
+                               id="{{ contactForm.thesis_title.id_for_label }}">
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <div class="input-group date"
+                                 id="datetimepicker1"
+                                 data-target-input="nearest">
+                                <input type="text"
+                                       class="form-control datetimepicker-input"
+                                       data-target="#datetimepicker1"
+                                       id="id_deadline" name="deadline"
+                                       placeholder="Deadline for topic choice"/>
+                                <div class="input-group-append"
+                                     data-target="#datetimepicker1"
+                                     data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i
+                                            class="fa fa-calendar"></i>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                {{ contactForm.find_out_website.errors }}
-                                {{ contactForm.find_out_website }}
-                            </div>
-
-                            <div class="form-group">
-                                {{ contactForm.content.errors }}
-                                {{ contactForm.content }}
-                            </div>
-                            <input type="submit" value="I want to work on this topic" class="btn btn-primary">
-                        </form>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-1"></div>
+
+                    <div class="form-group">
+                        {{ contactForm.find_out_website.errors }}
+                        {{ contactForm.find_out_website }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ contactForm.content.errors }}
+                        {{ contactForm.content }}
+                    </div>
+                    <input type="submit"
+                           value="I want to work on this topic"
+                           class="btn btn-primary">
+                </form>
+
                 <hr class="mt-3 mb-5">
+
                 {# {% disqus_show_comments %}#}
 
                 <div id="share">
-
                     <!-- facebook -->
-                    <a class="facebook" href="https://www.facebook.com/share.php?u={{ page.full_url }}&title={{ page.title }}"
-                       target="blank"><i
-                            class="fa fa-facebook"></i></a>
+                    <a class="facebook"
+                       href="https://www.facebook.com/share.php?u={{ page.full_url }}&title={{ page.title }}"
+                       target="blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
 
                     <!-- twitter -->
-                    <a class="twitter" href="https://twitter.com/intent/tweet?status={{ page.title }}+{{ page.full_url }}"
-                       target="blank"><i
-                            class="fa fa-twitter"></i></a>
+                    <a class="twitter"
+                       href="https://twitter.com/intent/tweet?status={{ page.title }}+{{ page.full_url }}"
+                       target="blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+
                     <!-- linkedin -->
                     <a class="linkedin"
                        href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.full_url }}&title={{ page.title }}&source={{ page.full_url }}"
-                       target="blank"><i class="fa fa-linkedin"></i></a>
+                       target="blank">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
 
                     <!-- google plus -->
-                    <a class="googleplus" href="https://plus.google.com/share?url={{ page.full_url }}" target="blank"><i
-                            class="fa fa-google-plus"></i></a>
+                    <a class="googleplus"
+                       href="https://plus.google.com/share?url={{ page.full_url }}"
+                       target="blank">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
 
                     <!-- pinterest -->
                     <a class="pinterest"
                        href="https://pinterest.com/pin/create/bookmarklet/?url={{ page.full_url }}&is_video=false&description={{ page.title }}"
-                       target="blank"><i class="fa fa-pinterest-p"></i></a>
-
-
+                       target="blank">
+                        <i class="fa fa-pinterest-p"></i>
+                    </a>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        {% disqus_show_comments %}
+
+                {% disqus_show_comments %}
+
+                <nav class="thesis-nav row my-5">
+                    <div class="col text-left">
+                        <a href="/theses"><<&nbsp;Back</a>
                     </div>
-                </div>
+                </nav>
+
             </div>
         </div>
-
-        <nav class="thesis-nav row my-5">
-            <div class="col text-left">
-                <a href="/theses"><<&nbsp;Back</a>
-            </div>
-        </nav>
-
     </div>
-</div>
-
 {% endblock %}
 
 {% block extra_js_2 %}
-<script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-
-
-
-</script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script>
 {% endblock %}
