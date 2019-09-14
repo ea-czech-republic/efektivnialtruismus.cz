@@ -117,7 +117,7 @@ class CoachingForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Do you have any strong preferences regarding your thesis topic?",
+                "placeholder": "Which ideas/topics have you considered so far if any?",
                 "rows": 5,
             }
         ),
