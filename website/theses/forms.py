@@ -128,7 +128,7 @@ class CoachingForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Please describe how knowledgeable you are about Effective Altruism",
+                "placeholder": "Suppose someone would give you 100.000 USD to distribute it for charitable reasons. How would you decide how to distribute it?",
                 "rows": 5,
             }
         ),
