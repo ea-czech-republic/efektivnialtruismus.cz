@@ -135,6 +135,7 @@ class CoachingForm(forms.Form):
     )
 
     deadline = forms.CharField(
+        required=True,
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
@@ -144,6 +145,7 @@ class CoachingForm(forms.Form):
     )
 
     deadline_submit = forms.CharField(
+        required=False,
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",

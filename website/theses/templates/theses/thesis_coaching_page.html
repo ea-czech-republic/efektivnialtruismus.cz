@@ -1,0 +1,196 @@
+{% extends "theses/theses_base.html" %}
+{% load static %}
+
+{% load wagtailcore_tags %}
+{% load wagtailuserbar %}
+{% load wagtailimages_tags %}
+{% load menu_tags %}
+
+{% block content %}
+    <main class="hero" style="background-image: url({% static "img/hero-topics.jpg" %});">
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mr-auto">
+                        <h1 class="text-white mb-4">
+                            <span class="d-inline-block">Use your thesis to improve the world.</span>
+                            <span class="d-inline-block">Our coaching will help you.</span>
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <img class="hero-arrow" src="{% static "img/arrow-down.svg" %}" alt="Arrow pointing down">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col">
+                {% include_block page.body %}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bg-primary">
+        <div class="container text-center pt-4 pb-5">
+            <div class="row mb-3">
+                <div class="col text-uppercase">
+                    <h3>How it works?</h3>
+                </div>
+            </div>
+
+            <!-- cards how it works -->
+            <div class="row">
+                <div class="col">
+                    <div class="card-deck">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="text-primary text-uppercase m-0">1 Apply</h2>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Apply for coaching via the form below. After you apply for our coaching, we will review your application and potentially invite you for an online interview. We are looking for people ready to put extra effort into figuring out how they can contribute to improving the world and make their research exceptional. If you get accepted, we will find a coach who will be a good fit for you. The coach will help you to identify the most important problems and ways to tackle them with your thesis.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="text-primary text-uppercase m-0">2 Connect</h2>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    If you decide to choose a topic that the coach suggested, we will try to connect you with external researchers or organisations working on the same problem. We will not help you with thesis writing but will give you access to our supportive community where you can ask for help and share your experience with other students driven by a goal of creating research with a high positive impact on the world.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="text-primary text-uppercase m-0">3 Start</h2>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    After you finish your thesis, we
+                                    will support you in publishing it
+                                    showing it out. This service is free
+                                    - we only want to direct students
+                                    to the most important problems
+                                    and support research into these problems.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coaching form -->
+    <div class="container">
+        <div class="row my-5">
+            <div class="col">
+                <div>
+                    <h2>Application form</h2>
+                </div>
+                <form id="coaching-form" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ contactForm.contact_name.errors }}
+                        {{ contactForm.contact_name }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ contactForm.contact_email.errors }}
+                        {{ contactForm.contact_email }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ contactForm.university.errors }}
+                        {{ contactForm.university }}
+                    </div>
+
+                    <div class="form-group">
+                        <span>Which degree level do you seek help for?</span>
+                        {{ contactForm.seniority.errors }}
+                        {{ contactForm.seniority }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ contactForm.career.errors }}
+                        {{ contactForm.career }}
+                    </div>
+
+
+                    <div class="form-group">
+                        {{ contactForm.preferences.errors }}
+                        {{ contactForm.preferences }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ contactForm.read_above.errors }}
+                        {{ contactForm.read_above }}
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                                {{ contactForm.deadline.errors }}
+                                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
+                                       id="id_deadline" name="deadline"
+                                       placeholder="When is your deadline for having a topic chosen?" required/>
+                                <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            {{ contactForm.deadline_submit.errors }}
+                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"
+                                       id="id_deadline_submit" name="deadline_submit"
+                                       placeholder="When is your deadline for submitting your thesis?" required/>
+                                <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ contactForm.requirements.errors }}
+                        {{ contactForm.requirements }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ contactForm.cv_url.errors }}
+                        {{ contactForm.cv_url }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ contactForm.find_out_website.errors }}
+                        {{ contactForm.find_out_website }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ contactForm.anything_else.errors }}
+                        {{ contactForm.anything_else }}
+                    </div>
+
+
+                    <input type="submit" value="Apply now" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+
+
+        <div class="row mb-5">
+            <div class="col">
+                {% include_block page.footer %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

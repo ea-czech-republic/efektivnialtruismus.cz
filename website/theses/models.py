@@ -91,7 +91,8 @@ class ThesisSearch(Page):
     parent_page_types = ["theses.ThesisIndexPage"]
 
     body = get_standard_streamfield()
-    content_panels = Page.content_panels + [StreamFieldPanel("body")]
+    footer = get_standard_streamfield()
+    content_panels = Page.content_panels + [StreamFieldPanel("body"), StreamFieldPanel("footer"),]
 
     def get_context(self, request):
         context = super().get_context(request)
@@ -108,12 +109,46 @@ class ThesisSearch(Page):
         context["selectedDisciplineDescription"] = selected_discipline_description
         context["disciplines"] = ThesisDiscipline.objects.all().order_by("name")
 
-        from theses.forms import CoachingForm
-        context["contactForm"] = CoachingForm
+        return context
 
-        print(context["selectedDisciplineDescription"], context['selectedDiscipline'])
+class ThesisIndexPage(Page):
+    column_1 = get_standard_streamfield()
+    column_2 = get_standard_streamfield()
+    column_3 = get_standard_streamfield()
+    references_1 = get_standard_streamfield()
+    references_2 = get_standard_streamfield()
+    body = get_standard_streamfield()
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("column_1"),
+        StreamFieldPanel("column_2"),
+        StreamFieldPanel("column_3"),
+        StreamFieldPanel("references_1"),
+        StreamFieldPanel("references_2"),
+        StreamFieldPanel("body"),
+    ]
+
+
+class ThesisCoachingPage(Page):
+    parent_page_types = ["theses.ThesisIndexPage"]
+
+    body = get_standard_streamfield()
+    footer = get_standard_streamfield()
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("body"),
+        StreamFieldPanel("footer"),
+
+    ]
+
+    def get_context(self, request, errored_form=None):
+        from theses.forms import CoachingForm
+
+        context = super().get_context(request)
+        context["contactForm"] = errored_form or CoachingForm
 
         return context
+
 
     @staticmethod
     def build_mail_content(data):
@@ -139,10 +174,12 @@ class ThesisSearch(Page):
 
     def serve(self, request):
         if request.method == "POST":
+            print("posting")
             from theses.forms import CoachingForm
 
             form = CoachingForm(request.POST)
             if form.is_valid():
+                print("form is valid")
                 form.clean()
                 mail_content = self.build_mail_content(form.cleaned_data)
                 contact_name = form.cleaned_data["contact_name"]
@@ -156,28 +193,11 @@ class ThesisSearch(Page):
 
                 return coaching_conversion(request)
             else:
+                print("form is invalid")
                 logger.error("The submitted form was invalid.")
-                return super().serve(request)
+                return super().serve(request, errored_form=form)
         else:
             return super().serve(request)
-
-
-class ThesisIndexPage(Page):
-    column_1 = get_standard_streamfield()
-    column_2 = get_standard_streamfield()
-    column_3 = get_standard_streamfield()
-    references_1 = get_standard_streamfield()
-    references_2 = get_standard_streamfield()
-    body = get_standard_streamfield()
-
-    content_panels = Page.content_panels + [
-        StreamFieldPanel("column_1"),
-        StreamFieldPanel("column_2"),
-        StreamFieldPanel("column_3"),
-        StreamFieldPanel("references_1"),
-        StreamFieldPanel("references_2"),
-        StreamFieldPanel("body"),
-    ]
 
 
 class ThesisChooseHelpPage(Page):
