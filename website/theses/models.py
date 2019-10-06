@@ -94,7 +94,11 @@ class ThesisSearch(Page):
     body = get_standard_streamfield()
     body_secondary = get_standard_streamfield()
     footer = get_standard_streamfield()
-    content_panels = Page.content_panels + [StreamFieldPanel("body"), StreamFieldPanel("footer"),]
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("body"),
+        StreamFieldPanel("body_secondary"),
+        StreamFieldPanel("footer"),
+    ]
 
     def get_context(self, request, *args, form=None, **kwargs):
         context = super().get_context(request, *args, **kwargs)
