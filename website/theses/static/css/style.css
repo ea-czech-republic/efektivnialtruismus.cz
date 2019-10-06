@@ -131,11 +131,11 @@ h1, h2, h3, h4, h5,
 }
 
 .collapsible-body > a.collapsed:after {
-  content: '+ Show more';
+  content: 'Read more';
 }
 
 .collapsible-body > a:not(.collapsed):after {
-  content: '- Show less';
+  content: 'Show less';
 }
 
 .collapsible-body #collapse-body.collapse:not(.show) {
