@@ -74,6 +74,32 @@ class InterestsForm(forms.Form):
     thesis_title = forms.CharField(required=False)
 
 
+class TopicInterestForm(forms.Form):
+    contact_name = forms.CharField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={"class": "form-control", "placeholder": "Your name + surname"}
+        ),
+    )
+    contact_email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(
+            attrs={"class": "form-control", "placeholder": "Your email"}
+        ),
+    )
+    content = forms.CharField(
+        required=True,
+        widget=forms.Textarea(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Would you be interested in anything listed above? "
+                               "If yes, what specifically?",
+                "rows": 3,
+            }
+        ),
+    )
+
+
 class CoachingForm(forms.Form):
     contact_name = forms.CharField(
         required=True,

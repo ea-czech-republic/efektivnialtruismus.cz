@@ -28,8 +28,24 @@
     <div class="container">
         <!-- before disciplines -->
         <div class="row my-5">
+
+            <div class="col collapsible-body">
+                <div id="collapse-body" class="collapse collapse-preview">
+                    {% include_block page.body %}
+                </div>
+                <a role="button"
+                   class="collapsed"
+                   data-toggle="collapse"
+                   href="#collapse-body"
+                   aria-expanded="false"
+                   aria-controls="collapse-body">
+                </a>
+            </div>
+        </div>
+
+        <div class="row my-5">
             <div class="col">
-                {% include_block page.body %}
+                {% include_block page.body_secondary %}
             </div>
         </div>
 
@@ -77,6 +93,38 @@
         <div class="row my-5">
             <div class="col">
                 {% include_block page.footer %}
+
+                <div id="topic-interest-form">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+
+                    {% else %}
+                        <form action="" method="post">
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                {{ form.contact_name.errors }}
+                                {{ form.contact_name }}
+                            </div>
+
+                            <div class="form-group">
+                                {{ form.contact_email.errors }}
+                                {{ form.contact_email }}
+                            </div>
+
+                            <div class="form-group">
+                                {{ form.content.errors }}
+                                {{ form.content }}
+                            </div>
+
+                            <input class="btn btn-primary" type="submit" value="Submit">
+                        </form>
+                    {% endif %}
+                </div>
             </div>
         </div>
 

@@ -1,8 +1,9 @@
 import logging
 from textwrap import dedent
 
+from django.contrib import messages
 from django.db import models
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase, Tag as TaggitTag
 from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
@@ -20,7 +21,7 @@ from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from django import forms
 from wagtail.snippets.models import register_snippet
 
-from theses.forms import SimpleContactForm
+from theses.forms import SimpleContactForm, TopicInterestForm
 from theses.views import conversion, coaching_conversion
 
 logger = logging.getLogger(__name__)
@@ -91,11 +92,16 @@ class ThesisSearch(Page):
     parent_page_types = ["theses.ThesisIndexPage"]
 
     body = get_standard_streamfield()
+    body_secondary = get_standard_streamfield()
     footer = get_standard_streamfield()
-    content_panels = Page.content_panels + [StreamFieldPanel("body"), StreamFieldPanel("footer"),]
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("body"),
+        StreamFieldPanel("body_secondary"),
+        StreamFieldPanel("footer"),
+    ]
 
-    def get_context(self, request):
-        context = super().get_context(request)
+    def get_context(self, request, *args, form=None, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
         if "discipline" in request.GET:
             discipline_name = request.GET["discipline"]
             discipline = ThesisDiscipline.objects.get(name=discipline_name)
@@ -108,8 +114,41 @@ class ThesisSearch(Page):
         context["selectedDiscipline"] = selected_discipline
         context["selectedDisciplineDescription"] = selected_discipline_description
         context["disciplines"] = ThesisDiscipline.objects.all().order_by("name")
+        context["form"] = form or TopicInterestForm()
 
         return context
+
+    @staticmethod
+    def build_mail_content(uri, data):
+        return dedent(
+            """
+        Name: {contact_name},
+        Contact email: {contact_email},
+
+        --------Message--------
+        {content}
+        """.format(**data)
+        )
+
+    def serve(self, request, *args, **kwargs):
+        if request.method == "POST":
+            form = TopicInterestForm(request.POST)
+            if form.is_valid():
+                mail_content = self.build_mail_content(
+                    request.build_absolute_uri(), form.cleaned_data
+                )
+                send_mail(
+                    subject="Topic interest",
+                    message=mail_content,
+                    recipient_list=THESES_MAILS,
+                    from_email=form.cleaned_data["contact_email"],
+                )
+                messages.success(request, "Thank you for your interest!")
+                return HttpResponseRedirect(request.path_info + "#topic-interest-form")
+            else:
+                return super().serve(request, form=form)
+        return super().serve(request)
+
 
 class ThesisIndexPage(Page):
     column_1 = get_standard_streamfield()
