@@ -65,3 +65,13 @@ gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west3-c" "eac
     --command 'docker cp /tmp/media/. efektivnialtruismuscz_app_1:"/usr/src/app/media/"'
 ```
 
+## HTTPS
+
+We are using Let's Encrypt to setup HTTPS mostly following [this guide][1].
+Relevant files are:
+
+- `bin/init-letsencrypt.sh`
+- `bin/nginx.conf`
+- `dc-deploy.yaml`
+
+[1]: https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
