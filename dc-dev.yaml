@@ -18,3 +18,5 @@ services:
     volumes:
       - ./static:/data/static
       - ./media:/data/media
+      - ./bin/nginx_dev.conf:/etc/nginx/conf.d/default.conf
+
