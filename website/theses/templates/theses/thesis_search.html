@@ -121,6 +121,11 @@
                                 {{ form.content }}
                             </div>
 
+                            <div class="form-group">
+                                {{ form.where_from.errors }}
+                                {{ form.where_from }}
+                            </div>
+
                             <input class="btn btn-primary" type="submit" value="Submit">
                         </form>
                     {% endif %}

@@ -92,9 +92,19 @@ class TopicInterestForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Would you be interested in anything listed above? "
-                               "If yes, what specifically?",
+                "placeholder": "Which ideas have you considered so far if any? "
+                               "Why these ideas specifically?",
                 "rows": 3,
+            }
+        ),
+    )
+    where_from = forms.CharField(
+        required=True,
+        widget=forms.Textarea(
+            attrs={
+                "class": "form-control",
+                "placeholder": "How did you find out about this website?",
+                "rows": 2,
             }
         ),
     )
