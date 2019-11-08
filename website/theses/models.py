@@ -124,7 +124,8 @@ class ThesisSearch(Page):
             """
         Name: {contact_name},
         Contact email: {contact_email},
-
+        How did they find out about this website: {where_from},
+        
         --------Message--------
         {content}
         """.format(**data)
@@ -370,7 +371,6 @@ class ThesisSimple(Page):
             """
         Name: {contact_name},
         Contact email: {contact_email},
-        How did they find out about this website: {where_from},
 
         --------Message--------
         {content}
