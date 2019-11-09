@@ -7,39 +7,52 @@
 {% block content %}
 
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="row my-5">
-                    <div class="col text-center">
-                        <h1 class="h3 text-uppercase">Finished theses</h1>
-                    </div>
-                </div>
+        <div class="row my-5">
+            <div class="col text-center">
+                <h1 class="h3 text-uppercase">Finished theses</h1>
+            </div>
+        </div>
+    </div>
 
-                <div class="row">
-                    <div class="col">
-                        <div class="card-deck">
-                            {% if theses %}
-                                {% for thesis in theses %}
-                                    <div class="card card-shadow card-finished">
-                                        <div class="card-body">
-                                            <h2 class="h3">{{ thesis.title }}</h2>
-                                        </div>
-                                        <a href="{% pageurl thesis %}">
+    <div class="container">
+        <div id="finised-theses-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                {% for group in theses_groups %}
+                    <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                        <div class="row mx-5">
+                            {% for thesis in group %}
+                                <div class="col-lg-4">
+                                    <a href="{% pageurl thesis %}">
+                                        <div class="card card-shadow card-finished">
+                                            <div class="card-body">
+                                                <h2 class="h3">{{ thesis.title }}</h2>
+                                            </div>
                                             <div class="btn btn-primary btn-lg card-footer text-center w-100">
                                                 Read more
                                             </div>
-                                        </a>
-                                    </div>
-                                {% endfor %}
-                            {% else %}
-                                nope
-                            {% endif %}
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
-                </div>
+                {% empty %}
+                    There are no finished theses yet.
+                {% endfor %}
             </div>
+            <a class="carousel-control-prev" href="#finised-theses-carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#finised-theses-carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
+    </div>
 
+
+    <div class="container">
 
         <div class="row">
             <div class="col pb-3">
@@ -48,13 +61,13 @@
             </div>
         </div>
 
-    {% if page.footer %}
-        <div class="row">
-            <div class="col">
-                <hr/>
-                {{ page.footer }}
+        {% if page.footer %}
+            <div class="row">
+                <div class="col">
+                    <hr/>
+                    {{ page.footer }}
+                </div>
             </div>
-        </div>
-    {% endif %}
+        {% endif %}
     </div>
 {% endblock %}
