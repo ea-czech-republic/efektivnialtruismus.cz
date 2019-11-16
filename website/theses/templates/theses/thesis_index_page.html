@@ -28,72 +28,111 @@
         </div>
     </main>
 
+
+
     <div class="container">
-        <div class="row justify-content-center mb-4">
-            <div class="col-md-8 text-center">
-                <h1 class="my-4">See the finished theses of students we advised and what our current students are working on</h1>
-                <p>
-                    <a class="btn btn-lg btn-primary" href="/finished" target="_blank">Finished</a>
-                </p>
+        <div class="row">
+            <div class="col text-center">
+                <h3 class="px-5">Who will benefit the most from this service? Is it for you? </h3>
             </div>
         </div>
+        <div class="row">
+            <a class="btn btn-primary" href="#demo" data-toggle="collapse">Undergraduates/masters</a>
+            <div id="demo" class="collapse">
+                The advice about what to focus on with your thesis will differ based on your career plans.
+                First, we discuss what might be a good strategy when you plan to take research-heavy careers and
+                then we move to advice related to non-research careers paths.
 
-        <h3 class="mb-4">Example topic areas</h3>
+                If you’re considering pursuing a career in research, you should make it a priority to build your research skills.
+                In order to have a substantial impact, your research will need to be excellent in quality.
+                There are several ways you can improve your research skills: you should consider using methods you haven’t used before,
+                and which are harder to carry out (or which will allow you to get better at technical skills like data analysis and methodology).
+                You should also make sure to choose a skilled supervisor with a good reputation
+                in the relevant research community who will give you a good deal of feedback and care.
+                The goal of your thesis at this stage is not so much to come up with new findings,
+                but rather to build research skills and test your fit with this type of work.
 
+                You can read more on how to optimise for academic career success here and get a general sense of
+                what the academic career is like and whether you'd be a good fit for it here.
+
+                Ideally, you can build skills in topics that seem highly valuable (see our priority areas)
+                in order to learn more about them and make it easier to contribute later. However,
+                if you can’t find a supervisor who will help you hone your research skills in one of these topics,
+                you should choose an area that allows for greater skill-building, and come back to more valuable topics at a later stage.
+                You will likely have a chance to switch topics and start focusing on something important
+                and meaningful when you choose the area of focus for your PhD.
+                Please let us know if you plan to work on any of our priority areas or if you’d like help
+                with figuring out what might be most valuable for you to focus on.
+                We can support you in your research direction and connect you with others working in these areas.
+
+                Even if you don’t expect to pursue a research career,
+                there are still opportunities for your thesis to help improve the world - you can focus on some of the problems
+                that seem most important and use your thesis to learn more about them with the aim of working
+                on them directly later in your career. If this is your goal, you should optimise not for generating
+                new insights about the problem, but rather for gaining a more thorough understanding of it and how to tackle it.
+                To learn more about which careers we think improve the world the most, see this guide.
+            </div>
+        </div>
+        <div class="row">
+            <a class="btn btn-primary" href="#demo2" data-toggle="collapse">PhDs</a>
+            <div id="demo2" class="collapse">
+                If you are about to apply for your PhD (Europe) or are already enrolled and are about
+                to choose your topic and supervisor (US), it’s probably good to consider how much your
+                topic choice will lock you in a specific subfield. In our experience, for some disciplines,
+                the lock-in effect is stronger (e.g. Economics, Psychology, Engineering) while for others,
+                not so much (e.g. Life Sciences, Philosophy). To figure out how much lock-in appears in your discipline,
+                ask more experienced researchers in the field and track this in your own environment.
+                If you find that there is a good chance of becoming locked-in to a specific field,
+                this will make it that much more important to choose a topic that will be publishable in the best journals
+                and will also be valuable and important to focus on from the perspective of improving the world.
+                We can help you with finding such a topic.
+
+                If you want to build your research career in academia, in many disciplines you should focus more
+                on theoretical contributions (e.g., what drives people in general, how a specific type of system works,
+                some theoretical models we can use to understand the world better) rather than applied research
+                (e.g., the effectiveness of specific interventions). Applied research experience might be an advantage
+                if you want to do research outside of academia (e.g., in think tanks, nonprofits, or international organisations).
+
+                We are happy to help undergraduate, masters and especially prospective PhD students find topics
+                that are interesting, meaningful and valuable - please check our suggestions and/or apply for our coaching!
+            </div>
+        </div>
+    </div>>
+
+    <div class="container">
         <div class="card-deck">
             <div class="card">
+                <div class="card-body">
+                    <p class="card-text">
+                        Get inspired by our suggestions for high impact fields and find a topic within the field yourself
+                    </p>
+                </div>
                 <div class="card-img-wrapper">
-                    <img src="{% static "img/biosecurity.jpg" %}" class="card-img-top" alt="Test tubes">
-                    <a href="https://80000hours.org/problem-profiles/biosecurity/">
+                    <img class="card-img-bottom" src="{% static "img/wood-light-creative-space.jpg" %}" class="card-img-top" alt="Test tubes">
+                    <a href="/theses">
                         <div class="topic-areas-overlay">
-                            <h4 class="card-title text-white">Biosecurity</h4>
+                            <h4 class="card-title text-white">Topics</h4>
                         </div>
                     </a>
-                </div>
-                <div class="card-body">With a steep progress in our knowledge of synthetic biology and decreasing prices of technologies used to create pathogens, the risk and severity of pandemics from both natural and engineered pathogens will likely increase and cause millions or even billions of deaths.
-                    </p>
                 </div>
             </div>
 
             <div class="card">
+                <div class="card-body">
+                    <p class="card-text">
+                        Get advice tailored to your situation from experienced researcher who will ehlp you find a topic that will be a good fit to you
+                    </p>
+                </div>
                 <div class="card-img-wrapper">
-                    <img src="{% static "img/earth.jpg" %}" class="card-img-top" alt="Global priorities">
-                    <a href="https://80000hours.org/problem-profiles/global-priorities-research/">
+                    <img class="card-img-bottom" src="{% static "img/two-woman-chatting.jpg" %}" class="card-img-top" alt="Topics">
+                    <a href="/thesis-coaching">
                         <div class="topic-areas-overlay">
-                            <h4 class="card-title text-white">Global Priorities Research</h4>
+                            <h4 class="card-title text-white">Coaching</h4>
                         </div>
                     </a>
                 </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        What are the most important problems we should focus on to improve the world the most? How should we
-                        allocate our resources to do the most good? More insight into these questions could largely
-                        influence what we will do and how successful we will be in improving the world.
-                    </p>
-                </div>
             </div>
 
-            <div class="card">
-                <div class="card-img-wrapper">
-                    <img src="{% static "img/headbulb.jpg" %}" class="card-img-top" alt="Head with bulb">
-                    <a href="https://80000hours.org/articles/ai-policy-guide/">
-                        <div class="topic-areas-overlay">
-                            <h4 class="card-title text-white">AI governance</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        Developments in artificial intelligence algorithms will likely have a large influence on many domains of our societies and lives. Research into how we should govern the creation and deployment of such developments will help us capture the benefits and mitigate the risks stemming from abrupt changes.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col text-center mt-5">
-                <a href="/theses#disciplines" class="btn btn-lg btn-primary">Explore more</a>
-            </div>
         </div>
     </div>
 
@@ -120,6 +159,15 @@
     </div>
 
     <div class="container mb-5">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8 text-center">
+                <h1 class="my-4">See the finished theses of students we advised and what our current students are working on</h1>
+                <p>
+                    <a class="btn btn-lg btn-primary" href="/finished" target="_blank">Finished</a>
+                </p>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col text-center">
                 <h1 class="text-uppercase mb-5">What they say about us</h1>
