@@ -421,7 +421,9 @@ class ThesisFinishedIndexPage(Page):
     def get_context(self, request, **kwargs):
         context = super(ThesisFinishedIndexPage, self).get_context(request, **kwargs)
         theses = list(ThesisFinishedPage.objects.all())
-        context["theses_groups"] = list(utils.chunks(theses, 3))
+        groups = list(utils.chunks(theses, 3))
+        context["preview_group"] = groups[0]
+        context["collapsed_groups"] = groups[1:]
         return context
 
 
