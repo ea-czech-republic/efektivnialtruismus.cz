@@ -7,39 +7,69 @@
 {% block content %}
 
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="row my-5">
-                    <div class="col text-center">
-                        <h1 class="h3 text-uppercase">Finished theses</h1>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="card-deck">
-                            {% if theses %}
-                                {% for thesis in theses %}
-                                    <div class="card card-shadow card-finished">
-                                        <div class="card-body">
-                                            <h2 class="h3">{{ thesis.title }}</h2>
-                                        </div>
-                                        <a href="{% pageurl thesis %}">
-                                            <div class="btn btn-primary btn-lg card-footer text-center w-100">
-                                                Read more
-                                            </div>
-                                        </a>
-                                    </div>
-                                {% endfor %}
-                            {% else %}
-                                nope
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
+        <div class="row my-5">
+            <div class="col text-center">
+                <h1 class="h3 text-uppercase">Finished theses</h1>
             </div>
         </div>
+    </div>
 
+    <div class="container">
+        <div class="row">
+            {% for thesis in preview_group %}
+                <div class="col-lg-4 mb-4">
+                    <div class="card card-shadow card-finished">
+                        <div class="card-body">
+                            <h2 class="h3">{{ thesis.title }}</h2>
+                        </div>
+                        <a href="{% pageurl thesis %}"
+                           class="btn btn-primary btn-lg card-footer stretched-link text-center w-100">
+                            Read more
+                        </a>
+                    </div>
+                </div>
+            {% empty %}
+                There are no finished theses yet.
+            {% endfor %}
+        </div>
+
+        {% if collapsed_groups %}
+            <div id="collapsible-groups" class="collapse">
+                {% for group in collapsed_groups %}
+                    <div class="row">
+                        {% for thesis in group %}
+                            <div class="col-lg-4 mb-4">
+                                <div class="card card-shadow card-finished">
+                                    <div class="card-body">
+                                        <h2 class="h3">{{ thesis.title }}</h2>
+                                    </div>
+                                    <a href="{% pageurl thesis %}"
+                                       class="btn btn-primary btn-lg card-footer stretched-link text-center w-100">
+                                        Read more
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                <button id="toggle-all-theses"
+                        class="btn btn-primary mx-auto mt-4"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapsible-groups"
+                        aria-expanded="false"
+                        aria-controls="collapsible-groups">
+                    View all theses
+                </button>
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="container">
 
         <div class="row">
             <div class="col pb-3">
@@ -48,13 +78,29 @@
             </div>
         </div>
 
-    {% if page.footer %}
-        <div class="row">
-            <div class="col">
-                <hr/>
-                {{ page.footer }}
+        {% if page.footer %}
+            <div class="row">
+                <div class="col">
+                    <hr/>
+                    {{ page.footer }}
+                </div>
             </div>
-        </div>
-    {% endif %}
+        {% endif %}
     </div>
+{% endblock %}
+
+{% block extra_js_2 %}
+    <script type="text/javascript">
+     $(function () {
+         const $toggleButton = $('#toggle-all-theses');
+
+         $('#collapsible-groups')
+             .on('hide.bs.collapse', function () {
+                 $toggleButton.text('View all theses');
+             })
+             .on('show.bs.collapse', function () {
+                 $toggleButton.text('View fewer theses');
+             });
+     });
+    </script>
 {% endblock %}

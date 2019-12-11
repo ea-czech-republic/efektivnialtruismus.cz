@@ -21,6 +21,7 @@ from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from django import forms
 from wagtail.snippets.models import register_snippet
 
+from theses import utils
 from theses.forms import SimpleContactForm, TopicInterestForm
 from theses.views import conversion, coaching_conversion
 
@@ -417,9 +418,12 @@ class ThesisFinishedIndexPage(Page):
         StreamFieldPanel("footer"),
     ]
 
-    def get_context(self, request):
-        context = super(ThesisFinishedIndexPage, self).get_context(request)
-        context["theses"] = ThesisFinishedPage.objects.all()
+    def get_context(self, request, **kwargs):
+        context = super(ThesisFinishedIndexPage, self).get_context(request, **kwargs)
+        theses = list(ThesisFinishedPage.objects.all())
+        groups = list(utils.chunks(theses, 3))
+        context["preview_group"] = groups[0]
+        context["collapsed_groups"] = groups[1:]
         return context
 
 
