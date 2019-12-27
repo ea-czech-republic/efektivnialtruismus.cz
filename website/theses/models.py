@@ -153,6 +153,8 @@ class ThesisSearch(Page):
 
 
 class ThesisIndexPage(Page):
+    text_phd = get_standard_streamfield()
+    text_nonphd = get_standard_streamfield()
     column_1 = get_standard_streamfield()
     column_2 = get_standard_streamfield()
     column_3 = get_standard_streamfield()
@@ -161,6 +163,8 @@ class ThesisIndexPage(Page):
     body = get_standard_streamfield()
 
     content_panels = Page.content_panels + [
+        StreamFieldPanel("text_phd"),
+        StreamFieldPanel("text_nonphd"),
         StreamFieldPanel("column_1"),
         StreamFieldPanel("column_2"),
         StreamFieldPanel("column_3"),
@@ -168,6 +172,13 @@ class ThesisIndexPage(Page):
         StreamFieldPanel("references_2"),
         StreamFieldPanel("body"),
     ]
+
+    def get_context(self, request):
+        context = super(ThesisIndexPage, self).get_context(request)
+        context["text_phd"] = self.text_phd
+        context["text_nonphd"] = self.text_nonphd
+        return context
+
 
 
 class ThesisCoachingPage(Page):
