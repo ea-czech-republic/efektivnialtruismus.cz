@@ -37,6 +37,7 @@ h1, h2, h3, h4, h5,
 .hero .jumbotron {
     color: white;
     padding-top: 10rem;
+    padding-bottom: 13rem;
     background: unset;
     border-radius: unset;
 }
@@ -44,10 +45,6 @@ h1, h2, h3, h4, h5,
 .hero p {
     font-size: 1.5rem;
     margin-bottom: 5rem;
-}
-
-.hero-arrow {
-    margin: 7rem auto 0 auto;
 }
 
 @media (min-width: 992px) {
