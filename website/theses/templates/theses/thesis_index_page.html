@@ -42,10 +42,20 @@
         </div>
         <div id="non-phd-text" class="collapse">
             <div class="card-body">
-                {{ text_nonphd }}
+                <div class="col collapsible-body">
+                    <div id="collapse-body" class="collapse collapse-preview">
+                        {{ text_nonphd }}
+                    </div>
+                    <a role="button"
+                       class="collapsed"
+                       data-toggle="collapse"
+                       href="#collapse-body"
+                       aria-expanded="false"
+                       aria-controls="collapse-body">
+                    </a>
+                </div>
             </div>
         </div>
-
 
         <div class="row">
             <div class="col-md"></div>
@@ -54,10 +64,19 @@
             </div>
             <div class="col-md"></div>
         </div>
-        <div class="row">
-            <div id="phd-text" class="collapse">
-                <div class="card-body">
-                    {{ text_phd }}
+        <div id="phd-text" class="collapse">
+            <div class="card-body">
+                <div class="col collapsible-body">
+                    <div id="collapse-body-2" class="collapse collapse-preview">
+                        {{ text_phd }}
+                    </div>
+                    <a role="button"
+                       class="collapsed"
+                       data-toggle="collapse"
+                       href="#collapse-body-2"
+                       aria-expanded="false"
+                       aria-controls="collapse-body-2">
+                    </a>
                 </div>
             </div>
         </div>
