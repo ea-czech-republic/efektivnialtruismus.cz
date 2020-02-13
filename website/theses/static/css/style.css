@@ -152,35 +152,13 @@ h1, h2, h3, h4, h5,
   height: 12em;
 }
 
-.collapse-preview-2 {
-    position: relative;
-}
-
-.collapse-preview-2:not(.show):after {
-    position: absolute;
-    bottom: 0;
-    height: 50%;
-    width: 100%;
-    content: "";
-    background: linear-gradient(to top, rgba(255,255,255, 1) 5%, rgba(255,255,255, 0) 95%);
-    pointer-events: none; /* so the text is still selectable */
-}
-
-.collapsible-body-2 > a.collapsed:after {
-  content: 'Read more';
-}
-
-.collapsible-body-2 > a:not(.collapsed):after {
-  content: 'Show less';
-}
-
-.collapsible-body-2 #collapse-body-2.collapse:not(.show) {
+.collapsible-body #collapse-body-2.collapse:not(.show) {
   display: block;
   height: 12em;
   overflow: hidden;
 }
 
-.collapsible-body-2 #collapse-body-2.collapsing {
+.collapsible-body #collapse-body-2.collapsing {
   height: 12em;
 }
 
