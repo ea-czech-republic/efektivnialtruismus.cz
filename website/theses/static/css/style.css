@@ -152,6 +152,16 @@ h1, h2, h3, h4, h5,
   height: 12em;
 }
 
+.collapsible-body #collapse-body-2.collapse:not(.show) {
+  display: block;
+  height: 12em;
+  overflow: hidden;
+}
+
+.collapsible-body #collapse-body-2.collapsing {
+  height: 12em;
+}
+
 @media (max-width: 900px) {
     body.template-thesisindex h3.display-3 {
         font-size: 5vw;

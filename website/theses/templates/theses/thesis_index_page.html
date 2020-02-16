@@ -19,81 +19,114 @@
                             significantly improve the world.</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <a class="btn btn-lg btn-secondary float-right" href="/theses">How it works</a>
-                    </div>
-                </div>
             </div>
         </div>
     </main>
 
-    <div class="container">
-        <div class="row justify-content-center mb-4">
-            <div class="col-md-8 text-center">
-                <h1 class="my-4">See the finished theses of students we advised and what our current students are working on</h1>
-                <p>
-                    <a class="btn btn-lg btn-primary" href="/finished" target="_blank">Finished</a>
-                </p>
+
+
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col text-center mb-5">
+                <h3 class="px-5">Who will benefit the most from this service? Is it for you? </h3>
             </div>
         </div>
 
-        <h3 class="mb-4">Example topic areas</h3>
 
-        <div class="card-deck">
-            <div class="card">
-                <div class="card-img-wrapper">
-                    <img src="{% static "img/biosecurity.jpg" %}" class="card-img-top" alt="Test tubes">
-                    <a href="https://80000hours.org/problem-profiles/biosecurity/">
-                        <div class="topic-areas-overlay">
-                            <h4 class="card-title text-white">Biosecurity</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="card-body">With a steep progress in our knowledge of synthetic biology and decreasing prices of technologies used to create pathogens, the risk and severity of pandemics from both natural and engineered pathogens will likely increase and cause millions or even billions of deaths.
-                    </p>
-                </div>
+        <div class="row mb-2">
+            <div class="col-md"></div>
+            <div class="col-md-4">
+                <a class="btn btn-lg btn-primary w-100" href="#non-phd-text" data-toggle="collapse">Undergraduate/master</a>
             </div>
-
-            <div class="card">
-                <div class="card-img-wrapper">
-                    <img src="{% static "img/earth.jpg" %}" class="card-img-top" alt="Global priorities">
-                    <a href="https://80000hours.org/problem-profiles/global-priorities-research/">
-                        <div class="topic-areas-overlay">
-                            <h4 class="card-title text-white">Global Priorities Research</h4>
-                        </div>
+            <div class="col-md"></div>
+        </div>
+        <div id="non-phd-text" class="collapse">
+            <div class="card-body">
+                <div class="col collapsible-body">
+                    <div id="collapse-body" class="collapse collapse-preview">
+                        {{ text_nonphd }}
+                    </div>
+                    <a role="button"
+                       class="collapsed"
+                       data-toggle="collapse"
+                       href="#collapse-body"
+                       aria-expanded="false"
+                       aria-controls="collapse-body">
                     </a>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        What are the most important problems we should focus on to improve the world the most? How should we
-                        allocate our resources to do the most good? More insight into these questions could largely
-                        influence what we will do and how successful we will be in improving the world.
-                    </p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-img-wrapper">
-                    <img src="{% static "img/headbulb.jpg" %}" class="card-img-top" alt="Head with bulb">
-                    <a href="https://80000hours.org/articles/ai-policy-guide/">
-                        <div class="topic-areas-overlay">
-                            <h4 class="card-title text-white">AI governance</h4>
-                        </div>
-                    </a>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        Developments in artificial intelligence algorithms will likely have a large influence on many domains of our societies and lives. Research into how we should govern the creation and deployment of such developments will help us capture the benefits and mitigate the risks stemming from abrupt changes.
-                    </p>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <div class="col text-center mt-5">
-                <a href="/theses#disciplines" class="btn btn-lg btn-primary">Explore more</a>
+            <div class="col-md"></div>
+            <div class="col-md-4">
+                <a class="btn btn-lg btn-primary w-100" href="#phd-text" data-toggle="collapse">PhD</a>
             </div>
+            <div class="col-md"></div>
+        </div>
+        <div id="phd-text" class="collapse">
+            <div class="card-body">
+                <div class="col collapsible-body">
+                    <div id="collapse-body-2" class="collapse collapse-preview">
+                        {{ text_phd }}
+                    </div>
+                    <a role="button"
+                       class="collapsed"
+                       data-toggle="collapse"
+                       href="#collapse-body-2"
+                       aria-expanded="false"
+                       aria-controls="collapse-body-2">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col">
+                <div class="card-deck mt-4">
+                    <div class="card">
+                        <h2 class="px-5 text-center mb-3">
+                            GET INSPIRED
+                        </h2>
+                        <div class="card-img-wrapper">
+                            <img class="card-img-bottom" src="{% static "img/wood-light-creative-space.jpg" %}" class="card-img-top" alt="Test tubes">
+                            <a href="/theses">
+                                <div class="topic-areas-overlay">
+                                    <h1 class="px-5 card-title text-white">Topics</h1>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <p class="h5">
+                                Get inspired by our suggestions for high impact fields and find a&nbsp;topic within the field yourself
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="card">
+                        <h2 class="px-5 text-center mb-3">
+                            GET ADVICE
+                        </h2>
+                        <div class="card-img-wrapper">
+                            <img class="card-img-bottom" src="{% static "img/two-woman-chatting.jpg" %}" class="card-img-top" alt="Topics">
+                            <a href="/thesis-coaching">
+                                <div class="topic-areas-overlay">
+                                    <h1 class="px-5 card-title text-white">Coaching</h1>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <p class="h5">
+                                Get advice tailored to your situation from experienced researcher who will help you find a&nbsp;topic that will be a&nbsp;good fit to you
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1"></div>
         </div>
     </div>
 
@@ -120,7 +153,19 @@
     </div>
 
     <div class="container mb-5">
-        <div class="row">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8 text-center">
+                <h1 class="my-4">Check the finished theses of students we advised and what are current students working on</h1>
+                <p>
+                    <a class="btn btn-lg btn-primary mb-5" href="/finished" target="_blank">view more</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="row mt-1">
+            <div class="col"></div>
+        </div>
+        <div class="row mt-5">
             <div class="col text-center">
                 <h1 class="text-uppercase mb-5">What they say about us</h1>
             </div>
