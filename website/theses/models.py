@@ -185,10 +185,12 @@ class ThesisCoachingPage(Page):
     parent_page_types = ["theses.ThesisIndexPage"]
 
     body = get_standard_streamfield()
+    body2 = get_standard_streamfield()
     footer = get_standard_streamfield()
 
     content_panels = Page.content_panels + [
         StreamFieldPanel("body"),
+        StreamFieldPanel("body2"),
         StreamFieldPanel("footer"),
 
     ]
