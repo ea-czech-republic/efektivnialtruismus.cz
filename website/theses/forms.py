@@ -153,7 +153,9 @@ class CoachingForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Which ideas/topics have you considered so far if any?",
+                "placeholder": "Which ideas/topics have you considered so far if any? "
+                               "Why do you think researching them could have significantly "
+                               "higher impact than researching some other topics?",
                 "rows": 5,
             }
         ),
@@ -164,7 +166,8 @@ class CoachingForm(forms.Form):
         widget=forms.Textarea(
             attrs={
                 "class": "form-control",
-                "placeholder": "Suppose someone would give you 100.000 USD to distribute it for charitable reasons. How would you decide how to distribute it?",
+                "placeholder": "What would you like to get out of the Effective Thesis? "
+                               "What would you appreciate assistance with?",
                 "rows": 5,
             }
         ),
