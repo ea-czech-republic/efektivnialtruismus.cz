@@ -65,7 +65,7 @@
 {#                               checked#}
 {#                               {% endif %}#}
                         />
-                        <label class="btn btn-primary btn-sm{% if discipline.name == selectedDiscipline %} active{% endif %}"
+                        <label class="btn btn-primary btn-sm cursor-pointer{% if discipline.name == selectedDiscipline %} active{% endif %}"
                                for="{{ discipline | slugify }}-discipline">
                             {{ discipline }}
                         </label>
