@@ -1,6 +1,6 @@
 # effectivethesis.com
 
-This is a repository for page of effectivethesis.com
+This is a repository for a website of effectivethesis.com
 
 # Development
 Use `docker-compose`:
