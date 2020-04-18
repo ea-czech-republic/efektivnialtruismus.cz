@@ -27,7 +27,7 @@ from theses.views import conversion, coaching_conversion
 
 logger = logging.getLogger(__name__)
 
-THESES_MAILS = ["david@effectivethesis.com"]
+THESES_MAILS = ["david@effectivethesis.org"]
 
 
 @register_snippet
