@@ -19,7 +19,7 @@ if ! [ -x "$(command -v $docker_compose)" ]; then
   exit 1
 fi
 
-domains=(effectivethesis.com)
+domains=(effectivethesis.org)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="martin.racak@gmail.com" # Adding a valid address is strongly recommended
