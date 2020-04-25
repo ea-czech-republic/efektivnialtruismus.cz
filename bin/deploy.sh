@@ -16,7 +16,8 @@ fi
 # this was done by git clone https://github.com/ea-czech-republic/efektivnialtruismus.cz.git
 cd /var/server/efektivnialtruismus.cz
 git checkout $ENVIRONMENT
-git pull
+git fetch
+git reset --hard origin/$ENVIRONMENT
 
 # because docker-compose does not have credentials from host
 docker pull czea/effective-thesis:${IMAGE_TAG}
