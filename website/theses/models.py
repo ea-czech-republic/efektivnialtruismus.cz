@@ -129,7 +129,9 @@ class ThesisSearch(Page):
         
         --------Message--------
         {content}
-        """.format(**data)
+        """.format(
+                **data
+            )
         )
 
     def serve(self, request, *args, **kwargs):
@@ -149,6 +151,17 @@ class ThesisSearch(Page):
                 return HttpResponseRedirect(request.path_info + "#topic-interest-form")
             else:
                 return super().serve(request, form=form)
+        if "discipline" in request.GET:
+            discipline_name = request.GET["discipline"]
+            if discipline_name in ("biology", "medicine"):
+                return HttpResponseRedirect(
+                    request.path_info + "?discipline=life+sciences#disciplines"
+                )
+            if discipline_name in ("physics", "mathematics statistics"):
+                return HttpResponseRedirect(
+                    request.path_info
+                    + "?discipline=mathematics+statistics+physics#disciplines"
+                )
         return super().serve(request)
 
 
@@ -180,7 +193,6 @@ class ThesisIndexPage(Page):
         return context
 
 
-
 class ThesisCoachingPage(Page):
     parent_page_types = ["theses.ThesisIndexPage"]
 
@@ -192,7 +204,6 @@ class ThesisCoachingPage(Page):
         StreamFieldPanel("body"),
         StreamFieldPanel("body2"),
         StreamFieldPanel("footer"),
-
     ]
 
     def get_context(self, request, errored_form=None):
@@ -202,7 +213,6 @@ class ThesisCoachingPage(Page):
         context["contactForm"] = errored_form or CoachingForm
 
         return context
-
 
     @staticmethod
     def build_mail_content(data):
@@ -410,7 +420,7 @@ class ThesisSimple(Page):
                     return JsonResponse(
                         {
                             "message": "Thank you for your interest! "
-                                       "We will let get back to you soon!"
+                            "We will let get back to you soon!"
                         }
                     )
         else:
@@ -475,7 +485,6 @@ class ThesisFinishedPage(Page):
         FieldPanel("about_author"),
         StreamFieldPanel("body"),
     ]
-
 
     parent_page_types = ["theses.ThesisFinishedIndexPage"]
 
