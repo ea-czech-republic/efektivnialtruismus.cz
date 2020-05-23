@@ -1,5 +1,8 @@
+from __future__ import annotations
 import logging
+import re
 from textwrap import dedent
+from typing import List, Tuple
 
 from django.contrib import messages
 from django.db import models
@@ -11,6 +14,7 @@ from wagtail.admin.utils import send_mail
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
+from wagtail.core.rich_text import RichText
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
@@ -429,6 +433,152 @@ class ThesisSimple(Page):
     def get_context(self, request):
         context = super(ThesisSimple, self).get_context(request)
         context["contactForm"] = SimpleContactForm
+        return context
+
+
+class HeadingBlock(blocks.RichTextBlock):
+    @staticmethod
+    def _get_title(m):
+        title = m.group("title")
+        to_drop = ("<br/>", r"<h\d>", r"</h\d>")
+        for text in to_drop:
+            title = re.sub(text, "", title)
+        return title.strip()
+
+    @staticmethod
+    def _get_link(title):
+        return title.lower().replace(" ", "-")
+
+    @classmethod
+    def _get_additional_context(cls, _value):
+
+        if isinstance(_value, RichText):  # in case of using Preview
+            _value = _value.source
+        m = re.search("<h(?P<heading_size>\d)>(?P<title>.*)</h\d>", _value)
+        if not m:
+            return {}
+
+        title = cls._get_title(m)
+        return dict(
+            title=title,
+            link=cls._get_link(title),
+            heading_size=m.group("heading_size"),
+        )
+
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value=value, parent_context=parent_context)
+        context.update(self._get_additional_context(value.source))
+        return context
+
+    class Meta:
+        template = "blocks/heading.html"
+
+
+class Heading:
+    title: str
+    link: str
+    size: int
+    nested_headings: List[Heading]
+
+    def __init__(self, title, link, heading_size):
+        self.title = title
+        self.link = link
+        self.size = int(heading_size)
+        self.nested_headings = []
+
+    def to_html(self):
+        nested_html = headings_to_html(self.nested_headings)
+        _html = f"<li><a href='#{self.link}'>{self.title}</a>{nested_html}</li>"
+        return _html
+
+
+def headings_to_html(headings: List[Heading]):
+    _nested_htmls = "".join(_heading.to_html() for _heading in headings)
+    nested_html = f"<ul>{_nested_htmls}</ul>" if _nested_htmls else ""
+    return nested_html
+
+
+class OutlineThesisSimple(Page):
+    outline_title = RichTextField()
+    body = StreamField(
+        [
+            ("heading", blocks.CharBlock(classname="full title")),
+            (
+                "heading_linkable",
+                HeadingBlock(
+                    help_text="heading text",
+                    features=["h1", "h2", "h3", "h4", "h5", "h6"],
+                ),
+            ),
+            ("paragraph", blocks.RichTextBlock()),
+            ("image", ImageChooserBlock()),
+            ("embed", EmbedBlock()),
+            ("rawHtml", blocks.RawHTMLBlock()),
+        ]
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("outline_title"),
+        StreamFieldPanel("body"),
+    ]
+
+    parent_page_types = ["theses.ThesisIndexPage"]
+
+    def serve(self, request):
+        if request.method == "GET":
+            res = super(OutlineThesisSimple, self).serve(request)
+            return res
+
+    @staticmethod
+    def _get_heading(_data):
+        if isinstance(_data, tuple):
+            keys = ("type", "value", "id")
+            _data = dict(zip(keys, _data))
+
+        if _data["type"] == "heading_linkable":
+            source = _data["value"]
+            return HeadingBlock._get_additional_context(source)
+        return None
+
+    def _get_headings(self, stream_data):
+        headings = (self._get_heading(data) for data in stream_data)
+        return [Heading(**heading) for heading in headings if heading]
+
+    def _place_heading_into_structure(
+        self, heading: Heading, structure: List[Heading]
+    ) -> List[Heading]:
+        if not structure:
+            return [heading]
+
+        if heading.size <= structure[-1].size:
+            structure.append(heading)
+            return structure
+
+        _structure = self._place_heading_into_structure(
+            heading, structure[-1].nested_headings
+        )
+        structure[-1].nested_headings = _structure
+        return structure
+
+    def _nest_headings(self, headings: list):
+        if not headings:
+            return []
+
+        structure = []
+        for heading in headings:
+            structure = self._place_heading_into_structure(heading, structure)
+
+        return structure
+
+    def _get_outline(self, stream_data) -> str:
+        headings = self._get_headings(stream_data)
+        headings_nested = self._nest_headings(headings)
+        return headings_to_html(headings_nested)
+
+    def get_context(self, request):
+        context = super(OutlineThesisSimple, self).get_context(request)
+        context["contactForm"] = SimpleContactForm
+        context["outline"] = self._get_outline(self.body.stream_data)
         return context
 
 

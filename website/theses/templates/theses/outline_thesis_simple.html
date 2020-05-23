@@ -1,0 +1,38 @@
+{% extends "theses/theses_base.html" %}
+{% load wagtailuserbar %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            {% include_block page.headline_title %}
+            {% include_block headline %}
+            {% include_block page.body %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js_2 %}
+<script>
+$("#ask_us_anything_form").submit(function(e) {
+
+    e.preventDefault();
+
+    var frm = $('#ask_us_anything_form');
+
+    $.ajax({
+        url: frm.attr('action'),
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(frm.serializeArray()),
+           success: function(data)
+           {
+               $("#ask_us_anything").html(data);
+           }
+     });
+});
+</script>
+{% endblock %}
