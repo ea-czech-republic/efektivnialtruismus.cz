@@ -524,11 +524,6 @@ class OutlineThesisSimple(Page):
 
     parent_page_types = ["theses.ThesisIndexPage"]
 
-    def serve(self, request):
-        if request.method == "GET":
-            res = super(OutlineThesisSimple, self).serve(request)
-            return res
-
     @staticmethod
     def _get_heading(_data):
         if isinstance(_data, tuple):
