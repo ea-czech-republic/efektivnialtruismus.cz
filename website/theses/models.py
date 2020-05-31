@@ -494,7 +494,7 @@ class Heading:
 
 def headings_to_html(headings: List[Heading]):
     _nested_htmls = "".join(_heading.to_html() for _heading in headings)
-    nested_html = f"<ul>{_nested_htmls}</ul>" if _nested_htmls else ""
+    nested_html = f'<ul  style="list-style-type:disc;">{_nested_htmls}</ul>' if _nested_htmls else ""
     return nested_html
 
 
