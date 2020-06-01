@@ -4,7 +4,7 @@ import json
 from wagtail.admin.utils import send_mail
 from textwrap import dedent
 
-THESES_MAILS = ["david@effectivethesis.com"]
+THESES_MAILS = ["david.janku@effectivethesis.org"]
 
 
 def conversion(request, origin_url, title):
