@@ -8,7 +8,20 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             {% include_block page.outline_title %}
-            {% include_block outline %}
+            <table class="table table-bordered table-responsive mt-3" role="grid">
+
+                <tbody class=".table-hover .table-striped">
+
+                <tr class="row-2" role="row">
+                <td>
+                    <div class="panel clearfix">
+                        <h4 class="no_toc mt-1">Content</h4>
+                        {% include_block outline %}
+                    </div>
+                </td>
+                </tr>
+            </table>
+
             {% include_block page.body %}
         </div>
     </div>
