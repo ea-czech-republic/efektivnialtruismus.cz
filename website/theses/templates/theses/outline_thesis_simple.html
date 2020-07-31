@@ -1,0 +1,38 @@
+{% extends "theses/theses_base.html" %}
+{% load wagtailuserbar %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+
+<style>
+.table{
+outline-style: solid;
+outline-color: rgb(204, 204, 204);
+outline-width: 2px;
+}
+</style>
+
+<div class="container py-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            {% include_block page.outline_title %}
+            <table class="table table-responsive mt-3 mb-2" role="grid">
+
+                <tbody class=".table-hover .table-striped">
+
+                <tr class="row-2" role="row">
+                <td>
+                    <div class="panel clearfix">
+                        <h4 class="no_toc mt-1">Content</h4>
+                        {% include_block outline %}
+                    </div>
+                </td>
+                </tr>
+            </table>
+
+            {% include_block page.body %}
+        </div>
+    </div>
+</div>
+{% endblock %}
