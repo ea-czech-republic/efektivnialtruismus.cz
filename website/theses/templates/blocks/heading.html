@@ -1,5 +1,14 @@
+<style>
+.shift-anchor {
+    display: block;
+    position: relative;
+    top: -5em;
+    visibility: hidden;
+}
+</style>
+
 {% if link %}
-    <a id="{{ link }}"></a>
+    <a class="shift-anchor" id="{{ link }}"></a>
 {% endif %}
 
 {{ value }}
