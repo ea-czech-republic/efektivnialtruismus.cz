@@ -110,7 +110,7 @@ class ThesisDiscipline(models.Model):
                     features=["bold", "italic", "h1", "h2", "h3", "h4", "h5", "h6"],
                 ),
             ),
-            ("paragraph", blocks.RichTextBlock()),
+            ("paragraph", AllHeadingsRichTextBlock()),
             ("image", ImageChooserBlock()),
             ("embed", EmbedBlock()),
             ("rawHtml", blocks.RawHTMLBlock()),
