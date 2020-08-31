@@ -76,11 +76,41 @@
             </div>
         </div>
 
-        {% if selectedDisciplineDescription %}
+        {% if introduction %}
+            <div class="row mb-2">
+                <div class="col-md-12 all-tags">
+                    <div class="mb-3">
+                        <p>{{ introduction | safe }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if topicsOutline %}
+            <div class="row mb-3">
+                <div class="col-md-12 all-tags">
+                    <div class="mb-3">
+                        <p>{{ topicsOutline | safe }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if disciplineTopics %}
             <div class="row mb-5">
                 <div class="col-md-12 all-tags">
                     <div class="mb-3">
-                        <p>{{ selectedDisciplineDescription | safe }}</p>
+                        <p>{{ disciplineTopics | safe }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if descriptionLegacy %}
+            <div class="row mb-5">
+                <div class="col-md-12 all-tags">
+                    <div class="mb-3">
+                        <p>{{ descriptionLegacy | safe }}</p>
                     </div>
                 </div>
             </div>
@@ -138,7 +168,7 @@
         $(document).ready(function () {
             if (
                 window.location.search.includes("discipline")
-                && window.location.hash !== "disciplines"
+                && window.location.hash == ""
             ) {
                 window.location.hash = "disciplines";
             }

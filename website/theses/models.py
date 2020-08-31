@@ -11,7 +11,6 @@ from wagtail.admin.utils import send_mail
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
-from wagtail.core.rich_text import RichText
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.blocks import ImageChooserBlock
@@ -99,9 +98,33 @@ class ThesisProvider(models.Model):
 @register_snippet
 class ThesisDiscipline(models.Model):
     name = models.CharField(max_length=100, blank=False, unique=True)
-    description = RichTextField(blank=True)
+    introduction = RichTextField(blank=True)
+    description_legacy = RichTextField(blank=True)
+    topics = StreamField(
+        [
+            ("heading", blocks.CharBlock(classname="full title")),
+            (
+                "heading_linkable",
+                HeadingBlock(
+                    help_text="heading text",
+                    features=["bold", "italic", "h1", "h2", "h3", "h4", "h5", "h6"],
+                ),
+            ),
+            ("paragraph", blocks.RichTextBlock()),
+            ("image", ImageChooserBlock()),
+            ("embed", EmbedBlock()),
+            ("rawHtml", blocks.RawHTMLBlock()),
+        ],
+        null=True,
+        blank=True,
+    )
 
-    panels = [FieldPanel("name"), FieldPanel("description")]
+    panels = [
+        FieldPanel("name"),
+        FieldPanel("introduction"),
+        StreamFieldPanel("topics"),
+        FieldPanel("description_legacy"),
+    ]
 
     def __str__(self):
         return self.name
@@ -155,7 +178,7 @@ def get_standard_streamfield():
     )
 
 
-class ThesisSearch(Page):
+class ThesisSearch(Page, FlatLinksOutline):
     parent_page_types = ["theses.ThesisIndexPage"]
 
     body = get_standard_streamfield()
@@ -167,19 +190,20 @@ class ThesisSearch(Page):
         StreamFieldPanel("footer"),
     ]
 
+    def _get_discipline_by_name(self, name) -> ThesisDiscipline:
+        return ThesisDiscipline.objects.get(name=name)
+
     def get_context(self, request, *args, form=None, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         if "discipline" in request.GET:
             discipline_name = request.GET["discipline"]
-            discipline = ThesisDiscipline.objects.get(name=discipline_name)
-            selected_discipline = discipline_name
-            selected_discipline_description = discipline.description
-        else:
-            selected_discipline = None
-            selected_discipline_description = None
+            discipline = self._get_discipline_by_name(name=discipline_name)
+            context["selectedDiscipline"] = discipline_name
+            context["descriptionLegacy"] = discipline.description_legacy
+            context["introduction"] = discipline.introduction
+            context["disciplineTopics"] = discipline.topics
+            context["topicsOutline"] = self.get_outline(discipline.topics.stream_data)
 
-        context["selectedDiscipline"] = selected_discipline
-        context["selectedDisciplineDescription"] = selected_discipline_description
         context["disciplines"] = ThesisDiscipline.objects.all().order_by("name")
         context["form"] = form or TopicInterestForm()
 
@@ -424,7 +448,26 @@ class ThesisPage(Page):
         Name: {contact_name},
         Contact email: {contact_email},
         Course and University: {course_and_university},
-        Deadline: {deadline}
+        @register_snippet
+class Coach(models.Model):
+    name = models.CharField(max_length=100, blank=False, unique=True)
+    photo = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    description = AllHeadingsRichTextField()
+
+    panels = [
+        FieldPanel("name"),
+        FieldPanel("photo"),
+        FieldPanel("description"),
+    ]
+
+    def __str__(self):
+        return self.nameDeadline: {deadline}
         How did you found about the website: {find_out_website},
         
         --------Message--------
