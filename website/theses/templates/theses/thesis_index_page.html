@@ -163,35 +163,76 @@
         <div class="row mt-1">
             <div class="col"></div>
         </div>
-        <div class="row mt-5">
+    </div>
+
+    <div class="container">
+        <div class="row my-5">
             <div class="col text-center">
-                <h1 class="text-uppercase mb-5">What they say about us</h1>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-5">
-                <div class="p-4">
-                    <img class="img-fluid" src="{% static "img/peter-singer.jpg" %}">
-                </div>
-                <p>
-                    Too many students write theses that
-                    achieve nothing other than meet the
-                    requirement for the degree they are
-                    seeking. When there are so many
-                    important questions, in a wide range of
-                    fields, that need to be answered, that's a
-                    terrible waste of time and intelligent,
-                    creative energy. The Effective Thesis
-                    Project is seeking to change that, and I
-                    hope it will.
-                </p>
-                <p class="font-weight-bold">
-                    Peter Singer, Ira W. DeCamp Professor of
-                    Bioethics at Princeton University,
-                    Laureate Professor at the University of
-                    Melbourne <span class="font-weight-normal text-muted">(photo: Mal Vickers)</span>
-                </p>
+                <h1 class="text-uppercase">Our coaches</h1>
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            {% for coach in preview_group %}
+                <div class="col-lg-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            {% image coach.photo fill-400x400-c100 class="img-fluid mb-3" style="border-radius:50%" %}
+                            {{ coach.description | richtext }}
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+            {% endfor %}
+        </div>
+
+        {% if collapsed_groups %}
+            <div id="collapsible-groups" class="collapse">
+                {% for group in collapsed_groups %}
+                    <div class="row">
+                        {% for coach in group %}
+                            <div class="col-lg-4 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        {% image coach.photo fill-400x400-c100 class="img-fluid mb-3" style="border-radius:50%" %}
+                                        {{ coach.description | richtext }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="row mb-4">
+                <button id="toggle-all-coaches"
+                        class="btn btn-primary mx-auto mt-4"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapsible-groups"
+                        aria-expanded="false"
+                        aria-controls="collapsible-groups">
+                    View all coaches
+                </button>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block extra_js_2 %}
+    <script type="text/javascript">
+     $(function () {
+         const $toggleButton = $('#toggle-all-coaches');
+
+         $('#collapsible-groups')
+             .on('hide.bs.collapse', function () {
+                 $toggleButton.text('View all coaches');
+             })
+             .on('show.bs.collapse', function () {
+                 $toggleButton.text('View fewer coaches');
+             });
+     });
+    </script>
 {% endblock %}
