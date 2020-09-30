@@ -7,6 +7,15 @@
 {% load menu_tags %}
 
 {% block content %}
+
+<style>
+.table-outline {
+outline-style: solid;
+outline-color: rgb(204, 204, 204);
+outline-width: 2px;
+}
+</style>
+
     <main class="hero" style="background-image: url({% static "img/hero-topics-theses.jpg" %});">
         <div class="jumbotron">
             <div class="container">
@@ -89,12 +98,24 @@
         {% if topicsOutline %}
             <div class="row mb-3">
                 <div class="col-md-12 all-tags">
-                    <div class="mb-3">
-                        <p>{{ topicsOutline | safe }}</p>
-                    </div>
+                    <table class="table table-responsive table-outline mt-3 mb-2" role="grid">
+
+                        <tbody class=".table-hover .table-striped">
+
+                        <tr class="row-2" role="row">
+                        <td>
+                            <div class="panel clearfix">
+                                {% include_block topicsOutline %}
+
+                            </div>
+                        </td>
+                        </tr>
+                    </table>
+
                 </div>
             </div>
         {% endif %}
+
 
         {% if disciplineTopics %}
             <div class="row mb-5">
