@@ -448,26 +448,7 @@ class ThesisPage(Page):
         Name: {contact_name},
         Contact email: {contact_email},
         Course and University: {course_and_university},
-        @register_snippet
-class Coach(models.Model):
-    name = models.CharField(max_length=100, blank=False, unique=True)
-    photo = models.ForeignKey(
-        "wagtailimages.Image",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-    description = AllHeadingsRichTextField()
-
-    panels = [
-        FieldPanel("name"),
-        FieldPanel("photo"),
-        FieldPanel("description"),
-    ]
-
-    def __str__(self):
-        return self.nameDeadline: {deadline}
+        Deadline: {deadline}
         How did you found about the website: {find_out_website},
         
         --------Message--------
