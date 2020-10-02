@@ -126,7 +126,6 @@ class Outline:
             keys = ("type", "value", "id")
             _data = dict(zip(keys, _data))
 
-        print("data:", _data)
         if not isinstance(_data, dict):
             return None
 
