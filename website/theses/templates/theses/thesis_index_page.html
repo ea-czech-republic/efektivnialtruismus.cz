@@ -174,49 +174,21 @@
     </div>
 
     <div class="container">
-        <div class="row">
-            {% for coach in preview_group %}
-                <div class="col-lg-4 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            {% image coach.photo fill-400x400-c100 class="img-fluid mb-3" style="border-radius:50%" %}
-                            {{ coach.description | richtext }}
-                        </div>
-                    </div>
-                </div>
-            {% empty %}
-            {% endfor %}
-        </div>
-
-        {% if collapsed_groups %}
-            <div id="collapsible-groups" class="collapse">
-                {% for group in collapsed_groups %}
-                    <div class="row">
-                        {% for coach in group %}
-                            <div class="col-lg-4 mb-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        {% image coach.photo fill-400x400-c100 class="img-fluid mb-3" style="border-radius:50%" %}
-                                        {{ coach.description | richtext }}
-                                    </div>
+        {% if coach_groups %}
+            {% for group in coach_groups %}
+                <div class="row">
+                    {% for coach in group %}
+                        <div class="col-lg-4 mb-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    {% image coach.photo fill-400x400-c100 class="img-fluid mb-3" style="border-radius:50%" %}
+                                    {{ coach.description | richtext }}
                                 </div>
                             </div>
-                        {% endfor %}
-                    </div>
-                {% endfor %}
-            </div>
-
-            <div class="row mb-4">
-                <button id="toggle-all-coaches"
-                        class="btn btn-primary mx-auto mt-4"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#collapsible-groups"
-                        aria-expanded="false"
-                        aria-controls="collapsible-groups">
-                    View all coaches
-                </button>
-            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
         {% endif %}
     </div>
 {% endblock %}

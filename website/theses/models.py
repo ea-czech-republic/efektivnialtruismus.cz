@@ -284,9 +284,7 @@ class ThesisIndexPage(Page):
         coaches = Coach.objects.all().order_by("name")
         groups = list(utils.chunks(coaches, 3))
         if groups:
-            context["preview_group"] = groups[0]
-            context["collapsed_groups"] = groups[1:]
-
+            context["coach_groups"] = groups
         return context
 
 
