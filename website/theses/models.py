@@ -320,7 +320,7 @@ class ThesisCoachingPage(Page):
         Career: {career},
         Requirements: {requirements},
         Preferences: {preferences},
-        Knowledgeable: {read_above},
+        Request: {read_above},
         Deadline for selection: {deadline},
         CV: {cv_url},
         Deadline for submission: {deadline_submit},
