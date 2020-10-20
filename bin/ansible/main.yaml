@@ -57,6 +57,19 @@
         dest: /var/server/efektivnialtruismus.cz
       when: not git.stat.isdir is defined or not git.stat.isdir
 
+
+    - name: Check if we have the environment file
+      stat:
+        path: "/var/server/efektivnialtruismus.cz/bin/{{env}}.env"
+      register: env
+
+    - name: Touch the env file
+      file:
+        path: "/var/server/efektivnialtruismus.cz/bin/{{env}}.env"
+        state: touch
+      when: not env.stat.isfile is defined or not env.stat.isfile
+
+
     - name: Check if we have certificates already
       stat:
         path: /var/server/efektivnialtruismus.cz/data/certbot/conf/live/
