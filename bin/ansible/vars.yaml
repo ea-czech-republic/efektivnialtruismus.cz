@@ -1,0 +1,13 @@
+docker_package_state: present
+docker_install_compose: true
+docker_compose_path: /usr/local/bin/docker-compose
+docker_service_state: started
+docker_service_enabled: true
+docker_restart_handler_state: restarted
+docker_apt_release_channel: stable
+ansible_python_interpreter: /usr/bin/python3
+
+pip_package: python3-pip
+pip_executable: pip3
+pip_install_packages:
+  - name: docker
