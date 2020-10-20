@@ -1,0 +1,84 @@
+- name: Bootstrap and install base tools
+  hosts: all
+  vars_files: [ vars.yaml ]
+  become: true
+  tasks:
+  - name: Ping the node
+    ping:
+
+  - name: Set locale
+    locale_gen:
+      name: en_US.UTF-8
+      state: present
+
+  - name: Set timezone variables
+    copy: content='Europe/Prague'
+          dest=/etc/timezone
+          owner=root
+          group=root
+          mode=0644
+          backup=yes
+    notify:
+      - update timezone
+
+  - name: Install default tools
+    apt:
+      pkg: [sudo, vim, htop, iotop, curl, git]
+      state: present
+      update_cache: yes
+
+  handlers:
+  - name: update timezone
+    command: dpkg-reconfigure --frontend noninteractive tzdata
+
+
+- name: Set up Docker
+  hosts: webservers
+  vars_files: [ vars.yaml ]
+  become: true
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker
+
+
+- name: Set up cluster
+  hosts: webservers
+  vars_files: [ vars.yaml ]
+  become: true
+  tasks:
+    - name: Check if we have the repo already
+      stat:
+        path: /var/server/efektivnialtruismus.cz
+      register: git
+
+    - name: Get the Git repo
+      git:
+        repo: 'https://github.com/ea-czech-republic/efektivnialtruismus.cz'
+        dest: /var/server/efektivnialtruismus.cz
+      when: not git.stat.isdir is defined or not git.stat.isdir
+
+    - name: Check if we have certificates already
+      stat:
+        path: /var/server/efektivnialtruismus.cz/data/certbot/conf/live/
+      register: cert
+
+    - name: Set up dummy certificates
+      shell: /var/server/efektivnialtruismus.cz/bin/init-letsencrypt-dummy.sh
+      environment:
+        ENVIRONMENT: "{{env}}"
+        IMAGE_TAG: latest
+      when: not cert.stat.isdir is defined or not cert.stat.isdir
+
+    - name: Run deploy
+      shell: /var/server/efektivnialtruismus.cz/bin/deploy.sh
+      environment:
+        ENVIRONMENT: "{{env}}"
+        IMAGE_TAG: latest
+      when: not cert.stat.isdir is defined or not cert.stat.isdir
+
+    - name: Set up proper certificates
+      shell: /var/server/efektivnialtruismus.cz/bin/init-letsencrypt.sh
+      environment:
+        ENVIRONMENT: "{{env}}"
+        IMAGE_TAG: latest
+      when: not cert.stat.isdir is defined or not cert.stat.isdir
