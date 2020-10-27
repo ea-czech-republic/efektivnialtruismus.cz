@@ -284,9 +284,7 @@ class ThesisIndexPage(Page):
         coaches = Coach.objects.all().order_by("name")
         groups = list(utils.chunks(coaches, 3))
         if groups:
-            context["preview_group"] = groups[0]
-            context["collapsed_groups"] = groups[1:]
-
+            context["coach_groups"] = groups
         return context
 
 
@@ -322,7 +320,7 @@ class ThesisCoachingPage(Page):
         Career: {career},
         Requirements: {requirements},
         Preferences: {preferences},
-        Knowledgeable: {read_above},
+        Request: {read_above},
         Deadline for selection: {deadline},
         CV: {cv_url},
         Deadline for submission: {deadline_submit},
