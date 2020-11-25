@@ -29,6 +29,7 @@ from theses.views import conversion, coaching_conversion
 logger = logging.getLogger(__name__)
 
 THESES_MAILS = ["david.janku@effectivethesis.org"]
+THESES_MAILS_2 = ["silvana.hultsch@effectivethesis.org"]
 
 ALL_HEADINGS_RICH_TEXT_FEATURES = [
     "bold",
@@ -234,7 +235,7 @@ class ThesisSearch(Page, FlatLinksOutline):
                 send_mail(
                     subject="Topic interest",
                     message=mail_content,
-                    recipient_list=THESES_MAILS,
+                    recipient_list=THESES_MAILS_2,
                     from_email=form.cleaned_data["contact_email"],
                 )
                 messages.success(request, "Thank you for your interest!")
@@ -346,7 +347,7 @@ class ThesisCoachingPage(Page):
                 send_mail(
                     "Thesis coaching interest: {}".format(contact_name),
                     mail_content,
-                    THESES_MAILS,  # recipient email
+                    THESES_MAILS_2,  # recipient email
                     form.cleaned_data["contact_email"],
                 )
 
