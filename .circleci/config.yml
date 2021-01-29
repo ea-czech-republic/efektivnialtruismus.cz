@@ -25,10 +25,6 @@ jobs:
       - image: circleci/buildpack-deps:stretch
     steps:
       - run:
-          name: Deploy Over SSH
-          command: |
-            ssh -o "StrictHostKeyChecking=no" dan@35.207.130.87 "env ENVIRONMENT=beta IMAGE_TAG=$CIRCLE_SHA1 sh /var/server/efektivnialtruismus.cz/bin/deploy.sh"
-      - run:
           name: Deploy Over SSH Hetzner
           command: |
             ssh -o "StrictHostKeyChecking=no" dan@159.69.217.7 "env ENVIRONMENT=beta IMAGE_TAG=$CIRCLE_SHA1 sh /var/server/efektivnialtruismus.cz/bin/deploy.sh"
@@ -36,10 +32,6 @@ jobs:
     docker:
       - image: circleci/buildpack-deps:stretch
     steps:
-      - run:
-          name: Deploy Over SSH
-          command: |
-            ssh -o "StrictHostKeyChecking=no" dan@35.207.162.44 "env ENVIRONMENT=master IMAGE_TAG=$CIRCLE_SHA1 sh /var/server/efektivnialtruismus.cz/bin/deploy.sh"
       - run:
           name: Deploy Over SSH Hetzner
           command: |
