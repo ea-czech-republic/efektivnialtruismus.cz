@@ -188,7 +188,7 @@ class CoachingForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 "class": "form-control",
-                "placeholder": "When is your deadline for submitting your thesis?",
+                "placeholder": "When is your deadline for submitting your finished thesis/PhD application topic proposal?",
             }
         )
     )
