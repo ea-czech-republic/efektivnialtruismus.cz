@@ -1,8 +1,8 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -ex
 
 [[ -z $IMAGE_TAG ]] && echo "You must pass IMAGE_TAG var" && exit 1
-[[ -z ENVIRONMENT ]] && echo "You must pass ENVIRONMENT var which corresponds to a branch" && exit 1
+[[ -z $ENVIRONMENT ]] && echo "You must pass ENVIRONMENT var which corresponds to a branch" && exit 1
 
 if [ "$ENVIRONMENT" = "beta" ]; then
     export ENV_PREFIX="beta."
@@ -15,17 +15,17 @@ fi
 
 # this was done by git clone https://github.com/ea-czech-republic/efektivnialtruismus.cz.git
 cd /var/server/efektivnialtruismus.cz
-git checkout $ENVIRONMENT
+git checkout "$ENVIRONMENT"
 git fetch
-git reset --hard origin/$ENVIRONMENT
+git reset --hard origin/"$ENVIRONMENT"
 
 # because docker-compose does not have credentials from host
-docker pull czea/effective-thesis:${IMAGE_TAG}
+docker pull czea/effective-thesis:"${IMAGE_TAG}"
 
 docker run --rm \
-    -e IMAGE_TAG=$IMAGE_TAG \
-    -e ENVIRONMENT=$ENVIRONMENT \
-    -e ENV_PREFIX=$ENV_PREFIX \
+    -e IMAGE_TAG="$IMAGE_TAG" \
+    -e ENVIRONMENT="$ENVIRONMENT" \
+    -e ENV_PREFIX="$ENV_PREFIX" \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v "$PWD:$PWD" \
     -w="$PWD" \

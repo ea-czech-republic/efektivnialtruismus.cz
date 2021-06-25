@@ -41,7 +41,7 @@ how images are tagged).
 
 ```
 gcloud compute --project "efektivni-altruismus" ssh --zone "europe-west3-c" "eacr-main-2" \
-    --command "env IMAGE_TAG=FILL-IN-HERE ENVIRONMENT=beta|master sh /var/server/efektivnialtruismus.cz/bin/deploy.sh"
+    --command "env IMAGE_TAG=FILL-IN-HERE ENVIRONMENT=beta|master bash /var/server/efektivnialtruismus.cz/bin/deploy.sh"
 ```
 
 ### Copy DB from production to Beta
