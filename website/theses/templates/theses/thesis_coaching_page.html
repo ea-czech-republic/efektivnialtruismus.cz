@@ -85,7 +85,7 @@
     </div>
 
     {% if page.body2 %}
-        <div class="container mb-3">
+        <div class="container">
             <div class="row">
                 <div class="col">
                     {% include_block page.body2 %}
@@ -94,109 +94,16 @@
         </div>
     {% endif %}
 
-    <!-- Coaching form -->
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col">
-                <div>
-                    <h2>Application form</h2>
+    {# Coaching application form #}
+    <script type="text/javascript" src="https://form.jotform.com/jsform/211994865700362"></script>
+
+    {% if page.footer %}
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col">
+                    {% include_block page.footer %}
                 </div>
-                <form id="coaching-form" action="" method="POST">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        {{ contactForm.contact_name.errors }}
-                        {{ contactForm.contact_name }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ contactForm.contact_email.errors }}
-                        {{ contactForm.contact_email }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ contactForm.university.errors }}
-                        {{ contactForm.university }}
-                    </div>
-
-                    <div class="form-group">
-                        <span>Which degree level do you seek help for?</span>
-                        {{ contactForm.seniority.errors }}
-                        {{ contactForm.seniority }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ contactForm.career.errors }}
-                        {{ contactForm.career }}
-                    </div>
-
-
-                    <div class="form-group">
-                        {{ contactForm.preferences.errors }}
-                        {{ contactForm.preferences }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ contactForm.read_above.errors }}
-                        {{ contactForm.read_above }}
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-8">
-                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                                {{ contactForm.deadline.errors }}
-                                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
-                                       id="id_deadline" name="deadline"
-                                       placeholder="When is your deadline for having a topic chosen?" required/>
-                                <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-8">
-                            {{ contactForm.deadline_submit.errors }}
-                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"
-                                       id="id_deadline_submit" name="deadline_submit"
-                                       placeholder="When is your deadline for submitting your finished thesis/PhD application topic proposal?" required/>
-                                <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        {{ contactForm.requirements.errors }}
-                        {{ contactForm.requirements }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ contactForm.cv_url.errors }}
-                        {{ contactForm.cv_url }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ contactForm.find_out_website.errors }}
-                        {{ contactForm.find_out_website }}
-                    </div>
-
-                    <div class="form-group">
-                        {{ contactForm.anything_else.errors }}
-                        {{ contactForm.anything_else }}
-                    </div>
-
-
-                    <input type="submit" value="Apply now" class="btn btn-primary">
-                </form>
             </div>
         </div>
-
-
-        <div class="row mb-5">
-            <div class="col">
-                {% include_block page.footer %}
-            </div>
-        </div>
-    </div>
+    {% endif %}
 {% endblock %}

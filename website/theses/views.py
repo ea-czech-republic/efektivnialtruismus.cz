@@ -12,10 +12,6 @@ def conversion(request, origin_url, title):
     return render(request, "theses/conversion.html", context)
 
 
-def coaching_conversion(request):
-    return render(request, "theses/coaching_conversion.html")
-
-
 def build_mail_content_contact(contact_name, contact_email, message):
     return dedent(
         f"""

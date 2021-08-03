@@ -1,30 +1,29 @@
 import logging
 from textwrap import dedent
 
-from django.contrib import messages
+from django import forms
 from django.db import models
 from django.http import JsonResponse, HttpResponseRedirect
 from modelcluster.contrib.taggit import ClusterTaggableManager
+from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from taggit.models import TaggedItemBase, Tag as TaggitTag
 from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
 from wagtail.admin.utils import send_mail
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core.models import Page
-from wagtail.embeds.blocks import EmbedBlock
 from wagtail.documents.edit_handlers import DocumentChooserPanel
+from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
-from modelcluster.fields import ParentalManyToManyField, ParentalKey
-from django import forms
 from wagtail.snippets.models import register_snippet
 
 from theses import utils
-from theses.forms import SimpleContactForm, TopicInterestForm
+from theses.forms import SimpleContactForm
 from theses.outline_utils import _HeadingBlock, NestedOutline, FlatLinksOutline
-from theses.views import conversion, coaching_conversion
+from theses.views import conversion
 
 logger = logging.getLogger(__name__)
 
@@ -206,42 +205,10 @@ class ThesisSearch(Page, FlatLinksOutline):
             context["topicsOutline"] = self.get_outline(discipline.topics.stream_data)
 
         context["disciplines"] = ThesisDiscipline.objects.all().order_by("name")
-        context["form"] = form or TopicInterestForm()
 
         return context
 
-    @staticmethod
-    def build_mail_content(uri, data):
-        return dedent(
-            """
-        Name: {contact_name},
-        Contact email: {contact_email},
-        How did they find out about this website: {where_from},
-        
-        --------Message--------
-        {content}
-        """.format(
-                **data
-            )
-        )
-
     def serve(self, request, *args, **kwargs):
-        if request.method == "POST":
-            form = TopicInterestForm(request.POST)
-            if form.is_valid():
-                mail_content = self.build_mail_content(
-                    request.build_absolute_uri(), form.cleaned_data
-                )
-                send_mail(
-                    subject="Topic interest",
-                    message=mail_content,
-                    recipient_list=THESES_MAILS_2,
-                    from_email=form.cleaned_data["contact_email"],
-                )
-                messages.success(request, "Thank you for your interest!")
-                return HttpResponseRedirect(request.path_info + "#topic-interest-form")
-            else:
-                return super().serve(request, form=form)
         if "discipline" in request.GET:
             discipline_name = request.GET["discipline"]
             if discipline_name in ("biology", "medicine"):
@@ -301,63 +268,6 @@ class ThesisCoachingPage(Page):
         StreamFieldPanel("body2"),
         StreamFieldPanel("footer"),
     ]
-
-    def get_context(self, request, errored_form=None):
-        from theses.forms import CoachingForm
-
-        context = super().get_context(request)
-        context["contactForm"] = errored_form or CoachingForm
-
-        return context
-
-    @staticmethod
-    def build_mail_content(data):
-        return dedent(
-            """
-        Name: {contact_name},
-        Contact email: {contact_email},
-        Course and University: {university},
-        Seniority: {seniority},
-        Career: {career},
-        Requirements: {requirements},
-        Preferences: {preferences},
-        Request: {read_above},
-        Deadline for selection: {deadline},
-        CV: {cv_url},
-        Deadline for submission: {deadline_submit},
-        Anything else: {anything_else},
-        How did you found about the website: {find_out_website},
-        """.format(
-                **data
-            )
-        )
-
-    def serve(self, request):
-        if request.method == "POST":
-            print("posting")
-            from theses.forms import CoachingForm
-
-            form = CoachingForm(request.POST)
-            if form.is_valid():
-                print("form is valid")
-                form.clean()
-                mail_content = self.build_mail_content(form.cleaned_data)
-                contact_name = form.cleaned_data["contact_name"]
-
-                send_mail(
-                    "Thesis coaching interest: {}".format(contact_name),
-                    mail_content,
-                    THESES_MAILS_2,  # recipient email
-                    form.cleaned_data["contact_email"],
-                )
-
-                return coaching_conversion(request)
-            else:
-                print("form is invalid")
-                logger.error("The submitted form was invalid.")
-                return super().serve(request, errored_form=form)
-        else:
-            return super().serve(request)
 
 
 class ThesisChooseHelpPage(Page):

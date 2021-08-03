@@ -148,51 +148,16 @@ margin-left: 0px;
         {% endif %}
 
         <!-- After disciplines -->
-        <div class="row my-5">
+        <div class="row">
             <div class="col">
                 <a id="if-interested-in-topics" style="position: relative;top: -5em;"></a>
                 {% include_block page.footer %}
-
-                <div id="topic-interest-form">
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-success" role="alert">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
-
-                    {% else %}
-                        <form action="" method="post">
-                            {% csrf_token %}
-
-                            <div class="form-group">
-                                {{ form.contact_name.errors }}
-                                {{ form.contact_name }}
-                            </div>
-
-                            <div class="form-group">
-                                {{ form.contact_email.errors }}
-                                {{ form.contact_email }}
-                            </div>
-
-                            <div class="form-group">
-                                {{ form.content.errors }}
-                                {{ form.content }}
-                            </div>
-
-                            <div class="form-group">
-                                {{ form.where_from.errors }}
-                                {{ form.where_from }}
-                            </div>
-
-                            <input class="btn btn-primary" type="submit" value="Submit">
-                        </form>
-                    {% endif %}
-                </div>
             </div>
         </div>
-
     </div>
+
+    {# Coaching application form #}
+    <script type="text/javascript" src="https://form.jotform.com/jsform/211994865700362"></script>
 {% endblock %}
 
 {% block extra_js_2 %}
