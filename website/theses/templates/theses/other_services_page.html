@@ -1,0 +1,36 @@
+{% extends "theses/theses_base.html" %}
+{% load static %}
+
+{% load wagtailcore_tags %}
+{% load wagtailuserbar %}
+{% load wagtailimages_tags %}
+{% load menu_tags %}
+
+{% block content %}
+    <main class="hero" style="background-image: url({% static "img/placing-red-push-pins-into-city-street-map.jpg" %});">
+        <div class="jumbotron">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mr-auto">
+                        <h1 class="text-white mb-4">
+                            <span class="d-inline-block">We can help you on your journey towards an impactful research career.</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col">
+                {% include_block page.body %}
+            </div>
+        </div>
+    </div>
+
+
+    {# Coaching application form #}
+    <script type="text/javascript" src="https://form.jotform.com/jsform/211994865700362"></script>
+
+{% endblock %}

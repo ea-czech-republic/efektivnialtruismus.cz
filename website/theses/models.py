@@ -50,10 +50,8 @@ ALL_HEADINGS_RICH_TEXT_FEATURES = [
 
 
 class AllHeadingsRichTextBlock(blocks.RichTextBlock):
-    def __init__(self, *arge, **kwargs):
-        super().__init__(
-            *arge, features=ALL_HEADINGS_RICH_TEXT_FEATURES, **kwargs,
-        )
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, features=ALL_HEADINGS_RICH_TEXT_FEATURES, **kwargs)
 
 
 class AllHeadingsRichTextField(RichTextField):
@@ -128,6 +126,7 @@ class ThesisDiscipline(models.Model):
 
     def __str__(self):
         return self.name
+
 
 @register_snippet
 class Coach(models.Model):
@@ -542,3 +541,11 @@ class ThesisFinishedPage(Page):
                 return next_sibling
             else:
                 return next_sibling.next()
+
+
+class OtherServicesPage(Page):
+    body = get_standard_streamfield()
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel("body"),
+    ]
