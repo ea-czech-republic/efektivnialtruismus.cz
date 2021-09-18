@@ -549,3 +549,53 @@ class OtherServicesPage(Page):
     content_panels = Page.content_panels + [
         StreamFieldPanel("body"),
     ]
+
+from wagtailmenus.models import MenuPage, MenuPageMixin
+from wagtailmenus.panels import menupage_panel
+
+
+
+class ContactPage(Page, MenuPageMixin):
+    def modify_submenu_items(self, menu_items, **kwargs):
+        """
+        If rendering a 'main_menu', add some additional menu items to the end
+        of the list that link to various anchored sections on the same page.
+
+        We're only making use 'original_menu_tag' and 'current_site' in this
+        example, but `kwargs` should have all of the following keys:
+
+        * 'current_page'
+        * 'current_ancestor_ids'
+        * 'current_site'
+        * 'allow_repeating_parents'
+        * 'apply_active_classes'
+        * 'original_menu_tag'
+        * 'menu_instance'
+        * 'request'
+        * 'use_absolute_page_urls'
+        """
+
+        # Start by applying default modifications
+        menu_items = super(ContactPage, self).modify_submenu_items(menu_items, **kwargs)
+
+        base_url = self.relative_url(kwargs['current_site'])
+        """
+        Additional menu items can be objects with the necessary attributes,
+        or simple dictionaries. `href` is used for the link URL, and `text`
+        is the text displayed for each link. Below, I've also used
+        `active_class` to add some additional CSS classes to these items,
+        so that I can target them with additional CSS
+        """
+        menu_items.extend((
+            {
+                'text': 'Get support',
+                'href': base_url + '#opportunities',
+                'active_class': 'opportunities',
+            },
+        ))
+        return menu_items
+
+    def has_submenu_items(self, **kwargs):
+        print("I am here")
+        print("context data:", self.get_context_data())
+        return True
