@@ -597,5 +597,4 @@ class ContactPage(Page, MenuPageMixin):
 
     def has_submenu_items(self, **kwargs):
         print("I am here")
-        print("context data:", self.get_context_data())
         return True
