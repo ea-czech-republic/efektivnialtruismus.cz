@@ -70,6 +70,14 @@ h1, h2, h3, h4, h5,
     background-color: #E5E4E4;
 }
 
+.special-card {    
+      background-color:#070259;
+    }
+
+.new-card {    
+        background-color:#06025900;
+      }  
+
 .card-finished .card-footer {
     background-color: #070259;
 }
