@@ -16,6 +16,18 @@ h1, h2, h3, h4, h5,
     color: white;
 }
 
+.bg-white {
+    background-color: #ffffff00;
+}
+
+.bg-white h1,
+.bg-white h2,
+.bg-white h3,
+.bg-white h4,
+.bg-white h5 {
+    color:  #070259;
+}
+
 .tag {
     background-color: rgb(249, 229, 209);
     padding-top: 0.2em;
