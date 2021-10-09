@@ -1,5 +1,6 @@
 import logging
 from textwrap import dedent
+from typing import Iterable
 
 from django import forms
 from django.db import models
@@ -7,11 +8,17 @@ from django.http import JsonResponse, HttpResponseRedirect
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from taggit.models import TaggedItemBase, Tag as TaggitTag
-from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import (
+    StreamFieldPanel,
+    FieldPanel,
+    MultiFieldPanel,
+    InlinePanel,
+    PageChooserPanel,
+)
 from wagtail.admin.utils import send_mail
 from wagtail.core import blocks
 from wagtail.core.fields import RichTextField, StreamField
-from wagtail.core.models import Page
+from wagtail.core.models import Page, Orderable
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.images.blocks import ImageChooserBlock
@@ -19,6 +26,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
+from wagtailmenus.models import MenuPage
 
 from theses import utils
 from theses.forms import SimpleContactForm
@@ -550,51 +558,49 @@ class OtherServicesPage(Page):
         StreamFieldPanel("body"),
     ]
 
-from wagtailmenus.models import MenuPage, MenuPageMixin
-from wagtailmenus.panels import menupage_panel
+
+class SubmenuItem(models.Model):
+    page = models.ForeignKey("wagtailcore.Page", on_delete=models.CASCADE)
+    title = models.CharField(max_length=255, blank=True)
+    url_suffix = models.CharField("Append to URL", blank=True, max_length=255)
+
+    panels = [
+        PageChooserPanel("page"),
+        FieldPanel("title"),
+        FieldPanel("url_suffix"),
+    ]
+
+    class Meta:
+        abstract = True
 
 
+class SubmenuItems(Orderable, SubmenuItem):
+    submenu_page = ParentalKey(
+        "theses.SubmenuPage", on_delete=models.CASCADE, related_name="submenu_items"
+    )
 
-class ContactPage(Page, MenuPageMixin):
+    def get_submenu_data(self, current_site):
+        page: Page = self.page
+        url = page.relative_url(current_site)
+        if self.url_suffix:
+            url += self.url_suffix
+        title = self.title if self.title else page.title
+        return {"text": title, "href": url}
+
+
+class SubmenuPage(MenuPage):
+    content_panels = Page.content_panels + [
+        InlinePanel("submenu_items", label="Submenu Items"),
+    ]
+
     def modify_submenu_items(self, menu_items, **kwargs):
-        """
-        If rendering a 'main_menu', add some additional menu items to the end
-        of the list that link to various anchored sections on the same page.
+        menu_items = super(SubmenuPage, self).modify_submenu_items(menu_items, **kwargs)
+        submenu_items: Iterable[SubmenuItems] = self.submenu_items.all()
 
-        We're only making use 'original_menu_tag' and 'current_site' in this
-        example, but `kwargs` should have all of the following keys:
-
-        * 'current_page'
-        * 'current_ancestor_ids'
-        * 'current_site'
-        * 'allow_repeating_parents'
-        * 'apply_active_classes'
-        * 'original_menu_tag'
-        * 'menu_instance'
-        * 'request'
-        * 'use_absolute_page_urls'
-        """
-
-        # Start by applying default modifications
-        menu_items = super(ContactPage, self).modify_submenu_items(menu_items, **kwargs)
-
-        base_url = self.relative_url(kwargs['current_site'])
-        """
-        Additional menu items can be objects with the necessary attributes,
-        or simple dictionaries. `href` is used for the link URL, and `text`
-        is the text displayed for each link. Below, I've also used
-        `active_class` to add some additional CSS classes to these items,
-        so that I can target them with additional CSS
-        """
-        menu_items.extend((
-            {
-                'text': 'Get support',
-                'href': base_url + '#opportunities',
-                'active_class': 'opportunities',
-            },
-        ))
+        menu_items.extend(
+            (item.get_submenu_data(kwargs["current_site"]) for item in submenu_items)
+        )
         return menu_items
 
     def has_submenu_items(self, **kwargs):
-        print("I am here")
-        return True
+        return self.submenu_items.exists()
