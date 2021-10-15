@@ -26,7 +26,7 @@ margin-left: 0px;
 }
 </style>
 
-    <main class="hero" style="background-image: url({% static "img/hero-topics-theses.jpg" %});">
+    <main class="hero" style="background-image: url({% static "img/hero-topics-theses-books.jpg" %});">
         <div class="jumbotron">
             <div class="container">
                 <div class="row">
@@ -43,19 +43,10 @@ margin-left: 0px;
 
     <div class="container">
         <!-- before disciplines -->
-        <div class="row my-5">
+        <div class="row my-2">
 
-            <div class="col collapsible-body">
-                <div id="collapse-body" class="collapse collapse-preview">
+            <div class="container">
                     {% include_block page.body %}
-                </div>
-                <a role="button"
-                   class="collapsed"
-                   data-toggle="collapse"
-                   href="#collapse-body"
-                   aria-expanded="false"
-                   aria-controls="collapse-body">
-                </a>
             </div>
         </div>
 
@@ -71,6 +62,13 @@ margin-left: 0px;
                 <h3 id="disciplines" class="text-uppercase mb-4">
                     Explore and get interested
                 </h3>
+               <div class=h5>
+                <p>Check out
+                <a href="https://effectivethesis.org/research-directions-list/">
+                all our recommended research directions here
+            </a>
+                or click the disciplines below to see our profiles for your field of study.</p></br>
+            </div>
 
                 <form id="discipline-filter-form" action="#disciplines" method="GET">
                     {% for discipline in disciplines %}
