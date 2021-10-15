@@ -23,16 +23,14 @@
     </main>
 
     <div class="container">
-        <div class="row">
+        <h1 class="text text-center mb-4">Our Services</h1>
+        <div class="row row-cols-1">
             <div class="col-1"></div>
             <div class="col">
                 <div class="card-deck mt-4">
                     <div class="card">
-                        <h2 class="px-5 text-center mb-3">
-                            GET INSPIRED
-                        </h2>
                         <div class="card-img-wrapper">
-                            <img class="card-img-bottom" src="{% static "img/wood-light-creative-space.jpg" %}" class="card-img-top" alt="Test tubes">
+                            <img class="card-img-bottom" src="{% static "img/research-topics.jpg" %}" class="card-img-top">
                             <a href="/theses">
                                 <div class="topic-areas-overlay">
                                     <h1 class="px-5 card-title text-white">Topics</h1>
@@ -40,18 +38,15 @@
                             </a>
                         </div>
                         <div class="card-body">
-                            <p class="h5">
-                                Get inspired by our suggestions for high impact fields and find a&nbsp;topic within the field yourself
+                            <p class="h5 text-center">
+                                Be inspired by our profiles on research directions with high potential to significantly improve the world.
                             </p>
                         </div>
                     </div>
                     <div class="col-2"></div>
                     <div class="card">
-                        <h2 class="px-5 text-center mb-3">
-                            GET ADVICE
-                        </h2>
                         <div class="card-img-wrapper">
-                            <img class="card-img-bottom" src="{% static "img/two-woman-chatting.jpg" %}" class="card-img-top" alt="Topics">
+                            <img class="card-img-bottom" src="{% static "img/two-woman-chatting.jpg" %}" class="card-img-top">
                             <a href="/thesis-coaching">
                                 <div class="topic-areas-overlay">
                                     <h1 class="px-5 card-title text-white">Coaching</h1>
@@ -59,18 +54,89 @@
                             </a>
                         </div>
                         <div class="card-body">
-                            <p class="h5">Get advice tailored to your situation from one of our coaches and benefit from our network of experienced researchers and students who can help you find a valuable topic</p>
+                            <p class="h5 text-center">
+                                Get tailored advice and benefit from being connected to experienced researchers in your field and our community of students.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-primary py-4 my-1">
+        <div class="container mb-3">
+            <div class="row row-cols-1">
+                <div class="col-1"></div>
+                <div class="col">
+                    <div class="card-deck mt-4">
+                    <div class="card special-card d-flex">
+                        <div class="special-card text-center">
+                                    <div class="card-body align-items-center d-flex justify-content-center">
+                                        <p class="text-white h2">
+                                            Read our key ideas to learn more about our research and how to choose a thesis topic.
+                                    </p>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="card special-card">
+                        <div class="card-img-wrapper">
+                            <img class="card-img-bottom" src="{% static "img/key-ideas.jpg" %}">
+                            <a href="/key-ideas">
+                                <div class="topic-areas-overlay">
+                                    <h1 class="px-5 card-title text-white">Key Ideas</h1>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+         </div>
+        </div>
+    </div>
+
+    <div class="bg-white py-1 my-3">
+        <div class="container mb-3">
+            <div class="row row-cols-1">
+                <div class="col">
+                <div class="card-deck mt-4">
+                    <div class="col-1"></div>
+                <div class="card">
+                    <div class="card-img-wrapper">
+                    <img class="card-img-bottom" src="{% static "img/finished-theses.jpg" %}">
+                        <a href="/finished">
+                            <div class="topic-areas-overlay">
+                                <h1 class="px-5 card-title text-white">Finished Theses</h1>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+                    <div class="card new-card d-flex">
+                        <div class="new-card text-center">
+                                    <div class="card-body align-items-center d-flex justify-content-center">
+                                         <p class="text h2">
+                                            Check out the theses of students we advised and see what current students are working on.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-1"></div>
         </div>
-    </div>
+    </div>            
+</div>
 
-    <div class="bg-primary py-5 my-5">
-        <div class="container">
-            <div class="row text-center text-white">
+<div class="bg-primary py-1 my-1">
+    <div class="container text-center pt-2 pb-2">
+            <div class="col text-uppercase">
+                <p></p><h1>Our Impact</h1><p></p>
+            </div>            
+        <div class="row text-center text-white">
                 <div class="col">
                     <h1 class="display-3">12,000</h1>
                     <h2 class="text-uppercase">Research hours</h2>
@@ -89,16 +155,6 @@
             </div>
         </div>
     </div>
-
-    <div class="container mb-5">
-        <div class="row justify-content-center mb-4">
-            <div class="col-md-8 text-center">
-                <h1 class="my-4">Check out the finished theses of students we advised and find out what current students are working on</h1>
-                <p>
-                    <a class="btn btn-lg btn-primary mb-5" href="/finished" target="_blank">view more</a>
-                </p>
-            </div>
-        </div>
 
         <div class="row mt-1">
             <div class="col"></div>
