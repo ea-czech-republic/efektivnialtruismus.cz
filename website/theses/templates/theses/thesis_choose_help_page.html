@@ -1,17 +1,34 @@
 {% extends "theses/theses_base.html" %}
+{% load static %}
 
 {% load wagtailcore_tags %}
 {% load wagtailuserbar %}
 {% load wagtailimages_tags %}
-
+{% load menu_tags %}
 
 {% block body_class %}template-thesisindex{% endblock %}
 
 {% block content %}
-    <div class="container my-3">
+
+<main class="hero" style="background-image: url({% static "img/globe.jpg" %});">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mr-auto">
+                    <h1 class="text-white mb-4">
+                        <span class="d-inline-block">Read more about the key ideas</span>
+                        <span class="d-inline-block">that inform our work.</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
         <div class="row">
         </div>
 
+    <div class="container my-3">
         <div class="row mb-4">
             <div class="col-md-12 text-center">
                 <ul class="nav nav-pills center-pills" role="tablist">
@@ -53,7 +70,7 @@
                            data-target="#research-page"
                            href="#research"
                            role="tab">
-                            What next
+                            What to do next
                         </a>
                     </li>
                 </ul>
