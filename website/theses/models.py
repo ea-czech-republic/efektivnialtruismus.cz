@@ -559,25 +559,19 @@ class OtherServicesPage(Page):
     ]
 
 
-class AbstractSubmenuItem(models.Model):
+class SubmenuItem(Orderable):
     page = models.ForeignKey("wagtailcore.Page", on_delete=models.CASCADE)
     title = models.CharField(max_length=255, blank=True)
     url_suffix = models.CharField("Append to URL", blank=True, max_length=255)
+    submenu_page = ParentalKey(
+        "theses.SubmenuPage", on_delete=models.CASCADE, related_name="submenu_items"
+    )
 
     panels = [
         PageChooserPanel("page"),
         FieldPanel("title"),
         FieldPanel("url_suffix"),
     ]
-
-    class Meta:
-        abstract = True
-
-
-class SubmenuItem(Orderable, AbstractSubmenuItem):
-    submenu_page = ParentalKey(
-        "theses.SubmenuPage", on_delete=models.CASCADE, related_name="submenu_items"
-    )
 
     def get_submenu_data(self, current_site):
         page: Page = self.page
