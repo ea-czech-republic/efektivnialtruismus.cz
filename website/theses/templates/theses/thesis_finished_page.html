@@ -23,13 +23,15 @@
                     </div>
                 </div>
 
-                <div class="row align-items-center mb-3">
-                    <div class="col">
-                        <div class="float-right">
-                            <a href="{{ page.pdf_thesis.url }}" class="btn btn-lg btn-primary" target="_blank">Download PDF</a>
+                {% if page.pdf_thesis %}
+                    <div class="row align-items-center mb-3">
+                        <div class="col">
+                            <div class="float-right">
+                                <a href="{{ page.pdf_thesis.url }}" class="btn btn-lg btn-primary" target="_blank">Download PDF</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endif %}
             </div>
         </div>
 

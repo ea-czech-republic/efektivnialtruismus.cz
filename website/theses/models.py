@@ -503,7 +503,7 @@ class ThesisFinishedPage(Page):
     pdf_thesis = models.ForeignKey(
         "wagtaildocs.Document",
         null=True,
-        blank=False,
+        blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
     )
