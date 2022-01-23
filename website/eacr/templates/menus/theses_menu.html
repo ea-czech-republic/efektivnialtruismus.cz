@@ -10,9 +10,20 @@
     background-color:transparent;
     color:rgba(255,255,255,.75) !important;
 }
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  background: yellow;
+  padding: 15px;
+  font-size: 10px;
+  z-index: 10;
+}
 </style>
 
-<nav class="navbar navbar-dark bg-inverse navbar-expand-md sticky-top bg-primary">
+
+
+<nav id="nav" class="navbar navbar-dark bg-inverse navbar-expand-md sticky-top bg-primary">
     <div class="container">
         <a class="navbar-brand" href="/">Effective Thesis</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
@@ -43,3 +54,26 @@
         </div>
     </div>
 </nav>
+
+<div id="content" class="bar sticky">
+    <h3>
+        something
+    </h3>
+</div>
+
+
+<script>
+function setTop() {
+    var navDivElement = document.getElementById("nav");
+    var contentDivElement = document.getElementById("content")
+
+    contentDivElement.style.top = navDivElement.clientHeight + navDivElement.getBoundingClientRect().top + 'px'
+}
+
+setTop();
+
+//listen for window resize event
+window.addEventListener('resize', function(event){
+    setTop();
+});
+</script>
