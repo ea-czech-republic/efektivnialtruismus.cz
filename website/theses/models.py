@@ -382,7 +382,6 @@ class ThesisSimple(Page):
         blank=True,
         on_delete=models.SET_NULL,
         related_name="+",
-
     )
     top_image_heading = models.CharField(
         max_length=255,
