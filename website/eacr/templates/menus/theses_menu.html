@@ -28,7 +28,7 @@ div a:hover {
 </style>
 
 <nav id="nav" class="navbar navbar-dark bg-inverse navbar-expand-md sticky-top bg-primary">
-    <div class="container">
+    <div class="container" onload="setTop;">
         <a class="navbar-brand" href="/">Effective Thesis</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,21 +67,17 @@ div a:hover {
 
 
 <script>
-function setTop() {
-    var navDivElement = document.getElementById("nav");
-    var contentDivElement = document.getElementById("content")
+const navDivElement = document.getElementById("nav");
 
+function setTop() {
+    var contentDivElement = document.getElementById("content")
     contentDivElement.style.top = navDivElement.clientHeight + navDivElement.getBoundingClientRect().top + 'px'
 }
 
 setTop();
 
-//listen for window resize event
-window.addEventListener('resize', function(event){
-    setTop();
-});
-window.addEventListener("load", function(){
-    setTop();
+navDivElement.addEventListener('change', (event) => {
+  setTop();
 });
 
 </script>
