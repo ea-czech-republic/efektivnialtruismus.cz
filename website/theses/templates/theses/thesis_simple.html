@@ -1,9 +1,30 @@
 {% extends "theses/theses_base.html" %}
 {% load wagtailuserbar %}
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 {% load static %}
 
 {% block content %}
+    {% if page.top_image %}
+        {% image page.top_image original as top_image %}
+        <main class="hero" style="background-image: url({{ top_image.url }})">
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mr-auto">
+                            <h1 class="text-white mb-4">
+                                <span class="d-inline-block">
+                                    {% include_block page.top_image_heading %}
+                                </span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    {% endif %}
+
+
 <div class="container py-4">
     <div class="row">
         <div class="col-md-8 offset-md-2">

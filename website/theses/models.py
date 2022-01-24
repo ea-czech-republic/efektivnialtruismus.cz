@@ -376,6 +376,20 @@ class ThesisPage(Page):
 
 
 class ThesisSimple(Page):
+    top_image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    top_image_heading = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        help_text="Text displayed over the image. It is applicable only if an image is selected.",
+    )
+
     body = StreamField(
         [
             ("heading", blocks.CharBlock(classname="full title")),
@@ -398,7 +412,13 @@ class ThesisSimple(Page):
         ]
     )
 
-    content_panels = Page.content_panels + [StreamFieldPanel("body")]
+    content_panels = Page.content_panels + [
+        MultiFieldPanel(
+            [ImageChooserPanel("top_image"), FieldPanel("top_image_heading")],
+            heading="Top image settings",
+        ),
+        StreamFieldPanel("body"),
+    ]
 
     parent_page_types = ["theses.ThesisIndexPage"]
 
