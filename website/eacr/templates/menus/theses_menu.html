@@ -59,7 +59,7 @@ div a:hover {
     </div>
 </nav>
 
-<div id="content" class="bar sticky" style="text-align:center;font-weight: bold;">
+<div id="award-notice-bar" class="bar sticky" style="text-align:center;font-weight: bold;">
     <a class="nav-link" href="/effective-thesis-award/">
         The Effective Thesis Exceptional Research Award is open for submissions
     </a>
@@ -67,21 +67,21 @@ div a:hover {
 
 
 <script>
+// for adjusting the .top value for the award-notice-bar
 
 function setTop() {
     var navDivElement = document.getElementById("nav");
-    var contentDivElement = document.getElementById("content")
-    contentDivElement.style.top = navDivElement.clientHeight + navDivElement.getBoundingClientRect().top + 'px'
-
-    console.log("height:" + navDivElement.clientHeight);
-    console.log("top:" + navDivElement.getBoundingClientRect().top);
-}
+    var barDivElement = document.getElementById("award-notice-bar");
+    barDivElement.style.top = navDivElement.clientHeight + navDivElement.getBoundingClientRect().top + 'px';
+};
 
 setTop();
 
-var navDivElement = document.getElementById("nav");
-navDivElement.addEventListener('resize', function(event) => {
-  setTop();
+const resize_ob = new ResizeObserver(function(entries) {
+	setTop();
 });
+
+// start observing for resize
+resize_ob.observe(document.querySelector("#nav"));
 
 </script>
