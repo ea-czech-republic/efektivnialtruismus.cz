@@ -76,12 +76,10 @@ function setTop() {
 };
 
 setTop();
-
 const resize_ob = new ResizeObserver(function(entries) {
 	setTop();
 });
 
 // start observing for resize
 resize_ob.observe(document.querySelector("#nav"));
-
 </script>
