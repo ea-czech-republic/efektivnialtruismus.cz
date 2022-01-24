@@ -10,9 +10,24 @@
     background-color:transparent;
     color:rgba(255,255,255,.75) !important;
 }
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  background: #EDA93B;
+  padding: 0px;
+  font-size: 14px;
+  z-index: 10;
+}
+div a {
+    color: #212529;
+}
+div a:hover {
+    color: #007bff;
+}
 </style>
 
-<nav class="navbar navbar-dark bg-inverse navbar-expand-md sticky-top bg-primary">
+<nav id="nav" class="navbar navbar-dark bg-inverse navbar-expand-md sticky-top bg-primary">
     <div class="container">
         <a class="navbar-brand" href="/">Effective Thesis</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
@@ -43,3 +58,28 @@
         </div>
     </div>
 </nav>
+
+<div id="award-notice-bar" class="bar sticky" style="text-align:center;font-weight: bold;">
+    <a class="nav-link" href="/effective-thesis-award/">
+        The Effective Thesis Exceptional Research Award is open for submissions
+    </a>
+</div>
+
+
+<script>
+// for adjusting the .top value for the award-notice-bar
+
+function setTop() {
+    var navDivElement = document.getElementById("nav");
+    var barDivElement = document.getElementById("award-notice-bar");
+    barDivElement.style.top = navDivElement.clientHeight + navDivElement.getBoundingClientRect().top + 'px';
+};
+
+setTop();
+const resize_ob = new ResizeObserver(function(entries) {
+	setTop();
+});
+
+// start observing for resize
+resize_ob.observe(document.querySelector("#nav"));
+</script>
