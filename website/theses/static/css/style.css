@@ -240,7 +240,7 @@ h1, h2, h3, h4, h5,
 .responsive-object iframe,
 .responsive-object object,
 .responsive-object embed {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
